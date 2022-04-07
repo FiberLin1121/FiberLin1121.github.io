@@ -8,7 +8,7 @@
   <title>
     
       
-        Emoji Support |
+        使用 Hugo shortcode |
 
       
       Fiber&#39;s blog
@@ -23,7 +23,7 @@
   <meta
     name="description"
     content="
-      Guide to emoji usage in Hugo
+      Hi! I&#39;m Fiber, 一名貓奴工程師
 
 
     "
@@ -81,7 +81,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
 
-  <link rel="canonical" href="https://example.com/post/emoji-support/" />
+  <link rel="canonical" href="https://example.com/post/post-3/" />
 
   
   
@@ -113,18 +113,18 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://example.com/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="Emoji Support"/>
-<meta name="twitter:description" content="Guide to emoji usage in Hugo"/>
+<meta name="twitter:title" content="使用 Hugo shortcode"/>
+<meta name="twitter:description" content="本篇整理了 anatole 這個 Hugo 主題所提供的 Hugo shortcode 語法："/>
 
 
 
   
-  <meta property="og:title" content="Emoji Support" />
-<meta property="og:description" content="Guide to emoji usage in Hugo" />
+  <meta property="og:title" content="使用 Hugo shortcode" />
+<meta property="og:description" content="本篇整理了 anatole 這個 Hugo 主題所提供的 Hugo shortcode 語法：" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://example.com/post/emoji-support/" /><meta property="og:image" content="https://example.com/images/site-feature-image.png"/><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-03-05T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-03-05T00:00:00+00:00" />
+<meta property="og:url" content="https://example.com/post/post-3/" /><meta property="og:image" content="https://example.com/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-07T00:00:00+00:00" />
 
 
 
@@ -138,11 +138,15 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "Emoji Support",
-        "headline": "Emoji Support",
+        "name": "使用 Hugo shortcode",
+        "headline": "使用 Hugo shortcode",
         "alternativeHeadline": "",
         "description": "
-      Guide to emoji usage in Hugo
+      
+        \u003cp\u003e本篇整理了 \u003ca href=\u0022https:\/\/themes.gohugo.io\/anatole\/\u0022\u003eanatole\u003c\/a\u003e 這個 Hugo 主題所提供的 Hugo shortcode 語法：\u003c\/p\u003e
+
+
+      
 
 
     ",
@@ -150,31 +154,31 @@
         "isFamilyFriendly": "true",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/example.com\/post\/emoji-support\/"
+            "@id": "https:\/\/example.com\/post\/post-3\/"
         },
         "author" : {
             "@type": "Person",
-            "name": "Hugo Authors"
+            "name": "Fiber Lin"
         },
         "creator" : {
             "@type": "Person",
-            "name": "Hugo Authors"
+            "name": "Fiber Lin"
         },
         "accountablePerson" : {
             "@type": "Person",
-            "name": "Hugo Authors"
+            "name": "Fiber Lin"
         },
         "copyrightHolder" : {
             "@type": "Person",
-            "name": "Hugo Authors"
+            "name": "Fiber Lin"
         },
-        "copyrightYear" : "2019",
-        "dateCreated": "2019-03-05T00:00:00.00Z",
-        "datePublished": "2019-03-05T00:00:00.00Z",
-        "dateModified": "2019-03-05T00:00:00.00Z",
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-04-07T00:00:00.00Z",
+        "datePublished": "2022-04-07T00:00:00.00Z",
+        "dateModified": "2022-04-07T00:00:00.00Z",
         "publisher":{
             "@type":"Organization",
-            "name": "Hugo Authors",
+            "name": "Fiber Lin",
             "url": "https://example.com",
             "logo": {
                 "@type": "ImageObject",
@@ -193,12 +197,12 @@
       ]
 
     ,
-        "url" : "https:\/\/example.com\/post\/emoji-support\/",
-        "wordCount" : "129",
+        "url" : "https:\/\/example.com\/post\/post-3\/",
+        "wordCount" : "104",
         "genre" : [ ],
         "keywords" : [ 
       
-      "emoji"
+      "程式筆記"
 
     ]
     }
@@ -388,13 +392,13 @@
     ">
   
   <div class="post__content">
-    <h1>Emoji Support</h1>
+    <h1>使用 Hugo Shortcode</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
         <em class="fas fa-calendar-day post__meta-icon"></em>
         <span class="post__meta-text">
-          2019/03/05
+          2022/04/07
 
 
           
@@ -407,7 +411,7 @@
       <li class="post__meta-item">
         <span class="post__meta-text">
         
-        <span><a class="tag" href="/tags/emoji/">emoji</a></span>
+        <span><a class="tag" href="/tags/%E7%A8%8B%E5%BC%8F%E7%AD%86%E8%A8%98/">程式筆記</a></span>
 
 
         
@@ -415,17 +419,127 @@
       </li>
     </ul>
 
-    <p>Emoji can be enabled in a Hugo project in a number of ways.</p>
-<p>The <a href="https://gohugo.io/functions/emojify/"><code>emojify</code></a> function can be called directly in templates or <a href="https://gohugo.io/templates/shortcode-templates/#inline-shortcodes">Inline Shortcodes</a>.</p>
-<p>To enable emoji globally, set <code>enableEmoji</code> to <code>true</code> in your site&rsquo;s <a href="https://gohugo.io/getting-started/configuration/">configuration</a> and then you can type emoji shorthand codes directly in content files; e.g.</p>
-<p><span class="nowrap"><span class="emojify">🙈</span> <code>🙈</code></span>  <span class="nowrap"><span class="emojify">🙉</span> <code>🙉</code></span>  <span class="nowrap"><span class="emojify">🙊</span> <code>🙊</code></span></p>
+    <p>本篇整理了 <a href="https://themes.gohugo.io/anatole/">anatole</a> 這個 Hugo 主題所提供的 Hugo shortcode 語法：</p>
+<h2 id="notice">Notice</h2>
+<h4 id="info">Info</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; notice info &gt;}}
+</span></span><span class="line"><span class="cl">notice info...
+</span></span><span class="line"><span class="cl">{{&lt; /notice &gt;}}
+</span></span></code></pre></div><div
+  class="notice"
+>
+  <span
+    class="notice__title"
+  >Info</span><div class="notice__content">
+    notice info&hellip;
+  </div>
+</div>
+
+<h4 id="update">Update</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; notice update &gt;}}
+</span></span><span class="line"><span class="cl">notice update...
+</span></span><span class="line"><span class="cl">{{&lt; /notice &gt;}}
+</span></span></code></pre></div><div
+  class="notice
+    notice--update
+
+  "
+>
+  <span
+    class="notice__title
+      notice__title--update
+
+    "
+  >Update</span><div class="notice__content">
+    notice update&hellip;
+  </div>
+</div>
+
+<h4 id="warning">Warning</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; notice warning &gt;}}
+</span></span><span class="line"><span class="cl">notice warning...
+</span></span><span class="line"><span class="cl">{{&lt; /notice &gt;}}
+</span></span></code></pre></div><p><div
+  class="notice
+    notice--warning
+
+  "
+>
+  <span
+    class="notice__title
+      notice__title--warning
+
+    "
+  >Warning</span><div class="notice__content">
+    notice warning&hellip;
+  </div>
+</div>
+
 <br>
-<p>The <a href="http://www.emoji-cheat-sheet.com/">Emoji cheat sheet</a> is a useful reference for emoji shorthand codes.</p>
-<hr>
-<p><strong>N.B.</strong> The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">.emoji {
-</span></span><span class="line"><span class="cl">font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
-</span></span><span class="line"><span class="cl">}</span></span></code></pre></div></div>
+<br>
+<br></p>
+<h2 id="--more--"><!--more--></h2>
+<h2 id="youtube-privacy-enhanced-shortcode">YouTube Privacy Enhanced Shortcode</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; youtube 12b033YER-8 &gt;}}
+</span></span></code></pre></div><p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/12b033YER-8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<br>
+<br>
+<br></p>
+<h2 id="figure-shortcode">Figure Shortcode</h2>
+<h3 id="normal">normal</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; figure src=&#34;https://via.placeholder.com/1600x800&#34; alt=&#34;image&#34; caption=&#34;figure-normal (without any classes)&#34; &gt;}}
+</span></span></code></pre></div><p><figure><img src="https://via.placeholder.com/1600x800"
+         alt="image"/><figcaption>
+            <p>figure-normal (without any classes)</p>
+        </figcaption>
+</figure>
+
+<br>
+<br></p>
+<h3 id="big">big</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; figure src=&#34;https://via.placeholder.com/1600x800&#34; alt=&#34;image&#34; caption=&#34;figure-big&#34; class=&#34;big&#34; &gt;}}
+</span></span></code></pre></div><p><figure class="big"><img src="https://via.placeholder.com/1600x800"
+         alt="image"/><figcaption>
+            <p>figure-big</p>
+        </figcaption>
+</figure>
+
+<br>
+<br></p>
+<h3 id="medium">medium</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; figure src=&#34;https://via.placeholder.com/1600x800&#34; alt=&#34;image&#34; caption=&#34;figure-medium&#34; class=&#34;medium&#34; &gt;}}
+</span></span></code></pre></div><p><figure class="medium"><img src="https://via.placeholder.com/1600x800"
+         alt="image"/><figcaption>
+            <p>figure-medium</p>
+        </figcaption>
+</figure>
+
+<br>
+<br></p>
+<h3 id="small">small</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; figure src=&#34;https://via.placeholder.com/1600x800&#34; alt=&#34;image&#34; caption=&#34;figure-small&#34; class=&#34;small&#34;&gt;}}
+</span></span></code></pre></div><p><figure class="small"><img src="https://via.placeholder.com/1600x800"
+         alt="image"/><figcaption>
+            <p>figure-small</p>
+        </figcaption>
+</figure>
+
+<br>
+<br></p>
+<h3 id="tiny">tiny</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{&lt; figure src=&#34;https://via.placeholder.com/1600x800&#34; alt=&#34;image&#34; caption=&#34;figure-tiny&#34; class=&#34;tiny&#34; &gt;}}
+</span></span></code></pre></div><p><figure class="tiny"><img src="https://via.placeholder.com/1600x800"
+         alt="image"/><figcaption>
+            <p>figure-tiny</p>
+        </figcaption>
+</figure>
+
+<br>
+<br></p></div>
   <div class="post__footer">
     
 

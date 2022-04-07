@@ -34,8 +34,8 @@
     
     <link
       rel="stylesheet"
-      href="/scss/main.min.c21e76317a99a420b79d429395cd86879e4ca65321fa5a83e12de1d2ab447507.css"
-      integrity="sha256-wh52MXqZpCC3nUKTlc2Gh55MplMh&#43;lqD4S3h0qtEdQc="
+      href="/scss/main.min.02d94a71503cb758e2ae7d6030f4bada9d3babfd125372c3759e2455304f6630.css"
+      integrity="sha256-AtlKcVA8t1jirn1gMPS62p07q/0SU3LDdZ4kVTBPZjA="
       crossorigin="anonymous"
       type="text/css"
     />
@@ -230,15 +230,14 @@
           class="wrapper__sidebar"
 
         
-      ><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-<div
+      ><div
   class="sidebar
     .
 
   "
 >
   <div class="sidebar__content">
-    <div class="sidebar__introduction">
+    <div class="sidebar__introduction" style="margin-bottom: 0;">
       <img
         class="sidebar__introduction-profileimage"
         src="/images/wowo.jpg"
@@ -252,7 +251,7 @@
       </div>
     </div>
     
-    <ul class="sidebar__list">
+    <ul class="sidebar__list" style="margin-top: 0;">
       
         <li class="sidebar__list-item">
           <a href="https://github.com/FiberLin1121/" rel="me" aria-label="GitHub" title="GitHub">
@@ -280,10 +279,10 @@
       
     </ul>
 
-    <ul class="sidebar__list mt-4">
-      <li class="mb-2"><a href="/tags/demo/" class="h4">程式筆記</a></li>
-      <li class="mb-2"><a href="/tags/shortcode/" class="h4">Side Project</a></li>
-      <li class="mb-2"><a href="/tags/shortcode/" class="h4">日常生活</a></li>
+    <ul class="sidebar__list">
+      <li style="margin-bottom:.5em; font-size: 15px;"><a href="/tags/程式筆記/" style="font-size: 15px;">程式筆記</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/SideProject/" style="font-size: 15px;">Side Project</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/日常生活/" style="font-size: 15px;">日常生活</a></li>
     </ul>
     
   </div><footer class="footer footer__sidebar">
@@ -307,6 +306,7 @@
     integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
     crossorigin="anonymous"
   ></script></div>
+
 </aside>
       <main
         
@@ -393,34 +393,40 @@
   </nav>
 </div>
 </header>
-  <div
-    class="post 
+<div class="post 
       .
 
-    "
-  >
+    ">
+  
+  <div class="post__content">
+    <h1>The Figure Shortcode</h1>
     
-    <div class="post__content">
-      <h1>The Figure Shortcode</h1>
-      
-        <ul class="post__meta">
-          <li class="post__meta-item">
-            <em class="fas fa-calendar-day post__meta-icon"></em>
-            <span class="post__meta-text"
-              >
-                2021/03/13
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <em class="fas fa-calendar-day post__meta-icon"></em>
+        <span class="post__meta-text">
+          2021/03/13
 
 
-              
-            </span>
-          </li>
-          <li class="post__meta-item">
-            <em class="fas fa-stopwatch post__meta-icon"></em>
-            <span class="post__meta-text">5-minute read</span>
-          </li>
-        </ul>
+          
+        </span>
+      </li>
+      <li class="post__meta-item">
+        <em class="fas fa-stopwatch post__meta-icon"></em>
+        <span class="post__meta-text">5-minute read</span>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__meta-text">
+        
+        <span><a class="tag" href="/tags/demo/">demo</a><a class="tag" href="/tags/shortcode/">shortcode</a></span>
 
-      <p>Hugo has <code>figure</code> shortcode built-in, so you can easily add figure captions or hyperlink rel attributes to images. Documentations can be found here:</p>
+
+        
+        </span>
+      </li>
+    </ul>
+
+    <p>Hugo has <code>figure</code> shortcode built-in, so you can easily add figure captions or hyperlink rel attributes to images. Documentations can be found here:</p>
 <p><a href="https://gohugo.io/content-management/shortcodes/#figure">https://gohugo.io/content-management/shortcodes/#figure</a></p>
 <p>This theme has 3 CSS classes made for figure elements:</p>
 <ul>
@@ -481,21 +487,15 @@
 <p>Pellentesque eu consequat nunc. Vivamus eu eros ut nulla dapibus molestie in id tortor. Cras viverra ligula erat, tincidunt hendrerit diam blandit nec. Cras id urna vel dolor dictum mattis. Vestibulum congue erat ac eros molestie accumsan. Maecenas lorem nibh, maximus vel justo eget, facilisis egestas lectus. Mauris eu est ut odio blandit consequat id feugiat eros. Fusce id suscipit mi, et lacinia lectus. Mauris a arcu placerat dolor iaculis feugiat nec non mi. Ut porttitor elit tortor, eget tempus velit mollis eu. Aliquam sem nulla, dictum cursus mauris ac, semper ullamcorper leo.</p>
 <p>Donec nec tincidunt est. Sed id metus in erat fringilla mattis at id turpis. Aliquam tempor vehicula faucibus. Phasellus consequat aliquam odio. Morbi a ex vitae sapien porta auctor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sit amet nulla arcu. Praesent ut tortor purus. Praesent id eros diam. Pellentesque vitae dolor at nibh ultrices accumsan eu id urna. Aliquam finibus interdum orci in varius. Pellentesque a enim condimentum, condimentum felis id, vehicula augue. Vivamus cursus commodo eros nec lacinia.</p>
 </div>
-    <div class="post__footer">
-      
+  <div class="post__footer">
+    
 
-      
-        <span><a class="tag" href="/tags/demo/">demo</a><a class="tag" href="/tags/shortcode/">shortcode</a></span>
+    
+  </div>
 
-
-
-
-      
-    </div>
-
-    <div id="comment">
-          <h2>comments</h2>
-          <div id="disqus_thread"></div>
+  <div id="comment">
+    <h2>comments</h2>
+    <div id="disqus_thread"></div>
 <script type="application/javascript">
     window.disqus_config = function () {
     
@@ -515,8 +515,8 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
   </div>
+</div>
 
 
       </main>
