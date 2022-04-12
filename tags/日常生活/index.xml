@@ -8,13 +8,13 @@
     <language>en</language>
     <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>blog 二三事</title>
+      <title>關於 blog</title>
       <link>https://example.com/post/post-1/</link>
       <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://example.com/post/post-1/</guid>
       
-        <description>&lt;p&gt;這裡主要是為金魚腦的自己，記錄轉職後的生活與工作的小事，還有放一些不便在臉書分享的話題哈哈。&lt;/p&gt;</description>
+        <description>&lt;p&gt;這裡主要是為金魚腦的自己，記錄轉職工程師後生活與工作的小事，還有一些不便在臉書分享的話題哈哈。&lt;/p&gt;</description>
       
     </item>
     

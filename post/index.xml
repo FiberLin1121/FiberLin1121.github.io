@@ -6,7 +6,18 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 07 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>安裝 vue-cli 遇到的舊版本無法解除安裝問題</title>
+      <link>https://example.com/post/post-4/</link>
+      <pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/post-4/</guid>
+      
+        <description>&lt;p&gt;在嘗試安裝 vue-cli 3 時，因過去曾裝過 vue-cli 2.9.6 版本，於是根據官網文件&lt;/p&gt;</description>
+      
+    </item>
+    
     <item>
       <title>使用 Hugo shortcode</title>
       <link>https://example.com/post/post-3/</link>
@@ -30,13 +41,13 @@
     </item>
     
     <item>
-      <title>blog 二三事</title>
+      <title>關於 blog</title>
       <link>https://example.com/post/post-1/</link>
       <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://example.com/post/post-1/</guid>
       
-        <description>&lt;p&gt;這裡主要是為金魚腦的自己，記錄轉職後的生活與工作的小事，還有放一些不便在臉書分享的話題哈哈。&lt;/p&gt;</description>
+        <description>&lt;p&gt;這裡主要是為金魚腦的自己，記錄轉職工程師後生活與工作的小事，還有一些不便在臉書分享的話題哈哈。&lt;/p&gt;</description>
       
     </item>
     
