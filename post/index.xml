@@ -6,9 +6,53 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 12 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>To do Calendar - Day0 訂定目標與規劃</title>
+      <title>To do Calendar - Day4 網頁布局</title>
+      <link>https://example.com/post/post-9/</link>
+      <pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/post-9/</guid>
+      
+        <description>&lt;p&gt;這次是使用 Mockingbird ，來規劃版面設計與操作流程。&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>To do Calendar - Day3 用 Vue Router 配置路由</title>
+      <link>https://example.com/post/post-8/</link>
+      <pubDate>Sun, 17 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/post-8/</guid>
+      
+        <description>&lt;p&gt;來看一下如何使用 Vue Router 吧！&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>To do Calendar - Day2 載入外部套件</title>
+      <link>https://example.com/post/post-7/</link>
+      <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/post-7/</guid>
+      
+        <description>&lt;p&gt;透過 Vue CLI 的 webpack，來載入 Bootstrap、axios 和 v-calendar。&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>To do Calendar - Day1 用 Vue CLI 建立專案</title>
+      <link>https://example.com/post/post-6/</link>
+      <pubDate>Thu, 14 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/post/post-6/</guid>
+      
+        <description>&lt;p&gt;這次就來好好認識 Vue CLI 和相關工具，並使用 Vue CLI 來建立 Vue 專案吧！&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>To do Calendar - Day0 訂定目標與題目</title>
       <link>https://example.com/post/post-5/</link>
       <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
       
@@ -25,7 +69,7 @@
       
       <guid>https://example.com/post/post-4/</guid>
       
-        <description>&lt;p&gt;在嘗試安裝 vue-cli 3 時，因過去曾裝過 vue-cli 2.9.6 版本，於是根據官網文件&lt;/p&gt;</description>
+        <description>&lt;p&gt;在嘗試安裝新的 vue-cli 時，因過去曾裝過 vue-cli 2.9.6 版本，於是根據官網文件&lt;/p&gt;</description>
       
     </item>
     
@@ -58,7 +102,7 @@
       
       <guid>https://example.com/post/post-1/</guid>
       
-        <description>&lt;p&gt;這裡主要是為金魚腦的自己，記錄轉職工程師後生活與工作的小事，還有一些不便在臉書分享的話題哈哈。&lt;/p&gt;</description>
+        <description>&lt;p&gt;這裡主要是為金魚腦的自己，記錄轉職工程師後生活與工作的小事，還有 Side Project 開發紀錄。&lt;/p&gt;</description>
       
     </item>
     
