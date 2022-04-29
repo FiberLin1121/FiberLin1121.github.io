@@ -8,7 +8,7 @@
   <title>
     
       
-        To-do Calendar - Day1 用 Vue CLI 建立專案 |
+        To do Calendar - Day5 頁面串接 |
 
       
       Fiber&#39;s blog
@@ -81,7 +81,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
 
-  <link rel="canonical" href="https://example.com/post/post-6/" />
+  <link rel="canonical" href="https://example.com/post/post-10/" />
 
   
   
@@ -113,18 +113,18 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://example.com/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="To-do Calendar - Day1 用 Vue CLI 建立專案"/>
-<meta name="twitter:description" content="這次就來好好認識 Vue CLI 和相關工具，並使用 Vue CLI 來建立 Vue 專案吧！"/>
+<meta name="twitter:title" content="To do Calendar - Day5 頁面串接"/>
+<meta name="twitter:description" content="終於可以跟 Vue CLI 預設的 HelloWorld.vue 掰掰，開始建立自己的頁面了！"/>
 
 
 
   
-  <meta property="og:title" content="To-do Calendar - Day1 用 Vue CLI 建立專案" />
-<meta property="og:description" content="這次就來好好認識 Vue CLI 和相關工具，並使用 Vue CLI 來建立 Vue 專案吧！" />
+  <meta property="og:title" content="To do Calendar - Day5 頁面串接" />
+<meta property="og:description" content="終於可以跟 Vue CLI 預設的 HelloWorld.vue 掰掰，開始建立自己的頁面了！" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://example.com/post/post-6/" /><meta property="og:image" content="https://example.com/images/site-feature-image.png"/><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-04-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-04-14T00:00:00+00:00" />
+<meta property="og:url" content="https://example.com/post/post-10/" /><meta property="og:image" content="https://example.com/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-22T00:00:00+00:00" />
 
 
 
@@ -138,12 +138,12 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "To-do Calendar - Day1 用 Vue CLI 建立專案",
-        "headline": "To-do Calendar - Day1 用 Vue CLI 建立專案",
+        "name": "To do Calendar - Day5 頁面串接",
+        "headline": "To do Calendar - Day5 頁面串接",
         "alternativeHeadline": "",
         "description": "
       
-        \u003cp\u003e這次就來好好認識 Vue CLI 和相關工具，並使用 Vue CLI 來建立 Vue 專案吧！\u003c\/p\u003e
+        \u003cp\u003e終於可以跟 Vue CLI 預設的 HelloWorld.vue 掰掰，開始建立自己的頁面了！\u003c\/p\u003e
 
 
       
@@ -154,7 +154,7 @@
         "isFamilyFriendly": "true",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/example.com\/post\/post-6\/"
+            "@id": "https:\/\/example.com\/post\/post-10\/"
         },
         "author" : {
             "@type": "Person",
@@ -173,9 +173,9 @@
             "name": "Fiber Lin"
         },
         "copyrightYear" : "2022",
-        "dateCreated": "2022-04-14T00:00:00.00Z",
-        "datePublished": "2022-04-14T00:00:00.00Z",
-        "dateModified": "2022-04-14T00:00:00.00Z",
+        "dateCreated": "2022-04-22T00:00:00.00Z",
+        "datePublished": "2022-04-22T00:00:00.00Z",
+        "dateModified": "2022-04-22T00:00:00.00Z",
         "publisher":{
             "@type":"Organization",
             "name": "Fiber Lin",
@@ -197,8 +197,8 @@
       ]
 
     ,
-        "url" : "https:\/\/example.com\/post\/post-6\/",
-        "wordCount" : "91",
+        "url" : "https:\/\/example.com\/post\/post-10\/",
+        "wordCount" : "204",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -418,13 +418,13 @@ if (!doNotTrack) {
     ">
   
   <div class="post__content">
-    <h1>To-Do Calendar - Day1 用 Vue CLI 建立專案</h1>
+    <h1>To Do Calendar - Day5 頁面串接</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
         <em class="fas fa-calendar-day post__meta-icon"></em>
         <span class="post__meta-text">
-          2022/04/14
+          2022/04/22
 
 
           
@@ -445,73 +445,173 @@ if (!doNotTrack) {
       </li>
     </ul>
 
-    <p>這次就來好好認識 Vue CLI 和相關工具，並使用 Vue CLI 來建立 Vue 專案吧！</p>
-<h2 id="vue-cli-是什麼">Vue CLI 是什麼？</h2>
-<ol>
-<li>Vue CLI 是基於 webpack 所建置的開發工具，可以用來<strong>快速搭建 Vue 開發環境</strong>（鷹架、開發懶人包的概念）。</li>
-</ol>
-<blockquote>
-<p><a href="https://webpack.js.org/">webpack</a> 是一個自動化網頁<strong>打包工具</strong>，我們在開發網頁時會載入非常多的資源，webpack 可以將大部分資源一口氣載入，然後編譯成網頁所需要的檔案。
-<figure class="medium"><img src="https://i.imgur.com/ynhNGwl.jpg"
-         alt="image"/>
-</figure>
-</p>
-</blockquote>
-<ol start="2">
-<li>便於使用各種第三方套件（Bootstrap4、Vue Router、vue-axios）。</li>
-<li>可運行 Sass、Babel 等編譯工具。</li>
-</ol>
-<blockquote>
-<p><a href="https://www.babeljs.cn/docs/">Babel</a> 是 JavaScript 的<strong>編譯工具</strong>，透過 Babel，可以將 ES6 以上的新語法轉換成大部分瀏覽器可以運行的 Javascript 語法。</p>
-</blockquote>
-<ol start="4">
-<li>便於開發 SPA 的網頁工具。
-<br>
-<br></li>
-</ol>
-<h2 id="安裝-vue-cli">安裝 Vue CLI</h2>
-<p>在安裝 Vue CLI 之前，必須先安裝 Node.js。</p>
-<ul>
-<li>
-<p>安裝 vue-cli（<code>-g</code>：表示全域）</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm install -g @vue/cli
-</span></span></code></pre></div></li>
-</ul>
-<br>
-<h2 id="透過-vue-cli-建立專案">透過 Vue CLI 建立專案</h2>
-<ul>
-<li>建立專案
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vue create [專案名稱]
-</span></span></code></pre></div></li>
-</ul>
-<figure class="medium"><img src="https://i.imgur.com/CafGPqf.jpg"
-         alt="image"/>
+    <p>終於可以跟 Vue CLI 預設的 HelloWorld.vue 掰掰，開始建立自己的頁面了！</p>
+<h2 id="分頁元件拆解">分頁元件拆解</h2>
+<p><figure class="medium"><img src="https://upload.cc/i1/2022/04/22/kDETmV.jpg"
+         alt="image"/><figcaption>
+            <p>首頁</p>
+        </figcaption>
 </figure>
 
+<figure class="medium"><img src="https://upload.cc/i1/2022/04/22/wTEKlQ.jpg"
+         alt="image"/><figcaption>
+            <p>內頁</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<h2 id="配置巢狀路由">配置巢狀路由</h2>
 <ul>
 <li>
-<p>詢問要建立 Vue 2 / Vue 3 或者自行手動選擇套件的專案（因為參考資料是用 Vue 2，所以選 Vue 2）
-<figure class="medium"><img src="https://i.imgur.com/1UK7ToM.jpg"
-         alt="image"/>
-</figure>
-</p>
+<p>在 src/component/pages 下分別新增以下檔案</p>
+<ul>
+<li>index.vue（首頁）</li>
+<li>innerPage.vue（內頁）</li>
+</ul>
 </li>
 <li>
-<p>運行開發環境</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm run serve
-</span></span></code></pre></div><p>接著在瀏覽器輸入 http://localhost:8080/，出現以下畫面就表示 Vue 專案已經建置成功：
-<figure class="medium"><img src="https://i.imgur.com/jVYFhBR.jpg"
-         alt="image"/>
-</figure>
+<p>在 src/component/tabs 下分別新增以下檔案</p>
+<ul>
+<li>todolists.vue（待辦事項分頁）</li>
+<li>habitTracker.vue（原子習慣分頁）</li>
+<li>notes.vue（備忘錄分頁）</li>
+</ul>
+</li>
+<li>
+<p>在 src/router/index.js 中載入自定義的分頁元件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import Index from &#34;@/components/pages/index&#34;;
+</span></span><span class="line"><span class="cl">import InnerPage from &#34;@/components/pages/innerPage&#34;;
+</span></span><span class="line"><span class="cl">import Notes from &#34;@/components/tabs/notes&#34;;
+</span></span><span class="line"><span class="cl">import Todolists from &#34;@/components/tabs/todoLists&#34;;
+</span></span><span class="line"><span class="cl">import HabitTracker from &#34;@/components/tabs/habitTracker&#34;;
+</span></span></code></pre></div></li>
+<li>
+<p>加上 linkActiveClass:&lsquo;active&rsquo;</p>
+</li>
+<li>
+<p>在需要巢狀路由的 innerPage 路由下新增 children 陣列</p>
+</li>
+<li>
+<p>新增 innerPage 的子元件的路徑與對應元件</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">      export default new VueRouter({
+</span></span><span class="line"><span class="cl">      linkActiveClass:&#39;active&#39;,
+</span></span><span class="line"><span class="cl">      routes: [
+</span></span><span class="line"><span class="cl">          {
+</span></span><span class="line"><span class="cl">              name: &#39;index&#39;,
+</span></span><span class="line"><span class="cl">              path: &#39;/&#39;,
+</span></span><span class="line"><span class="cl">              component: Index
+</span></span><span class="line"><span class="cl">          },
+</span></span><span class="line"><span class="cl">          {
+</span></span><span class="line"><span class="cl">              name: &#39;innerPage&#39;,
+</span></span><span class="line"><span class="cl">              path: &#39;/innerPage&#39;,
+</span></span><span class="line"><span class="cl">              component: InnerPage,
+</span></span><span class="line"><span class="cl">              children: [
+</span></span><span class="line"><span class="cl">                  {
+</span></span><span class="line"><span class="cl">                      name: &#39;todoLists&#39;,
+</span></span><span class="line"><span class="cl">                      path: &#39;todoLists&#39;,
+</span></span><span class="line"><span class="cl">                      component: TodoLists
+</span></span><span class="line"><span class="cl">                  },
+</span></span><span class="line"><span class="cl">                  {
+</span></span><span class="line"><span class="cl">                      name: &#39;habitTracker&#39;,
+</span></span><span class="line"><span class="cl">                      path: &#39;habitTracker&#39;,
+</span></span><span class="line"><span class="cl">                      component: HabitTracker
+</span></span><span class="line"><span class="cl">                  },
+</span></span><span class="line"><span class="cl">                  {
+</span></span><span class="line"><span class="cl">                      name: &#39;notes&#39;,
+</span></span><span class="line"><span class="cl">                      path: &#39;notes&#39;,
+</span></span><span class="line"><span class="cl">                      component: Notes
+</span></span><span class="line"><span class="cl">                  }
+</span></span><span class="line"><span class="cl">              ]
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">      ]
+</span></span><span class="line"><span class="cl">  });
+</span></span></code></pre></div><div
+  class="notice"
+>
+  <span
+    class="notice__title"
+  >Info</span><div class="notice__content">
+    linkActiveClass：使當前的 link 添加指定樣式，用來標示目前所在的頁面。</br>
+  </div>
+</div>
+
+<p><div
+  class="notice"
+>
+  <span
+    class="notice__title"
+  >Info</span><div class="notice__content">
+    子元件 path 若為空，父元件預設將會帶入這個子元件。
+  </div>
+</div>
 
 <br>
 <br></p>
 </li>
 </ul>
+<h2 id="使用-router-link--router-view-切換分頁">使用 router-link + router-view 切換分頁</h2>
+<blockquote>
+<p>router-view： 呈現路由配置元件<br>router-link： 路由路徑</p>
+</blockquote>
+<ul>
+<li>在 innerPage.vue 加入 Bootratrap 的 <a href="https://getbootstrap.com/docs/4.6/components/card/#navigation">導覽卡片元件</a></li>
+<li>用 <code>&lt;router-link&gt;</code> 取代在 nav-item 中的 <code>&lt;a&gt;</code> 連結</li>
+<li>在 <code>&lt;router-link&gt;</code> 加上 to 屬性與指定路徑，建立路由連結</li>
+<li>在 card-body 加入 <code>&lt;router-view/&gt;</code>，渲染當前路徑指定的元件
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;section class=&#34;card text-center&#34;&gt;
+</span></span><span class="line"><span class="cl">    &lt;div class=&#34;card-header&#34;&gt;
+</span></span><span class="line"><span class="cl">      &lt;section class=&#34;text-right text-success h4&#34;&gt;User&lt;/section&gt;
+</span></span><span class="line"><span class="cl">      &lt;ul class=&#34;nav nav-tabs card-header-tabs&#34;&gt;
+</span></span><span class="line"><span class="cl">        &lt;li class=&#34;nav-item&#34;&gt;
+</span></span><span class="line"><span class="cl">          &lt;router-link class=&#34;nav-link&#34; to=&#34;/innerPage/habitTracker&#34;&gt;Habit trackers&lt;/router-link&gt;
+</span></span><span class="line"><span class="cl">        &lt;/li&gt;
+</span></span><span class="line"><span class="cl">        &lt;li class=&#34;nav-item&#34;&gt;
+</span></span><span class="line"><span class="cl">          &lt;router-link class=&#34;nav-link&#34; to=&#34;/innerPage/todoLists&#34;&gt;Todo lists&lt;/router-link&gt;
+</span></span><span class="line"><span class="cl">        &lt;/li&gt;
+</span></span><span class="line"><span class="cl">        &lt;li class=&#34;nav-item&#34;&gt;
+</span></span><span class="line"><span class="cl">          &lt;router-link class=&#34;nav-link&#34; to=&#34;/innerPage/notes&#34;&gt;Notes&lt;/router-link&gt;
+</span></span><span class="line"><span class="cl">        &lt;/li&gt;
+</span></span><span class="line"><span class="cl">      &lt;/ul&gt;
+</span></span><span class="line"><span class="cl">    &lt;/div&gt;
+</span></span><span class="line"><span class="cl">    &lt;section class=&#34;card-body&#34;&gt;
+</span></span><span class="line"><span class="cl">      &lt;h1 class=&#34;card-title&#34;&gt;tab&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">      &lt;router-view/&gt;
+</span></span><span class="line"><span class="cl">    &lt;/section&gt;
+</span></span><span class="line"><span class="cl">  &lt;/section&gt;
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<p>曬一下目前進度～～收工！
+<figure class="medium"><img src="https://upload.cc/i1/2022/04/23/Vum1Oi.jpg"
+         alt="image"/><figcaption>
+            <p>首頁</p>
+        </figcaption>
+</figure>
+</p>
+<figure class="medium"><img src="https://upload.cc/i1/2022/04/23/mDR1Hu.jpg"
+         alt="image"/><figcaption>
+            <p>原子習慣分頁</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://upload.cc/i1/2022/04/23/GApHBW.jpg"
+         alt="image"/><figcaption>
+            <p>待辦事項分頁</p>
+        </figcaption>
+</figure>
+
+<p><figure class="medium"><img src="https://upload.cc/i1/2022/04/23/kMSDtf.jpg"
+         alt="image"/><figcaption>
+            <p>備忘錄分頁</p>
+        </figcaption>
+</figure>
+
+<br>
+<br></p>
 <h4 id="延伸閱讀">延伸閱讀</h4>
 <ul>
-<li><a href="https://ithelp.ithome.com.tw/articles/10226666">Vue CLI2與Webpack介紹</a></li>
-<li><a href="https://tw.alphacamp.co/blog/webpack-introduction">Webpack 模組打包工具的用途及 Webpack 工作方式的基本觀念</a></li>
+<li><a href="https://dotblogs.com.tw/wasichris/2017/03/07/001939">[Vue] 跟著 Vue 闖蕩前端世界 - 09 路由超連結產生器 router-link</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10208798">vue-router（常用用法）</a></li>
 </ul>
 <h4 id="參考資料">參考資料</h4>
 <ul>
