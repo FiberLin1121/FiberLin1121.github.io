@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on </title>
-    <link>https://example.com/post/</link>
+    <link>https://fiberlin1121.github.io/post/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 03 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>To-do Calendar - Day8 Vuex 狀態管理（下）</title>
-      <link>https://example.com/post/post-13/</link>
+      <link>https://fiberlin1121.github.io/post/post-13/</link>
       <pubDate>Tue, 03 May 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-13/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-13/</guid>
       
         <description>&lt;p&gt;接下來要實作對 url 進行攔截，當用戶未登入時，導回首頁並自動開啟登入 Modal 的部分。&lt;/p&gt;</description>
       
@@ -20,10 +20,10 @@
     
     <item>
       <title>To-do Calendar - Day7 Vuex 狀態管理（上）</title>
-      <link>https://example.com/post/post-12/</link>
+      <link>https://fiberlin1121.github.io/post/post-12/</link>
       <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-12/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-12/</guid>
       
         <description>&lt;p&gt;當多個組件要共用資料，或者大範圍的組件溝通時，資料的傳遞與維護就會變得相當麻煩，這時候就可以使用 Vuex 來協助我們管理資料狀態。&lt;/p&gt;</description>
       
@@ -31,10 +31,10 @@
     
     <item>
       <title>To-do Calendar - Day6 登入驗證與 VUE ROUTER 配置</title>
-      <link>https://example.com/post/post-11/</link>
+      <link>https://fiberlin1121.github.io/post/post-11/</link>
       <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-11/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-11/</guid>
       
         <description>&lt;p&gt;首頁畫面刻好後，終於進入到登入功能開發了～&lt;/p&gt;</description>
       
@@ -42,10 +42,10 @@
     
     <item>
       <title>To do Calendar - Day5 頁面串接</title>
-      <link>https://example.com/post/post-10/</link>
+      <link>https://fiberlin1121.github.io/post/post-10/</link>
       <pubDate>Fri, 22 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-10/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-10/</guid>
       
         <description>&lt;p&gt;終於可以跟 Vue CLI 預設的 HelloWorld.vue 掰掰，開始建立自己的頁面了！&lt;/p&gt;</description>
       
@@ -53,10 +53,10 @@
     
     <item>
       <title>To-do Calendar - Day4 網頁布局</title>
-      <link>https://example.com/post/post-9/</link>
+      <link>https://fiberlin1121.github.io/post/post-9/</link>
       <pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-9/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-9/</guid>
       
         <description>&lt;p&gt;這次是使用 Mockingbird ，來規劃版面設計與操作流程。&lt;/p&gt;</description>
       
@@ -64,10 +64,10 @@
     
     <item>
       <title>To-do Calendar - Day3 用 Vue Router 配置路由</title>
-      <link>https://example.com/post/post-8/</link>
+      <link>https://fiberlin1121.github.io/post/post-8/</link>
       <pubDate>Sun, 17 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-8/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-8/</guid>
       
         <description>&lt;p&gt;來看一下如何使用 Vue Router 吧！&lt;/p&gt;</description>
       
@@ -75,10 +75,10 @@
     
     <item>
       <title>To-do Calendar - Day2 載入外部套件</title>
-      <link>https://example.com/post/post-7/</link>
+      <link>https://fiberlin1121.github.io/post/post-7/</link>
       <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-7/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-7/</guid>
       
         <description>&lt;p&gt;透過 Vue CLI 的 webpack，來載入 Bootstrap、axios、v-calendar。&lt;/p&gt;</description>
       
@@ -86,10 +86,10 @@
     
     <item>
       <title>To-do Calendar - Day1 用 Vue CLI 建立專案</title>
-      <link>https://example.com/post/post-6/</link>
+      <link>https://fiberlin1121.github.io/post/post-6/</link>
       <pubDate>Thu, 14 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-6/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-6/</guid>
       
         <description>&lt;p&gt;這次就來好好認識 Vue CLI 和相關工具，並使用 Vue CLI 來建立 Vue 專案吧！&lt;/p&gt;</description>
       
@@ -97,10 +97,10 @@
     
     <item>
       <title>To-do Calendar - Day0 訂定目標與題目</title>
-      <link>https://example.com/post/post-5/</link>
+      <link>https://fiberlin1121.github.io/post/post-5/</link>
       <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-5/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-5/</guid>
       
         <description>&lt;p&gt;工作中沒有機會碰到的技術，就自己寫個 Side Project 邊用邊學吧！&lt;/p&gt;</description>
       
@@ -108,10 +108,10 @@
     
     <item>
       <title>安裝 vue-cli 遇到的舊版本無法解除安裝問題</title>
-      <link>https://example.com/post/post-4/</link>
+      <link>https://fiberlin1121.github.io/post/post-4/</link>
       <pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-4/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-4/</guid>
       
         <description>&lt;p&gt;在嘗試安裝新的 vue-cli 時，因過去曾裝過 vue-cli 2.9.6 版本，於是根據官網文件&lt;/p&gt;</description>
       
@@ -119,10 +119,10 @@
     
     <item>
       <title>使用 Hugo shortcode</title>
-      <link>https://example.com/post/post-3/</link>
+      <link>https://fiberlin1121.github.io/post/post-3/</link>
       <pubDate>Thu, 07 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-3/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-3/</guid>
       
         <description>&lt;p&gt;本篇整理了 &lt;a href=&#34;https://themes.gohugo.io/anatole/&#34;&gt;anatole&lt;/a&gt; 這個 Hugo 主題所提供的 Hugo shortcode 語法：&lt;/p&gt;</description>
       
@@ -130,10 +130,10 @@
     
     <item>
       <title>在 Hugo 中使用的 Markdown 語法</title>
-      <link>https://example.com/post/post-2/</link>
+      <link>https://fiberlin1121.github.io/post/post-2/</link>
       <pubDate>Wed, 06 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-2/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-2/</guid>
       
         <description>&lt;p&gt;本篇整理了可以在 Hugo 文件中使用的基本 Markdown 語法（呈現會因 Hugo 主題不同而有所差異）：&lt;/p&gt;</description>
       
@@ -141,10 +141,10 @@
     
     <item>
       <title>關於 blog</title>
-      <link>https://example.com/post/post-1/</link>
+      <link>https://fiberlin1121.github.io/post/post-1/</link>
       <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-1/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-1/</guid>
       
         <description>&lt;p&gt;這裡主要是為金魚腦的自己，記錄轉職工程師後生活與工作的小事，還有 Side Project 開發紀錄。&lt;/p&gt;</description>
       

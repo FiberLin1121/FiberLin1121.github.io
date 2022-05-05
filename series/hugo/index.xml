@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on </title>
-    <link>https://example.com/series/hugo/</link>
+    <link>https://fiberlin1121.github.io/series/hugo/</link>
     <description>Recent content in Hugo on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 07 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/series/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/series/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 Hugo shortcode</title>
-      <link>https://example.com/post/post-3/</link>
+      <link>https://fiberlin1121.github.io/post/post-3/</link>
       <pubDate>Thu, 07 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-3/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-3/</guid>
       
         <description>&lt;p&gt;本篇整理了 &lt;a href=&#34;https://themes.gohugo.io/anatole/&#34;&gt;anatole&lt;/a&gt; 這個 Hugo 主題所提供的 Hugo shortcode 語法：&lt;/p&gt;</description>
       
@@ -20,10 +20,10 @@
     
     <item>
       <title>在 Hugo 中使用的 Markdown 語法</title>
-      <link>https://example.com/post/post-2/</link>
+      <link>https://fiberlin1121.github.io/post/post-2/</link>
       <pubDate>Wed, 06 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/post-2/</guid>
+      <guid>https://fiberlin1121.github.io/post/post-2/</guid>
       
         <description>&lt;p&gt;本篇整理了可以在 Hugo 文件中使用的基本 Markdown 語法（呈現會因 Hugo 主題不同而有所差異）：&lt;/p&gt;</description>
       
