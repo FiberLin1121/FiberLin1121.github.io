@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      
+        To-do Calendar - Day8 Vuex 狀態管理（下） |
+
+      
+      Fiber&#39;s blog
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.96.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Fiber&#39;s blog" />
+  <meta
+    name="description"
+    content="
+      Hi! I&#39;m Fiber, 一名貓奴工程師
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.02d94a71503cb758e2ae7d6030f4bada9d3babfd125372c3759e2455304f6630.css"
+      integrity="sha256-AtlKcVA8t1jirn1gMPS62p07q/0SU3LDdZ4kVTBPZjA="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://example.com/post/post-13/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.com/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="To-do Calendar - Day8 Vuex 狀態管理（下）"/>
+<meta name="twitter:description" content="接下來要實作對 url 進行攔截，當用戶未登入時，導回首頁並自動開啟登入 Modal 的部分。"/>
+
+
+
+  
+  <meta property="og:title" content="To-do Calendar - Day8 Vuex 狀態管理（下）" />
+<meta property="og:description" content="接下來要實作對 url 進行攔截，當用戶未登入時，導回首頁並自動開啟登入 Modal 的部分。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/post-13/" /><meta property="og:image" content="https://example.com/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-03T00:00:00+00:00" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "To-do Calendar - Day8 Vuex 狀態管理（下）",
+        "headline": "To-do Calendar - Day8 Vuex 狀態管理（下）",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003cp\u003e接下來要實作對 url 進行攔截，當用戶未登入時，導回首頁並自動開啟登入 Modal 的部分。\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/example.com\/post\/post-13\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-05-03T00:00:00.00Z",
+        "datePublished": "2022-05-03T00:00:00.00Z",
+        "dateModified": "2022-05-03T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Fiber Lin",
+            "url": "https://example.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/example.com\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://example.com/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/example.com\/post\/post-13\/",
+        "wordCount" : "473",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "SideProject"
+
+    ]
+    }
+  </script>
+
+
+
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction" style="margin-bottom: 0;">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/wowo.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/"></a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Hi! I'm Fiber, 一名貓奴工程師</p>
+      </div>
+    </div>
+    
+    <ul class="sidebar__list" style="margin-top: 0;">
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/FiberLin1121/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.behance.net/fiber410139" rel="me" aria-label="Behance" title="Behance">
+            <i class="fab fa-behance-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.facebook.com/%E5%B0%8F%E8%B3%B4%E7%9A%AE-277134752317535" rel="me" aria-label="Facebook" title="Facebook">
+            <i class="fab fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:fiber410139@gmail.com" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+
+    <ul class="sidebar__list">
+      <li style="margin-bottom:.5em; font-size: 15px;"><a href="/tags/程式筆記/" style="font-size: 15px;">程式筆記</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/sideproject/" style="font-size: 15px;">Side Project</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/日常生活/" style="font-size: 15px;">日常生活</a></li>
+    </ul>
+    
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav d-flex justify-content-between">
+    <ul class="nav__list col" id="navMenu">
+      
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/"
+            
+            title=""
+            >Home</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/post/"
+            
+            title=""
+            >Posts</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/portfolio/"
+            
+            title=""
+            >Portfolio</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/about/"
+            
+            title=""
+            >About</a
+          >
+        </li>
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end col">
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+<div class="post 
+      .
+
+    ">
+  
+  <div class="post__content">
+    <h1>To-Do Calendar - Day8 Vuex 狀態管理（下）</h1>
+    
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <em class="fas fa-calendar-day post__meta-icon"></em>
+        <span class="post__meta-text">
+          2022/05/03
+
+
+          
+        </span>
+      </li>
+      <li class="post__meta-item">
+        <em class="fas fa-stopwatch post__meta-icon"></em>
+        <span class="post__meta-text">3-minute read</span>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__meta-text">
+        
+        <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
+
+
+        
+        </span>
+      </li>
+    </ul>
+
+    <p>接下來要實作對 url 進行攔截，當用戶未登入時，導回首頁並自動開啟登入 Modal 的部分。</p>
+<h2 id="vuex-的運行原理單向數據流">Vuex 的運行原理（單向數據流）</h2>
+<ol>
+<li>在組件中用 dispatch 方法去觸發 action 事件</li>
+<li>在 Actions 中執行同步/非同步的操作，並 commit 至 Mutations</li>
+<li>在 Mutations 中更新 State 狀態</li>
+<li>State 再回應到組件中進行 Render
+<figure class="medium"><img src="https://upload.cc/i1/2022/05/02/1C9dX0.png"
+         alt="image"/>
+</figure>
+</li>
+</ol>
+<h2 id="vuex-的核心概念">Vuex 的核心概念</h2>
+<ol>
+<li>State：儲存資料狀態的地方，如同全域的 data</li>
+<li>Actions：可以執行同步和非同步的操作（如 ajax、setTimeout..等），但不會直接更新資料狀態</li>
+<li>Getter：加工資料呈現，如同全域的 computed</li>
+<li>Mutations：實際更新資料狀態，<strong>只能執行同步的操作</strong></li>
+<li>Modules：將 store 分割成模組 
+<div
+  class="notice
+    notice--warning
+
+  "
+>
+  <span
+    class="notice__title
+      notice__title--warning
+
+    "
+  >Warning</span><div class="notice__content">
+    重點整理：<br>
+更新 Vuex 的 store 中的資料狀態的唯一方法是提交 Mutations。<br>
+Mutations 只能做同步的操作，如果有非同步的需求，則要使用到 Actions。 <br>
+Actions 和組件都不能直接修改 State，只有 Mutations 可以更改 State。
+  </div>
+</div>
+
+<br>
+<br></li>
+</ol>
+<h2 id="取得-store-中-state-資料的方法">取得 store 中 state 資料的方法</h2>
+<ul>
+<li>方法1：直接使用 $store 來取得 state 中的資料
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">this.$store.state.isLogin;
+</span></span></code></pre></div></li>
+<li>方法2：定義在 computed 中，並在 template 載入
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">computed: {
+</span></span><span class="line"><span class="cl">  isLogin () {
+</span></span><span class="line"><span class="cl">        return this.$store.state.isLogin;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{{ isLogin }}
+</span></span></code></pre></div></li>
+<li>方法3：在組件載入 mapState，並在 computed 內使用 mapState 輔助函數
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import { mapState } from &#34;vuex&#34;;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">computed: mapState([&#34;isLogin&#34;,&#34;isLoginModalOpen&#34;,&#34;userId&#34;,&#34;userName&#34;])
+</span></span></code></pre></div>或是
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">computed: {
+</span></span><span class="line"><span class="cl">  ...mapState([&#34;isLogin&#34;,&#34;isLoginModalOpen&#34;,&#34;userId&#34;,&#34;userName&#34;])
+</span></span><span class="line"><span class="cl">},
+</span></span></code></pre></div>mapState 其實就是 Vuex 的一個語法糖，相當於下面的程式碼，<strong>mapState 適合用在從 store 取多個 state 資料的情境，能使程式碼更簡潔</strong>（mapGetters、mapMutations、mapActions 同理，引入後就能直接當作 data 或 method 使用）
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">computed:{
+</span></span><span class="line"><span class="cl">  isLogin() {
+</span></span><span class="line"><span class="cl">    return this.$store.state.isLogin;
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl"> isLoginModalOpen() {
+</span></span><span class="line"><span class="cl">    return this.$store.state.isLoginModalOpen;
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl"> userId() {
+</span></span><span class="line"><span class="cl">    return this.$store.state.userId;
+</span></span><span class="line"><span class="cl"> },
+</span></span><span class="line"><span class="cl"> userName(){
+</span></span><span class="line"><span class="cl">    return this.$store.state.userName;
+</span></span><span class="line"><span class="cl"> }，
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><div
+  class="notice"
+>
+  <span
+    class="notice__title"
+  >Info</span><div class="notice__content">
+    es6 中的展開運算符&hellip;，是將 mapState 映射的計算屬性追加上去，而不是覆蓋原有的，所以可以和組件自定義的計算屬性一起使用。
+  </div>
+</div>
+
+<br>
+<br></li>
+</ul>
+<h2 id="更新-store-中-state-資料的方法">更新 store 中 state 資料的方法</h2>
+<ul>
+<li>
+<p>方法1：在組件中直接修改 state <strong>（這是錯誤的做法！請避免這樣做）</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">this.$store.state.isLogin = true;
+</span></span></code></pre></div><div
+  class="notice
+    notice--warning
+
+  "
+>
+  <span
+    class="notice__title
+      notice__title--warning
+
+    "
+  >Warning</span><div class="notice__content">
+    從 Vue DevTools 工具的 Vuex 裡觀察，方法1並沒有更新 store 中 state 的資料。
+  </div>
+</div>
+
+</li>
+<li>
+<p>方法2：在組件中使用 store.commit()，提交 Mutations</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mutations: {
+</span></span><span class="line"><span class="cl"> isLoginModalOpen (state, status) {
+</span></span><span class="line"><span class="cl">  state.isLoginModalOpen = status;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">openLoginModal() {
+</span></span><span class="line"><span class="cl">  this.$store.commit(&#34;isLoginModalOpen&#34;, true);
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+<li>
+<p>方法3：通過 $store.dispatch() 觸發 Actions，提交 Mutations</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">actions: {
+</span></span><span class="line"><span class="cl">  updateLoginModalStatus(context, status) {
+</span></span><span class="line"><span class="cl">    context.commit(&#34;isLoginModalOpen&#34;, status);
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">},
+</span></span><span class="line"><span class="cl">mutations: {
+</span></span><span class="line"><span class="cl"> isLoginModalOpen (state, status) {
+</span></span><span class="line"><span class="cl">  state.isLoginModalOpen = status;
+</span></span><span class="line"><span class="cl"> }
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">openLoginModal() {
+</span></span><span class="line"><span class="cl">  this.$store.dispatch(&#34;updateLoginModalStatus&#34;, true);
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><p><div
+  class="notice"
+>
+  <span
+    class="notice__title"
+  >Info</span><div class="notice__content">
+    重點整理：<br>
+直接獲取 state 的資料，用 this.$store.state.值  <br>
+透過加工 state 得到新的資料，用 this.$store.getters.值<br>
+非同步修改 state 的資料狀態，用 this.$store.dispatch(&ldquo;action 方法&rdquo;)<br>
+同步修改 state 的資料狀態，用 this.$store.commit(&ldquo;mutation 方法&rdquo;)
+  </div>
+</div>
+
+<br>
+<br></p>
+</li>
+</ul>
+<h2 id="實作前端登入驗證">實作前端登入驗證</h2>
+<p>因為很多地方都需要用到登入狀態和登入 Modal 狀態，所以將登入狀態（isLogin）和登入 Modal 狀態（isloginModalOpen）放進 Vuex 管理。<br>
+想法是將狀態和操作分開，把登入 Modal 的開關操作統一交給 watch 去控制，一旦 watch 偵測到 isloginModalOpen 狀態變更，就開啟登入 Modal 或關閉登入 Modal，其他組件只負責根據事件結果提交 isloginModalOpen 狀態。<br>
+直接來看程式碼吧！</p>
+<h3 id="srcstoreindexjs">src/store/index.js</h3>
+<ul>
+<li>定義變數和配置 mutations 方法
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">export default new Vuex.Store({
+</span></span><span class="line"><span class="cl"> state: {
+</span></span><span class="line"><span class="cl">   isLogin: false,
+</span></span><span class="line"><span class="cl">   isLoginModalOpen: false,
+</span></span><span class="line"><span class="cl">   ...
+</span></span><span class="line"><span class="cl"> },
+</span></span><span class="line"><span class="cl"> mutations: {
+</span></span><span class="line"><span class="cl">   isLogin(state, status) {
+</span></span><span class="line"><span class="cl">    state.isLogin = status;
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  isLoginModalOpen (state, status) {
+</span></span><span class="line"><span class="cl">    state.isLoginModalOpen = status;
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl">});
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h3 id="srcpagesindexvue">src/pages/index.vue</h3>
+<ul>
+<li>在 computed 讀取 isLoginModalOpen 的狀態，並在 watch 監聽與控制登入 Modal 操作
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">computed: {
+</span></span><span class="line"><span class="cl">  ...mapState([&#34;isLoginModalOpen&#34;]),
+</span></span><span class="line"><span class="cl">},
+</span></span><span class="line"><span class="cl">watch: {
+</span></span><span class="line"><span class="cl">  isLoginModalOpen() {
+</span></span><span class="line"><span class="cl">    if (this.$store.state.isLoginModalOpen) {
+</span></span><span class="line"><span class="cl">      $(&#34;#loginModal&#34;).modal({ backdrop: &#34;static&#34;, keyboard: false });
+</span></span><span class="line"><span class="cl">      console.log(&#34;是watch開的&#34;);
+</span></span><span class="line"><span class="cl">    } else {
+</span></span><span class="line"><span class="cl">      $(&#34;#loginModal&#34;).modal(&#34;hide&#34;);
+</span></span><span class="line"><span class="cl">      console.log(&#34;是watch關的&#34;);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h3 id="觸發更新登入-modal-狀態的事件">觸發更新登入 modal 狀態的事件</h3>
+<ol>
+<li>
+<p>點首頁的 Start 按鈕，直接轉交給 vue-router 的導航守衛判斷要攔截或放行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">openLoginModal() {
+</span></span><span class="line"><span class="cl"> let self = this;
+</span></span><span class="line"><span class="cl"> self.$router.push(&#34;innerPage/todoLists&#34;);
+</span></span><span class="line"><span class="cl"> },
+</span></span></code></pre></div></li>
+<li>
+<p>取消或按x關閉登入 Modal（modal 設定禁用空白處點擊關閉，避免有操作繞過觸發關閉事件）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> closeLoginModal() {
+</span></span><span class="line"><span class="cl">   let self = this;
+</span></span><span class="line"><span class="cl">   self.resetForm();
+</span></span><span class="line"><span class="cl">   self.$store.commit(&#34;isLoginModalOpen&#34;, false);
+</span></span><span class="line"><span class="cl"> }
+</span></span></code></pre></div></li>
+<li>
+<p>點登入按鈕，經過前端檢查輸入框後送登入 API，經後端驗證後返回登入結果，登入成功時 isLogin 才會更新為 true（API 待實作，這邊先模擬）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> sendUserLogin() {
+</span></span><span class="line"><span class="cl">   let self = this;
+</span></span><span class="line"><span class="cl">   let result = true;
+</span></span><span class="line"><span class="cl">   if (self.checkLoginInput()) {
+</span></span><span class="line"><span class="cl">     //send login API to server
+</span></span><span class="line"><span class="cl">     if (result) {
+</span></span><span class="line"><span class="cl">       self.$store.commit(&#34;isLogin&#34;, true);
+</span></span><span class="line"><span class="cl">       self.$store.commit(&#34;isLoginModalOpen&#34;, false);
+</span></span><span class="line"><span class="cl">       self.$store.commit(&#34;setUserId&#34;, &#34;userId&#34;);
+</span></span><span class="line"><span class="cl">       self.$store.commit(&#34;setUserName&#34;, &#34;userName&#34;);
+</span></span><span class="line"><span class="cl">       self.$store.commit(&#34;setToken&#34;, &#34;token&#34;);
+</span></span><span class="line"><span class="cl">       setTimeout(() =&gt; {
+</span></span><span class="line"><span class="cl">         self.$router.push(&#34;innerPage/todoLists&#34;);
+</span></span><span class="line"><span class="cl">       }, 1000);
+</span></span><span class="line"><span class="cl">     } else {
+</span></span><span class="line"><span class="cl">       self.serverErrorMsg = &#34;帳號或密碼錯誤&#34;;
+</span></span><span class="line"><span class="cl">     }
+</span></span><span class="line"><span class="cl">   }
+</span></span><span class="line"><span class="cl"> }
+</span></span></code></pre></div><div
+  class="notice
+    notice--update
+
+  "
+>
+  <span
+    class="notice__title
+      notice__title--update
+
+    "
+  >Update</span><div class="notice__content">
+    只有關閉登入 Modal 和登入成功後會提交 isLoginModalOpen 為 false。
+  </div>
+</div>
+
+</li>
+<li>
+<p>跳轉頁面時，若該頁面需要登入才能訪問，會檢查 isLogin 的值</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> router.beforeEach((to, from, next) =&gt; {
+</span></span><span class="line"><span class="cl">   if (to.meta.requireAuth) {
+</span></span><span class="line"><span class="cl">     if (store.state.isLogin) {
+</span></span><span class="line"><span class="cl">       next();
+</span></span><span class="line"><span class="cl">     } else {
+</span></span><span class="line"><span class="cl">       alert(&#34;請重新登入&#34;);
+</span></span><span class="line"><span class="cl">       store.commit(&#34;isLoginModalOpen&#34;, true);
+</span></span><span class="line"><span class="cl">       if (from.path != &#34;/&#34;) {
+</span></span><span class="line"><span class="cl">         next({
+</span></span><span class="line"><span class="cl">           path: &#34;/&#34;,
+</span></span><span class="line"><span class="cl">         });
+</span></span><span class="line"><span class="cl">       }
+</span></span><span class="line"><span class="cl">     }
+</span></span><span class="line"><span class="cl">   } else {
+</span></span><span class="line"><span class="cl">     next();
+</span></span><span class="line"><span class="cl">   }
+</span></span><span class="line"><span class="cl"> });
+</span></span></code></pre></div><p><div
+  class="notice
+    notice--update
+
+  "
+>
+  <span
+    class="notice__title
+      notice__title--update
+
+    "
+  >Update</span><div class="notice__content">
+    只有被導航守衛攔截後會提交 isLoginModalOpen 為 true。
+  </div>
+</div>
+
+<br></p>
+</li>
+</ol>
+<h2 id="運行結果">運行結果</h2>
+<figure class="medium"><img src="https://upload.cc/i1/2022/05/04/vGAZg3.gif"
+         alt="image"/>
+</figure>
+
+<br> 
+<br>
+<h4 id="延伸閱讀">延伸閱讀</h4>
+<ul>
+<li><a href="https://vuex.vuejs.org/zh/guide/state.html">Vuex 官網 State</a>、<a href="https://vuex.vuejs.org/zh/guide/mutations.html">Mutations</a>、<a href="https://vuex.vuejs.org/zh/guide/actions.html">Actions</a></li>
+<li><a href="https://juejin.cn/post/6972704942695907358">Vuex系列(三) &ndash; store.commit和store.dispatch的區別及用法</a></li>
+<li><a href="https://juejin.cn/post/6969553033545941022">Vuex詳解一：徹底弄懂state、mapState、mapGetters、mapMutations、mapActions</a></li>
+</ul>
+<h4 id="參考資料">參考資料</h4>
+<ul>
+<li><a href="https://medium.com/@rtw0913/vue-%E7%8B%80%E6%85%8B%E7%AE%A1%E7%90%86-vuex-7f1375818b0">Vue — 狀態管理 Vuex</a></li>
+<li><a href="https://medium.com/itsems-frontend/vue-vuex1-state-mutations-364163b3acac">Vuex 是什麼? 怎麼用? — Actions</a></li>
+<li><a href="https://www.udemy.com/course/vue-hexschool/?LSNPUBID=je6NUbpObpQ&amp;ranEAID=je6NUbpObpQ&amp;ranMID=39197&amp;ranSiteID=je6NUbpObpQ-Aes5vBvWAz2sDLj_VWhc0g&amp;utm_medium=udemyads&amp;utm_source=aff-campaign">六角學院 Vue.js 課程</a>
+<br>
+<br></li>
+</ul></div>
+  <div class="post__footer">
+    
+
+    
+  </div>
+
+  <div id="comment">
+    <h2>comments</h2>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fiberlin1121" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>
