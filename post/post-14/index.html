@@ -8,7 +8,7 @@
   <title>
     
       
-        To-do Calendar - Day6 登入驗證與 Vue Router 配置 |
+        To-do Calendar - Day9 Vue Router &amp; Vuex 問題解決紀錄 |
 
       
       Fiber&#39;s blog
@@ -81,7 +81,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
 
-  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-11/" />
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-14/" />
 
   
   
@@ -113,18 +113,18 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="To-do Calendar - Day6 登入驗證與 Vue Router 配置"/>
-<meta name="twitter:description" content="首頁畫面刻好後，終於進入到登入功能開發了～"/>
+<meta name="twitter:title" content="To-do Calendar - Day9 Vue Router &amp; Vuex 問題解決紀錄"/>
+<meta name="twitter:description" content="寫一下在實作前端登入驗證的過程中所遇到的問題及解決方法。"/>
 
 
 
   
-  <meta property="og:title" content="To-do Calendar - Day6 登入驗證與 Vue Router 配置" />
-<meta property="og:description" content="首頁畫面刻好後，終於進入到登入功能開發了～" />
+  <meta property="og:title" content="To-do Calendar - Day9 Vue Router &amp; Vuex 問題解決紀錄" />
+<meta property="og:description" content="寫一下在實作前端登入驗證的過程中所遇到的問題及解決方法。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://fiberlin1121.github.io/post/post-11/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-04-28T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-04-28T00:00:00+00:00" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-14/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-05T00:00:00+00:00" />
 
 
 
@@ -138,12 +138,12 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "To-do Calendar - Day6 登入驗證與 Vue Router 配置",
-        "headline": "To-do Calendar - Day6 登入驗證與 Vue Router 配置",
+        "name": "To-do Calendar - Day9 Vue Router \u0026 Vuex 問題解決紀錄",
+        "headline": "To-do Calendar - Day9 Vue Router \u0026 Vuex 問題解決紀錄",
         "alternativeHeadline": "",
         "description": "
       
-        \u003cp\u003e首頁畫面刻好後，終於進入到登入功能開發了～\u003c\/p\u003e
+        \u003cp\u003e寫一下在實作前端登入驗證的過程中所遇到的問題及解決方法。\u003c\/p\u003e
 
 
       
@@ -154,7 +154,7 @@
         "isFamilyFriendly": "true",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-11\/"
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-14\/"
         },
         "author" : {
             "@type": "Person",
@@ -173,9 +173,9 @@
             "name": "Fiber Lin"
         },
         "copyrightYear" : "2022",
-        "dateCreated": "2022-04-28T00:00:00.00Z",
-        "datePublished": "2022-04-28T00:00:00.00Z",
-        "dateModified": "2022-04-28T00:00:00.00Z",
+        "dateCreated": "2022-05-05T00:00:00.00Z",
+        "datePublished": "2022-05-05T00:00:00.00Z",
+        "dateModified": "2022-05-05T00:00:00.00Z",
         "publisher":{
             "@type":"Organization",
             "name": "Fiber Lin",
@@ -197,8 +197,8 @@
       ]
 
     ,
-        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-11\/",
-        "wordCount" : "217",
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-14\/",
+        "wordCount" : "304",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -418,13 +418,13 @@ if (!doNotTrack) {
     ">
   
   <div class="post__content">
-    <h1>To-Do Calendar - Day6 登入驗證與 Vue Router 配置</h1>
+    <h1>To-Do Calendar - Day9 Vue Router &amp; Vuex 問題解決紀錄</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
         <em class="fas fa-calendar-day post__meta-icon"></em>
         <span class="post__meta-text">
-          2022/04/28
+          2022/05/05
 
 
           
@@ -445,116 +445,143 @@ if (!doNotTrack) {
       </li>
     </ul>
 
-    <p>首頁畫面刻好後，終於進入到登入功能開發了～</p>
-<p>Bootstrap 排版心得：justify-content 指的是主軸對齊，align-items 是交錯軸對齊，而主軸的方向可以透過 .flex-row、.flex-row-reverse、.flex-column、flex-column-reverse，將軸線水平反轉或轉為垂直、垂直反轉等，所以 <code>justify-content-end</code> 不一定就是置右，<code>align-items-center</code> 也不一定就是垂直置中，視交錯軸的方向也可以是水平置中。<br>
-目前畫面的進度：
-<figure class="medium"><img src="https://upload.cc/i1/2022/04/29/lzjqhS.jpg"
+    <p>寫一下在實作前端登入驗證的過程中所遇到的問題及解決方法。</p>
+<h2 id="問題1重新整理頁面後state-資料狀態丟失">問題1：重新整理頁面後，state 資料狀態丟失</h2>
+<p>store 中的資料是儲存在執行記憶體中的，所以當頁面重新整理時，store 中的資料就會重新變為初始狀態。導致雖然已經登入了，但一重新整理頁面，Vuex 狀態被清除而網頁又回到登出狀態。
+<figure class="medium"><img src="https://i.imgur.com/a33ZYhZ.gif"
          alt="image"/><figcaption>
-            <p>首頁</p>
-        </figcaption>
-</figure>
-
-<figure class="medium"><img src="https://upload.cc/i1/2022/04/29/hvgLk9.jpg"
-         alt="image"/><figcaption>
-            <p>登入</p>
-        </figcaption>
-</figure>
-
-<figure class="medium"><img src="https://upload.cc/i1/2022/04/29/YarW0z.jpg"
-         alt="image"/><figcaption>
-            <p>註冊</p>
-        </figcaption>
-</figure>
-
-<figure class="medium"><img src="https://upload.cc/i1/2022/04/29/eF5PSo.jpg"
-         alt="image"/><figcaption>
-            <p>內頁</p>
+            <p>一刷新頁面，又出現請重新登入</p>
         </figcaption>
 </figure>
 
 <br></p>
-<h2 id="登入流程">登入流程</h2>
-<ol>
-<li>這次跟以往做得不太一樣，沒有登入頁，初次進入首頁後要點 Get started 按鈕才會開啟登入 Modal，點切換到註冊連結會開啟註冊 Modal。登入或註冊後會直接進到內頁（預設是代辦事項頁）。</li>
-<li>點 Get started 按鈕時會先經過登入狀態判斷，如果是登入中就可以直接進到內頁，跳過登入的步驟。</li>
-<li>內頁必須登入後才能訪問，如果使用者直接輸入指定內頁網址，要攔截導向回首頁，並自動開啟登入 Modal。
+<h3 id="解決方法">解決方法</h3>
+<p>在登入成功後，將使用者登入資訊也保存一份在 sessionStorage，當頁面重整時再透過 sessionStorage 重新賦值給 Vuex</p>
+<ul>
+<li>src/store/index.js
+<ul>
+<li>後來決定拿掉 isLogin，改是否拿到 token 來判斷登入狀態</li>
+<li>sessionStorage 資料的寫入和移除統一寫在 Vuex</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">state: {
+</span></span><span class="line"><span class="cl">  isLoginModalOpen: false,
+</span></span><span class="line"><span class="cl">  userId: sessionStorage.getItem(&#34;userId&#34;) || &#34;&#34;, //设置初始化的值(若在 sessionStorage 中不存在則為空字串)
+</span></span><span class="line"><span class="cl">  userName: sessionStorage.getItem(&#34;userName&#34;) || &#34;&#34;,
+</span></span><span class="line"><span class="cl">  token: sessionStorage.getItem(&#34;token&#34;) || &#34;&#34;,
+</span></span><span class="line"><span class="cl">},
+</span></span><span class="line"><span class="cl">mutations: {
+</span></span><span class="line"><span class="cl">  isLoginModalOpen(state, status) {
+</span></span><span class="line"><span class="cl">    state.isLoginModalOpen = status;
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  setUserId(state, userId) {
+</span></span><span class="line"><span class="cl">    state.userId = userId;
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  setUserName(state, userName) {
+</span></span><span class="line"><span class="cl">    state.userName = userName;
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  setToken(state, token) {
+</span></span><span class="line"><span class="cl">    state.token = token;
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  setStoreToSession(state) {
+</span></span><span class="line"><span class="cl">    sessionStorage.setItem(&#34;userId&#34;, state.userId);
+</span></span><span class="line"><span class="cl">    sessionStorage.setItem(&#34;userName&#34;, state.userName);
+</span></span><span class="line"><span class="cl">    sessionStorage.setItem(&#34;token&#34;, state.token);
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  removeSession(state) {
+</span></span><span class="line"><span class="cl">    sessionStorage.getItem(&#34;userId&#34;, state.userId);
+</span></span><span class="line"><span class="cl">    sessionStorage.getItem(&#34;userName&#34;, state.userName);
+</span></span><span class="line"><span class="cl">    sessionStorage.getItem(&#34;token&#34;, state.token);
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">},
+</span></span></code></pre></div></li>
+<li>src/pages/index.vue
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  sendUserLogin() {
+</span></span><span class="line"><span class="cl">    let self = this;
+</span></span><span class="line"><span class="cl">    let result = true;
+</span></span><span class="line"><span class="cl">    if (self.checkLoginInput()) {
+</span></span><span class="line"><span class="cl">      //send login API to server
+</span></span><span class="line"><span class="cl">      if (result) {
+</span></span><span class="line"><span class="cl">        self.$store.commit(&#34;isLoginModalOpen&#34;, false);
+</span></span><span class="line"><span class="cl">        self.$store.commit(&#34;setUserId&#34;, &#34;user01&#34;);
+</span></span><span class="line"><span class="cl">        self.$store.commit(&#34;setUserName&#34;, &#34;test&#34;);
+</span></span><span class="line"><span class="cl">        self.$store.commit(&#34;setToken&#34;, &#34;123&#34;);
+</span></span><span class="line"><span class="cl">        self.$store.commit(&#34;setStoreToSession&#34;); //提交將使用者登入資訊寫入 sessionStorage
+</span></span><span class="line"><span class="cl">        setTimeout(() =&gt; {
+</span></span><span class="line"><span class="cl">          self.$router.push(&#34;innerPage/todoLists&#34;);
+</span></span><span class="line"><span class="cl">        }, 1000);
+</span></span><span class="line"><span class="cl">      } else {
+</span></span><span class="line"><span class="cl">        self.serverErrorMsg = &#34;帳號或密碼錯誤&#34;;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  },
+</span></span></code></pre></div></li>
+<li>src/router/index.js
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">router.beforeEach((to, from, next) =&gt; {
+</span></span><span class="line"><span class="cl">  if (to.meta.requireAuth) {
+</span></span><span class="line"><span class="cl">    if (sessionStorage.getItem(&#34;token&#34;)) { //登入狀態改從 sessionStorage 讀取 token 判斷
+</span></span><span class="line"><span class="cl">      next();
+</span></span><span class="line"><span class="cl">    } else {
+</span></span><span class="line"><span class="cl">      alert(&#34;請重新登入&#34;);
+</span></span><span class="line"><span class="cl">      store.commit(&#34;isLoginModalOpen&#34;, true);
+</span></span><span class="line"><span class="cl">      next(&#34;/&#34;);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  } else {
+</span></span><span class="line"><span class="cl">    next();
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">});
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="運行結果">運行結果</h3>
+<p><figure class="medium"><img src="https://i.imgur.com/tjBq83S.gif"
+         alt="image"/>
+</figure>
+
+<br> 
 <br>
-<br></li>
-</ol>
-<h2 id="做法">做法</h2>
-<h3 id="從首頁進到內頁">從首頁進到內頁</h3>
-<p>把 Get started 按鈕的 data-target 屬性拿掉，改用 @click 的方式，先檢查登入狀態，再決定是開啟登入 Modal 還是直接進到內頁。 
-<figure class="medium"><img src="https://upload.cc/i1/2022/04/29/1KtzRa.gif"
+<br></p>
+<h2 id="問題2在瀏覽器輸入內頁網址導回首頁後沒有開啟登入-modal">問題2：在瀏覽器輸入內頁網址，導回首頁後沒有開啟登入 Modal</h2>
+<p>在未登入狀態，從首頁輸入內頁網址，能正常運行攔導回首頁並自動開啟登入 Modal，但在瀏覽器輸入內頁網址，被導回首頁後卻沒有自動開啟登入 Modal，點 Start 按鈕也無法開啟登入 Modal。
+<figure class="medium"><img src="https://upload.cc/i1/2022/05/06/5C2w0I.gif"
          alt="image"/><figcaption>
-            <p>從首頁進到內頁（未登入）</p>
+            <p>從首頁輸入內頁網址（自動開啟登入 Modal：成功）</p>
         </figcaption>
 </figure>
- 
-<figure class="medium"><img src="https://upload.cc/i1/2022/04/29/TXpAzs.gif"
+
+<figure class="medium"><img src="https://i.imgur.com/ajv5JD3.gif"
          alt="image"/><figcaption>
-            <p>從首頁進到內頁（已登入）</p>
+            <p>在瀏覽器輸入內頁網址（自動開啟登入 Modal：失敗）</p>
         </figcaption>
 </figure>
-</p>
-<h3 id="輸入指定網址進到內頁">輸入指定網址進到內頁</h3>
-<p><strong>路由 meta 資料</strong><br>
-在需要登入後才能訪問的頁面上，新增 meta 資料 <code>requiresAuth: true</code> 屬性。<br>
-（按照課程範例，router.beforeEach Hook 是放在 main.js，但是我想將 router 相關程式碼都放在同一支，這裡有做一點修改，把原先的 export default new VueRouter 改為 const router = new VueRouter，加上 router.beforeEach Hook 後，最後再匯出到 main.js）</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">      const router = new VueRouter({
-</span></span><span class="line"><span class="cl">      linkActiveClass: &#34;active&#34;,
-</span></span><span class="line"><span class="cl">      routes: [
-</span></span><span class="line"><span class="cl">        {
-</span></span><span class="line"><span class="cl">          path: &#34;*&#34;, //防止使用者在網站網址後面輸入任意文字進到空白頁面
-</span></span><span class="line"><span class="cl">          redirect: &#34;/&#34;,
-</span></span><span class="line"><span class="cl">        },
-</span></span><span class="line"><span class="cl">        {
-</span></span><span class="line"><span class="cl">          name: &#34;index&#34;,
-</span></span><span class="line"><span class="cl">          path: &#34;/&#34;,
-</span></span><span class="line"><span class="cl">          component: Index,
-</span></span><span class="line"><span class="cl">        },
-</span></span><span class="line"><span class="cl">        {
-</span></span><span class="line"><span class="cl">          name: &#34;innerPage&#34;,
-</span></span><span class="line"><span class="cl">          path: &#34;/innerPage&#34;,
-</span></span><span class="line"><span class="cl">          component: InnerPage,
-</span></span><span class="line"><span class="cl">          meta: {
-</span></span><span class="line"><span class="cl">            requireAuth: true,
-</span></span><span class="line"><span class="cl">          },
-</span></span><span class="line"><span class="cl">          children: [
-</span></span><span class="line"><span class="cl">            {
-</span></span><span class="line"><span class="cl">              name: &#34;todoLists&#34;,
-</span></span><span class="line"><span class="cl">              path: &#34;todoLists&#34;,
-</span></span><span class="line"><span class="cl">              component: TodoLists,
-</span></span><span class="line"><span class="cl">              meta: {
-</span></span><span class="line"><span class="cl">                requireAuth: true,
-</span></span><span class="line"><span class="cl">              },
-</span></span><span class="line"><span class="cl">            },
-</span></span><span class="line"><span class="cl">            {
-</span></span><span class="line"><span class="cl">              name: &#34;habitTracker&#34;,
-</span></span><span class="line"><span class="cl">              path: &#34;habitTracker&#34;,
-</span></span><span class="line"><span class="cl">              component: HabitTracker,
-</span></span><span class="line"><span class="cl">              meta: {
-</span></span><span class="line"><span class="cl">                requireAuth: true,
-</span></span><span class="line"><span class="cl">              },
-</span></span><span class="line"><span class="cl">            },
-</span></span><span class="line"><span class="cl">            {
-</span></span><span class="line"><span class="cl">              name: &#34;notes&#34;,
-</span></span><span class="line"><span class="cl">              path: &#34;notes&#34;,
-</span></span><span class="line"><span class="cl">              component: Notes,
-</span></span><span class="line"><span class="cl">              meta: {
-</span></span><span class="line"><span class="cl">                requireAuth: true,
-</span></span><span class="line"><span class="cl">              },
-</span></span><span class="line"><span class="cl">            },
-</span></span><span class="line"><span class="cl">          ],
-</span></span><span class="line"><span class="cl">        },
-</span></span><span class="line"><span class="cl">      ],
-</span></span><span class="line"><span class="cl">    });
-</span></span></code></pre></div><p><strong>攔截路由檢查</strong><br>
-router.beforeEach 會在切換頁面時觸發，加上 meta.requireAuth 的判斷式，當路由有設定 meta 資料 <code>requiresAuth: true</code>，就會被攔截下來驗證登入狀態，登入中才會放行到指定頁面，未登入則導回首頁，讓使用者重新登入。</p>
-<blockquote>
-<p>router.beforeEach 分別有3個參數<br>
-to：即將要轉跳的頁面<br>
-from：從哪個頁面轉過來<br>
-next：執行下一個事件
+
+<br></p>
+<p>我在 index.vue 的 created hook、mounted hook 和 router 都加了 log，來比較一下兩邊的 console 內容：</p>
+<h3 id="從首頁輸入內頁網址">從首頁輸入內頁網址</h3>
+<figure class="medium"><img src="https://upload.cc/i1/2022/05/06/btCc9G.jpg"
+         alt="image"/>
+</figure>
+
+<p>一進首頁先執行 created function 和 mounted function，直到輸入內頁網址，被導航守衛攔截後提交 isLoginModalOpen 為 true，觸發 watch 開啟登入 Modal。
+<br>
+<br></p>
+<h3 id="在瀏覽器輸入內頁網址">在瀏覽器輸入內頁網址</h3>
+<figure class="medium"><img src="https://upload.cc/i1/2022/05/06/4IBLwU.jpg"
+         alt="image"/>
+</figure>
+
+<p>在進到內頁網址之前，先被導航守衛攔截後提交 isLoginModalOpen 為 true，導回首頁才執行 created function 和 mounted function。<br>
+而 computed 屬性是在 created 階段建立，DOM 節點、事件都綁定至 Vue 的實體是在 mounted 階段。因為此次操作的 Vue 實體是在導航守衛導回首頁之後才建立，所以無法監聽到在建立之前的 isLoginModalOpen 狀態改變，來打開登入 Modal（就算監聽到應該也打不開，因為 Vue 實體與掛載還沒完成）。<br>
+<br>
+而按 Start 按鈕也無法開啟登入 Modal，是因為 isLoginModalOpen 在被導航守衛提交為 true 後，再點 Start 按鈕經過導航守衛攔截後還是提交 isLoginModalOpen 為 true，watch 沒有監聽到 isLoginModalOpen 狀態改變，所以並不會開啟登入 Modal。</p>
+<p><figure class="medium"><img src="https://upload.cc/i1/2022/05/06/QtRobY.png"
+         alt="image"/><figcaption>
+            <p>Vue 的生命週期與 Hooks function</p>
+        </figcaption>
+</figure>
+
+<br> 
+<br></p>
+<h3 id="解決方法-1">解決方法</h3>
+<p>在 mounted function 補上一個判斷，如果 isLoginModalOpen 為 true，就開啟登入 Modal，代表這是直接在瀏覽器輸入內頁網址過來的，因為可以在 Vue 實體建立前就提交 isLoginModalOpen 為 true 的就只有 router 了，補上之後後續登入 Modal 又能正常運作。
 <div
   class="notice
     notice--warning
@@ -567,54 +594,28 @@ next：執行下一個事件
 
     "
   >Warning</span><div class="notice__content">
-    router.beforeEach 中每個判斷都必須確保使用到 next()。
+    如果要對 DOM 做動作，記得要在 mounted 掛鉤中，它如同 onload 事件，或是 jQuery 中的 ready()。
   </div>
 </div>
 </p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  router.beforeEach((to, from, next) =&gt; {
-</span></span><span class="line"><span class="cl">    if (to.meta.requireAuth) {
-</span></span><span class="line"><span class="cl">      if ( 驗證成功 ) { //待實作Vuex
-</span></span><span class="line"><span class="cl">        next();
-</span></span><span class="line"><span class="cl">      } else {
-</span></span><span class="line"><span class="cl">        next({
-</span></span><span class="line"><span class="cl">          path: &#34;/&#34;
-</span></span><span class="line"><span class="cl">        });
-</span></span><span class="line"><span class="cl">      }
-</span></span><span class="line"><span class="cl">    } else {
-</span></span><span class="line"><span class="cl">      next();
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">  });
-</span></span></code></pre></div><p><figure class="medium"><img src="https://upload.cc/i1/2022/04/29/fY1NTp.gif"
-         alt="image"/><figcaption>
-            <p>防止未登入訪問特定頁面</p>
-        </figcaption>
+<figure class="medium"><img src="https://upload.cc/i1/2022/05/06/EwzCjG.gif"
+         alt="image"/>
 </figure>
 
-<br>
-<br>
-<figure class="medium"><img src="https://upload.cc/i1/2022/04/29/F29c0U.gif"
-         alt="image"/><figcaption>
-            <p>防止輸入任意文字進到空白內頁</p>
-        </figcaption>
-</figure>
- 
-<br>
-<br>
-下一篇再來介紹 Vuex 的使用～
-<br>
-<br></p>
+<br> 
+<br> 
 <h4 id="延伸閱讀">延伸閱讀</h4>
 <ul>
-<li><a href="https://www.casper.tw/css/2017/07/21/css-flex/">圖解：CSS Flex 屬性一點也不難</a></li>
-<li><a href="https://v3.router.vuejs.org/zh/guide/advanced/navigation-guards.html">Vue Router 官網 | Navigation Guards</a></li>
+<li><a href="https://functional.style/axios/token/">如何管理 JWT Token ?</a></li>
+<li><a href="https://book.vue.tw/CH1/1-7-lifecycle.html">重新認識 Vue.js | 元件的生命週期與更新機制</a></li>
 </ul>
 <h4 id="參考資料">參考資料</h4>
 <ul>
-<li><a href="https://www.udemy.com/course/vue-hexschool/?LSNPUBID=je6NUbpObpQ&amp;ranEAID=je6NUbpObpQ&amp;ranMID=39197&amp;ranSiteID=je6NUbpObpQ-Aes5vBvWAz2sDLj_VWhc0g&amp;utm_medium=udemyads&amp;utm_source=aff-campaign">六角學院 Vue.js 課程</a>
+<li><a href="https://www.jianshu.com/p/b33e69b326e9">頁面刷新 Vuex 數據消失</a></li>
+<li><a href="http://blog.tonycube.com/2017/04/vuejs-8-lifecycle.html">Vue.js (8) - Vue 實體與生命週期</a></li>
+</ul>
 <br>
-<br></li>
-</ul></div>
+<br></div>
   <div class="post__footer">
     
 
