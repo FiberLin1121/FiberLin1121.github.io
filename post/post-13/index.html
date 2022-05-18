@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-13\/",
-        "wordCount" : "467",
+        "wordCount" : "484",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -660,6 +660,15 @@ Actions 和組件都不能直接修改 State，只有 Mutations 可以更改 Sta
 </span></span><span class="line"><span class="cl">   self.resetForm();
 </span></span><span class="line"><span class="cl">   self.$store.commit(&#34;isLoginModalOpen&#34;, false);
 </span></span><span class="line"><span class="cl"> }
+</span></span></code></pre></div></li>
+<li>
+<p>點切換到註冊連結</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> openRegisterModal() {
+</span></span><span class="line"><span class="cl">   let self = this;
+</span></span><span class="line"><span class="cl">   self.resetForm();
+</span></span><span class="line"><span class="cl">   self.$store.commit(&#34;isLoginModalOpen&#34;, false);
+</span></span><span class="line"><span class="cl">   $(&#34;#registerModal&#34;).modal({ backdrop: &#34;static&#34;, keyboard: false });
+</span></span><span class="line"><span class="cl"> },
 </span></span></code></pre></div></li>
 <li>
 <p>點登入按鈕，經過前端檢查輸入框後送登入 API，經後端驗證後返回登入結果，登入成功時 isLogin 才會更新為 true（API 待實作，這邊先模擬）</p>

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      
+        To-do Calendar - Day10 用 Vue Draggable 實作拖曳效果 |
+
+      
+      Fiber&#39;s blog
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.96.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Fiber&#39;s blog" />
+  <meta
+    name="description"
+    content="
+      Hi! I&#39;m Fiber, 一名貓奴工程師
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.02d94a71503cb758e2ae7d6030f4bada9d3babfd125372c3759e2455304f6630.css"
+      integrity="sha256-AtlKcVA8t1jirn1gMPS62p07q/0SU3LDdZ4kVTBPZjA="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-15/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="To-do Calendar - Day10 用 Vue Draggable 實作拖曳效果"/>
+<meta name="twitter:description" content="花了幾天終於把所有內頁、Modal 和前端效果都做完了～這次要介紹的是用 Vue Draggable 來完成拖曳排序功能。"/>
+
+
+
+  
+  <meta property="og:title" content="To-do Calendar - Day10 用 Vue Draggable 實作拖曳效果" />
+<meta property="og:description" content="花了幾天終於把所有內頁、Modal 和前端效果都做完了～這次要介紹的是用 Vue Draggable 來完成拖曳排序功能。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-15/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-18T00:00:00+00:00" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "To-do Calendar - Day10 用 Vue Draggable 實作拖曳效果",
+        "headline": "To-do Calendar - Day10 用 Vue Draggable 實作拖曳效果",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003cp\u003e花了幾天終於把所有內頁、Modal 和前端效果都做完了～這次要介紹的是用 Vue Draggable 來完成拖曳排序功能。\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-15\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-05-18T00:00:00.00Z",
+        "datePublished": "2022-05-18T00:00:00.00Z",
+        "dateModified": "2022-05-18T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Fiber Lin",
+            "url": "https://fiberlin1121.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/fiberlin1121.github.io\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://fiberlin1121.github.io/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-15\/",
+        "wordCount" : "739",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "SideProject"
+
+    ]
+    }
+  </script>
+
+
+
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction" style="margin-bottom: 0;">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/wowo.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/"></a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Hi! I'm Fiber, 一名貓奴工程師</p>
+      </div>
+    </div>
+    
+    <ul class="sidebar__list" style="margin-top: 0;">
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/FiberLin1121/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.behance.net/fiber410139" rel="me" aria-label="Behance" title="Behance">
+            <i class="fab fa-behance-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.facebook.com/%E5%B0%8F%E8%B3%B4%E7%9A%AE-277134752317535" rel="me" aria-label="Facebook" title="Facebook">
+            <i class="fab fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:fiber410139@gmail.com" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+
+    <ul class="sidebar__list">
+      <li style="margin-bottom:.5em; font-size: 15px;"><a href="/tags/程式筆記/" style="font-size: 15px;">程式筆記</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/sideproject/" style="font-size: 15px;">Side Project</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/日常生活/" style="font-size: 15px;">日常生活</a></li>
+    </ul>
+    
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav d-flex justify-content-between">
+    <ul class="nav__list col" id="navMenu">
+      
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/"
+            
+            title=""
+            >Home</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/post/"
+            
+            title=""
+            >Posts</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/portfolio/"
+            
+            title=""
+            >Portfolio</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/about/"
+            
+            title=""
+            >About</a
+          >
+        </li>
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end col">
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+<div class="post 
+      .
+
+    ">
+  
+  <div class="post__content">
+    <h1>To-Do Calendar - Day10 用 Vue Draggable 實作拖曳效果</h1>
+    
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <em class="fas fa-calendar-day post__meta-icon"></em>
+        <span class="post__meta-text">
+          2022/05/18
+
+
+          
+        </span>
+      </li>
+      <li class="post__meta-item">
+        <em class="fas fa-stopwatch post__meta-icon"></em>
+        <span class="post__meta-text">4-minute read</span>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__meta-text">
+        
+        <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
+
+
+        
+        </span>
+      </li>
+    </ul>
+
+    <p>花了幾天終於把所有內頁、Modal 和前端效果都做完了～這次要介紹的是用 Vue Draggable 來完成拖曳排序功能。</p>
+<h2 id="載入-vue-draggable">載入 Vue Draggable</h2>
+<p><a href="https://github.com/SortableJS/Vue.Draggable">Vue.Draggable</a> 是一款基於 Sortable.js 實現的 vue 拖曳套件，支援移動裝置拖拽（支持觸摸設備），可以在不同列表間拖拽，支援 vue 2 過渡動畫相容，官網有很詳細的文檔以及充足的代碼例子，上手容易，是一款非常優秀的 vue 拖拽元件。</p>
+<ul>
+<li>
+<p>安裝 Vue Draggable
+<div
+  class="notice
+    notice--warning
+
+  "
+>
+  <span
+    class="notice__title
+      notice__title--warning
+
+    "
+  >Warning</span><div class="notice__content">
+    此專案用的是 Vue 2，所以安裝的是對應的 Vue.Draggable 版本。
+  </div>
+</div>
+</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm install vuedraggable@2.20.0 --save
+</span></span></code></pre></div></li>
+<li>
+<p>在需要使用拖拽的組件載入並註冊後，就可以使用了</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;script&gt;
+</span></span><span class="line"><span class="cl">  import draggable from &#34;vuedraggable&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  export default {
+</span></span><span class="line"><span class="cl">    components: {
+</span></span><span class="line"><span class="cl">      draggable
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    ...
+</span></span></code></pre></div></li>
+<li>
+<p>在要使用拖曳功能的列表外層用 <code>&lt;draggable&gt;</code> 包起來，並綁定 v-model</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;template&gt;
+</span></span><span class="line"><span class="cl">  &lt;main&gt;
+</span></span><span class="line"><span class="cl">    &lt;div&gt;
+</span></span><span class="line"><span class="cl">      &lt;draggable v-model=&#34;list&#34;&gt;
+</span></span><span class="line"><span class="cl">        &lt;div v-for=&#34;item in list&#34; :key=&#34;item.id&#34;&gt;
+</span></span><span class="line"><span class="cl">          &lt;h1 class=&#34;text-center&#34;&gt;{{ item.name }}&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">        &lt;/div&gt;
+</span></span><span class="line"><span class="cl">      &lt;/draggable&gt;
+</span></span><span class="line"><span class="cl">    &lt;/div&gt;
+</span></span><span class="line"><span class="cl">  &lt;/main&gt;
+</span></span><span class="line"><span class="cl">&lt;/template&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  &lt;script&gt;
+</span></span><span class="line"><span class="cl">import draggable from &#34;vuedraggable&#34;;
+</span></span><span class="line"><span class="cl">export default {
+</span></span><span class="line"><span class="cl">  components: {
+</span></span><span class="line"><span class="cl">    draggable,
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  data() {
+</span></span><span class="line"><span class="cl">    return {
+</span></span><span class="line"><span class="cl">      list: [
+</span></span><span class="line"><span class="cl">        { name: &#34;John&#34;, id: 0 },
+</span></span><span class="line"><span class="cl">        { name: &#34;Joao&#34;, id: 1 },
+</span></span><span class="line"><span class="cl">        { name: &#34;Jean&#34;, id: 2 },
+</span></span><span class="line"><span class="cl">      ],
+</span></span><span class="line"><span class="cl">    };
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">};
+</span></span><span class="line"><span class="cl">&lt;/script&gt;
+</span></span></code></pre></div></li>
+<li>
+<p>運行開發環境，測試 draggable 是否運作
+<figure class="medium"><img src="https://i.imgur.com/RQDuwjk.gif"
+         alt="image"/>
+</figure>
+</p>
+<p>最基本的拖曳效果出來了！
+<br>
+<br></p>
+</li>
+</ul>
+<h2 id="draggable-屬性">draggable 屬性</h2>
+<p>可以使用 v-bind 屬性作為配置項或直接寫在 <code>&lt;draggable&gt;</code>，以下列出專案中較常使用到的屬性，其他屬性可參考 <a href="https://www.itxst.com/vue-draggable/tutorial.html">vue.draggable 中文文檔</a></p>
+<ul>
+<li>group：用於分組，同一組的不同 list 可以相互拖曳</li>
+<li>delay：鼠標選中列表單元可以開始拖動的延遲時間</li>
+<li>disabled：是否啟用拖曳功能</li>
+<li>animation：拖曳動畫時間長度（毫秒），搭配 <code>&lt;transition-group&gt;</code> 使用</li>
+<li>chosenClass：設定被選中目標的樣式
+<br>
+<br></li>
+</ul>
+<h2 id="draggable-事件">draggable 事件</h2>
+<ul>
+<li>start(evt)：開始拖拽時候觸發</li>
+<li>add(evt)：拖拽新增的時候觸發</li>
+<li>remove(evt)：從列表拖走，移除觸發</li>
+<li>update(evt)：列表更新觸發</li>
+<li>end(evt)：拖拽完成時觸發</li>
+<li>choose(evt)：選擇拖拽元素觸發</li>
+<li>sort(evt)：排序觸發</li>
+<li>change(evt)：如果數據不是整個提交，單個提交數據的時候就會用到它
+<br>
+<br>
+<br></li>
+</ul>
+<h2 id="實作原子習慣分頁拖曳功能">實作原子習慣分頁拖曳功能</h2>
+<p><figure class="medium"><img src="https://i.imgur.com/pnRyIuZ.gif"
+         alt="image"/>
+</figure>
+
+<br></p>
+<ul>
+<li>habitTracker.vue（單個列表）
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">&lt;draggable
+</span></span><span class="line"><span class="cl">  v-model=&#34;habitList&#34;
+</span></span><span class="line"><span class="cl">  v-bind=&#34;dragOptions&#34;
+</span></span><span class="line"><span class="cl">  @start=&#34;drag = true&#34;
+</span></span><span class="line"><span class="cl">  @end=&#34;drag = false&#34;
+</span></span><span class="line"><span class="cl">  :move=&#34;getdata&#34;
+</span></span><span class="line"><span class="cl">  @update=&#34;datadragEnd&#34;
+</span></span><span class="line"><span class="cl">  class=&#34;list-group&#34;
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">  &lt;transition-group
+</span></span><span class="line"><span class="cl">   type=&#34;transition&#34;
+</span></span><span class="line"><span class="cl">   name=&#34;!drag ? &#39;flip-list&#39; : null&#34;
+</span></span><span class="line"><span class="cl">  &gt;
+</span></span><span class="line"><span class="cl">    &lt;li
+</span></span><span class="line"><span class="cl">      v-for=&#34;item in habitList&#34;
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">    &gt;
+</span></span><span class="line"><span class="cl">    {{ item.name }}
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">    &lt;/li&gt;
+</span></span><span class="line"><span class="cl">  &lt;/transition-group&gt;
+</span></span><span class="line"><span class="cl">&lt;/draggable&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import draggable from &#34;vuedraggable&#34;;
+</span></span><span class="line"><span class="cl">export default {
+</span></span><span class="line"><span class="cl">components: {
+</span></span><span class="line"><span class="cl">  draggable
+</span></span><span class="line"><span class="cl">},
+</span></span><span class="line"><span class="cl">data() {
+</span></span><span class="line"><span class="cl">  return {
+</span></span><span class="line"><span class="cl">    habitList: [
+</span></span><span class="line"><span class="cl">      { id: &#34;1&#34;, name: &#34;吃早餐&#34;, checkColor: &#34;red&#34; },
+</span></span><span class="line"><span class="cl">      { id: &#34;2&#34;, name: &#34;喝水2000cc&#34;, checkColor: &#34;yellow&#34; },
+</span></span><span class="line"><span class="cl">      { id: &#34;3&#34;, name: &#34;寫技術部落格&#34;, checkColor: &#34;green&#34; },
+</span></span><span class="line"><span class="cl">      { id: &#34;4&#34;, name: &#34;伸展10分鐘&#34;, checkColor: &#34;teal&#34; },
+</span></span><span class="line"><span class="cl">      { id: &#34;5&#34;, name: &#34;睡前保養&#34;, checkColor: &#34;blue&#34; },
+</span></span><span class="line"><span class="cl">      { id: &#34;6&#34;, name: &#34;12點前就寢&#34;, checkColor: &#34;pink&#34; },
+</span></span><span class="line"><span class="cl">      { id: &#34;7&#34;, name: &#34;戴維持器&#34;, checkColor: &#34;pink&#34; },
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">  };
+</span></span><span class="line"><span class="cl">},
+</span></span><span class="line"><span class="cl">computed: {
+</span></span><span class="line"><span class="cl">  dragOptions() {
+</span></span><span class="line"><span class="cl">    return {
+</span></span><span class="line"><span class="cl">      animation: 300,
+</span></span><span class="line"><span class="cl">      disabled: false,
+</span></span><span class="line"><span class="cl">      chosenClass:&#34;chosen&#34;,
+</span></span><span class="line"><span class="cl">    };
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">},
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<br>
+<h2 id="實作代辦事項分頁拖曳功能">實作代辦事項分頁拖曳功能</h2>
+<p><figure class="medium"><img src="https://i.imgur.com/v2OaOQe.gif"
+         alt="image"/>
+</figure>
+
+<br></p>
+<ul>
+<li>設定 <strong>group</strong> 讓不同列表的單元可以互相拖曳</li>
+<li>todoLists.vue（2個列表）
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">&lt;draggable
+</span></span><span class="line"><span class="cl">  v-model=&#34;todoList&#34;
+</span></span><span class="line"><span class="cl">  v-bind=&#34;dragOptions&#34;
+</span></span><span class="line"><span class="cl">  @start=&#34;drag = true&#34;
+</span></span><span class="line"><span class="cl">  @end=&#34;drag = false&#34;
+</span></span><span class="line"><span class="cl">  :move=&#34;getdata&#34;
+</span></span><span class="line"><span class="cl">  @update=&#34;datadragEnd&#34;
+</span></span><span class="line"><span class="cl">  class=&#34;list-group&#34;
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">  &lt;transition-group
+</span></span><span class="line"><span class="cl">    type=&#34;transition&#34;
+</span></span><span class="line"><span class="cl">    name=&#34;!drag ? &#39;flip-list&#39; : null&#34;
+</span></span><span class="line"><span class="cl">  &gt;
+</span></span><span class="line"><span class="cl">    &lt;div
+</span></span><span class="line"><span class="cl">      v-for=&#34;item in todoList&#34;
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">      {{ item.name }}
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">  &lt;/div&gt;
+</span></span><span class="line"><span class="cl">  &lt;/transition-group&gt;
+</span></span><span class="line"><span class="cl">&lt;/draggable&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">&lt;draggable
+</span></span><span class="line"><span class="cl">  v-model=&#34;doneList&#34;
+</span></span><span class="line"><span class="cl">  v-bind=&#34;dragOptions&#34;
+</span></span><span class="line"><span class="cl">  @start=&#34;drag = true&#34;
+</span></span><span class="line"><span class="cl">  @end=&#34;drag = false&#34;
+</span></span><span class="line"><span class="cl">  :move=&#34;getdata&#34;
+</span></span><span class="line"><span class="cl">  @update=&#34;datadragEnd&#34;
+</span></span><span class="line"><span class="cl">  class=&#34;list-group&#34;
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">  &lt;transition-group
+</span></span><span class="line"><span class="cl">    type=&#34;transition&#34;
+</span></span><span class="line"><span class="cl">    name=&#34;!drag ? &#39;flip-list&#39; : null&#34;
+</span></span><span class="line"><span class="cl">  &gt;
+</span></span><span class="line"><span class="cl">    &lt;div
+</span></span><span class="line"><span class="cl">      v-for=&#34;item in doneList&#34;
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">      {{ item.name }}
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">  &lt;/div&gt;
+</span></span><span class="line"><span class="cl">  &lt;/transition-group&gt;
+</span></span><span class="line"><span class="cl">&lt;/draggable&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import draggable from &#34;vuedraggable&#34;;
+</span></span><span class="line"><span class="cl">export default {
+</span></span><span class="line"><span class="cl">components: {
+</span></span><span class="line"><span class="cl">  draggable
+</span></span><span class="line"><span class="cl">},
+</span></span><span class="line"><span class="cl">data() {
+</span></span><span class="line"><span class="cl">  return {
+</span></span><span class="line"><span class="cl">    todoList: [
+</span></span><span class="line"><span class="cl">      { id: &#34;TA01&#34;, name: &#34;代辦事項1&#34;, labelType: &#34;firstColor&#34; },
+</span></span><span class="line"><span class="cl">      { id: &#34;TA02&#34;, name: &#34;代辦事項2&#34;, labelType: &#34;secondColor&#34; },
+</span></span><span class="line"><span class="cl">      { id: &#34;TA03&#34;, name: &#34;代辦事項3&#34;, labelType: &#34;thirdColor&#34; },
+</span></span><span class="line"><span class="cl">      { id: &#34;TA04&#34;, name: &#34;代辦事項4&#34;, labelType: &#34;fourthColor&#34; },
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">    doneList: [
+</span></span><span class="line"><span class="cl">      { id: &#34;TA01&#34;, name: &#34;完成事項1&#34;, labelType: &#34;firstColor&#34; },
+</span></span><span class="line"><span class="cl">      { id: &#34;TA02&#34;, name: &#34;完成事項2&#34;, labelType: &#34;secondColor&#34; },
+</span></span><span class="line"><span class="cl">      { id: &#34;TA03&#34;, name: &#34;完成事項3&#34;, labelType: &#34;thirdColor&#34; },
+</span></span><span class="line"><span class="cl">      { id: &#34;TA04&#34;, name: &#34;完成事項4&#34;, labelType: &#34;fourthColor&#34; },
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">  };
+</span></span><span class="line"><span class="cl">},
+</span></span><span class="line"><span class="cl">computed: {
+</span></span><span class="line"><span class="cl">  dragOptions() {
+</span></span><span class="line"><span class="cl">    return {
+</span></span><span class="line"><span class="cl">      animation: 300,
+</span></span><span class="line"><span class="cl">      group: &#34;task&#34;,
+</span></span><span class="line"><span class="cl">      disabled: false,
+</span></span><span class="line"><span class="cl">      chosenClass: &#34;chosen&#34;,
+</span></span><span class="line"><span class="cl">    };
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">},
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<br>
+<h2 id="實作便條貼牆分頁拖曳功能">實作便條貼牆分頁拖曳功能</h2>
+<p><figure class="medium"><img src="https://i.imgur.com/Rkkdsg1.gif"
+         alt="image"/>
+</figure>
+
+<br></p>
+<ul>
+<li>設定 <strong>group</strong> 讓不同列表的單元可以互相拖曳</li>
+<li>notes.vue（4個列表）
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">&lt;draggable
+</span></span><span class="line"><span class="cl">  v-model=&#34;list1&#34;
+</span></span><span class="line"><span class="cl">  v-bind=&#34;dragOptions&#34;
+</span></span><span class="line"><span class="cl">  @start=&#34;drag = true&#34;
+</span></span><span class="line"><span class="cl">  @end=&#34;drag = false&#34;
+</span></span><span class="line"><span class="cl">  :move=&#34;getdata&#34;
+</span></span><span class="line"><span class="cl">  @update=&#34;datadragEnd&#34;
+</span></span><span class="line"><span class="cl">  class=&#34;list-group&#34;
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">  &lt;transition-group
+</span></span><span class="line"><span class="cl">    type=&#34;transition&#34;
+</span></span><span class="line"><span class="cl">    name=&#34;!drag ? &#39;flip-list&#39; : null&#34;
+</span></span><span class="line"><span class="cl">  &gt;
+</span></span><span class="line"><span class="cl">    &lt;div
+</span></span><span class="line"><span class="cl">      v-for=&#34;item in list1&#34;
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">      {{ item.name }}
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">  &lt;/div&gt;
+</span></span><span class="line"><span class="cl">  &lt;/transition-group&gt;
+</span></span><span class="line"><span class="cl">&lt;/draggable&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">&lt;draggable
+</span></span><span class="line"><span class="cl">  v-model=&#34;list2&#34;
+</span></span><span class="line"><span class="cl">  v-bind=&#34;dragOptions&#34;
+</span></span><span class="line"><span class="cl">  @start=&#34;drag = true&#34;
+</span></span><span class="line"><span class="cl">  @end=&#34;drag = false&#34;
+</span></span><span class="line"><span class="cl">  :move=&#34;getdata&#34;
+</span></span><span class="line"><span class="cl">  @update=&#34;datadragEnd&#34;
+</span></span><span class="line"><span class="cl">  class=&#34;list-group&#34;
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">  &lt;transition-group
+</span></span><span class="line"><span class="cl">    type=&#34;transition&#34;
+</span></span><span class="line"><span class="cl">    name=&#34;!drag ? &#39;flip-list&#39; : null&#34;
+</span></span><span class="line"><span class="cl">  &gt;
+</span></span><span class="line"><span class="cl">    &lt;div
+</span></span><span class="line"><span class="cl">      v-for=&#34;item in list2&#34;
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">      {{ item.name }}
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">  &lt;/div&gt;
+</span></span><span class="line"><span class="cl">  &lt;/transition-group&gt;
+</span></span><span class="line"><span class="cl">&lt;/draggable&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">&lt;draggable
+</span></span><span class="line"><span class="cl">  v-model=&#34;list3&#34;
+</span></span><span class="line"><span class="cl">  v-bind=&#34;dragOptions&#34;
+</span></span><span class="line"><span class="cl">  @start=&#34;drag = true&#34;
+</span></span><span class="line"><span class="cl">  @end=&#34;drag = false&#34;
+</span></span><span class="line"><span class="cl">  :move=&#34;getdata&#34;
+</span></span><span class="line"><span class="cl">  @update=&#34;datadragEnd&#34;
+</span></span><span class="line"><span class="cl">  class=&#34;list-group&#34;
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">  &lt;transition-group
+</span></span><span class="line"><span class="cl">    type=&#34;transition&#34;
+</span></span><span class="line"><span class="cl">    name=&#34;!drag ? &#39;flip-list&#39; : null&#34;
+</span></span><span class="line"><span class="cl">  &gt;
+</span></span><span class="line"><span class="cl">    &lt;div
+</span></span><span class="line"><span class="cl">      v-for=&#34;item in list3&#34;
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">      {{ item.name }}
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">  &lt;/div&gt;
+</span></span><span class="line"><span class="cl">  &lt;/transition-group&gt;
+</span></span><span class="line"><span class="cl">&lt;/draggable&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">&lt;draggable
+</span></span><span class="line"><span class="cl">  v-model=&#34;list4&#34;
+</span></span><span class="line"><span class="cl">  v-bind=&#34;dragOptions&#34;
+</span></span><span class="line"><span class="cl">  @start=&#34;drag = true&#34;
+</span></span><span class="line"><span class="cl">  @end=&#34;drag = false&#34;
+</span></span><span class="line"><span class="cl">  :move=&#34;getdata&#34;
+</span></span><span class="line"><span class="cl">  @update=&#34;datadragEnd&#34;
+</span></span><span class="line"><span class="cl">  class=&#34;list-group&#34;
+</span></span><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">  &lt;transition-group
+</span></span><span class="line"><span class="cl">    type=&#34;transition&#34;
+</span></span><span class="line"><span class="cl">    name=&#34;!drag ? &#39;flip-list&#39; : null&#34;
+</span></span><span class="line"><span class="cl">  &gt;
+</span></span><span class="line"><span class="cl">    &lt;div
+</span></span><span class="line"><span class="cl">      v-for=&#34;item in list4&#34;
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">      {{ item.name }}
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">  &lt;/div&gt;
+</span></span><span class="line"><span class="cl">  &lt;/transition-group&gt;
+</span></span><span class="line"><span class="cl">&lt;/draggable&gt;
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import draggable from &#34;vuedraggable&#34;;
+</span></span><span class="line"><span class="cl">export default {
+</span></span><span class="line"><span class="cl">components: {
+</span></span><span class="line"><span class="cl">  draggable
+</span></span><span class="line"><span class="cl">},
+</span></span><span class="line"><span class="cl">data() {
+</span></span><span class="line"><span class="cl">  return {
+</span></span><span class="line"><span class="cl">    list1: [
+</span></span><span class="line"><span class="cl">      {
+</span></span><span class="line"><span class="cl">        id: &#34;N01&#34;,
+</span></span><span class="line"><span class="cl">        name: &#34;title1&#34;,
+</span></span><span class="line"><span class="cl">        content: &#34;aaa&#34;,
+</span></span><span class="line"><span class="cl">        bgColor: &#34;#f7e3cb&#34;,
+</span></span><span class="line"><span class="cl">        tapeStyle: &#34;06&#34;,
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">      {
+</span></span><span class="line"><span class="cl">        id: &#34;N05&#34;,
+</span></span><span class="line"><span class="cl">        name: &#34;title5&#34;,
+</span></span><span class="line"><span class="cl">        content: &#34;eee&#34;,
+</span></span><span class="line"><span class="cl">        bgColor: &#34;#d7ebf4&#34;,
+</span></span><span class="line"><span class="cl">        tapeStyle: &#34;04&#34;,
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">    list2: [
+</span></span><span class="line"><span class="cl">      {
+</span></span><span class="line"><span class="cl">        id: &#34;N02&#34;,
+</span></span><span class="line"><span class="cl">        name: &#34;title2&#34;,
+</span></span><span class="line"><span class="cl">        content: &#34;bbb&#34;,
+</span></span><span class="line"><span class="cl">        bgColor: &#34;#ddeee8&#34;,
+</span></span><span class="line"><span class="cl">        tapeStyle: &#34;02&#34;,
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">      {
+</span></span><span class="line"><span class="cl">        id: &#34;N07&#34;,
+</span></span><span class="line"><span class="cl">        name: &#34;title7&#34;,
+</span></span><span class="line"><span class="cl">        content: &#34;fff&#34;,
+</span></span><span class="line"><span class="cl">        bgColor: &#34;#e7d4e8&#34;,
+</span></span><span class="line"><span class="cl">        tapeStyle: &#34;05&#34;,
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">    list3: [
+</span></span><span class="line"><span class="cl">      {
+</span></span><span class="line"><span class="cl">        id: &#34;N03&#34;,
+</span></span><span class="line"><span class="cl">        name: &#34;title3&#34;,
+</span></span><span class="line"><span class="cl">        content: &#34;ccc&#34;,
+</span></span><span class="line"><span class="cl">        bgColor: &#34;#f6d8e4&#34;,
+</span></span><span class="line"><span class="cl">        tapeStyle: &#34;03&#34;,
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">      {
+</span></span><span class="line"><span class="cl">        id: &#34;N08&#34;,
+</span></span><span class="line"><span class="cl">        name: &#34;title8&#34;,
+</span></span><span class="line"><span class="cl">        content: &#34;fff&#34;,
+</span></span><span class="line"><span class="cl">        bgColor: &#34;#d7ebf4&#34;,
+</span></span><span class="line"><span class="cl">        tapeStyle: &#34;01&#34;,
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">    list4: [
+</span></span><span class="line"><span class="cl">      {
+</span></span><span class="line"><span class="cl">        id: &#34;N04&#34;,
+</span></span><span class="line"><span class="cl">        name: &#34;title4&#34;,
+</span></span><span class="line"><span class="cl">        content: &#34;ddd&#34;,
+</span></span><span class="line"><span class="cl">        bgColor: &#34;#fff8b7&#34;,
+</span></span><span class="line"><span class="cl">        tapeStyle: &#34;04&#34;,
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">      {
+</span></span><span class="line"><span class="cl">        id: &#34;N06&#34;,
+</span></span><span class="line"><span class="cl">        name: &#34;title6&#34;,
+</span></span><span class="line"><span class="cl">        content: &#34;ddd&#34;,
+</span></span><span class="line"><span class="cl">        bgColor: &#34;#ddeee8&#34;,
+</span></span><span class="line"><span class="cl">        tapeStyle: &#34;02&#34;,
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">    ],
+</span></span><span class="line"><span class="cl">  };
+</span></span><span class="line"><span class="cl">},
+</span></span><span class="line"><span class="cl">computed: {
+</span></span><span class="line"><span class="cl">  dragOptions() {
+</span></span><span class="line"><span class="cl">    return {
+</span></span><span class="line"><span class="cl">      animation: 300,
+</span></span><span class="line"><span class="cl">      group: &#34;note&#34;,
+</span></span><span class="line"><span class="cl">      disabled: false,
+</span></span><span class="line"><span class="cl">      chosenClass: &#34;chosen&#34;,
+</span></span><span class="line"><span class="cl">    };
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">},
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<br>
+<h4 id="延伸閱讀">延伸閱讀</h4>
+<ul>
+<li><a href="https://www.itxst.com/vue-draggable/tutorial.html">vue.draggable 中文文檔</a></li>
+<li><a href="https://juejin.cn/post/6844904150350692366">Vue.Draggable 使用文檔總結</a></li>
+</ul>
+<h4 id="參考資料">參考資料</h4>
+<ul>
+<li><a href="https://github.com/SortableJS/Vue.Draggable">Vue.Draggable - GitHub</a></li>
+<li><a href="https://sortablejs.github.io/Vue.Draggable/#/simple">draggable - example</a>
+<br>
+<br></li>
+</ul></div>
+  <div class="post__footer">
+    
+
+    
+  </div>
+
+  <div id="comment">
+    <h2>comments</h2>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fiberlin1121" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>
