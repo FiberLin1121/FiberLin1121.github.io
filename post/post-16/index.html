@@ -8,7 +8,7 @@
   <title>
     
       
-        To-do Calendar - Day3 用 Vue Router 配置路由 |
+        To-do Calendar - Day11 建立 Spring Boot 專案 |
 
       
       Fiber&#39;s blog
@@ -81,7 +81,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
 
-  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-8/" />
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-16/" />
 
   
   
@@ -113,18 +113,18 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="To-do Calendar - Day3 用 Vue Router 配置路由"/>
-<meta name="twitter:description" content="來看一下如何使用 Vue Router 吧！"/>
+<meta name="twitter:title" content="To-do Calendar - Day11 建立 Spring Boot 專案"/>
+<meta name="twitter:description" content="前端先告一段落～這篇開始要來進行後端開發：建立 Spring Boot 專案 &#43; Git 設定，IDE 使用的是 IntelliJ。"/>
 
 
 
   
-  <meta property="og:title" content="To-do Calendar - Day3 用 Vue Router 配置路由" />
-<meta property="og:description" content="來看一下如何使用 Vue Router 吧！" />
+  <meta property="og:title" content="To-do Calendar - Day11 建立 Spring Boot 專案" />
+<meta property="og:description" content="前端先告一段落～這篇開始要來進行後端開發：建立 Spring Boot 專案 &#43; Git 設定，IDE 使用的是 IntelliJ。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://fiberlin1121.github.io/post/post-8/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-04-17T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-04-17T00:00:00+00:00" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-16/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-21T00:00:00+00:00" />
 
 
 
@@ -138,12 +138,12 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "To-do Calendar - Day3 用 Vue Router 配置路由",
-        "headline": "To-do Calendar - Day3 用 Vue Router 配置路由",
+        "name": "To-do Calendar - Day11 建立 Spring Boot 專案",
+        "headline": "To-do Calendar - Day11 建立 Spring Boot 專案",
         "alternativeHeadline": "",
         "description": "
       
-        \u003cp\u003e來看一下如何使用 Vue Router 吧！\u003c\/p\u003e
+        \u003cp\u003e前端先告一段落～這篇開始要來進行後端開發：建立 Spring Boot 專案 \u002b Git 設定，IDE 使用的是 IntelliJ。\u003c\/p\u003e
 
 
       
@@ -154,7 +154,7 @@
         "isFamilyFriendly": "true",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-8\/"
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-16\/"
         },
         "author" : {
             "@type": "Person",
@@ -173,9 +173,9 @@
             "name": "Fiber Lin"
         },
         "copyrightYear" : "2022",
-        "dateCreated": "2022-04-17T00:00:00.00Z",
-        "datePublished": "2022-04-17T00:00:00.00Z",
-        "dateModified": "2022-04-17T00:00:00.00Z",
+        "dateCreated": "2022-05-21T00:00:00.00Z",
+        "datePublished": "2022-05-21T00:00:00.00Z",
+        "dateModified": "2022-05-21T00:00:00.00Z",
         "publisher":{
             "@type":"Organization",
             "name": "Fiber Lin",
@@ -197,8 +197,8 @@
       ]
 
     ,
-        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-8\/",
-        "wordCount" : "144",
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-16\/",
+        "wordCount" : "179",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -418,13 +418,13 @@ if (!doNotTrack) {
     ">
   
   <div class="post__content">
-    <h1>To-Do Calendar - Day3 用 Vue Router 配置路由</h1>
+    <h1>To-Do Calendar - Day11 建立 Spring Boot 專案</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
         <em class="fas fa-calendar-day post__meta-icon"></em>
         <span class="post__meta-text">
-          2022/04/17
+          2022/05/21
 
 
           
@@ -445,17 +445,59 @@ if (!doNotTrack) {
       </li>
     </ul>
 
-    <p>來看一下如何使用 Vue Router 吧！</p>
-<h2 id="vue-router-是什麼">Vue Router 是什麼？</h2>
-<p><a href="https://v3.router.vuejs.org/">Vue Router</a> 是由前端所模擬的路由管理器，可以根據網址切換元件的呈現內容。
-<br></p>
-<h2 id="安裝-vue-router">安裝 Vue Router</h2>
-<figure class="medium"><img src="https://i.imgur.com/bCHz5Dw.jpg"
+    <p>前端先告一段落～這篇開始要來進行後端開發：建立 Spring Boot 專案 + Git 設定，IDE 使用的是 IntelliJ。</p>
+<p>開發前端專案的時候是到中途才加上 Git 版本控制，VScode 有整合 Git，透過介面就可以輕鬆管理專案檔案，使用方法參考的是這篇：<a href="https://www.rs-online.com/designspark/github-microsoft-visual-studio-code-cn">Github應用教學-結合Microsoft Visual Studio Code編輯器</a>。</p>
+<h2 id="git-設定">Git 設定</h2>
+<p>這次想在一開始建立後端專案同時也設定好 Git，紀錄步驟如下：</p>
+<ol>
+<li>
+<p>在 Gitnub 雲端上去創建一個新的 repository
+<figure class="medium"><img src="https://i.imgur.com/zCCVwvw.jpg"
+         alt="image"/>
+</figure>
+</p>
+</li>
+<li>
+<p>創建好後把 GitHub 雲端上的 repository，clone 到我們自己的電腦上
+<figure class="medium"><img src="https://i.imgur.com/qvk7AOK.jpg"
+         alt="image"/>
+</figure>
+</p>
+</li>
+<li>
+<p>複製 Repository URL 後，接著開 IntelliJ，然後選擇 File ＞ New &gt; Project from Version Control&hellip;
+<figure class="medium"><img src="https://i.imgur.com/SaYf5Lt.jpg"
+         alt="image"/>
+</figure>
+</p>
+</li>
+<li>
+<p>點擊之後 IntelliJ 會跳出一個視窗，把剛剛複製的 Repository URL 去貼在這個 URL 欄位，填好後點擊 clone 按鈕
+<figure class="medium"><img src="https://i.imgur.com/lmnnUk8.png"
          alt="image"/>
 </figure>
 
-<ul>
-<li>安裝 vue-router
+<br>
+<br></p>
+</li>
+</ol>
+<h2 id="創建-spring-boot-project">創建 Spring Boot Project</h2>
+<ol>
+<li>
+<p>打開 Repository Directory 位置的資料夾，叫出隱藏檔，把 .idea 的隱藏資料夾刪掉，只留.git 資料夾
+<figure class="medium"><img src="https://i.imgur.com/gU7NXlb.png"
+         alt="image"/>
+</figure>
+</p>
+</li>
+<li>
+<p>回到 IntelliJ，選 New Project 創建 Spring Boot Project
+<figure class="medium"><img src="https://i.imgur.com/io1GB22.png"
+         alt="image"/>
+</figure>
+</p>
+</li>
+</ol>
 <div
   class="notice
     notice--warning
@@ -468,98 +510,96 @@ if (!doNotTrack) {
 
     "
   >Warning</span><div class="notice__content">
-    此專案用的是 Vue 2，所以安裝的是對應的 vue-router v3.x 版本。
+    這裡很重要！要將 Spring Boot project 去放在剛剛從 GitHub clone 下來的資料夾裡面（如果出現已存在關掉當前 project，或另開再進行 new project）
   </div>
 </div>
 
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm install vue-router@3.3.2 --save
-</span></span></code></pre></div></li>
-</ul>
-<br>
-<h2 id="配置路由">配置路由</h2>
-<ul>
-<li>
-<p>在 src 下新建 router 目錄，並在裡面新建 index.js，作為前端路由的配置檔</p>
-</li>
-<li>
-<p>在 src/router/index.js 載入官方元件</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import Vue from &#39;vue&#39;
-</span></span><span class="line"><span class="cl">import VueRouter from &#39;vue-router&#39;
-</span></span></code></pre></div></li>
-<li>
-<p>在 src/router/index.js 載入自定義的分頁元件</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import Home from &#39;@/components/HelloWorld&#39;
-</span></span></code></pre></div></li>
-</ul>
-<blockquote>
-<p><code>@</code> 是 src 路徑的縮寫。</p>
-</blockquote>
-<ul>
-<li>
-<p>啟用 vue-router 元件</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Vue.use(VueRouter)
-</span></span></code></pre></div></li>
-<li>
-<p>匯出路由配置檔到 main.js</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">export default new VueRouter({  
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">});
-</span></span></code></pre></div></li>
-<li>
-<p>在 main.js 載入路由配置檔</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import router from &#39;./router&#39;
-</span></span></code></pre></div></li>
-<li>
-<p>將 router 加進 Vue</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">new Vue({
-</span></span><span class="line"><span class="cl">  render: (h) =&gt; h(App),
-</span></span><span class="line"><span class="cl">  router,
-</span></span><span class="line"><span class="cl">}).$mount(&#34;#app&#34;);
-</span></span></code></pre></div></li>
-</ul>
-<br>
-<h2 id="定義路徑">定義路徑</h2>
-<ul>
-<li>回到 src/router/index.js，在 VueRouter 中新增 routes 陣列，然後在裡面新增路徑與對應的元件
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">export default new VueRouter({
-</span></span><span class="line"><span class="cl">  routes: [
-</span></span><span class="line"><span class="cl">      {
-</span></span><span class="line"><span class="cl">          name: &#39;home&#39;, //元件呈現的名稱
-</span></span><span class="line"><span class="cl">          path: &#39;/index&#39;, //對應的虛擬路徑
-</span></span><span class="line"><span class="cl">          component: Home //對應元件
-</span></span><span class="line"><span class="cl">      }
-</span></span><span class="line"><span class="cl">  ]
-</span></span><span class="line"><span class="cl">});
-</span></span></code></pre></div></li>
-</ul>
-<br>
-<h2 id="使用-router-view">使用 router-view</h2>
-<ul>
-<li>回到 App.vue，將原本的 HelloWorld 元件刪掉，加上 router-view，改透過 router-view 的方式來呈現元件內容
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> &lt;template&gt;
-</span></span><span class="line"><span class="cl">  &lt;div id=&#34;app&#34;&gt;
-</span></span><span class="line"><span class="cl">     &lt;router-view&gt;&lt;/router-view&gt;
-</span></span><span class="line"><span class="cl">  &lt;/div&gt;
-</span></span><span class="line"><span class="cl"> &lt;/template&gt;
-</span></span></code></pre></div></li>
-<li>運行開發環境，測試 Vue Router 是否運作
-<figure class="medium"><img src="https://i.imgur.com/WZOWk2Y.jpg"
+<ol start="3">
+<li>接著在 dependencies 勾選 Web 下的 Spring Web，和這次要使用的 NoSQL 下的 Spring Data MongoDB 後，點擊 Finish 之後，這個專案資料夾裡面的所有程式，就都是在 Git 的版本控制底下了
+<figure class="medium"><img src="https://i.imgur.com/Zu6lm3o.png"
          alt="image"/>
 </figure>
 </li>
-</ul>
+</ol>
 <blockquote>
-<p>綠色區塊為 Vue Router 根據虛擬路徑，渲染的元件（helloWorld）內容</p>
+<p>可以點右下角的 <code>Always Add</code>，讓 IntelliJ 自動幫我們將檔案去加到 Git 的版本控制底下（檔案會變綠色）</p>
 </blockquote>
+<ol start="4">
+<li>
+<p>整理下 Spring Boot 專案</p>
+<ul>
+<li>刪除多餘的檔案：.mvn 資料夾、HELP.md、mvnw、mvnw.cmd</li>
+</ul>
+</li>
+<li>
+<p>修改 pom.xml</p>
+<ul>
+<li>指定 Spring Boot 版本</li>
+</ul>
+<figure class="medium"><img src="https://i.imgur.com/LVjcAbh.jpg"
+         alt="image"/>
+</figure>
+
+<ul>
+<li>在 spring-boot-starter-test 加上一些設定，避免去用到 JUnit4 的註解</li>
+</ul>
+<figure class="medium"><img src="https://i.imgur.com/yNEiziJ.jpg"
+         alt="image"/>
+</figure>
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">    &lt;exclusions&gt;
+</span></span><span class="line"><span class="cl">        &lt;exclusion&gt;
+</span></span><span class="line"><span class="cl">            &lt;groupId&gt;org.junit.vintage&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">            &lt;artifactId&gt;junit-vintage-engine&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">        &lt;/exclusion&gt;
+</span></span><span class="line"><span class="cl">    &lt;/exclusions&gt;
+</span></span></code></pre></div><ul>
+<li>修改完成後，最後點擊 m 符號，讓 maven</li>
+</ul>
+</li>
+<li>
+<p>創建一個 commit 存檔點</p>
+<ul>
+<li>點左邊的 commit 標籤</li>
+</ul>
+<figure class="medium"><img src="https://i.imgur.com/xNLBD6a.png"
+         alt="image"/>
+</figure>
+
+<ul>
+<li>選中全部檔案，並寫下 commit 訊息，然後按下 Commit 按鈕</li>
+</ul>
+<figure class="medium"><img src="https://i.imgur.com/qEMePoJ.png"
+         alt="image"/>
+</figure>
+
+<ul>
+<li>點右上角 Push 按鈕，將改動 push 到 GitHub 的雲端上</li>
+</ul>
+<figure class="medium"><img src="https://i.imgur.com/Bk68YJT.png"
+         alt="image"/>
+</figure>
+
+<ul>
+<li>最後回到 GitHub 確認是否上傳成功就完成了～～</li>
+</ul>
+<figure class="medium"><img src="https://i.imgur.com/CUT2wM3.png"
+         alt="image"/>
+</figure>
+
+<p>之後就可以在 IntelliJ 中開發 Spring Boot 的程式，並且使用版本控制，去管理 Spring Boot project 啦！
 <br>
-<br>
+<br></p>
+</li>
+</ol>
 <h4 id="延伸閱讀">延伸閱讀</h4>
 <ul>
-<li><a href="https://book.vue.tw/CH4/4-1-vue-router-intro.html">重新認識 Vue.js | Vue Router 與前端路由管理</a></li>
+<li><a href="https://www.rs-online.com/designspark/github-microsoft-visual-studio-code-cn">Github應用教學-結合Microsoft Visual Studio Code編輯器</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10250436">如何使用 VS Code 內建工具做簡單的版本控制</a></li>
 </ul>
 <h4 id="參考資料">參考資料</h4>
 <ul>
-<li><a href="https://www.udemy.com/course/vue-hexschool/?LSNPUBID=je6NUbpObpQ&amp;ranEAID=je6NUbpObpQ&amp;ranMID=39197&amp;ranSiteID=je6NUbpObpQ-Aes5vBvWAz2sDLj_VWhc0g&amp;utm_medium=udemyads&amp;utm_source=aff-campaign">六角學院 Vue.js 課程</a>
+<li><a href="https://github.com/SortableJS/Vue.Draggable">Java 工程師必備！Spring Boot 零基礎入門</a>
 <br>
 <br></li>
 </ul></div>
