@@ -8,7 +8,7 @@
   <title>
     
       
-        To-do Calendar - Day12 連接 MongoDB 資料庫 |
+        To-do Calendar - Day12 串接 MongoDB 資料庫 |
 
       
       Fiber&#39;s blog
@@ -113,13 +113,13 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="To-do Calendar - Day12 連接 MongoDB 資料庫"/>
+<meta name="twitter:title" content="To-do Calendar - Day12 串接 MongoDB 資料庫"/>
 <meta name="twitter:description" content="接下來要進行設定在 Spring Boot 專案中連接 MongoDB 資料庫的部分。"/>
 
 
 
   
-  <meta property="og:title" content="To-do Calendar - Day12 連接 MongoDB 資料庫" />
+  <meta property="og:title" content="To-do Calendar - Day12 串接 MongoDB 資料庫" />
 <meta property="og:description" content="接下來要進行設定在 Spring Boot 專案中連接 MongoDB 資料庫的部分。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://fiberlin1121.github.io/post/post-18/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
@@ -138,8 +138,8 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "To-do Calendar - Day12 連接 MongoDB 資料庫",
-        "headline": "To-do Calendar - Day12 連接 MongoDB 資料庫",
+        "name": "To-do Calendar - Day12 串接 MongoDB 資料庫",
+        "headline": "To-do Calendar - Day12 串接 MongoDB 資料庫",
         "alternativeHeadline": "",
         "description": "
       
@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-18\/",
-        "wordCount" : "103",
+        "wordCount" : "113",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -418,7 +418,7 @@ if (!doNotTrack) {
     ">
   
   <div class="post__content">
-    <h1>To-Do Calendar - Day12 連接 MongoDB 資料庫</h1>
+    <h1>To-Do Calendar - Day12 串接 MongoDB 資料庫</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
@@ -447,12 +447,41 @@ if (!doNotTrack) {
 
     <p>接下來要進行設定在 Spring Boot 專案中連接 MongoDB 資料庫的部分。</p>
 <h2 id="mongodb">MongoDB</h2>
-<p><a href="https://www.mongodb.com/">MongoDB</a> 是面向文檔的開源資料庫，是一種靈活、易於擴展、高效能的 NoSQL 資料庫，MongoDB 旨在為 web 應用提供可擴展的高性能數據存儲解決方案，它提供了可以跟 SQL 相比的 Query Language（查詢語言），由 C++ 語言編寫而成。DB-Engines RankingMongoDB 從 4.0 開始支援多文檔交易，即事務(Transactions)，這是 MongoDB 一個革命性的里程碑。</p>
+<p><a href="https://www.mongodb.com/">MongoDB</a> 是面向文檔的開源資料庫，是一種靈活、易於擴展、高效能的 NoSQL 資料庫，MongoDB 旨在為 web 應用提供可擴展的高性能數據存儲解決方案，它提供了可以跟 SQL 相比的 Query Language（查詢語言），由 C++ 語言編寫而成。MongoDB 從 4.0 開始支援多文檔交易（Transactions），這是 MongoDB 一個革命性的里程碑。</p>
 <h3 id="非關聯式資料庫nosql">非關聯式資料庫（NoSQL）</h3>
 <p>非關聯式資料庫（NoSQL）的意思是「Not Only SQL」，指的是不限定為關聯式資料庫的資料庫管理系統，以混用關聯式資料庫和非關聯式資料庫來達到最佳的儲存效果。NoSQL 資料庫沒有 Schema 架構，也就是所謂的 Schema-Free，可自由定義資料文件（Document）的結構，以及自由新增欄位。
 <br>
 <br></p>
-<p>因為 MongoDB 之前已經下載過，下載教學可參考<a href="https://dotblogs.com.tw/explooosion/2018/01/21/040728">這篇</a>，可以不裝 MongoDB 的圖形化管理工具，因為這篇開始會使用 IntelliJ 介面來管理資料庫的數據。</p>
+<h3 id="mongodb與rdbms的架構比對">MongoDB與RDBMS的架構比對</h3>
+<figure class="medium"><img src="https://i.imgur.com/33Perpg.jpg"
+         alt="image"/>
+</figure>
+
+<h3 id="mongodb的基本概念">MongoDB的基本概念</h3>
+<ol>
+<li>Database
+<ul>
+<li>MongoDB的單個實例 (mongod)，可以容納多個獨立的資料庫，每一個都有自己的集合和權限。</li>
+</ul>
+</li>
+<li>Collection
+<ul>
+<li>可包含多筆資料，類似 RDBMS 的表格。</li>
+<li>集合沒有固定的結構 (schema-free)，可以插入不同類型的資料。</li>
+<li>當第一個文件插入時，集合就會自動被創建。</li>
+</ul>
+</li>
+<li>Document
+<ul>
+<li>文件是一個鍵值(key-value)對，以JSON格式呈現，使用BSON格式儲存。</li>
+<li>_id 欄位為必要欄位，可自行定義其值，未定義則由 MongoDB 自行塞入一組 ObjectId。</li>
+<li>Field中的值可以為陣列、內嵌文件等屬性。</li>
+</ul>
+</li>
+</ol>
+<p>因為 MongoDB 之前已經下載過，下載教學可參考<a href="https://dotblogs.com.tw/explooosion/2018/01/21/040728">這篇</a>，可以不裝 MongoDB 的圖形化管理工具，因為這篇開始會使用 IntelliJ 介面來管理資料庫的數據。
+<br>
+<br></p>
 <h2 id="設定-intellij-與資料庫連線">設定 IntelliJ 與資料庫連線</h2>
 <ul>
 <li>點右上方的 Database 標籤</li>
@@ -472,8 +501,9 @@ if (!doNotTrack) {
 <h2 id="建立資料庫與集合">建立資料庫與集合</h2>
 <ul>
 <li>點 QL 按鈕叫出 MongoDB 的 console</li>
-<li>建立資料庫（指定當前資料庫，若不存在則建立新資料庫）
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">use localMongoDB
+<li>建立資料庫（指定當前資料庫，若不存在則建立新資料庫）</li>
+<li>語法：use &lt;資料庫名稱&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">use todoCalendar
 </span></span></code></pre></div></li>
 </ul>
 <figure class="medium"><img src="https://i.imgur.com/nrLtRnH.jpg"
@@ -481,29 +511,21 @@ if (!doNotTrack) {
 </figure>
 
 <ul>
-<li>建立 Collection
+<li>建立 Collection</li>
+<li>語法：db.createCollection(&lt;集合名稱&gt;)
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">db.createCollection(&#34;HabitTrackers&#34;)
 </span></span></code></pre></div></li>
 </ul>
-<figure class="medium"><img src="https://i.imgur.com/zUPY8nB.jpg"
+<figure class="medium"><img src="https://i.imgur.com/STK5UfF.jpg"
          alt="image"/>
 </figure>
 
-<p>後面依序將 todoLists、notes、users 集合也建出來</p>
-<h2 id="設定專案與資料庫連線">設定專案與資料庫連線</h2>
-<ul>
-<li>在 application.properties 添加 MongoDB 資料庫的連線資訊
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">spring.data.mongodb.host=localhost
-</span></span><span class="line"><span class="cl">spring.data.mongodb.port=27017
-</span></span><span class="line"><span class="cl">spring.data.mongodb.database=localMongoDB
-</span></span></code></pre></div></li>
-</ul>
-<p>資料庫相關的前置作業到這邊差不多就完成了～
+<p>後面依序將其他集合也建出來，資料庫相關的前置作業就先到這～
 <br>
 <br></p>
 <h4 id="延伸閱讀">延伸閱讀</h4>
 <ul>
-<li><a href="https://www.runoob.com/mongodb/mongodb-tutorial.html">MongoDB 教程</a></li>
+<li><a href="https://www.tpisoftware.com/tpu/articleDetails/2491">MongoDB 簡介</a></li>
 <li><a href="https://docs.mongoing.com/">MongoDB 中文手冊|官方文檔中文版</a></li>
 </ul>
 <h4 id="參考資料">參考資料</h4>

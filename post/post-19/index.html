@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      
+        To-do Calendar - Day13 使用 MongoTemplate 操作 MongoDB |
+
+      
+      Fiber&#39;s blog
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.96.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Fiber&#39;s blog" />
+  <meta
+    name="description"
+    content="
+      Hi! I&#39;m Fiber, 一名貓奴工程師
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.02d94a71503cb758e2ae7d6030f4bada9d3babfd125372c3759e2455304f6630.css"
+      integrity="sha256-AtlKcVA8t1jirn1gMPS62p07q/0SU3LDdZ4kVTBPZjA="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-19/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="To-do Calendar - Day13 使用 MongoTemplate 操作 MongoDB"/>
+<meta name="twitter:description" content="這篇要來實作查詢列表功能，以原子習慣為例，從設計 Document 的資料結構開始，再來實作 Spring Boot 程式。"/>
+
+
+
+  
+  <meta property="og:title" content="To-do Calendar - Day13 使用 MongoTemplate 操作 MongoDB" />
+<meta property="og:description" content="這篇要來實作查詢列表功能，以原子習慣為例，從設計 Document 的資料結構開始，再來實作 Spring Boot 程式。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-19/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-26T00:00:00+00:00" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "To-do Calendar - Day13 使用 MongoTemplate 操作 MongoDB",
+        "headline": "To-do Calendar - Day13 使用 MongoTemplate 操作 MongoDB",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003cp\u003e這篇要來實作查詢列表功能，以原子習慣為例，從設計 Document 的資料結構開始，再來實作 Spring Boot 程式。\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-19\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-05-26T00:00:00.00Z",
+        "datePublished": "2022-05-26T00:00:00.00Z",
+        "dateModified": "2022-05-26T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Fiber Lin",
+            "url": "https://fiberlin1121.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/fiberlin1121.github.io\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://fiberlin1121.github.io/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-19\/",
+        "wordCount" : "395",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "SideProject"
+
+    ]
+    }
+  </script>
+
+
+
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction" style="margin-bottom: 0;">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/wowo.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/"></a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Hi! I'm Fiber, 一名貓奴工程師</p>
+      </div>
+    </div>
+    
+    <ul class="sidebar__list" style="margin-top: 0;">
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/FiberLin1121/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.behance.net/fiber410139" rel="me" aria-label="Behance" title="Behance">
+            <i class="fab fa-behance-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.facebook.com/%E5%B0%8F%E8%B3%B4%E7%9A%AE-277134752317535" rel="me" aria-label="Facebook" title="Facebook">
+            <i class="fab fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:fiber410139@gmail.com" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+
+    <ul class="sidebar__list">
+      <li style="margin-bottom:.5em; font-size: 15px;"><a href="/tags/程式筆記/" style="font-size: 15px;">程式筆記</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/sideproject/" style="font-size: 15px;">Side Project</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/阿宅日常/" style="font-size: 15px;">阿宅日常</a></li>
+    </ul>
+    
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav d-flex justify-content-between">
+    <ul class="nav__list col" id="navMenu">
+      
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/"
+            
+            title=""
+            >Home</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/post/"
+            
+            title=""
+            >Posts</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/portfolio/"
+            
+            title=""
+            >Portfolio</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/about/"
+            
+            title=""
+            >About</a
+          >
+        </li>
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end col">
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+<div class="post 
+      .
+
+    ">
+  
+  <div class="post__content">
+    <h1>To-Do Calendar - Day13 使用 MongoTemplate 操作 MongoDB</h1>
+    
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <em class="fas fa-calendar-day post__meta-icon"></em>
+        <span class="post__meta-text">
+          2022/05/26
+
+
+          
+        </span>
+      </li>
+      <li class="post__meta-item">
+        <em class="fas fa-stopwatch post__meta-icon"></em>
+        <span class="post__meta-text">2-minute read</span>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__meta-text">
+        
+        <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
+
+
+        
+        </span>
+      </li>
+    </ul>
+
+    <p>這篇要來實作查詢列表功能，以原子習慣為例，從設計 Document 的資料結構開始，再來實作 Spring Boot 程式。</p>
+<h2 id="設計資料結構">設計資料結構</h2>
+<p>對應前端原子習慣畫面與示意的假資料，規劃需要的欄位對照如下：
+<figure class="medium"><img src="https://i.imgur.com/4D7kVVI.jpg"
+         alt="image"/><figcaption>
+            <p>原子習慣列表與年曆</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/q4jJYt8.jpg"
+         alt="image"/><figcaption>
+            <p>原子習慣資料</p>
+        </figcaption>
+</figure>
+</p>
+<h3 id="habitsdocument">habits（Document）</h3>
+<ul>
+<li>id（String）：文件主鍵</li>
+<li>userId（String）：所屬的使用者id</li>
+<li>habitList（Array）：habit物件陣列</li>
+<li>createdTime（Timestamp）：建立時間</li>
+<li>lastModifiedTime（Timestamp）：最後修改時間</li>
+</ul>
+<h3 id="habittrackersdocument">habitTrackers（Document）</h3>
+<ul>
+<li>id（String）：文件主鍵</li>
+<li>year（String）：年份</li>
+<li>pickedDays（Array）：達成日期物件陣列</li>
+<li>createdTime（Timestamp）：建立時間</li>
+<li>lastModifiedTime（Timestamp）：最後修改時間</li>
+</ul>
+<h3 id="habitobject">habit（Object）</h3>
+<ul>
+<li>habitId（String）：習慣id</li>
+<li>name（String）：習慣名稱</li>
+<li>checkColor（String）：圈選日期顏色</li>
+<li>createdTime（Timestamp）：建立時間</li>
+<li>lastModifiedTime（Timestamp）：最後修改時間
+<br>
+<br></li>
+</ul>
+<h2 id="建立測試資料">建立測試資料</h2>
+<h3 id="向-collection-新增-document">向 Collection 新增 Document</h3>
+<ul>
+<li><del>語法：db.&lt;集合名稱&gt;.insert(&lt;<code>Document</code>&gt;) 或 db.&lt;集合名稱&gt;.save(&lt;<code>Document</code>&gt;)</del> →新版本已棄用</li>
+<li>單筆語法：db.&lt;集合名稱&gt;.insertOne(
+&lt;<code>document</code>&gt;,
+{
+writeConcern: &lt;<code>document</code>&gt;
+}
+)</li>
+<li>多筆語法：db.&lt;集合名稱&gt;.insertMany(
+[ &lt;<code>document 1</code>&gt; , &lt;<code>document 2</code>&gt;, &hellip; ],
+{
+writeConcern: &lt;<code>document</code>&gt;,
+ordered: &lt;<code>boolean</code>&gt;
+}
+)</li>
+</ul>
+<h4 id="參數說明">參數說明</h4>
+<ul>
+<li>document：要寫入的文檔。</li>
+<li>writeConcern：寫入策略，默認為1，即要求確認寫操作，0 是不要求。</li>
+<li>ordered：指定是否按順序寫入，默認true，按順序寫入。
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">db.habits.insertOne({
+</span></span><span class="line"><span class="cl">  userId: &#34;user01&#34;,
+</span></span><span class="line"><span class="cl">  habitList: [
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        habitId:&#34;habit01&#34;,
+</span></span><span class="line"><span class="cl">        name:&#34;吃早餐&#34;,
+</span></span><span class="line"><span class="cl">        checkColor:&#34;red&#34;,
+</span></span><span class="line"><span class="cl">        createdTime:1653405213436,
+</span></span><span class="line"><span class="cl">        lastModifiedTime:1653405213436
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        id:&#34;habit02&#34;,
+</span></span><span class="line"><span class="cl">        name:&#34;喝水2000cc&#34;,
+</span></span><span class="line"><span class="cl">        checkColor:&#34;yellow&#34;,
+</span></span><span class="line"><span class="cl">        createdTime:1653405213436,
+</span></span><span class="line"><span class="cl">        lastModifiedTime:1653405213436
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        id:&#34;habit03&#34;,
+</span></span><span class="line"><span class="cl">        name:&#34;寫技術部落格&#34;,
+</span></span><span class="line"><span class="cl">        checkColor:&#34;green&#34;,
+</span></span><span class="line"><span class="cl">        createdTime:1653405213436,
+</span></span><span class="line"><span class="cl">        lastModifiedTime:1653405213436
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">  ],
+</span></span><span class="line"><span class="cl">  createdTime: 1653405213436,
+</span></span><span class="line"><span class="cl">  lastModifiedTime: 1653405213436
+</span></span><span class="line"><span class="cl">})
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">db.habitTrackers.insertMany([
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        habitId:&#34;habit01&#34;,
+</span></span><span class="line"><span class="cl">        year:&#34;2022&#34;,
+</span></span><span class="line"><span class="cl">        pickedDays:[{ &#34;id&#34;: &#34;2022-01-06&#34;, &#34;date&#34;: &#34;2022-01-05T16:00:00.000Z&#34; }],
+</span></span><span class="line"><span class="cl">        createdTime:1653405213436,
+</span></span><span class="line"><span class="cl">        lastModifiedTime:1653405213436
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        habitId:&#34;habit02&#34;,
+</span></span><span class="line"><span class="cl">        year:&#34;2022&#34;,
+</span></span><span class="line"><span class="cl">        pickedDays:[{ &#34;id&#34;: &#34;2022-02-06&#34;, &#34;date&#34;: &#34;2022-02-05T16:00:00.000Z&#34; }],
+</span></span><span class="line"><span class="cl">        createdTime:1653405213436,
+</span></span><span class="line"><span class="cl">        lastModifiedTime:1653405213436
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">        habitId:&#34;habit03&#34;,
+</span></span><span class="line"><span class="cl">        year:&#34;2022&#34;,
+</span></span><span class="line"><span class="cl">        pickedDays:[{ &#34;id&#34;: &#34;2022-03-06&#34;, &#34;date&#34;: &#34;2022-03-05T16:00:00.000Z&#34; }],
+</span></span><span class="line"><span class="cl">        createdTime:1653405213436,
+</span></span><span class="line"><span class="cl">        lastModifiedTime:1653405213436
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">])
+</span></span></code></pre></div></li>
+<li>在 IntelliJ MongoDB console 運行上述語法後，查詢結果如下，測試資料建立完成後，接下來就可以開始進入 Spring Boot 程式。
+<br>
+<br></li>
+</ul>
+<h2 id="實作原子習慣查詢列表功能">實作原子習慣查詢列表功能</h2>
+<h3 id="第一步設定-spring-boot-專案的資料庫連線">第一步：設定 Spring Boot 專案的資料庫連線</h3>
+<ul>
+<li>pom.xml 因之前有勾選匯入 MongoDB 函式庫，所以可以跳過</li>
+<li>在 application.properties 添加 MongoDB 資料庫的連線資訊
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">spring.data.mongodb.uri=mongodb://localhost:27017/todoCalendar
+</span></span></code></pre></div></li>
+</ul>
+<p>設定好後，這個 Spring Boot 專案就可以去存取 localMongoDB 資料庫的數據了！
+<br>
+<br></p>
+<h3 id="使用-controller-service-dao-的三層式架構">使用 Controller-Service-Dao 的三層式架構</h3>
+<p>在 src/main/java/com.fiber.todocalendar package 底下建立 Controller、Service、Dao package</p>
+<ul>
+<li>Controller 層：負責接收 Http request，並且驗證請求參數</li>
+<li>Service 層：負責商業邏輯的處理</li>
+<li>Dao 層：負責和資料庫溝通<br>
+<figure class="medium"><img src="https://i.imgur.com/KnaOqWs.jpg"
+         alt="image"/>
+</figure>
+
+<br></li>
+</ul>
+<h3 id="第二步建立-document-所對應的-entity">第二步：建立 Document 所對應的 Entity</h3>
+<ul>
+<li>先建一個 model package</li>
+<li>接著在 model package 底下建立 Habits class、HabitTrackers class、Habit class</li>
+<li>在 Habit class 加上 <code>@Data</code>，和資料庫中 habitTrackers Document 所對應的變數</li>
+<li>在 HabitTrackers class 和 Habits class 加上 <code>@Data</code>、<code>@Document</code> 註解，並在 <code>@Document</code> 註解括號中指定 collection 名稱</li>
+<li>實作和資料庫中所對應的變數，並在 id 屬性上加上 <code>@Id</code> 註解
+<figure class="medium"><img src="https://i.imgur.com/cPglTEd.jpg"
+         alt="image"/><figcaption>
+            <p>Habits class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/cPglTEd.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackers class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/OjodxaP.jpg"
+         alt="image"/><figcaption>
+            <p>Habit class</p>
+        </figcaption>
+</figure>
+</li>
+</ul>
+<h3 id="實作-dao-層使用-mongotemplate">實作 Dao 層（使用 MongoTemplate）</h3>
+<ul>
+<li>在 dao package 底下建立 HabitsDao interface</li>
+<li>在 dao package 底下建立 impl package，在 impl package 底下再建立 HabitsDaoImpl class</li>
+<li>為讓 HabitsDaoImpl class 成為 Bean，在 HabitsDaoImpl class 上加上 <code>@component</code> 註解，並實作 HabitsDao interface，然後使用 <code>@Autowired</code> 註解注入 MongoTemplate</li>
+<li>回到 HabitsDao interface，宣告一個 getHabitsByUserId 方法，返回類型為 Habits</li>
+<li>接著再到 HabitsDaoImpl class，實作 getHabitsByUserId 方法
+<figure class="medium"><img src="https://i.imgur.com/GjYxt7L.jpg"
+         alt="image"/><figcaption>
+            <p>HabitrsDao interface</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/SzJ5Kqp.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsDaoImpl class</p>
+        </figcaption>
+</figure>
+
+<br></li>
+</ul>
+<h3 id="實作-service-層">實作 Service 層</h3>
+<ul>
+<li>在 service package 底下建立 HabitsService interface</li>
+<li>在 service package 底下建立 impl package</li>
+<li>在 impl package 底下建立 HabitsServiceImpl class</li>
+<li>為讓 HabitsServiceImpl class 成為 Bean，在 HabitsDaoImpl class 上加上 <code>@component</code> 註解，並實作 HabitsService interface，然後使用 <code>@Autowired</code> 註解注入 HabitsDao</li>
+<li>回到 HabitTrackersService interface，宣告一個 getHabitTrackersByUserId 方法</li>
+<li>接著再到 HabitsServiceImpl class，實作 getHabitsByUserId 方法
+<figure class="medium"><img src="https://i.imgur.com/OrZ2o8H.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsService interface</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/eLtoFiG.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsServiceImpl class</p>
+        </figcaption>
+</figure>
+
+<br></li>
+</ul>
+<h3 id="實作-controller-層">實作 Controller 層</h3>
+<ul>
+<li>在 controller package 底下建立 HabitsController class</li>
+<li>在 HabitsController class 上加上 <code>@restController</code> 註解，並使用 <code>@Autowired</code> 註解注入 HabitsService</li>
+<li>新增 getHabitsByUserId 方法，返回類型為 <code>ResponseEntity&lt;Habits&gt;</code></li>
+<li>根據 <strong>RESTful 的設計原則</strong>，查詢所對應的是 GET 方法，所以在方法上加上 <code>@GetMapping</code> 註解，表示前端要使用 GET 方法來請求</li>
+<li>在 <code>@GetMapping</code> 註解括號中指定 url 路徑，並使用 <code>@PathVariable</code> 註解去取得 url 路徑的值
+<figure class="medium"><img src="https://i.imgur.com/C7Zj0tx.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsController class</p>
+        </figcaption>
+</figure>
+</li>
+<li>接著運行 Spring Boot 程式，使用 API Tester 測試一下效果
+<figure class="medium"><img src="https://i.imgur.com/0sjMMDs.jpg"
+         alt="image"/>
+</figure>
+</li>
+</ul>
+<p>到這邊就已經完成查詢原子習慣列表功能的實作了（後端的部分）～
+<br>
+<br></p>
+<h4 id="延伸閱讀">延伸閱讀</h4>
+<ul>
+<li><a href="https://cloud.tencent.com/developer/article/1436081">SpringBoot 之 MongoTemplate 的查詢可以怎麼耍</a></li>
+</ul>
+<h4 id="參考資料">參考資料</h4>
+<ul>
+<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a></li>
+<li><a href="https://www.youtube.com/watch?v=TwN2a9--pkw&amp;ab_channel=%E5%B0%9A%E7%A1%85%E8%B0%B7IT%E5%9F%B9%E8%AE%AD%E5%AD%A6%E6%A0%A1">MongoDB - SpringBoot 整合 MongoTemplate 操作</a>
+<br>
+<br></li>
+</ul></div>
+  <div class="post__footer">
+    
+
+    
+  </div>
+
+  <div id="comment">
+    <h2>comments</h2>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fiberlin1121" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>

@@ -6,9 +6,20 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 23 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>To-do Calendar - Day12 連接 MongoDB 資料庫</title>
+      <title>To-do Calendar - Day13 使用 MongoTemplate 操作 MongoDB</title>
+      <link>https://fiberlin1121.github.io/post/post-19/</link>
+      <pubDate>Thu, 26 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiberlin1121.github.io/post/post-19/</guid>
+      
+        <description>&lt;p&gt;這篇要來實作查詢列表功能，以原子習慣為例，從設計 Document 的資料結構開始，再來實作 Spring Boot 程式。&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>To-do Calendar - Day12 串接 MongoDB 資料庫</title>
       <link>https://fiberlin1121.github.io/post/post-18/</link>
       <pubDate>Mon, 23 May 2022 00:00:00 +0000</pubDate>
       
@@ -19,7 +30,7 @@
     </item>
     
     <item>
-      <title>感動孔明的好歌聲！演唱《派對咖孔明》OST &amp; ED 的多聲類翻唱歌手96貓</title>
+      <title>感動孔明的好歌聲！從 niconico 轉生到 youtube 的多聲類翻唱歌手96貓</title>
       <link>https://fiberlin1121.github.io/post/post-17/</link>
       <pubDate>Sun, 22 May 2022 00:00:00 +0000</pubDate>
       
