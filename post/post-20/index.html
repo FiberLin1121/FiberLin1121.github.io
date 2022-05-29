@@ -8,7 +8,7 @@
   <title>
     
       
-        To-do Calendar - Day12 串接 MongoDB 資料庫 |
+        To-do Calendar - Day13 RESTful API 串接 |
 
       
       Fiber&#39;s blog
@@ -81,7 +81,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
 
-  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-18/" />
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-20/" />
 
   
   
@@ -113,18 +113,18 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="To-do Calendar - Day12 串接 MongoDB 資料庫"/>
-<meta name="twitter:description" content="接下來要進行設定在 Spring Boot 專案中連接 MongoDB 資料庫的部分。"/>
+<meta name="twitter:title" content="To-do Calendar - Day13 RESTful API 串接"/>
+<meta name="twitter:description" content="這篇要來實作串接 API，API 使用 REST 設計風格。"/>
 
 
 
   
-  <meta property="og:title" content="To-do Calendar - Day12 串接 MongoDB 資料庫" />
-<meta property="og:description" content="接下來要進行設定在 Spring Boot 專案中連接 MongoDB 資料庫的部分。" />
+  <meta property="og:title" content="To-do Calendar - Day13 RESTful API 串接" />
+<meta property="og:description" content="這篇要來實作串接 API，API 使用 REST 設計風格。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://fiberlin1121.github.io/post/post-18/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-05-23T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-23T00:00:00+00:00" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-20/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-27T00:00:00+00:00" />
 
 
 
@@ -138,12 +138,12 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "To-do Calendar - Day12 串接 MongoDB 資料庫",
-        "headline": "To-do Calendar - Day12 串接 MongoDB 資料庫",
+        "name": "To-do Calendar - Day13 RESTful API 串接",
+        "headline": "To-do Calendar - Day13 RESTful API 串接",
         "alternativeHeadline": "",
         "description": "
       
-        \u003cp\u003e接下來要進行設定在 Spring Boot 專案中連接 MongoDB 資料庫的部分。\u003c\/p\u003e
+        \u003cp\u003e這篇要來實作串接 API，API 使用 REST 設計風格。\u003c\/p\u003e
 
 
       
@@ -154,7 +154,7 @@
         "isFamilyFriendly": "true",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-18\/"
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-20\/"
         },
         "author" : {
             "@type": "Person",
@@ -173,9 +173,9 @@
             "name": "Fiber Lin"
         },
         "copyrightYear" : "2022",
-        "dateCreated": "2022-05-23T00:00:00.00Z",
-        "datePublished": "2022-05-23T00:00:00.00Z",
-        "dateModified": "2022-05-23T00:00:00.00Z",
+        "dateCreated": "2022-05-27T00:00:00.00Z",
+        "datePublished": "2022-05-27T00:00:00.00Z",
+        "dateModified": "2022-05-27T00:00:00.00Z",
         "publisher":{
             "@type":"Organization",
             "name": "Fiber Lin",
@@ -197,8 +197,8 @@
       ]
 
     ,
-        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-18\/",
-        "wordCount" : "114",
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-20\/",
+        "wordCount" : "199",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -418,13 +418,13 @@ if (!doNotTrack) {
     ">
   
   <div class="post__content">
-    <h1>To-Do Calendar - Day12 串接 MongoDB 資料庫</h1>
+    <h1>To-Do Calendar - Day13 RESTful API 串接</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
         <em class="fas fa-calendar-day post__meta-icon"></em>
         <span class="post__meta-text">
-          2022/05/23
+          2022/05/27
 
 
           
@@ -445,92 +445,147 @@ if (!doNotTrack) {
       </li>
     </ul>
 
-    <p>接下來要進行設定在 Spring Boot 專案中連接 MongoDB 資料庫的部分。</p>
-<h2 id="mongodb-是什麼">MongoDB 是什麼？</h2>
-<p><a href="https://www.mongodb.com/">MongoDB</a> 是面向文檔的開源資料庫，是一種靈活、易於擴展、高效能的 NoSQL 資料庫，MongoDB 旨在為 web 應用提供可擴展的高性能數據存儲解決方案，它提供了可以跟 SQL 相比的 Query Language（查詢語言），由 C++ 語言編寫而成。MongoDB 從 4.0 開始支援多文檔交易（Transactions），這是 MongoDB 一個革命性的里程碑。</p>
-<h3 id="非關聯式資料庫nosql">非關聯式資料庫（NoSQL）</h3>
-<p>非關聯式資料庫（NoSQL）的意思是「Not Only SQL」，指的是不限定為關聯式資料庫的資料庫管理系統，以混用關聯式資料庫和非關聯式資料庫來達到最佳的儲存效果。NoSQL 資料庫沒有 Schema 架構，也就是所謂的 Schema-Free，可自由定義資料文件（Document）的結構，以及自由新增欄位。
+    <p>這篇要來實作串接 API，API 使用 REST 設計風格。</p>
+<h2 id="rest-風格是什麼">REST 風格是什麼？</h2>
+<p>REST 的全名為 Representational State Transfer，它是一種設計風格，將網路上的東西都視為「資源」，並且有不同的操作方式。</p>
+<h2 id="restful-api">RESTful API</h2>
+<p>RESTful API 指的就是符合 REST 的原則去定義出來的 API 形式，REST 核心主要定義了六個原則：</p>
+<ul>
+<li>Client-server architecture</li>
+<li>Statelessness</li>
+<li>Cacheability</li>
+<li>Layered system</li>
+<li>Uniform interface</li>
+<li>Code on demand (optional)</li>
+</ul>
+<p>在這些原則裡面，REST 定義了該怎麼讓客戶端去溝通處理資源的方式：主要會利用一段 URI 來代表你所要處理的某一類資源，並且使用 HTTP request 中的 Method 參數去代表要進行什麼操作。</p>
+<h3 id="使用-http-method-表示動作">使用 http method 表示動作</h3>
+<figure class="medium"><img src="https://i.imgur.com/Z5aPaEQ.jpg"
+         alt="image"/>
+</figure>
+
+<h3 id="使用-url-路徑描述資源之間的階層關係">使用 url 路徑描述資源之間的階層關係</h3>
+<figure class="medium"><img src="https://i.imgur.com/85tRlAn.jpg"
+         alt="image"/>
+</figure>
+
+<p><div
+  class="notice
+    notice--warning
+
+  "
+>
+  <span
+    class="notice__title
+      notice__title--warning
+
+    "
+  >Warning</span><div class="notice__content">
+    RESTful 並非一個必須遵守的 API 開發標準，它僅僅是個架構風格。RESTful API 除了將 URI 設計得更簡潔之外，另外它也善用 HTTP verb，使其能夠更直觀，目的在於簡化溝通成本。
+  </div>
+</div>
+
 <br>
 <br></p>
-<h3 id="mongodb與rdbms的架構比對">MongoDB與RDBMS的架構比對</h3>
-<figure class="medium"><img src="https://i.imgur.com/33Perpg.jpg"
-         alt="image"/>
-</figure>
-
-<h3 id="mongodb的基本概念">MongoDB的基本概念</h3>
-<ol>
-<li>Database
+<h2 id="設計-restful-api">設計 RESTful API</h2>
+<p>以查詢原子習慣列表功能為例。</p>
+<h3 id="gethabits-api">getHabits API</h3>
 <ul>
-<li>MongoDB的單個實例 (mongod)，可以容納多個獨立的資料庫，每一個都有自己的集合和權限。</li>
+<li>Request URL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET http://localhost:8080/users/{user01}/habits
+</span></span></code></pre></div></li>
+<li>Response Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;id&#34;: &#34;628fd7820f99c13e6d6d95fe&#34;,
+</span></span><span class="line"><span class="cl">  &#34;userId&#34;: &#34;user01&#34;,
+</span></span><span class="line"><span class="cl">  &#34;habitList&#34;:[
+</span></span><span class="line"><span class="cl">    {&#34;habitId&#34;: &#34;habit01&#34;, &#34;name&#34;: &#34;吃早餐&#34;, &#34;checkColor&#34;: &#34;red&#34;, &#34;createdTime&#34;: 1653405213436,&#34;lastModifiedTime&#34;: 1653405213436},
+</span></span><span class="line"><span class="cl">    {&#34;habitId&#34;: &#34;habit02&#34;, &#34;name&#34;: &#34;喝水2000cc&#34;, &#34;checkColor&#34;: &#34;yellow&#34;, &#34;createdTime&#34;: 1653405213436,&#34;lastModifiedTime&#34;: 1653405213436},
+</span></span><span class="line"><span class="cl">    {&#34;habitId&#34;: &#34;habit03&#34;, &#34;name&#34;: &#34;寫技術部落格&#34;, &#34;checkColor&#34;: &#34;green&#34;, &#34;createdTime&#34;: 1653405213436,&#34;lastModifiedTime&#34;: 1653405213436}
+</span></span><span class="line"><span class="cl">  ],
+</span></span><span class="line"><span class="cl">  &#34;createdTime&#34;: 1653405213436,
+</span></span><span class="line"><span class="cl">  &#34;lastModifiedTime&#34;: 1653405213436
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
 </ul>
-</li>
-<li>Collection
-<ul>
-<li>可包含多筆資料，類似 RDBMS 的表格。</li>
-<li>集合沒有固定的結構 (schema-free)，可以插入不同類型的資料。</li>
-<li>當第一個文件插入時，集合就會自動被創建。</li>
-</ul>
-</li>
-<li>Document
-<ul>
-<li>文件是一個鍵值(key-value)對，以JSON格式呈現，使用BSON格式儲存。</li>
-<li>_id 欄位為必要欄位，可自行定義其值，未定義則由 MongoDB 自行塞入一組 ObjectId。</li>
-<li>Field中的值可以為陣列、內嵌文件等屬性。</li>
-</ul>
-</li>
-</ol>
-<p>因為 MongoDB 之前已經下載過，下載教學可參考<a href="https://dotblogs.com.tw/explooosion/2018/01/21/040728">這篇</a>，可以不裝 MongoDB 的圖形化管理工具，因為這篇開始會使用 IntelliJ 介面來管理資料庫的數據。
 <br>
-<br></p>
-<h2 id="設定-intellij-與資料庫連線">設定 IntelliJ 與資料庫連線</h2>
+<br>
+<h2 id="實作串接-api">實作串接 API</h2>
+<p>回到前端，來使用之前已載入的 Axios 來呼叫後端 API，先用基本用法來測試是否拿的到資料：</p>
 <ul>
-<li>點右上方的 Database 標籤</li>
-<li>點 + 按鈕 &gt; Data Source &gt; MongoDB
-<figure class="medium"><img src="https://i.imgur.com/PG2JFXR.jpg"
-         alt="image"/>
-</figure>
-</li>
-<li>設定 MongoDB 資料庫的連線資訊</li>
-<li>點 Download 讓 IntelliJ 去下載相對應的 Driver 檔案</li>
-<li>測試連線成功後，就按下 ok
-<figure class="medium"><img src="https://i.imgur.com/Ug5PmC5.jpg"
-         alt="image"/>
-</figure>
-</li>
-</ul>
-<h2 id="建立資料庫與集合">建立資料庫與集合</h2>
-<ul>
-<li>點 QL 按鈕叫出 MongoDB 的 console</li>
-<li>建立資料庫（指定當前資料庫，若不存在則建立新資料庫）</li>
-<li>語法：use &lt;資料庫名稱&gt;
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">use todoCalendar
+<li>habitTracker.vue
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mounted() {
+</span></span><span class="line"><span class="cl">  this.axios.get(&#34;http://localhost:8080/users/user01/habits&#34;).then((res) =&gt; {
+</span></span><span class="line"><span class="cl">    console.log(&#34;result= &#34;+ JSON.stringify(res.data));
+</span></span><span class="line"><span class="cl">    this.habitList = res.data.habitList;
+</span></span><span class="line"><span class="cl">  });
+</span></span><span class="line"><span class="cl">},
 </span></span></code></pre></div></li>
 </ul>
-<figure class="medium"><img src="https://i.imgur.com/nrLtRnH.jpg"
+<p>結果一運行程式就遇到了 port 被占用的問題，此次是先 run 前端再運行後端結果後端運行失敗&hellip;(･o･) 
+<figure class="medium"><img src="https://i.imgur.com/lPYH5SE.jpg"
+         alt="image"/>
+</figure>
+</p>
+<p>才發現前後端程式運行的 port 都是8080，所以在 vue.config.js 加了些設定，讓前端程式的 port 改為8081，改法是參考<a href="https://blog.csdn.net/lilyheart1/article/details/106682657">《VUE-CLI 3 修改前端默認的端口》</a>。再次運行，這次前端 console 卻出現了 ERR_CONNECTION_REFUSED 錯誤&hellip;Σ（￣□￣；） 
+<figure class="medium"><img src="https://i.imgur.com/PMZpqTg.jpg"
+         alt="image"/>
+</figure>
+</p>
+<p>查了一下應該是跨域請求問題，當開發者透過 JavaScript 針對不同於當前位置的來源發送請求，這個請求的回應就會被瀏覽器攔截掉，不交給 JavaScript 處理。
+<div
+  class="notice
+    notice--warning
+
+  "
+>
+  <span
+    class="notice__title
+      notice__title--warning
+
+    "
+  >Warning</span><div class="notice__content">
+    值得注意的是，跨域請求雖然會被瀏覽器擋下來，但攔截的是回應（Response），不是請求（Request）喔！請求指定的內容仍然會完成，要特別注意這點！
+  </div>
+</div>
+</p>
+<p>因為剛剛改了 port，所以被瀏覽器判斷為不同源的網站，串個 API 真是一波三折，解法是參考<a href="https://blog.csdn.net/qq_39390545/article/details/106615075">《Springboot處理CORS跨域請求的三種方法》</a>，在後端加上一支處理跨域請求（設置 CORS header）的 Configuration。</p>
+<div
+  class="notice
+    notice--warning
+
+  "
+>
+  <span
+    class="notice__title
+      notice__title--warning
+
+    "
+  >Warning</span><div class="notice__content">
+    <strong>同源政策（Same Origin Policy）</strong><br>
+同源政策規定了某些特定的資源、程式碼，必須在同源的情況下才可以存取。但與此同時其實又有另外一個規範：「如果你想在不同 origin 之間傳輸資料的話，你應該怎麼做」，這規範就叫做 CORS（Cross-Origin Resource Sharing，跨來源資源共用）。
+  </div>
+</div>
+
+<p>再次重新運行，這次終於拿到資料了！而且有正常渲染在畫面的列表上～～✧*｡٩(ˊᗜˋ*)و✧*｡
+<figure class="medium"><img src="https://i.imgur.com/gMTLNOQ.jpg"
          alt="image"/>
 </figure>
 
-<ul>
-<li>建立 Collection</li>
-<li>語法：db.createCollection(&lt;集合名稱&gt;)
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">db.createCollection(&#34;HabitTrackers&#34;)
-</span></span></code></pre></div></li>
-</ul>
-<figure class="medium"><img src="https://i.imgur.com/STK5UfF.jpg"
-         alt="image"/>
-</figure>
-
-<p>後面依序將其他集合也建出來，資料庫相關的前置作業就先到這～
 <br>
 <br></p>
 <h4 id="延伸閱讀">延伸閱讀</h4>
 <ul>
-<li><a href="https://www.tpisoftware.com/tpu/articleDetails/2491">MongoDB 簡介</a></li>
-<li><a href="https://docs.mongoing.com/">MongoDB 中文手冊|官方文檔中文版</a></li>
+<li><a href="https://jimmyswebnote.com/restful-api-design/">前端工程師邁向後端之路 – 設計 RESTful API</a></li>
+<li><a href="https://blog.huli.tw/2017/08/27/ajax-and-cors/">輕鬆理解 Ajax 與跨來源請求</a></li>
+<li><a href="https://f2e.kalan.dev/frontend-ui-development/13.html#%E5%90%8C%E6%BA%90%E6%94%BF%E7%AD%96-same-origin-policy">前端如何管理 API （中）- Cookie、CORS 、CSRF</a></li>
 </ul>
 <h4 id="參考資料">參考資料</h4>
 <ul>
-<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a>
+<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10212120">axios 基本使用 &amp; Config</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10218412">RESTful API 開發</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10226262">為什麼跨域請求會產生錯誤？如何處理？</a>
 <br>
 <br></li>
 </ul></div>

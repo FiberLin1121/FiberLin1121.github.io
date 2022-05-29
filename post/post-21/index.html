@@ -8,7 +8,7 @@
   <title>
     
       
-        To-do Calendar - Day12 串接 MongoDB 資料庫 |
+        To-do Calendar - Day14 用 Axios Instance 管理 API |
 
       
       Fiber&#39;s blog
@@ -81,7 +81,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
 
-  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-18/" />
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-21/" />
 
   
   
@@ -113,18 +113,18 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="To-do Calendar - Day12 串接 MongoDB 資料庫"/>
-<meta name="twitter:description" content="接下來要進行設定在 Spring Boot 專案中連接 MongoDB 資料庫的部分。"/>
+<meta name="twitter:title" content="To-do Calendar - Day14 用 Axios Instance 管理 API"/>
+<meta name="twitter:description" content="上篇的 API 串接還不算完成，因為直接將 URL 寫死在程式中的做法不太好，如果今天 API 的路徑有異動，就必須把散落在各組件的 API 找出來修改，不易於後續維護。接下來將會透過 Axios Instance 來統一管理 API。"/>
 
 
 
   
-  <meta property="og:title" content="To-do Calendar - Day12 串接 MongoDB 資料庫" />
-<meta property="og:description" content="接下來要進行設定在 Spring Boot 專案中連接 MongoDB 資料庫的部分。" />
+  <meta property="og:title" content="To-do Calendar - Day14 用 Axios Instance 管理 API" />
+<meta property="og:description" content="上篇的 API 串接還不算完成，因為直接將 URL 寫死在程式中的做法不太好，如果今天 API 的路徑有異動，就必須把散落在各組件的 API 找出來修改，不易於後續維護。接下來將會透過 Axios Instance 來統一管理 API。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://fiberlin1121.github.io/post/post-18/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-05-23T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-23T00:00:00+00:00" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-21/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-29T00:00:00+00:00" />
 
 
 
@@ -138,12 +138,12 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "To-do Calendar - Day12 串接 MongoDB 資料庫",
-        "headline": "To-do Calendar - Day12 串接 MongoDB 資料庫",
+        "name": "To-do Calendar - Day14 用 Axios Instance 管理 API",
+        "headline": "To-do Calendar - Day14 用 Axios Instance 管理 API",
         "alternativeHeadline": "",
         "description": "
       
-        \u003cp\u003e接下來要進行設定在 Spring Boot 專案中連接 MongoDB 資料庫的部分。\u003c\/p\u003e
+        \u003cp\u003e上篇的 API 串接還不算完成，因為直接將 URL 寫死在程式中的做法不太好，如果今天 API 的路徑有異動，就必須把散落在各組件的 API 找出來修改，不易於後續維護。接下來將會透過 Axios Instance 來統一管理 API。\u003c\/p\u003e
 
 
       
@@ -154,7 +154,7 @@
         "isFamilyFriendly": "true",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-18\/"
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-21\/"
         },
         "author" : {
             "@type": "Person",
@@ -173,9 +173,9 @@
             "name": "Fiber Lin"
         },
         "copyrightYear" : "2022",
-        "dateCreated": "2022-05-23T00:00:00.00Z",
-        "datePublished": "2022-05-23T00:00:00.00Z",
-        "dateModified": "2022-05-23T00:00:00.00Z",
+        "dateCreated": "2022-05-29T00:00:00.00Z",
+        "datePublished": "2022-05-29T00:00:00.00Z",
+        "dateModified": "2022-05-29T00:00:00.00Z",
         "publisher":{
             "@type":"Organization",
             "name": "Fiber Lin",
@@ -197,8 +197,8 @@
       ]
 
     ,
-        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-18\/",
-        "wordCount" : "114",
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-21\/",
+        "wordCount" : "226",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -418,13 +418,13 @@ if (!doNotTrack) {
     ">
   
   <div class="post__content">
-    <h1>To-Do Calendar - Day12 串接 MongoDB 資料庫</h1>
+    <h1>To-Do Calendar - Day14 用 Axios Instance 管理 API</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
         <em class="fas fa-calendar-day post__meta-icon"></em>
         <span class="post__meta-text">
-          2022/05/23
+          2022/05/29
 
 
           
@@ -432,7 +432,7 @@ if (!doNotTrack) {
       </li>
       <li class="post__meta-item">
         <em class="fas fa-stopwatch post__meta-icon"></em>
-        <span class="post__meta-text">1-minute read</span>
+        <span class="post__meta-text">2-minute read</span>
       </li>
       <li class="post__meta-item">
         <span class="post__meta-text">
@@ -445,92 +445,122 @@ if (!doNotTrack) {
       </li>
     </ul>
 
-    <p>接下來要進行設定在 Spring Boot 專案中連接 MongoDB 資料庫的部分。</p>
-<h2 id="mongodb-是什麼">MongoDB 是什麼？</h2>
-<p><a href="https://www.mongodb.com/">MongoDB</a> 是面向文檔的開源資料庫，是一種靈活、易於擴展、高效能的 NoSQL 資料庫，MongoDB 旨在為 web 應用提供可擴展的高性能數據存儲解決方案，它提供了可以跟 SQL 相比的 Query Language（查詢語言），由 C++ 語言編寫而成。MongoDB 從 4.0 開始支援多文檔交易（Transactions），這是 MongoDB 一個革命性的里程碑。</p>
-<h3 id="非關聯式資料庫nosql">非關聯式資料庫（NoSQL）</h3>
-<p>非關聯式資料庫（NoSQL）的意思是「Not Only SQL」，指的是不限定為關聯式資料庫的資料庫管理系統，以混用關聯式資料庫和非關聯式資料庫來達到最佳的儲存效果。NoSQL 資料庫沒有 Schema 架構，也就是所謂的 Schema-Free，可自由定義資料文件（Document）的結構，以及自由新增欄位。
+    <p>上篇的 API 串接還不算完成，因為直接將 URL 寫死在程式中的做法不太好，如果今天 API 的路徑有異動，就必須把散落在各組件的 API 找出來修改，不易於後續維護。接下來將會透過 Axios Instance 來統一管理 API。</p>
+<h2 id="用-axios-instance-管理-api-的好處">用 Axios Instance 管理 API 的好處？</h2>
+<ul>
+<li>集中設定 Request Config</li>
+<li>支援攔截器，可在 then/catch 前做額外處理</li>
+<li>封裝 API 易於管理
 <br>
-<br></p>
-<h3 id="mongodb與rdbms的架構比對">MongoDB與RDBMS的架構比對</h3>
-<figure class="medium"><img src="https://i.imgur.com/33Perpg.jpg"
-         alt="image"/>
-</figure>
-
-<h3 id="mongodb的基本概念">MongoDB的基本概念</h3>
-<ol>
-<li>Database
-<ul>
-<li>MongoDB的單個實例 (mongod)，可以容納多個獨立的資料庫，每一個都有自己的集合和權限。</li>
+<br></li>
 </ul>
-</li>
-<li>Collection
+<p>作法如下：</p>
+<h3 id="使用-axioscreate-建立-axios-instance">使用 axios.create 建立 axios instance</h3>
 <ul>
-<li>可包含多筆資料，類似 RDBMS 的表格。</li>
-<li>集合沒有固定的結構 (schema-free)，可以插入不同類型的資料。</li>
-<li>當第一個文件插入時，集合就會自動被創建。</li>
-</ul>
-</li>
-<li>Document
-<ul>
-<li>文件是一個鍵值(key-value)對，以JSON格式呈現，使用BSON格式儲存。</li>
-<li>_id 欄位為必要欄位，可自行定義其值，未定義則由 MongoDB 自行塞入一組 ObjectId。</li>
-<li>Field中的值可以為陣列、內嵌文件等屬性。</li>
-</ul>
-</li>
-</ol>
-<p>因為 MongoDB 之前已經下載過，下載教學可參考<a href="https://dotblogs.com.tw/explooosion/2018/01/21/040728">這篇</a>，可以不裝 MongoDB 的圖形化管理工具，因為這篇開始會使用 IntelliJ 介面來管理資料庫的數據。
-<br>
-<br></p>
-<h2 id="設定-intellij-與資料庫連線">設定 IntelliJ 與資料庫連線</h2>
-<ul>
-<li>點右上方的 Database 標籤</li>
-<li>點 + 按鈕 &gt; Data Source &gt; MongoDB
-<figure class="medium"><img src="https://i.imgur.com/PG2JFXR.jpg"
-         alt="image"/>
-</figure>
-</li>
-<li>設定 MongoDB 資料庫的連線資訊</li>
-<li>點 Download 讓 IntelliJ 去下載相對應的 Driver 檔案</li>
-<li>測試連線成功後，就按下 ok
-<figure class="medium"><img src="https://i.imgur.com/Ug5PmC5.jpg"
-         alt="image"/>
-</figure>
-</li>
-</ul>
-<h2 id="建立資料庫與集合">建立資料庫與集合</h2>
-<ul>
-<li>點 QL 按鈕叫出 MongoDB 的 console</li>
-<li>建立資料庫（指定當前資料庫，若不存在則建立新資料庫）</li>
-<li>語法：use &lt;資料庫名稱&gt;
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">use todoCalendar
+<li>建立 api 資料夾，並在裡面建立 index.js 檔案，並 import axios</li>
+<li>使用 <code>axios.create</code> 建立一個實體，裡面放進 Request 的相關設定屬性（詳細設定請參考<a href="https://github.com/axios/axios#request-config">官方說明</a>）
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import axios from &#34;axios&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">const instance = axios.create({
+</span></span><span class="line"><span class="cl">  baseURL: &#34;http://localhost:8080&#34;,
+</span></span><span class="line"><span class="cl">  headers: { &#34;Content-Type&#34;: &#34;application/json&#34; }
+</span></span><span class="line"><span class="cl">});
 </span></span></code></pre></div></li>
 </ul>
-<figure class="medium"><img src="https://i.imgur.com/nrLtRnH.jpg"
-         alt="image"/>
-</figure>
-
+<h3 id="宣告-api-方法">宣告 API 方法</h3>
 <ul>
-<li>建立 Collection</li>
-<li>語法：db.createCollection(&lt;集合名稱&gt;)
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">db.createCollection(&#34;HabitTrackers&#34;)
+<li>使用 instance 變數去做 http method，然後再 export 出去給外面的組件 import
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">// Habits 相關的 API
+</span></span><span class="line"><span class="cl">export const apiHabitsQuery = (data) =&gt; instance.get(`/users/${data.userId}/habits`);
 </span></span></code></pre></div></li>
 </ul>
-<figure class="medium"><img src="https://i.imgur.com/STK5UfF.jpg"
+<h3 id="設置攔截器">設置攔截器</h3>
+<ul>
+<li>Request Interceptors
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">instance.interceptors.request.use(
+</span></span><span class="line"><span class="cl">  function (config) {
+</span></span><span class="line"><span class="cl">    // Do something before request is sent
+</span></span><span class="line"><span class="cl">    return config;
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  function (error) {
+</span></span><span class="line"><span class="cl">    // Do something with request error
+</span></span><span class="line"><span class="cl">    return Promise.reject(error);
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">);
+</span></span></code></pre></div></li>
+<li>Response Interceptors
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">instance.interceptors.response.use(
+</span></span><span class="line"><span class="cl">  function (response) {
+</span></span><span class="line"><span class="cl">    // Do something with response data
+</span></span><span class="line"><span class="cl">    return response;
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  function (error) {
+</span></span><span class="line"><span class="cl">    if (error.response) {
+</span></span><span class="line"><span class="cl">      switch (error.response.status) {
+</span></span><span class="line"><span class="cl">        case 404:
+</span></span><span class="line"><span class="cl">          alert(&#34;你要找的頁面不存在&#34;);
+</span></span><span class="line"><span class="cl">          // go to 404 page
+</span></span><span class="line"><span class="cl">          break;
+</span></span><span class="line"><span class="cl">        case 500:
+</span></span><span class="line"><span class="cl">          alert(&#34;伺服器錯誤&#34;);
+</span></span><span class="line"><span class="cl">          // go to 500 page
+</span></span><span class="line"><span class="cl">          break;
+</span></span><span class="line"><span class="cl">        default:
+</span></span><span class="line"><span class="cl">          console.log(error.message);
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    if (!window.navigator.onLine) {
+</span></span><span class="line"><span class="cl">      alert(&#34;網路出了點問題，請重新連線後重整網頁&#34;);
+</span></span><span class="line"><span class="cl">      return;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    return Promise.reject(error);
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">);
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="在組件中呼叫-api">在組件中呼叫 API</h3>
+<ul>
+<li>在 habitTracker.vue import axios 的 index.js
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import { apiHabitsQuery } from &#34;../../api/index.js&#34;;
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">mounted() {
+</span></span><span class="line"><span class="cl">  apiHabitsQuery({
+</span></span><span class="line"><span class="cl">    userId: &#34;user01&#34;,
+</span></span><span class="line"><span class="cl">  }).then((res) =&gt; {
+</span></span><span class="line"><span class="cl">    console.log(res.data);
+</span></span><span class="line"><span class="cl">    this.habitList = res.data.habitList;
+</span></span><span class="line"><span class="cl">  });
+</span></span><span class="line"><span class="cl">},
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="運行結果">運行結果</h3>
+<ul>
+<li>
+<p>userId 為測試資料的 user01
+<figure class="medium"><img src="https://i.imgur.com/XMrC6vO.jpg"
          alt="image"/>
 </figure>
-
-<p>後面依序將其他集合也建出來，資料庫相關的前置作業就先到這～
+</p>
+</li>
+<li>
+<p>userId 為不存在的 user02，alert 有出現「你要找的頁面不存在」訊息，視情況可導向首頁或404頁面
+<figure class="medium"><img src="https://i.imgur.com/Bg2tIvG.jpg"
+         alt="image"/><figcaption>
+            <p>攔截器的好處：集中管理錯誤處理，便於日後維護</p>
+        </figcaption>
+</figure>
+</p>
+</li>
+</ul>
+<p>API 從前端開發到後端實作再到串接算是整個流程跑過一輪了～接下來就可以來衝刺進度啦╭( ･ㅂ･)و
 <br>
 <br></p>
-<h4 id="延伸閱讀">延伸閱讀</h4>
-<ul>
-<li><a href="https://www.tpisoftware.com/tpu/articleDetails/2491">MongoDB 簡介</a></li>
-<li><a href="https://docs.mongoing.com/">MongoDB 中文手冊|官方文檔中文版</a></li>
-</ul>
 <h4 id="參考資料">參考資料</h4>
 <ul>
-<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a>
+<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a></li>
+<li><a href="https://medium.com/i-am-mike/">使用Axios你的API都怎麼管理？</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10230336?sc=pt">用 Axios Instance 管理 API</a></li>
+<li><a href="https://nighthree.github.io/2020/08/19/2020-08-19-vue%E7%9A%84axios%E6%94%94%E6%88%AA%E5%99%A8/">Vue 的 axios 全域攔截器</a>
 <br>
 <br></li>
 </ul></div>

@@ -6,9 +6,31 @@
     <description>Recent content in SideProject on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 26 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/tags/sideproject/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/tags/sideproject/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>To-do Calendar - Day13 使用 MongoTemplate 操作 MongoDB</title>
+      <title>To-do Calendar - Day14 用 Axios Instance 管理 API</title>
+      <link>https://fiberlin1121.github.io/post/post-21/</link>
+      <pubDate>Sun, 29 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiberlin1121.github.io/post/post-21/</guid>
+      
+        <description>&lt;p&gt;上篇的 API 串接還不算完成，因為直接將 URL 寫死在程式中的做法不太好，如果今天 API 的路徑有異動，就必須把散落在各組件的 API 找出來修改，不易於後續維護。接下來將會透過 Axios Instance 來統一管理 API。&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>To-do Calendar - Day13 RESTful API 串接</title>
+      <link>https://fiberlin1121.github.io/post/post-20/</link>
+      <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiberlin1121.github.io/post/post-20/</guid>
+      
+        <description>&lt;p&gt;這篇要來實作串接 API，API 使用 REST 設計風格。&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>To-do Calendar - Day13 用 MongoTemplate 操作 MongoDB</title>
       <link>https://fiberlin1121.github.io/post/post-19/</link>
       <pubDate>Thu, 26 May 2022 00:00:00 +0000</pubDate>
       
