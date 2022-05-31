@@ -6,9 +6,20 @@
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 29 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>To-do Calendar - Day14 用 Axios Instance 管理 API</title>
+      <title>To-do Calendar - Day16 實作條件查詢功能</title>
+      <link>https://fiberlin1121.github.io/post/post-22/</link>
+      <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiberlin1121.github.io/post/post-22/</guid>
+      
+        <description>&lt;p&gt;接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 的寫法與 MongoTemplate 的用法。&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>To-do Calendar - Day15 用 Axios Instance 管理 API</title>
       <link>https://fiberlin1121.github.io/post/post-21/</link>
       <pubDate>Sun, 29 May 2022 00:00:00 +0000</pubDate>
       
@@ -19,7 +30,7 @@
     </item>
     
     <item>
-      <title>To-do Calendar - Day13 RESTful API 串接</title>
+      <title>To-do Calendar - Day14 RESTful API 串接</title>
       <link>https://fiberlin1121.github.io/post/post-20/</link>
       <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
       

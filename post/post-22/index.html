@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      
+        To-do Calendar - Day16 實作條件查詢功能 |
+
+      
+      Fiber&#39;s blog
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.96.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Fiber&#39;s blog" />
+  <meta
+    name="description"
+    content="
+      Hi! I&#39;m Fiber, 一名貓奴工程師
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.02d94a71503cb758e2ae7d6030f4bada9d3babfd125372c3759e2455304f6630.css"
+      integrity="sha256-AtlKcVA8t1jirn1gMPS62p07q/0SU3LDdZ4kVTBPZjA="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-22/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="To-do Calendar - Day16 實作條件查詢功能"/>
+<meta name="twitter:description" content="接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 的寫法與 MongoTemplate 的用法。"/>
+
+
+
+  
+  <meta property="og:title" content="To-do Calendar - Day16 實作條件查詢功能" />
+<meta property="og:description" content="接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 的寫法與 MongoTemplate 的用法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-22/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-30T00:00:00+00:00" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "To-do Calendar - Day16 實作條件查詢功能",
+        "headline": "To-do Calendar - Day16 實作條件查詢功能",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003cp\u003e接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 的寫法與 MongoTemplate 的用法。\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-22\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-05-30T00:00:00.00Z",
+        "datePublished": "2022-05-30T00:00:00.00Z",
+        "dateModified": "2022-05-30T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Fiber Lin",
+            "url": "https://fiberlin1121.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/fiberlin1121.github.io\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://fiberlin1121.github.io/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-22\/",
+        "wordCount" : "366",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "SideProject"
+
+    ]
+    }
+  </script>
+
+
+
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction" style="margin-bottom: 0;">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/wowo.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/"></a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Hi! I'm Fiber, 一名貓奴工程師</p>
+      </div>
+    </div>
+    
+    <ul class="sidebar__list" style="margin-top: 0;">
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/FiberLin1121/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.behance.net/fiber410139" rel="me" aria-label="Behance" title="Behance">
+            <i class="fab fa-behance-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.facebook.com/%E5%B0%8F%E8%B3%B4%E7%9A%AE-277134752317535" rel="me" aria-label="Facebook" title="Facebook">
+            <i class="fab fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:fiber410139@gmail.com" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+
+    <ul class="sidebar__list">
+      <li style="margin-bottom:.5em; font-size: 15px;"><a href="/tags/程式筆記/" style="font-size: 15px;">程式筆記</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/sideproject/" style="font-size: 15px;">Side Project</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/阿宅日常/" style="font-size: 15px;">阿宅日常</a></li>
+    </ul>
+    
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav d-flex justify-content-between">
+    <ul class="nav__list col" id="navMenu">
+      
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/"
+            
+            title=""
+            >Home</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/post/"
+            
+            title=""
+            >Posts</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/portfolio/"
+            
+            title=""
+            >Portfolio</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/about/"
+            
+            title=""
+            >About</a
+          >
+        </li>
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end col">
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+<div class="post 
+      .
+
+    ">
+  
+  <div class="post__content">
+    <h1>To-Do Calendar - Day16 實作條件查詢功能</h1>
+    
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <em class="fas fa-calendar-day post__meta-icon"></em>
+        <span class="post__meta-text">
+          2022/05/30
+
+
+          
+        </span>
+      </li>
+      <li class="post__meta-item">
+        <em class="fas fa-stopwatch post__meta-icon"></em>
+        <span class="post__meta-text">2-minute read</span>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__meta-text">
+        
+        <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
+
+
+        
+        </span>
+      </li>
+    </ul>
+
+    <p>接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 的寫法與 MongoTemplate 的用法。</p>
+<h2 id="原子習慣追蹤查詢功能">原子習慣追蹤查詢功能</h2>
+<ul>
+<li>開發流程：以前端傳來的參數 habitId 與年份作為查詢條件，到 MongoDB 中取得符合條件的 habitTracker Document 並返回前端，最後再實作前端呼叫 API。
+<br></li>
+</ul>
+<h2 id="設計-restful-api">設計 RESTful API</h2>
+<figure class="medium"><img src="https://i.imgur.com/Vlo5n3B.jpg"
+         alt="image"/><figcaption>
+            <p>原子習慣追蹤</p>
+        </figcaption>
+</figure>
+
+<h3 id="gethabittracker-api">getHabitTracker API</h3>
+<ul>
+<li>Request URL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET http://localhost:8080/users/{userId}/habitTracker?habitId=&lt;habitId&gt;&amp;year=&lt;year&gt;
+</span></span></code></pre></div></li>
+<li>Response Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;id&#34;: &#34;6294f0123d1b551c205e3b71&#34;,
+</span></span><span class="line"><span class="cl">  &#34;habitId&#34;: &#34;habit01&#34;,
+</span></span><span class="line"><span class="cl">  &#34;year&#34;: &#34;2022&#34;,
+</span></span><span class="line"><span class="cl">  &#34;pickedDays&#34;:[
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-06&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-05T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-07&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-06T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-08&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-07T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  ],
+</span></span><span class="line"><span class="cl">  &#34;createdTime&#34;: 1653405213436,
+</span></span><span class="line"><span class="cl">  &#34;lastModifiedTime&#34;: 1653405213436
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h2 id="實作-dao-層">實作 Dao 層</h2>
+<ul>
+<li>在 dao package 底下建立 HabitTrackerDao</li>
+<li>在 impl package 底下再建立 HabitTrackerDaoImpl class</li>
+<li>為讓 HabitTrackerDaoImpl class 成為 Bean，在 HabitTrackerDaoImpl class 上加上 <code>@component</code> 註解，並 implements HabitTrackerDao interface，然後使用 <code>@Autowired</code> 註解注入 MongoTemplate</li>
+<li>在 HabitTrackerDao interface 宣告一個 getHabitTrackerByHabitId 方法，返回類型為 HabitTracker</li>
+<li>實作之前可先在 Query Console 測試 MongoDB 語法</li>
+<li>接著再到 HabitsDaoImpl class，實作 getHabitTrackerByHabitId 方法
+<figure class="medium"><img src="https://i.imgur.com/SXTgw5s.jpg"
+         alt="image"/><figcaption>
+            <p>Query Console</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/0Fa442p.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerDao class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/BkjLM14.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerDaoImpl class</p>
+        </figcaption>
+</figure>
+
+<br></li>
+</ul>
+<h2 id="實作-service-層">實作 Service 層</h2>
+<ul>
+<li>在 service package 底下建立 HabitTrackerService interface</li>
+<li>在 impl package 底下建立 HabitTrackerServiceImpl class</li>
+<li>為讓 HabitTrackerServiceImpl class 成為 Bean，在 HabitTrackerServiceImpl class 上加上 <code>@component</code> 註解，並 implements HabitTrackerService interface，然後使用 <code>@Autowired</code> 註解注入 HabitTrackerDao</li>
+<li>回到 HabitTrackerService interface，宣告一個 getHabitTrackersByUserId 方法</li>
+<li>接著再到 HabitTrackerServiceImpl class，實作 getHabitTrackersByUserId 方法
+<figure class="medium"><img src="https://i.imgur.com/iGV4kZJ.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerService interface</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/obehQRO.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsServiceImpl class</p>
+        </figcaption>
+</figure>
+
+<br></li>
+</ul>
+<h2 id="實作-controller-層">實作 Controller 層</h2>
+<ul>
+<li>在 controller package 底下建立 HabitTrackerController class</li>
+<li>在 HabitTrackerController class 上加上 <code>@RestController</code> 註解，並使用 <code>@Autowired</code> 註解注入 HabitTrackerService</li>
+<li>新增 getHabitTracker 方法，返回類型為 <code>ResponseEntity&lt;HabitTracker&gt;</code></li>
+<li>根據 <strong>RESTful 的設計原則</strong>，查詢所對應的是 GET 方法，所以在方法上加上 <code>@GetMapping</code> 註解，表示前端要使用 GET 方法來請求 API</li>
+<li>在 <code>@GetMapping</code> 註解括號中指定 url 路徑，並使用 <code>@RequestParam</code> 註解去取得 url 路徑的參數
+<figure class="medium"><img src="https://i.imgur.com/Ay8nPb3.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsController class</p>
+        </figcaption>
+</figure>
+</li>
+<li>接著運行 Spring Boot 程式，使用 API Tester 測試一下效果
+<figure class="medium"><img src="https://i.imgur.com/PmPGPG6.jpg"
+         alt="image"/>
+</figure>
+
+<br>
+<br></li>
+</ul>
+<h2 id="實作前端串接-api">實作前端串接 API</h2>
+<ul>
+<li>在 src/axios/index.js 新增 apiHabitTrackerQuery 方法，然後再 export 出去給外面的組件 import
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">// HabitTracker 相關的 api
+</span></span><span class="line"><span class="cl">export const apiHabitTrackerQuery = (userId, habitId, year) =&gt;
+</span></span><span class="line"><span class="cl">instance.get(`/users/${userId}/habitTracker?habitId=${habitId}&amp;year=${year}`);
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="gethabittracker-api-呼叫時機">getHabitTracker API 呼叫時機</h3>
+<h4 id="進-habit-trackers-頁面">進 Habit trackers 頁面</h4>
+<figure class="medium"><img src="https://i.imgur.com/HJ6jWXQ.gif"
+         alt="image"/><figcaption>
+            <p>進 Habit trackers 頁面時，呼叫 getHabitTracker API</p>
+        </figcaption>
+</figure>
+
+<ul>
+<li>如果後端返回的原子習慣列表長度大於0，就預設顯示第一筆的原子習慣追蹤
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import { apiHabitsQuery, apiHabitTrackerQuery } from &#34;../../api/index.js&#34;;
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">mounted() {
+</span></span><span class="line"><span class="cl">  apiHabitsQuery(this.$store.state.userId).then((res) =&gt; {
+</span></span><span class="line"><span class="cl">    console.log(res.data);
+</span></span><span class="line"><span class="cl">    this.habitList = res.data.habitList;
+</span></span><span class="line"><span class="cl">    if (this.habitList.length &gt; 0) {
+</span></span><span class="line"><span class="cl">      this.pickedHabit = this.habitList[0];
+</span></span><span class="line"><span class="cl">      apiHabitTrackerQuery(
+</span></span><span class="line"><span class="cl">        this.$store.state.userId,
+</span></span><span class="line"><span class="cl">        this.pickedHabit.habitId,
+</span></span><span class="line"><span class="cl">        this.pageYear
+</span></span><span class="line"><span class="cl">      ).then((res) =&gt; {
+</span></span><span class="line"><span class="cl">        this.pickedDays = res.data.pickedDays;
+</span></span><span class="line"><span class="cl">      });
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  });
+</span></span><span class="line"><span class="cl">},  
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h4 id="點選列表中的原子習慣">點選列表中的原子習慣</h4>
+<figure class="medium"><img src="https://i.imgur.com/3aRoZth.gif"
+         alt="image"/><figcaption>
+            <p>點選列表中的原子習慣時，呼叫 getHabitTracker API</p>
+        </figcaption>
+</figure>
+
+<ul>
+<li>如果切換到的年份是還沒有建立 HabitTracker Document 的年份，後端仍返回200和預設值。
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sendQueryHabitTracker(item) {
+</span></span><span class="line"><span class="cl">  let self = this;
+</span></span><span class="line"><span class="cl">  self.pickedHabit = item;
+</span></span><span class="line"><span class="cl">  apiHabitTrackerQuery(self.$store.state.userId, item.habitId, self.pageYear).then(
+</span></span><span class="line"><span class="cl">    (res) =&gt; {
+</span></span><span class="line"><span class="cl">      this.pickedDays = res.data.pickedDays;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  );
+</span></span><span class="line"><span class="cl">},
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h4 id="切換原子習慣追蹤年份">切換原子習慣追蹤年份</h4>
+<figure class="medium"><img src="https://i.imgur.com/TftqJaj.gif"
+         alt="image"/><figcaption>
+            <p>切換原子習慣追蹤年份時，呼叫 getHabitTracker API</p>
+        </figcaption>
+</figure>
+
+<ul>
+<li>如果原子習慣列表長度大於0，才去呼叫 getHabitTracker API
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">updatePage(page) {
+</span></span><span class="line"><span class="cl">  let self = this;
+</span></span><span class="line"><span class="cl">  if (self.habitList.length &gt; 0) {
+</span></span><span class="line"><span class="cl">    self.pageYear = page.year;
+</span></span><span class="line"><span class="cl">    apiHabitTrackerQuery(
+</span></span><span class="line"><span class="cl">      self.$store.state.userId,
+</span></span><span class="line"><span class="cl">      self.pickedHabit.habitId,
+</span></span><span class="line"><span class="cl">      page.year
+</span></span><span class="line"><span class="cl">    ).then((res) =&gt; {
+</span></span><span class="line"><span class="cl">      console.log(res.data);
+</span></span><span class="line"><span class="cl">      self.pickedDays = res.data.pickedDays;
+</span></span><span class="line"><span class="cl">    });
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">},
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<br>
+<h4 id="參考資料">參考資料</h4>
+<ul>
+<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1436081">SpringBoot之MongoTemplate的查詢可以怎麼耍</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10239302">Day05: MongoDB 的 CRUD(3) - Find &amp; Update</a></li>
+<li><a href="https://www.mongodb.com/docs/manual/tutorial/query-array-of-documents/">MongoDB官方文件</a>
+<br>
+<br></li>
+</ul></div>
+  <div class="post__footer">
+    
+
+    
+  </div>
+
+  <div id="comment">
+    <h2>comments</h2>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fiberlin1121" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>

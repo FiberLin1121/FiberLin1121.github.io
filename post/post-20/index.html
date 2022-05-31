@@ -8,7 +8,7 @@
   <title>
     
       
-        To-do Calendar - Day13 RESTful API 串接 |
+        To-do Calendar - Day14 RESTful API 串接 |
 
       
       Fiber&#39;s blog
@@ -113,13 +113,13 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="To-do Calendar - Day13 RESTful API 串接"/>
+<meta name="twitter:title" content="To-do Calendar - Day14 RESTful API 串接"/>
 <meta name="twitter:description" content="這篇要來實作串接 API，API 使用 REST 設計風格。"/>
 
 
 
   
-  <meta property="og:title" content="To-do Calendar - Day13 RESTful API 串接" />
+  <meta property="og:title" content="To-do Calendar - Day14 RESTful API 串接" />
 <meta property="og:description" content="這篇要來實作串接 API，API 使用 REST 設計風格。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://fiberlin1121.github.io/post/post-20/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
@@ -138,8 +138,8 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "To-do Calendar - Day13 RESTful API 串接",
-        "headline": "To-do Calendar - Day13 RESTful API 串接",
+        "name": "To-do Calendar - Day14 RESTful API 串接",
+        "headline": "To-do Calendar - Day14 RESTful API 串接",
         "alternativeHeadline": "",
         "description": "
       
@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-20\/",
-        "wordCount" : "199",
+        "wordCount" : "200",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -418,7 +418,7 @@ if (!doNotTrack) {
     ">
   
   <div class="post__content">
-    <h1>To-Do Calendar - Day13 RESTful API 串接</h1>
+    <h1>To-Do Calendar - Day14 RESTful API 串接</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
@@ -488,11 +488,17 @@ if (!doNotTrack) {
 <br>
 <br></p>
 <h2 id="設計-restful-api">設計 RESTful API</h2>
-<p>以查詢原子習慣列表功能為例。</p>
+<figure class="medium"><img src="https://i.imgur.com/yBAGVtk.jpg"
+         alt="image"/><figcaption>
+            <p>原子習慣列表</p>
+        </figcaption>
+</figure>
+
+<p>以下將以原子習慣列表查詢功能為例。</p>
 <h3 id="gethabits-api">getHabits API</h3>
 <ul>
 <li>Request URL
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET http://localhost:8080/users/{user01}/habits
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET http://localhost:8080/users/{userId}/habits
 </span></span></code></pre></div></li>
 <li>Response Body
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
@@ -510,7 +516,7 @@ if (!doNotTrack) {
 </ul>
 <br>
 <br>
-<h2 id="實作串接-api">實作串接 API</h2>
+<h2 id="實作前端串接-api">實作前端串接 API</h2>
 <p>回到前端，來使用之前已載入的 Axios 來呼叫後端 API，先用基本用法來測試是否拿的到資料：</p>
 <ul>
 <li>habitTracker.vue

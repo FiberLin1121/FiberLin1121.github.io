@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-18\/",
-        "wordCount" : "114",
+        "wordCount" : "129",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -476,6 +476,12 @@ if (!doNotTrack) {
 <li>文件是一個鍵值(key-value)對，以JSON格式呈現，使用BSON格式儲存。</li>
 <li>_id 欄位為必要欄位，可自行定義其值，未定義則由 MongoDB 自行塞入一組 ObjectId。</li>
 <li>Field中的值可以為陣列、內嵌文件等屬性。</li>
+</ul>
+</li>
+<li>MongoDB 的限制
+<ul>
+<li>BSON document 的大小上限：每個 BSON document 的大小上限為 16 megabytes</li>
+<li>嵌入式文件巢狀結構的深度上限：BSON document 的巢狀結構上限為 100 層</li>
 </ul>
 </li>
 </ol>

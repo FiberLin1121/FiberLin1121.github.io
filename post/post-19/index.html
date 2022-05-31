@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-19\/",
-        "wordCount" : "396",
+        "wordCount" : "398",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -448,19 +448,19 @@ if (!doNotTrack) {
     <p>這篇要來實作查詢列表功能，以原子習慣為例，從設計 Document 的資料結構開始，再來實作 Spring Boot 程式。</p>
 <h2 id="設計資料結構">設計資料結構</h2>
 <p>對應前端原子習慣畫面與示意的假資料，規劃需要的欄位對照如下：
-<figure class="medium"><img src="https://i.imgur.com/4D7kVVI.jpg"
+<figure class="medium"><img src="https://i.imgur.com/WZ4HyFC.jpg"
          alt="image"/><figcaption>
-            <p>原子習慣列表與年曆</p>
+            <p>原子習慣列表與原子習慣追蹤</p>
         </figcaption>
 </figure>
 
 <figure class="medium"><img src="https://i.imgur.com/q4jJYt8.jpg"
          alt="image"/><figcaption>
-            <p>原子習慣資料</p>
+            <p>原子習慣詳細資料</p>
         </figcaption>
 </figure>
 </p>
-<h3 id="habitsdocument">habits（Document）</h3>
+<h3 id="habits多對一document">habits（多對一Document）</h3>
 <ul>
 <li>id（String）：文件主鍵</li>
 <li>userId（String）：所屬的使用者id</li>
@@ -468,9 +468,10 @@ if (!doNotTrack) {
 <li>createdTime（Timestamp）：建立時間</li>
 <li>lastModifiedTime（Timestamp）：最後修改時間</li>
 </ul>
-<h3 id="habittrackersdocument">habitTrackers（Document）</h3>
+<h3 id="habittracker一對一document">habitTracker（一對一Document）</h3>
 <ul>
 <li>id（String）：文件主鍵</li>
+<li>habitId（String）：所屬的原子習慣id</li>
 <li>year（String）：年份</li>
 <li>pickedDays（Array）：達成日期物件陣列</li>
 <li>createdTime（Timestamp）：建立時間</li>
@@ -478,8 +479,8 @@ if (!doNotTrack) {
 </ul>
 <h3 id="habitobject">habit（Object）</h3>
 <ul>
-<li>habitId（String）：習慣id</li>
-<li>name（String）：習慣名稱</li>
+<li>habitId（String）：原子習慣id</li>
+<li>name（String）：原子習慣名稱</li>
 <li>checkColor（String）：圈選日期顏色</li>
 <li>createdTime（Timestamp）：建立時間</li>
 <li>lastModifiedTime（Timestamp）：最後修改時間
@@ -506,9 +507,9 @@ ordered: &lt;<code>boolean</code>&gt;
 </ul>
 <h4 id="參數說明">參數說明</h4>
 <ul>
-<li>document：要寫入的文檔。</li>
-<li>writeConcern：寫入策略，默認為1，即要求確認寫操作，0 是不要求。</li>
-<li>ordered：指定是否按順序寫入，默認true，按順序寫入。
+<li>document：要寫入的文檔</li>
+<li>writeConcern：寫入策略，默認為1，即要求確認寫操作，0 是不要求</li>
+<li>ordered：指定是否按順序寫入，默認true，按順序寫入
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">db.habits.insertOne({
 </span></span><span class="line"><span class="cl">  userId: &#34;user01&#34;,
 </span></span><span class="line"><span class="cl">  habitList: [
@@ -601,9 +602,9 @@ ordered: &lt;<code>boolean</code>&gt;
         </figcaption>
 </figure>
 
-<figure class="medium"><img src="https://i.imgur.com/cPglTEd.jpg"
+<figure class="medium"><img src="https://i.imgur.com/dW6QoG9.jpg"
          alt="image"/><figcaption>
-            <p>HabitTrackers class</p>
+            <p>HabitTracker class</p>
         </figcaption>
 </figure>
 
@@ -618,7 +619,7 @@ ordered: &lt;<code>boolean</code>&gt;
 <ul>
 <li>在 dao package 底下建立 HabitsDao interface</li>
 <li>在 dao package 底下建立 impl package，在 impl package 底下再建立 HabitsDaoImpl class</li>
-<li>為讓 HabitsDaoImpl class 成為 Bean，在 HabitsDaoImpl class 上加上 <code>@component</code> 註解，並實作 HabitsDao interface，然後使用 <code>@Autowired</code> 註解注入 MongoTemplate</li>
+<li>為讓 HabitsDaoImpl class 成為 Bean，在 HabitsDaoImpl class 上加上 <code>@component</code> 註解，並implements HabitsDao interface，然後使用 <code>@Autowired</code> 註解注入 MongoTemplate</li>
 <li>回到 HabitsDao interface，宣告一個 getHabitsByUserId 方法，返回類型為 Habits</li>
 <li>接著再到 HabitsDaoImpl class，實作 getHabitsByUserId 方法
 <figure class="medium"><img src="https://i.imgur.com/GjYxt7L.jpg"
@@ -640,7 +641,7 @@ ordered: &lt;<code>boolean</code>&gt;
 <li>在 service package 底下建立 HabitsService interface</li>
 <li>在 service package 底下建立 impl package</li>
 <li>在 impl package 底下建立 HabitsServiceImpl class</li>
-<li>為讓 HabitsServiceImpl class 成為 Bean，在 HabitsDaoImpl class 上加上 <code>@component</code> 註解，並實作 HabitsService interface，然後使用 <code>@Autowired</code> 註解注入 HabitsDao</li>
+<li>為讓 HabitsServiceImpl class 成為 Bean，在 HabitsDaoImpl class 上加上 <code>@component</code> 註解，並 implements HabitsService interface，然後使用 <code>@Autowired</code> 註解注入 HabitsDao</li>
 <li>回到 HabitTrackersService interface，宣告一個 getHabitTrackersByUserId 方法</li>
 <li>接著再到 HabitsServiceImpl class，實作 getHabitsByUserId 方法
 <figure class="medium"><img src="https://i.imgur.com/OrZ2o8H.jpg"
@@ -660,11 +661,11 @@ ordered: &lt;<code>boolean</code>&gt;
 <h3 id="實作-controller-層">實作 Controller 層</h3>
 <ul>
 <li>在 controller package 底下建立 HabitsController class</li>
-<li>在 HabitsController class 上加上 <code>@restController</code> 註解，並使用 <code>@Autowired</code> 註解注入 HabitsService</li>
+<li>在 HabitsController class 上加上 <code>@RestController</code> 註解，並使用 <code>@Autowired</code> 註解注入 HabitsService</li>
 <li>新增 getHabitsByUserId 方法，返回類型為 <code>ResponseEntity&lt;Habits&gt;</code></li>
 <li>根據 <strong>RESTful 的設計原則</strong>，查詢所對應的是 GET 方法，所以在方法上加上 <code>@GetMapping</code> 註解，表示前端要使用 GET 方法來請求 API</li>
 <li>在 <code>@GetMapping</code> 註解括號中指定 url 路徑，並使用 <code>@PathVariable</code> 註解去取得 url 路徑的值
-<figure class="medium"><img src="https://i.imgur.com/C7Zj0tx.jpg"
+<figure class="medium"><img src="https://i.imgur.com/Dauh5Do.jpg"
          alt="image"/><figcaption>
             <p>HabitsController class</p>
         </figcaption>

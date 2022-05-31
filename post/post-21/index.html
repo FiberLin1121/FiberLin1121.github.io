@@ -8,7 +8,7 @@
   <title>
     
       
-        To-do Calendar - Day14 用 Axios Instance 管理 API |
+        To-do Calendar - Day15 用 Axios Instance 管理 API |
 
       
       Fiber&#39;s blog
@@ -113,13 +113,13 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="To-do Calendar - Day14 用 Axios Instance 管理 API"/>
+<meta name="twitter:title" content="To-do Calendar - Day15 用 Axios Instance 管理 API"/>
 <meta name="twitter:description" content="上篇的 API 串接還不算完成，因為直接將 URL 寫死在程式中的做法不太好，如果今天 API 的路徑有異動，就必須把散落在各組件的 API 找出來修改，不易於後續維護。接下來將會透過 Axios Instance 來統一管理 API。"/>
 
 
 
   
-  <meta property="og:title" content="To-do Calendar - Day14 用 Axios Instance 管理 API" />
+  <meta property="og:title" content="To-do Calendar - Day15 用 Axios Instance 管理 API" />
 <meta property="og:description" content="上篇的 API 串接還不算完成，因為直接將 URL 寫死在程式中的做法不太好，如果今天 API 的路徑有異動，就必須把散落在各組件的 API 找出來修改，不易於後續維護。接下來將會透過 Axios Instance 來統一管理 API。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://fiberlin1121.github.io/post/post-21/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
@@ -138,8 +138,8 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "To-do Calendar - Day14 用 Axios Instance 管理 API",
-        "headline": "To-do Calendar - Day14 用 Axios Instance 管理 API",
+        "name": "To-do Calendar - Day15 用 Axios Instance 管理 API",
+        "headline": "To-do Calendar - Day15 用 Axios Instance 管理 API",
         "alternativeHeadline": "",
         "description": "
       
@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-21\/",
-        "wordCount" : "226",
+        "wordCount" : "217",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -418,7 +418,7 @@ if (!doNotTrack) {
     ">
   
   <div class="post__content">
-    <h1>To-Do Calendar - Day14 用 Axios Instance 管理 API</h1>
+    <h1>To-Do Calendar - Day15 用 Axios Instance 管理 API</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
@@ -520,13 +520,11 @@ if (!doNotTrack) {
 </ul>
 <h3 id="在組件中呼叫-api">在組件中呼叫 API</h3>
 <ul>
-<li>在 habitTracker.vue import axios 的 index.js
+<li>在 habitTracker.vue import apiHabitsQuery
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import { apiHabitsQuery } from &#34;../../api/index.js&#34;;
 </span></span><span class="line"><span class="cl">...
 </span></span><span class="line"><span class="cl">mounted() {
-</span></span><span class="line"><span class="cl">  apiHabitsQuery({
-</span></span><span class="line"><span class="cl">    userId: &#34;user01&#34;,
-</span></span><span class="line"><span class="cl">  }).then((res) =&gt; {
+</span></span><span class="line"><span class="cl">  apiHabitsQuery(&#34;user01&#34;).then((res) =&gt; {
 </span></span><span class="line"><span class="cl">    console.log(res.data);
 </span></span><span class="line"><span class="cl">    this.habitList = res.data.habitList;
 </span></span><span class="line"><span class="cl">  });
@@ -557,8 +555,7 @@ if (!doNotTrack) {
 <br></p>
 <h4 id="參考資料">參考資料</h4>
 <ul>
-<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a></li>
-<li><a href="https://medium.com/i-am-mike/">使用Axios你的API都怎麼管理？</a></li>
+<li><a href="https://medium.com/i-am-mike/%E4%BD%BF%E7%94%A8axios%E6%99%82%E4%BD%A0%E7%9A%84api%E9%83%BD%E6%80%8E%E9%BA%BC%E7%AE%A1%E7%90%86-557d88365619">使用Axios你的API都怎麼管理？</a></li>
 <li><a href="https://ithelp.ithome.com.tw/articles/10230336?sc=pt">用 Axios Instance 管理 API</a></li>
 <li><a href="https://nighthree.github.io/2020/08/19/2020-08-19-vue%E7%9A%84axios%E6%94%94%E6%88%AA%E5%99%A8/">Vue 的 axios 全域攔截器</a>
 <br>
