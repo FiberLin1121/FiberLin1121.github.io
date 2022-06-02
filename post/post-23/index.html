@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      
+        To-do Calendar - Day17 改善參數傳遞 |
+
+      
+      Fiber&#39;s blog
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.96.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Fiber&#39;s blog" />
+  <meta
+    name="description"
+    content="
+      Hi! I&#39;m Fiber, 一名貓奴工程師
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.02d94a71503cb758e2ae7d6030f4bada9d3babfd125372c3759e2455304f6630.css"
+      integrity="sha256-AtlKcVA8t1jirn1gMPS62p07q/0SU3LDdZ4kVTBPZjA="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-23/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="To-do Calendar - Day17 改善參數傳遞"/>
+<meta name="twitter:description" content="上一篇實作了為原子習慣追蹤查詢功能添加查詢條件，這篇要來改善查詢條件參數傳遞到 Dao 層的方式。"/>
+
+
+
+  
+  <meta property="og:title" content="To-do Calendar - Day17 改善參數傳遞" />
+<meta property="og:description" content="上一篇實作了為原子習慣追蹤查詢功能添加查詢條件，這篇要來改善查詢條件參數傳遞到 Dao 層的方式。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-23/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-01T00:00:00+00:00" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "To-do Calendar - Day17 改善參數傳遞",
+        "headline": "To-do Calendar - Day17 改善參數傳遞",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003cp\u003e上一篇實作了為原子習慣追蹤查詢功能添加查詢條件，這篇要來改善查詢條件參數傳遞到 Dao 層的方式。\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-23\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-06-01T00:00:00.00Z",
+        "datePublished": "2022-06-01T00:00:00.00Z",
+        "dateModified": "2022-06-01T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Fiber Lin",
+            "url": "https://fiberlin1121.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/fiberlin1121.github.io\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://fiberlin1121.github.io/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-23\/",
+        "wordCount" : "118",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "SideProject"
+
+    ]
+    }
+  </script>
+
+
+
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction" style="margin-bottom: 0;">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/wowo.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/"></a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Hi! I'm Fiber, 一名貓奴工程師</p>
+      </div>
+    </div>
+    
+    <ul class="sidebar__list" style="margin-top: 0;">
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/FiberLin1121/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.behance.net/fiber410139" rel="me" aria-label="Behance" title="Behance">
+            <i class="fab fa-behance-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.facebook.com/%E5%B0%8F%E8%B3%B4%E7%9A%AE-277134752317535" rel="me" aria-label="Facebook" title="Facebook">
+            <i class="fab fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:fiber410139@gmail.com" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+
+    <ul class="sidebar__list">
+      <li style="margin-bottom:.5em; font-size: 15px;"><a href="/tags/程式筆記/" style="font-size: 15px;">程式筆記</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/sideproject/" style="font-size: 15px;">Side Project</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/阿宅日常/" style="font-size: 15px;">阿宅日常</a></li>
+    </ul>
+    
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav d-flex justify-content-between">
+    <ul class="nav__list col" id="navMenu">
+      
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/"
+            
+            title=""
+            >Home</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/post/"
+            
+            title=""
+            >Posts</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/portfolio/"
+            
+            title=""
+            >Portfolio</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/about/"
+            
+            title=""
+            >About</a
+          >
+        </li>
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end col">
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+<div class="post 
+      .
+
+    ">
+  
+  <div class="post__content">
+    <h1>To-Do Calendar - Day17 改善參數傳遞</h1>
+    
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <em class="fas fa-calendar-day post__meta-icon"></em>
+        <span class="post__meta-text">
+          2022/06/01
+
+
+          
+        </span>
+      </li>
+      <li class="post__meta-item">
+        <em class="fas fa-stopwatch post__meta-icon"></em>
+        <span class="post__meta-text">1-minute read</span>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__meta-text">
+        
+        <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
+
+
+        
+        </span>
+      </li>
+    </ul>
+
+    <p>上一篇實作了為原子習慣追蹤查詢功能添加查詢條件，這篇要來改善查詢條件參數傳遞到 Dao 層的方式。</p>
+<h2 id="原本作法">原本作法</h2>
+<ul>
+<li>直接將 habitId、year 這兩個參數，傳進去到 habitTrackerService 的 getHabitTracker 方法</li>
+<li>因此 HabitTrackerService 的 getHabitTracker 方法定義，就必須要填上 habitId、year 這兩個參數</li>
+<li>以此類推，HabitTrackerServiceImpl、HabitTrackerDao、HabitTrackerDaoImpl 的 getHabitTracker 方法也都要定義這兩個參數</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/Ay8nPb3.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsController class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/iGV4kZJ.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerService interface</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/obehQRO.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsServiceImpl class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/0Fa442p.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerDao class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/BkjLM14.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerDaoImpl class</p>
+        </figcaption>
+</figure>
+</p>
+<p>雖然目前這樣的作法，也是可以實作出正確的結果，但這樣的作法，在<strong>程式的維護上</strong>，就會變得比較麻煩。</p>
+<h3 id="試想可能情境">試想可能情境</h3>
+<ol>
+<li>假設查詢條件非常多（像是報表），有十幾個查詢條件的話，就要在每個 getHabitTracker 方法定義十幾個參數，而呼叫方法時填錯參數的機率就會增加 → <strong>可讀性差</strong> ∑(✘Д✘๑ )</li>
+<li>假設今天客戶要求要再增加查詢條件，那我們的程式就必須大費周章地從 Controller 層一路修改到 Dao 層才能達成需求 → <strong>可擴展性差</strong> (ﾟдﾟ≡ﾟдﾟ)</li>
+</ol>
+<p><div
+  class="notice"
+>
+  <span
+    class="notice__title"
+  >Info</span><div class="notice__content">
+    <strong>可擴展性</strong>是一種設計概念，代表了我們對未來的一種預想，我們希望在現有的架構或者設計基礎上，當未來某些方面發生改變的，我們能夠以最小的改動來適應這種變化。改動越小，並且對這種變化的適應性越好，我們就會說這個設計的可擴展性是非常好的。
+  </div>
+</div>
+
+<br>
+<br></p>
+<h2 id="改善方法">改善方法</h2>
+<p>我們可以建立一個新的 class，在裡面去存放這些端傳遞過來的參數，最後再一口氣傳遞過去，去提升程式的可維護性。</p>
+<ul>
+<li>先建一個 dto package</li>
+<li>接著在 dto package 底下建立 HabitTrackerQueryParams class</li>
+<li>在 HabitTrackerQueryParams 裡面添加在 getHabitTracker 方法中想要傳遞的參數
+<figure class="medium"><img src="https://i.imgur.com/cLspiB3.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerQueryParams class</p>
+        </figcaption>
+</figure>
+</li>
+<li>回到 HabitsController，在 getHabitTracker 方法裡面建立一個 ProductQueryParams 的物件</li>
+<li>將前端傳過來的參數的值一一 set 到 productQueryParams 的屬性</li>
+<li>最後將 habitTrackerService 的 getHabitTracker 方法裡的參數改為固定傳遞 productQueryParams</li>
+<li>以此類推，HabitTrackerService、HabitTrackerServiceImpl、HabitTrackerDao、HabitTrackerDaoImpl 的 getHabitTracker 方法也都要改接 與傳 productQueryParams
+<figure class="medium"><img src="https://i.imgur.com/oJjCx9n.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsController class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/4L8FYb8.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerService interface</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/7ZB8msH.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsServiceImpl class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/xGXLACD.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerDao class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/kh4q2Uj.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerDaoImpl class</p>
+        </figcaption>
+</figure>
+
+<br>
+當我們這樣改寫之後，以後不論在這個 productQueryParams 裡面去添加了多少新的變數，就不用再去修改 Service 層還有 Dao 層的 getHabitTracker 方法的定義了！所以說在開發時如果能適度地預留擴充的空間，就可以預防掉未來很多阿雜的問題囉～ <em>ଘ(੭</em>ˊᵕˋ)੭* ੈ✩‧₊˚
+<br>
+<br></li>
+</ul>
+<h4 id="參考資料">參考資料</h4>
+<ul>
+<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a></li>
+</ul></div>
+  <div class="post__footer">
+    
+
+    
+  </div>
+
+  <div id="comment">
+    <h2>comments</h2>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fiberlin1121" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>
