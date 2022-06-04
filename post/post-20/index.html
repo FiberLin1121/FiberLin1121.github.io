@@ -8,7 +8,7 @@
   <title>
     
       
-        To-do Calendar - Day14 RESTful API 串接 |
+        To-do Calendar - Day14 實作查詢列表功能（中）- RESTful API 串接 |
 
       
       Fiber&#39;s blog
@@ -113,13 +113,13 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="To-do Calendar - Day14 RESTful API 串接"/>
+<meta name="twitter:title" content="To-do Calendar - Day14 實作查詢列表功能（中）- RESTful API 串接"/>
 <meta name="twitter:description" content="這篇要來實作串接 API，API 使用 REST 設計風格。"/>
 
 
 
   
-  <meta property="og:title" content="To-do Calendar - Day14 RESTful API 串接" />
+  <meta property="og:title" content="To-do Calendar - Day14 實作查詢列表功能（中）- RESTful API 串接" />
 <meta property="og:description" content="這篇要來實作串接 API，API 使用 REST 設計風格。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://fiberlin1121.github.io/post/post-20/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
@@ -138,8 +138,8 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "To-do Calendar - Day14 RESTful API 串接",
-        "headline": "To-do Calendar - Day14 RESTful API 串接",
+        "name": "To-do Calendar - Day14 實作查詢列表功能（中）- RESTful API 串接",
+        "headline": "To-do Calendar - Day14 實作查詢列表功能（中）- RESTful API 串接",
         "alternativeHeadline": "",
         "description": "
       
@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-20\/",
-        "wordCount" : "200",
+        "wordCount" : "209",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -418,7 +418,7 @@ if (!doNotTrack) {
     ">
   
   <div class="post__content">
-    <h1>To-Do Calendar - Day14 RESTful API 串接</h1>
+    <h1>To-Do Calendar - Day14 實作查詢列表功能（中）- RESTful API 串接</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
@@ -488,13 +488,19 @@ if (!doNotTrack) {
 <br>
 <br></p>
 <h2 id="設計-restful-api">設計 RESTful API</h2>
+<p>以下將以原子習慣列表查詢功能為例。 
+<figure class="medium"><img src="https://i.imgur.com/5gqI4uG.jpg"
+         alt="image"/><figcaption>
+            <p>因資料結構設計，原子習慣列表包含了該使用者的原子習慣資料，這裡就不分兩支 API 拿</p>
+        </figcaption>
+</figure>
+</p>
 <figure class="medium"><img src="https://i.imgur.com/yBAGVtk.jpg"
          alt="image"/><figcaption>
             <p>原子習慣列表</p>
         </figcaption>
 </figure>
 
-<p>以下將以原子習慣列表查詢功能為例。</p>
 <h3 id="gethabits-api">getHabits API</h3>
 <ul>
 <li>Request URL
@@ -535,10 +541,18 @@ if (!doNotTrack) {
 </p>
 <p>才發現前後端程式運行的 port 都是8080，所以在 vue.config.js 加了些設定，讓前端程式的 port 改為8081，改法是參考<a href="https://blog.csdn.net/lilyheart1/article/details/106682657">《VUE-CLI 3 修改前端默認的端口》</a>。再次運行，這次前端 console 卻出現了 ERR_CONNECTION_REFUSED 錯誤&hellip;Σ（￣□￣；） 
 <figure class="medium"><img src="https://i.imgur.com/PMZpqTg.jpg"
-         alt="image"/>
+         alt="image"/><figcaption>
+            <p>ERR_CONNECTION_REFUSED</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/tlzn8ay.jpg"
+         alt="image"/><figcaption>
+            <p>CORS error</p>
+        </figcaption>
 </figure>
 </p>
-<p>查了一下應該是跨域請求問題，當開發者透過 JavaScript 針對不同於當前位置的來源發送請求，這個請求的回應就會被瀏覽器攔截掉，不交給 JavaScript 處理。
+<p>查了一下應該是跨域請求問題，當開發者透過 JavaScript 針對不同於當前位置的來源發送請求，這個請求的<strong>回應</strong>就會被瀏覽器攔截，不交給 JavaScript 處理。
 <div
   class="notice
     notice--warning
@@ -555,7 +569,7 @@ if (!doNotTrack) {
   </div>
 </div>
 </p>
-<p>因為剛剛改了 port，所以被瀏覽器判斷為不同源的網站，串個 API 真是一波三折，解法是參考<a href="https://blog.csdn.net/qq_39390545/article/details/106615075">《Springboot處理CORS跨域請求的三種方法》</a>，在後端加上一支處理跨域請求（設置 CORS header）的 Configuration。</p>
+<p>因為剛剛改了 port，所以被瀏覽器判斷為不同源的網站，串個 API 真是一波三折，解法是參考<a href="https://developer.51cto.com/article/702245.html">《前後端分離項目，如何解決跨域問題？》</a>，使用 Nodejs 代理來解決跨域問題：在本地創建一個虛擬服務器，對8081端口下的前端請求進行代理，同時接收8080端口下的服務器端響應，這樣服務端和服務端進行數據的交互就不會出現跨域問題了。</p>
 <div
   class="notice
     notice--warning
@@ -575,14 +589,23 @@ if (!doNotTrack) {
 
 <p>再次重新運行，這次終於拿到資料了！而且有正常渲染在畫面的列表上～～✧*｡٩(ˊᗜˋ*)و✧*｡
 <figure class="medium"><img src="https://i.imgur.com/gMTLNOQ.jpg"
-         alt="image"/>
+         alt="image"/><figcaption>
+            <p>查詢原子習慣列表</p>
+        </figcaption>
+</figure>
+</p>
+<figure class="medium"><img src="https://i.imgur.com/OMQZIbv.gif"
+         alt="image"/><figcaption>
+            <p>查詢指定原子習慣</p>
+        </figcaption>
 </figure>
 
 <br>
-<br></p>
+<br>
 <h4 id="延伸閱讀">延伸閱讀</h4>
 <ul>
 <li><a href="https://jimmyswebnote.com/restful-api-design/">前端工程師邁向後端之路 – 設計 RESTful API</a></li>
+<li><a href="https://tw.twincl.com/programming/*641y">簡明RESTful API設計要點</a></li>
 <li><a href="https://blog.huli.tw/2017/08/27/ajax-and-cors/">輕鬆理解 Ajax 與跨來源請求</a></li>
 <li><a href="https://f2e.kalan.dev/frontend-ui-development/13.html#%E5%90%8C%E6%BA%90%E6%94%BF%E7%AD%96-same-origin-policy">前端如何管理 API （中）- Cookie、CORS 、CSRF</a></li>
 </ul>

@@ -8,7 +8,7 @@
   <title>
     
       
-        To-do Calendar - Day13 用 MongoTemplate 操作 MongoDB |
+        To-do Calendar - Day13 實作查詢列表功能（上）- 用 MongoTemplate 操作 MongoDB |
 
       
       Fiber&#39;s blog
@@ -113,13 +113,13 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="To-do Calendar - Day13 用 MongoTemplate 操作 MongoDB"/>
+<meta name="twitter:title" content="To-do Calendar - Day13 實作查詢列表功能（上）- 用 MongoTemplate 操作 MongoDB"/>
 <meta name="twitter:description" content="這篇要來實作查詢列表功能，以原子習慣為例，從設計 Document 的資料結構開始，再來實作 Spring Boot 程式。"/>
 
 
 
   
-  <meta property="og:title" content="To-do Calendar - Day13 用 MongoTemplate 操作 MongoDB" />
+  <meta property="og:title" content="To-do Calendar - Day13 實作查詢列表功能（上）- 用 MongoTemplate 操作 MongoDB" />
 <meta property="og:description" content="這篇要來實作查詢列表功能，以原子習慣為例，從設計 Document 的資料結構開始，再來實作 Spring Boot 程式。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://fiberlin1121.github.io/post/post-19/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
@@ -138,8 +138,8 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "To-do Calendar - Day13 用 MongoTemplate 操作 MongoDB",
-        "headline": "To-do Calendar - Day13 用 MongoTemplate 操作 MongoDB",
+        "name": "To-do Calendar - Day13 實作查詢列表功能（上）- 用 MongoTemplate 操作 MongoDB",
+        "headline": "To-do Calendar - Day13 實作查詢列表功能（上）- 用 MongoTemplate 操作 MongoDB",
         "alternativeHeadline": "",
         "description": "
       
@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-19\/",
-        "wordCount" : "398",
+        "wordCount" : "410",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -418,7 +418,7 @@ if (!doNotTrack) {
     ">
   
   <div class="post__content">
-    <h1>To-Do Calendar - Day13 用 MongoTemplate 操作 MongoDB</h1>
+    <h1>To-Do Calendar - Day13 實作查詢列表功能（上）- 用 MongoTemplate 操作 MongoDB</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
@@ -642,8 +642,8 @@ ordered: &lt;<code>boolean</code>&gt;
 <li>在 service package 底下建立 impl package</li>
 <li>在 impl package 底下建立 HabitsServiceImpl class</li>
 <li>為讓 HabitsServiceImpl class 成為 Bean，在 HabitsDaoImpl class 上加上 <code>@component</code> 註解，並 implements HabitsService interface，然後使用 <code>@Autowired</code> 註解注入 HabitsDao</li>
-<li>回到 HabitTrackersService interface，宣告一個 getHabitTrackersByUserId 方法</li>
-<li>接著再到 HabitsServiceImpl class，實作 getHabitsByUserId 方法
+<li>回到 HabitTrackersService interface，宣告一個 getHabitTrackersByUserId 方法，返回類型為 Habits</li>
+<li>接著再到 HabitsServiceImpl class，實作 getHabitsByUserId 方法（call habitTrackerDao 的 getHabitsByUserId 方法）
 <figure class="medium"><img src="https://i.imgur.com/OrZ2o8H.jpg"
          alt="image"/><figcaption>
             <p>HabitsService interface</p>
@@ -664,10 +664,11 @@ ordered: &lt;<code>boolean</code>&gt;
 <li>在 HabitsController class 上加上 <code>@RestController</code> 註解，並使用 <code>@Autowired</code> 註解注入 HabitsService</li>
 <li>新增 getHabitsByUserId 方法，返回類型為 <code>ResponseEntity&lt;Habits&gt;</code></li>
 <li>根據 <strong>RESTful 的設計原則</strong>，查詢所對應的是 GET 方法，所以在方法上加上 <code>@GetMapping</code> 註解，表示前端要使用 GET 方法來請求 API</li>
-<li>在 <code>@GetMapping</code> 註解括號中指定 url 路徑，並使用 <code>@PathVariable</code> 註解去取得 url 路徑的值
+<li>在 <code>@GetMapping</code> 註解括號中指定 url 路徑，並使用 <code>@PathVariable</code> 註解去取得 url 路徑的值</li>
+<li>接著實作 getHabitsByUserId 方法（call HabitsService 的 getHabitsByUserId 方法）
 <figure class="medium"><img src="https://i.imgur.com/Dauh5Do.jpg"
          alt="image"/><figcaption>
-            <p>HabitsController class</p>
+            <p>habitsController class</p>
         </figcaption>
 </figure>
 </li>

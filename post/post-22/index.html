@@ -114,13 +114,13 @@
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
 <meta name="twitter:title" content="To-do Calendar - Day16 實作條件查詢功能"/>
-<meta name="twitter:description" content="接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 的寫法與 MongoTemplate 的用法。"/>
+<meta name="twitter:description" content="接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 與 MongoTemplate 的寫法。"/>
 
 
 
   
   <meta property="og:title" content="To-do Calendar - Day16 實作條件查詢功能" />
-<meta property="og:description" content="接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 的寫法與 MongoTemplate 的用法。" />
+<meta property="og:description" content="接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 與 MongoTemplate 的寫法。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://fiberlin1121.github.io/post/post-22/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-05-30T00:00:00+00:00" />
@@ -143,7 +143,7 @@
         "alternativeHeadline": "",
         "description": "
       
-        \u003cp\u003e接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 的寫法與 MongoTemplate 的用法。\u003c\/p\u003e
+        \u003cp\u003e接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 與 MongoTemplate 的寫法。\u003c\/p\u003e
 
 
       
@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-22\/",
-        "wordCount" : "366",
+        "wordCount" : "380",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -445,23 +445,29 @@ if (!doNotTrack) {
       </li>
     </ul>
 
-    <p>接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 的寫法與 MongoTemplate 的用法。</p>
-<h2 id="原子習慣追蹤查詢功能">原子習慣追蹤查詢功能</h2>
+    <p>接著來開發查詢功能，以下將以原子習慣追蹤為例，繼續練習 CRUD 在 Spring Boot 與 MongoTemplate 的寫法。</p>
+<h2 id="原子習慣追蹤的條件查詢功能">原子習慣追蹤的條件查詢功能</h2>
 <ul>
-<li>開發流程：以前端傳來的參數 habitId 與年份作為查詢條件，到 MongoDB 中取得符合條件的 habitTracker Document 並返回前端，最後再實作前端呼叫 API。
+<li>開發流程：以前端傳來的參數 habitId 與年份作為查詢條件，到 MongoDB 中取得符合條件的 habitTracker Document 並返回前端，最後再實作前端呼叫 API 與顯示查詢結果。
 <br></li>
 </ul>
 <h2 id="設計-restful-api">設計 RESTful API</h2>
-<figure class="medium"><img src="https://i.imgur.com/Vlo5n3B.jpg"
+<p><figure class="medium"><img src="https://i.imgur.com/fzp7f7c.jpg"
          alt="image"/><figcaption>
-            <p>原子習慣追蹤</p>
+            <p>查詢指定原子習慣追蹤</p>
         </figcaption>
 </figure>
 
+<figure class="medium"><img src="https://i.imgur.com/Vlo5n3B.jpg"
+         alt="image"/><figcaption>
+            <p>原子習慣追蹤（顯示年曆上圈選的日期）</p>
+        </figcaption>
+</figure>
+</p>
 <h3 id="gethabittracker-api">getHabitTracker API</h3>
 <ul>
 <li>Request URL
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET http://localhost:8080/users/{userId}/habitTracker?habitId=&lt;habitId&gt;&amp;year=&lt;year&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GET http://localhost:8080/users/{userId}/habitTrackers?habitId=&lt;habitId&gt;&amp;year=&lt;year&gt;
 </span></span></code></pre></div></li>
 <li>Response Body
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
@@ -493,9 +499,9 @@ if (!doNotTrack) {
 <li>在 dao package 底下建立 HabitTrackerDao</li>
 <li>在 impl package 底下再建立 HabitTrackerDaoImpl class</li>
 <li>為讓 HabitTrackerDaoImpl class 成為 Bean，在 HabitTrackerDaoImpl class 上加上 <code>@component</code> 註解，並 implements HabitTrackerDao interface，然後使用 <code>@Autowired</code> 註解注入 MongoTemplate</li>
-<li>在 HabitTrackerDao interface 宣告一個 getHabitTrackerByHabitId 方法，返回類型為 HabitTracker</li>
-<li>實作之前可先在 Query Console 測試 MongoDB 語法</li>
-<li>接著再到 HabitsDaoImpl class，實作 getHabitTrackerByHabitId 方法
+<li>在 HabitTrackerDao interface 宣告一個 getHabitTracker 方法，返回類型為 HabitTracker</li>
+<li>實作之前可先在 Query Console 測試 MongoDB 原生語法</li>
+<li>接著再回到 HabitTrackerDaoImpl class，實作 getHabitTracker 方法
 <figure class="medium"><img src="https://i.imgur.com/SXTgw5s.jpg"
          alt="image"/><figcaption>
             <p>Query Console</p>
@@ -521,8 +527,8 @@ if (!doNotTrack) {
 <li>在 service package 底下建立 HabitTrackerService interface</li>
 <li>在 impl package 底下建立 HabitTrackerServiceImpl class</li>
 <li>為讓 HabitTrackerServiceImpl class 成為 Bean，在 HabitTrackerServiceImpl class 上加上 <code>@component</code> 註解，並 implements HabitTrackerService interface，然後使用 <code>@Autowired</code> 註解注入 HabitTrackerDao</li>
-<li>回到 HabitTrackerService interface，宣告一個 getHabitTrackersByUserId 方法</li>
-<li>接著再到 HabitTrackerServiceImpl class，實作 getHabitTrackersByUserId 方法
+<li>回到 HabitTrackerService interface，宣告一個 getHabitTracker 方法，返回類型為 HabitTracker</li>
+<li>接著再到 HabitTrackerServiceImpl class，實作 getHabitTracker 方法（call habitTrackerDao 的 getHabitTracker 方法）
 <figure class="medium"><img src="https://i.imgur.com/iGV4kZJ.jpg"
          alt="image"/><figcaption>
             <p>HabitTrackerService interface</p>
@@ -543,7 +549,8 @@ if (!doNotTrack) {
 <li>在 HabitTrackerController class 上加上 <code>@RestController</code> 註解，並使用 <code>@Autowired</code> 註解注入 HabitTrackerService</li>
 <li>新增 getHabitTracker 方法，返回類型為 <code>ResponseEntity&lt;HabitTracker&gt;</code></li>
 <li>根據 <strong>RESTful 的設計原則</strong>，查詢所對應的是 GET 方法，所以在方法上加上 <code>@GetMapping</code> 註解，表示前端要使用 GET 方法來請求 API</li>
-<li>在 <code>@GetMapping</code> 註解括號中指定 url 路徑，並使用 <code>@RequestParam</code> 註解去取得 url 路徑的參數
+<li>在 <code>@GetMapping</code> 註解括號中指定 url 路徑，並使用 <code>@RequestParam</code> 註解去取得 url 路徑的參數</li>
+<li>接著實作 getHabitTracker 方法（call habitTrackerService 的 getHabitTracker 方法）
 <figure class="medium"><img src="https://i.imgur.com/Ay8nPb3.jpg"
          alt="image"/><figcaption>
             <p>HabitsController class</p>
@@ -551,7 +558,7 @@ if (!doNotTrack) {
 </figure>
 </li>
 <li>接著運行 Spring Boot 程式，使用 API Tester 測試一下效果
-<figure class="medium"><img src="https://i.imgur.com/PmPGPG6.jpg"
+<figure class="medium"><img src="https://i.imgur.com/478khgi.jpg"
          alt="image"/>
 </figure>
 

@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      
+        To-do Calendar - Day18 實作年曆日期圈選功能 |
+
+      
+      Fiber&#39;s blog
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.96.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Fiber&#39;s blog" />
+  <meta
+    name="description"
+    content="
+      Hi! I&#39;m Fiber, 一名貓奴工程師
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.02d94a71503cb758e2ae7d6030f4bada9d3babfd125372c3759e2455304f6630.css"
+      integrity="sha256-AtlKcVA8t1jirn1gMPS62p07q/0SU3LDdZ4kVTBPZjA="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-24/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="To-do Calendar - Day18 實作年曆日期圈選功能"/>
+<meta name="twitter:description" content="這篇要來實作原子習慣追蹤的年曆日期圈選功能，包含打圈和取消打圈。"/>
+
+
+
+  
+  <meta property="og:title" content="To-do Calendar - Day18 實作年曆日期圈選功能" />
+<meta property="og:description" content="這篇要來實作原子習慣追蹤的年曆日期圈選功能，包含打圈和取消打圈。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-24/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-04T00:00:00+00:00" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "To-do Calendar - Day18 實作年曆日期圈選功能",
+        "headline": "To-do Calendar - Day18 實作年曆日期圈選功能",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003cp\u003e這篇要來實作原子習慣追蹤的年曆日期圈選功能，包含打圈和取消打圈。\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-24\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-06-04T00:00:00.00Z",
+        "datePublished": "2022-06-04T00:00:00.00Z",
+        "dateModified": "2022-06-04T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Fiber Lin",
+            "url": "https://fiberlin1121.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/fiberlin1121.github.io\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://fiberlin1121.github.io/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-24\/",
+        "wordCount" : "512",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "SideProject"
+
+    ]
+    }
+  </script>
+
+
+
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction" style="margin-bottom: 0;">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/wowo.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/"></a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Hi! I'm Fiber, 一名貓奴工程師</p>
+      </div>
+    </div>
+    
+    <ul class="sidebar__list" style="margin-top: 0;">
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/FiberLin1121/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.behance.net/fiber410139" rel="me" aria-label="Behance" title="Behance">
+            <i class="fab fa-behance-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.facebook.com/%E5%B0%8F%E8%B3%B4%E7%9A%AE-277134752317535" rel="me" aria-label="Facebook" title="Facebook">
+            <i class="fab fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:fiber410139@gmail.com" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+
+    <ul class="sidebar__list">
+      <li style="margin-bottom:.5em; font-size: 15px;"><a href="/tags/程式筆記/" style="font-size: 15px;">程式筆記</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/sideproject/" style="font-size: 15px;">Side Project</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/阿宅日常/" style="font-size: 15px;">阿宅日常</a></li>
+    </ul>
+    
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav d-flex justify-content-between">
+    <ul class="nav__list col" id="navMenu">
+      
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/"
+            
+            title=""
+            >Home</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/post/"
+            
+            title=""
+            >Posts</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/portfolio/"
+            
+            title=""
+            >Portfolio</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/about/"
+            
+            title=""
+            >About</a
+          >
+        </li>
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end col">
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+<div class="post 
+      .
+
+    ">
+  
+  <div class="post__content">
+    <h1>To-Do Calendar - Day18 實作年曆日期圈選功能</h1>
+    
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <em class="fas fa-calendar-day post__meta-icon"></em>
+        <span class="post__meta-text">
+          2022/06/04
+
+
+          
+        </span>
+      </li>
+      <li class="post__meta-item">
+        <em class="fas fa-stopwatch post__meta-icon"></em>
+        <span class="post__meta-text">3-minute read</span>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__meta-text">
+        
+        <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
+
+
+        
+        </span>
+      </li>
+    </ul>
+
+    <p>這篇要來實作原子習慣追蹤的年曆日期圈選功能，包含打圈和取消打圈。</p>
+<h2 id="原子習慣追蹤圈選日期功能">原子習慣追蹤圈選日期功能</h2>
+<ul>
+<li>開發流程：
+<ul>
+<li>以前端傳來的參數 habitId 與年份作為查詢條件，檢查指定的 habitTracker Document 是否存在，如果尚未存在則以查詢條件建立一個</li>
+<li>新增圈選日期到指定 habitTracker Document 的 pickedDays 陣列（取消則是從 pickedDays 陣列移除），並返回前端</li>
+<li>最後實作前端判斷圈選操作後呼叫對應的 API，然後顯示更新後的結果
+<br></li>
+</ul>
+</li>
+</ul>
+<h2 id="設計-restful-api">設計 RESTful API</h2>
+<p><figure class="medium"><img src="https://i.imgur.com/9sftWSH.jpg"
+         alt="image"/><figcaption>
+            <p>實作年曆日期圈選功能</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/Vlo5n3B.jpg"
+         alt="image"/><figcaption>
+            <p>原子習慣追蹤（圈選或取消年曆上的日期）</p>
+        </figcaption>
+</figure>
+</p>
+<h3 id="addpickedday-api">addPickedDay API</h3>
+<p>關於要使用哪個 HTTP 方法糾結了許久，考慮用 POST 是因為這功能有「新增」<strong>日期</strong>，考慮用 PUT 是因為這功能實際是「修改」<strong>原子習慣追蹤</strong>，考慮用 PATCH 是因為這功能實際是「部分修改」<strong>原子習慣追蹤</strong>，最後還是決定以對應到資料庫操作去設計，因為從 URI 來看，<strong>原子習慣追蹤</strong>才是主體資源，而這個新增的日期只是原子習慣追蹤的 pickedDays 陣列中的一個元素，為了更新一個屬性上傳整個 habitTracker Document 或上傳整個新的 pickedDays 陣列都不太好（浪費 server 頻寬），所以最後採用的是 PATCH，只上傳要新增的日期，而 PATCH 請求的格式參考的是 <a href="https://jsonpatch.com/">JSON Patch</a>。</p>
+<ul>
+<li>Request URL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PATCH http://localhost:8080/users/{userId}/habitTrackers?habitId=&lt;habitId&gt;&amp;year=&lt;year&gt;
+</span></span></code></pre></div></li>
+<li>Request Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;op&#34;:&#34;add&#34;,
+</span></span><span class="line"><span class="cl">  &#34;path&#34;:&#34;/pickedDays&#34;,
+</span></span><span class="line"><span class="cl">  &#34;value&#34;:{&#34;id&#34;: &#34;2022-06-06&#34;, &#34;date&#34;: &#34;2022-06-05T16:00:00.000Z&#34;}
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+<li>Response Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;id&#34;: &#34;6294f0123d1b551c205e3b71&#34;,
+</span></span><span class="line"><span class="cl">  &#34;habitId&#34;: &#34;habit01&#34;,
+</span></span><span class="line"><span class="cl">  &#34;year&#34;: &#34;2022&#34;,
+</span></span><span class="line"><span class="cl">  &#34;pickedDays&#34;:[
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-06&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-05T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-07&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-06T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-08&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-07T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-09&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-08T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-10&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-09T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-06-04&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-06-03T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-06-06&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-06-05T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  ],
+</span></span><span class="line"><span class="cl">  &#34;createdTime&#34;: 1653405213436,
+</span></span><span class="line"><span class="cl">  &#34;lastModifiedTime&#34;: 1653405213436
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h3 id="removepickedday-api">removePickedDay API</h3>
+<p>和 addPickedDay API 的 Request Body 差在 op 參數的值。</p>
+<ul>
+<li>Request URL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PATCH http://localhost:8080/users/{userId}/habitTrackers?habitId=&lt;habitId&gt;&amp;year=&lt;year&gt;
+</span></span></code></pre></div></li>
+<li>Request Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;op&#34;:&#34;remove&#34;,
+</span></span><span class="line"><span class="cl">  &#34;path&#34;:&#34;/pickedDays&#34;,
+</span></span><span class="line"><span class="cl">  &#34;value&#34;:{&#34;id&#34;: &#34;2022-06-06&#34;, &#34;date&#34;: &#34;2022-06-05T16:00:00.000Z&#34;}
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+<li>Response Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;id&#34;: &#34;6294f0123d1b551c205e3b71&#34;,
+</span></span><span class="line"><span class="cl">  &#34;habitId&#34;: &#34;habit01&#34;,
+</span></span><span class="line"><span class="cl">  &#34;year&#34;: &#34;2022&#34;,
+</span></span><span class="line"><span class="cl">  &#34;pickedDays&#34;:[
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-06&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-05T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-07&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-06T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-08&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-07T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-09&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-08T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-01-10&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-01-09T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    {
+</span></span><span class="line"><span class="cl">      &#34;id&#34;: &#34;2022-06-04&#34;,
+</span></span><span class="line"><span class="cl">      &#34;date&#34;: &#34;2022-06-03T16:00:00.000Z&#34;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  ],
+</span></span><span class="line"><span class="cl">  &#34;createdTime&#34;: 1653405213436,
+</span></span><span class="line"><span class="cl">  &#34;lastModifiedTime&#34;: 1653405213436
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h2 id="實作-controller-層">實作 Controller 層</h2>
+<p>這次從 Controller 層開始實作</p>
+<ul>
+<li>在 HabitTrackerController class 新增 patchHabitTracker 方法，返回類型為 <code>ResponseEntity&lt;HabitTracker&gt;</code></li>
+<li>在方法上加上 <code>@PatchMapping</code> 註解，表示前端要使用 PATCH 方法來請求 API</li>
+<li>在 <code>@PatchMapping</code> 註解括號中指定 url 路徑，並使用 <code>@RequestParam</code> 註解去取得 url 路徑的參數</li>
+<li>使用 <code>@RequestBody</code> 去接住前端傳來的參數，並使用 <code>@Valid</code> 註解讓寫在 PatchRequest class 的驗證請求參數的註解生效
+<div
+  class="notice"
+>
+  <span
+    class="notice__title"
+  >Info</span><div class="notice__content">
+    如果 Spring Boot 版本是 2.3 之後的版本，要使用驗證請求參數的註解的話，是需要額外在 pom.xml 增加一組 dependency validation 設定。
+  </div>
+</div>
+</li>
+<li>接著實作 patchHabitTracker 方法
+<ul>
+<li>將前端傳過來的參數的值一一 set 到 productQueryParams 的屬性</li>
+<li>call habitTrackerService 的 patchHabitTracker 方法</li>
+</ul>
+</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/OyumRCY.jpg"
+         alt="image"/><figcaption>
+            <p>pom.xml</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/c9x0spo.jpg"
+         alt="image"/><figcaption>
+            <p>PatchRequest class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/VNj4oAL.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerController class</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<h2 id="實作-service-層">實作 Service 層</h2>
+<ul>
+<li>在 HabitTrackerService interface 宣告 patchHabitTracker 方法</li>
+<li>接著再到 HabitTrackerServiceImpl class，實作 patchHabitTracker 方法
+<ul>
+<li>依 patchRequest 的 op 參數的值決定要 call habitTrackerDao 的哪個方法</li>
+</ul>
+</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/np41I4L.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerService interface</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/gAK5GZc.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerServiceImpl class</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<h2 id="實作-dao-層">實作 Dao 層</h2>
+<ul>
+<li>在 HabitTrackerDao interface 宣告 addPickedDay 方法和 removePickedDay 方法</li>
+<li>實作之前可先在 Query Console 測試 MongoDB 原生語法</li>
+<li>接著再回到 HabitTrackerDaoImpl class，實作 addPickedDay 方法和 removePickedDay 方法
+<ul>
+<li>addPickedDay 方法中會先檢查指定的 habitTracker Document 是否存在，如果尚未存在則以查詢條件建立一個，然後才去執行更新語法
+<figure class="medium"><img src="https://i.imgur.com/IRsvNWn.jpg"
+         alt="image"/><figcaption>
+            <p>Query Console</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/vaC14r0.jpg"
+         alt="image"/><figcaption>
+            <p>Query Console</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/vmFVFCW.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerDao class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/g1ajr6r.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerDaoImpl class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/IPEbKz0.jpg"
+         alt="image"/><figcaption>
+            <p>HabitTrackerDaoImpl class</p>
+        </figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li>接著運行 Spring Boot 程式，使用 API Tester 測試一下效果
+<figure class="medium"><img src="https://i.imgur.com/Jrgu0J4.jpg"
+         alt="image"/>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/ZgQz8qn.jpg"
+         alt="image"/><figcaption>
+            <p>addPickedDay API</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/WQLKDvR.jpg"
+         alt="image"/><figcaption>
+            <p>removePickedDay API</p>
+        </figcaption>
+</figure>
+
+<br></li>
+</ul>
+<h2 id="實作前端串接-api">實作前端串接 API</h2>
+<ul>
+<li>在 src/axios/index.js 新增 apiPickedDayAdd 方法和 apiPickedDayRemove 方法，然後再 export 出去給外面的組件 import
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  export const apiPickedDayAdd = (userId, habitId, year, data) =&gt;
+</span></span><span class="line"><span class="cl">  instance.patch(`/users/${userId}/habitTrackers?habitId=${habitId}&amp;year=${year}`, data);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  export const apiPickedDayRemove = (userId, habitId, year, data) =&gt;
+</span></span><span class="line"><span class="cl">  instance.patch(`/users/${userId}/habitTrackers?habitId=${habitId}&amp;year=${year}`, data);
+</span></span></code></pre></div></li>
+<li>根據所選的日期是否已存在 pickedDays 陣列
+<ul>
+<li>如果尚未存在則呼叫 addPickedDay API</li>
+<li>如果尚未存在則呼叫 removePickedDay API</li>
+<li>最後顯示更新後的結果</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  import { apiHabitsQuery, apiHabitTrackerQuery, apiPickedDayAdd, apiPickedDayRemove } from &#34;../../api/index.js&#34;;
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl">  onDayClick(day) {
+</span></span><span class="line"><span class="cl">    let self = this;
+</span></span><span class="line"><span class="cl">    let idx = self.pickedDays.findIndex((d) =&gt; d.id === day.id);
+</span></span><span class="line"><span class="cl">    if (idx &gt;= 0) {
+</span></span><span class="line"><span class="cl">      let data = {
+</span></span><span class="line"><span class="cl">        op: &#34;remove&#34;,
+</span></span><span class="line"><span class="cl">        path: &#34;/pickedDays&#34;,
+</span></span><span class="line"><span class="cl">        value: {
+</span></span><span class="line"><span class="cl">          id: day.id,
+</span></span><span class="line"><span class="cl">          date: day.date,
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">      };
+</span></span><span class="line"><span class="cl">      apiPickedDayRemove(
+</span></span><span class="line"><span class="cl">        self.$store.state.userId,
+</span></span><span class="line"><span class="cl">        self.pickedHabit.habitId,
+</span></span><span class="line"><span class="cl">        self.pageYear,
+</span></span><span class="line"><span class="cl">        data
+</span></span><span class="line"><span class="cl">      ).then((res) =&gt; {
+</span></span><span class="line"><span class="cl">        this.pickedDays = res.data.pickedDays;
+</span></span><span class="line"><span class="cl">      });
+</span></span><span class="line"><span class="cl">      // self.pickedDays.splice(idx, 1);
+</span></span><span class="line"><span class="cl">    } else {
+</span></span><span class="line"><span class="cl">      let data = {
+</span></span><span class="line"><span class="cl">        op: &#34;add&#34;,
+</span></span><span class="line"><span class="cl">        path: &#34;/pickedDays&#34;,
+</span></span><span class="line"><span class="cl">        value: {
+</span></span><span class="line"><span class="cl">          id: day.id,
+</span></span><span class="line"><span class="cl">          date: day.date,
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">      };
+</span></span><span class="line"><span class="cl">      apiPickedDayAdd(
+</span></span><span class="line"><span class="cl">        self.$store.state.userId,
+</span></span><span class="line"><span class="cl">        self.pickedHabit.habitId,
+</span></span><span class="line"><span class="cl">        self.pageYear,
+</span></span><span class="line"><span class="cl">        data
+</span></span><span class="line"><span class="cl">      ).then((res) =&gt; {
+</span></span><span class="line"><span class="cl">        this.pickedDays = res.data.pickedDays;
+</span></span><span class="line"><span class="cl">      });
+</span></span><span class="line"><span class="cl">      // self.pickedDays.push({
+</span></span><span class="line"><span class="cl">      //   id: day.id,
+</span></span><span class="line"><span class="cl">      //   date: day.date,
+</span></span><span class="line"><span class="cl">      // });
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">  },
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h3 id="運行結果">運行結果</h3>
+<p><figure class="medium"><img src="https://i.imgur.com/dZQ94GD.gif"
+         alt="image"/><figcaption>
+            <p>年曆日期圈選功能</p>
+        </figcaption>
+</figure>
+
+<br>
+<br></p>
+<h4 id="延伸閱讀">延伸閱讀</h4>
+<ul>
+<li><a href="https://zditect.com/main-advanced/java/spring-rest-json-patch.html">在 Spring REST API 中使用 JSON Patch</a></li>
+<li><a href="https://jiahao831123.medium.com/%E7%AD%86%E8%A8%98-restful-%E6%9B%B4%E6%96%B0-put-vs-patch-811302e615ee">筆記 RESTful 更新 Put vs Patch</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10267809">[面試][後端]設計 API 時會考慮哪些點？</a></li>
+</ul>
+<h4 id="參考資料">參考資料</h4>
+<ul>
+<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a></li>
+</ul></div>
+  <div class="post__footer">
+    
+
+    
+  </div>
+
+  <div id="comment">
+    <h2>comments</h2>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fiberlin1121" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>
