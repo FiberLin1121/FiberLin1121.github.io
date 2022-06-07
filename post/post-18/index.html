@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-18\/",
-        "wordCount" : "129",
+        "wordCount" : "141",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -447,7 +447,7 @@ if (!doNotTrack) {
 
     <p>接下來要進行設定在 Spring Boot 專案中連接 MongoDB 資料庫的部分。</p>
 <h2 id="mongodb-是什麼">MongoDB 是什麼？</h2>
-<p><a href="https://www.mongodb.com/">MongoDB</a> 是面向文檔的開源資料庫，是一種靈活、易於擴展、高效能的 NoSQL 資料庫，MongoDB 旨在為 web 應用提供可擴展的高性能數據存儲解決方案，它提供了可以跟 SQL 相比的 Query Language（查詢語言），由 C++ 語言編寫而成。MongoDB 從 4.0 開始支援多文檔交易（Transactions），這是 MongoDB 一個革命性的里程碑。</p>
+<p><a href="https://www.mongodb.com/">MongoDB</a> 是面向文檔的開源資料庫，以 BSON 的形式儲存文件（BSON 是 JSON 的二進位制表現形式），是一種靈活、易於擴展、高效能的 NoSQL 資料庫，MongoDB 旨在為 web 應用提供可擴展的高性能數據存儲解決方案，它提供了可以跟 SQL 相比的 Query Language（查詢語言），由 C++ 語言編寫而成。MongoDB 從 4.0 開始支援多文檔交易（Transactions），這是 MongoDB 一個革命性的里程碑。</p>
 <h3 id="非關聯式資料庫nosql">非關聯式資料庫（NoSQL）</h3>
 <p>非關聯式資料庫（NoSQL）的意思是「Not Only SQL」，指的是不限定為關聯式資料庫的資料庫管理系統，以混用關聯式資料庫和非關聯式資料庫來達到最佳的儲存效果。NoSQL 資料庫沒有 Schema 架構，也就是所謂的 Schema-Free，可自由定義資料文件（Document）的結構，以及自由新增欄位。
 <br>
@@ -480,8 +480,16 @@ if (!doNotTrack) {
 </li>
 <li>MongoDB 的限制
 <ul>
-<li>BSON document 的大小上限：每個 BSON document 的大小上限為 16 megabytes</li>
+<li>BSON document 的大小上限：每個 BSON document 的大小上限為 16MB（16 megabytes）</li>
 <li>嵌入式文件巢狀結構的深度上限：BSON document 的巢狀結構上限為 100 層</li>
+</ul>
+</li>
+<li>文件欄位名稱的限制
+<ul>
+<li>_id作為保留欄位，用作主鍵，其值必須唯一、不可變，可以是除了陣列之外的任何型別。</li>
+<li>不可以$字元作為開頭。</li>
+<li>不可包含點號字元。</li>
+<li>不可以是 null 字串。</li>
 </ul>
 </li>
 </ol>

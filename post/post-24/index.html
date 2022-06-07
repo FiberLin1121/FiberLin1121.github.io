@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-24\/",
-        "wordCount" : "512",
+        "wordCount" : "488",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -450,9 +450,8 @@ if (!doNotTrack) {
 <ul>
 <li>開發流程：
 <ul>
-<li>以前端傳來的參數 habitId 與年份作為查詢條件，檢查指定的 habitTracker Document 是否存在，如果尚未存在則以查詢條件建立一個</li>
-<li>新增圈選日期到指定 habitTracker Document 的 pickedDays 陣列（取消則是從 pickedDays 陣列移除），並返回前端</li>
-<li>最後實作前端判斷圈選操作後呼叫對應的 API，然後顯示更新後的結果
+<li>根據前端傳來的參數 op 判斷要執行新增或移除日期，並將結果並返回前端</li>
+<li>最後實作前端判斷圈選操作後呼叫對應的 API，然後顯示更新後返回的結果
 <br></li>
 </ul>
 </li>
@@ -471,7 +470,7 @@ if (!doNotTrack) {
 </figure>
 </p>
 <h3 id="addpickedday-api">addPickedDay API</h3>
-<p>關於要使用哪個 HTTP 方法糾結了許久，考慮用 POST 是因為這功能有「新增」<strong>日期</strong>，考慮用 PUT 是因為這功能實際是「修改」<strong>原子習慣追蹤</strong>，考慮用 PATCH 是因為這功能實際是「部分修改」<strong>原子習慣追蹤</strong>，最後還是決定以對應到資料庫操作去設計，因為從 URI 來看，<strong>原子習慣追蹤</strong>才是主體資源，而這個新增的日期只是原子習慣追蹤的 pickedDays 陣列中的一個元素，為了更新一個屬性上傳整個 habitTracker Document 或上傳整個新的 pickedDays 陣列都不太好（浪費 server 頻寬），所以最後採用的是 PATCH，只上傳要新增的日期，而 PATCH 請求的格式參考的是 <a href="https://jsonpatch.com/">JSON Patch</a>。</p>
+<p>關於要使用哪個 HTTP 方法糾結了許久，考慮用 POST 是因為這功能有「新增」<strong>日期</strong>，考慮用 PUT 是因為這功能實際是「修改」<strong>原子習慣追蹤</strong>，考慮用 PATCH 是因為這功能實際是「部分修改」<strong>原子習慣追蹤</strong>，最後還是決定以對應到資料庫操作去設計，因為從 URI 來看，<strong>原子習慣追蹤</strong>才是主體資源，而這個新增的日期只是原子習慣追蹤的 pickedDays 陣列中的一個元素，為了更新一個屬性上傳整個 habitTracker Document 或上傳整個新的 pickedDays 陣列都不太好（資料傳輸量浪費 server 頻寬），所以最後採用的是 PATCH，只上傳要新增的日期，而 PATCH 請求的格式參考的是 <a href="https://jsonpatch.com/">JSON Patch</a>。</p>
 <ul>
 <li>Request URL
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PATCH http://localhost:8080/users/{userId}/habitTrackers?habitId=&lt;habitId&gt;&amp;year=&lt;year&gt;
@@ -593,7 +592,7 @@ if (!doNotTrack) {
 </li>
 <li>接著實作 patchHabitTracker 方法
 <ul>
-<li>將前端傳過來的參數的值一一 set 到 productQueryParams 的屬性</li>
+<li>將前端傳過來的參數的值一一 set 到 habitTrackerQueryParams 的屬性</li>
 <li>call habitTrackerService 的 patchHabitTracker 方法</li>
 </ul>
 </li>
@@ -645,34 +644,34 @@ if (!doNotTrack) {
 <li>實作之前可先在 Query Console 測試 MongoDB 原生語法</li>
 <li>接著再回到 HabitTrackerDaoImpl class，實作 addPickedDay 方法和 removePickedDay 方法
 <ul>
-<li>addPickedDay 方法中會先檢查指定的 habitTracker Document 是否存在，如果尚未存在則以查詢條件建立一個，然後才去執行更新語法
+<li>addPickedDay 方法中會先檢查指定的 habitTracker Document 是否存在，如果尚未存在則以查詢條件建立一個，然後才去執行更新語法（使用前才會去建立使用者的 habitTracker Document）
 <figure class="medium"><img src="https://i.imgur.com/IRsvNWn.jpg"
          alt="image"/><figcaption>
-            <p>Query Console</p>
+            <p>Query Console（圈選日期）</p>
         </figcaption>
 </figure>
 
 <figure class="medium"><img src="https://i.imgur.com/vaC14r0.jpg"
          alt="image"/><figcaption>
-            <p>Query Console</p>
+            <p>Query Console（取消圈選日期）</p>
         </figcaption>
 </figure>
 
 <figure class="medium"><img src="https://i.imgur.com/vmFVFCW.jpg"
          alt="image"/><figcaption>
-            <p>HabitTrackerDao class</p>
+            <p>HabitTrackerDao interface</p>
         </figcaption>
 </figure>
 
 <figure class="medium"><img src="https://i.imgur.com/g1ajr6r.jpg"
          alt="image"/><figcaption>
-            <p>HabitTrackerDaoImpl class</p>
+            <p>HabitTrackerDaoImpl class（addPickedDay）</p>
         </figcaption>
 </figure>
 
-<figure class="medium"><img src="https://i.imgur.com/IPEbKz0.jpg"
+<figure class="medium"><img src="https://i.imgur.com/SyWAmMk.jpg"
          alt="image"/><figcaption>
-            <p>HabitTrackerDaoImpl class</p>
+            <p>HabitTrackerDaoImpl class（removePickedDay）</p>
         </figcaption>
 </figure>
 </li>
@@ -700,13 +699,33 @@ if (!doNotTrack) {
 <h2 id="實作前端串接-api">實作前端串接 API</h2>
 <ul>
 <li>在 src/axios/index.js 新增 apiPickedDayAdd 方法和 apiPickedDayRemove 方法，然後再 export 出去給外面的組件 import
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  export const apiPickedDayAdd = (userId, habitId, year, data) =&gt;
-</span></span><span class="line"><span class="cl">  instance.patch(`/users/${userId}/habitTrackers?habitId=${habitId}&amp;year=${year}`, data);
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  export const apiPickedDayAdd = (userId, habitId, year, day) =&gt;
+</span></span><span class="line"><span class="cl">    instance.patch(
+</span></span><span class="line"><span class="cl">      `/users/${userId}/habitTrackers?habitId=${habitId}&amp;year=${year}`,
+</span></span><span class="line"><span class="cl">      {
+</span></span><span class="line"><span class="cl">        op: &#34;add&#34;,
+</span></span><span class="line"><span class="cl">        path: &#34;/pickedDays&#34;,
+</span></span><span class="line"><span class="cl">        value: {
+</span></span><span class="line"><span class="cl">          id: day.id,
+</span></span><span class="line"><span class="cl">          date: day.date,
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    );
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  export const apiPickedDayRemove = (userId, habitId, year, data) =&gt;
-</span></span><span class="line"><span class="cl">  instance.patch(`/users/${userId}/habitTrackers?habitId=${habitId}&amp;year=${year}`, data);
+</span></span><span class="line"><span class="cl">  export const apiPickedDayRemove = (userId, habitId, year, day) =&gt;
+</span></span><span class="line"><span class="cl">    instance.patch(
+</span></span><span class="line"><span class="cl">      `/users/${userId}/habitTrackers?habitId=${habitId}&amp;year=${year}`,
+</span></span><span class="line"><span class="cl">      {
+</span></span><span class="line"><span class="cl">        op: &#34;remove&#34;,
+</span></span><span class="line"><span class="cl">        path: &#34;/pickedDays&#34;,
+</span></span><span class="line"><span class="cl">        value: {
+</span></span><span class="line"><span class="cl">          id: day.id,
+</span></span><span class="line"><span class="cl">          date: day.date,
+</span></span><span class="line"><span class="cl">        },
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    );
 </span></span></code></pre></div></li>
-<li>根據所選的日期是否已存在 pickedDays 陣列
+<li>在 habitTracker.vue 中根據所選的日期是否已存在 pickedDays 陣列
 <ul>
 <li>如果尚未存在則呼叫 addPickedDay API</li>
 <li>如果尚未存在則呼叫 removePickedDay API</li>
@@ -718,46 +737,19 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">    let self = this;
 </span></span><span class="line"><span class="cl">    let idx = self.pickedDays.findIndex((d) =&gt; d.id === day.id);
 </span></span><span class="line"><span class="cl">    if (idx &gt;= 0) {
-</span></span><span class="line"><span class="cl">      let data = {
-</span></span><span class="line"><span class="cl">        op: &#34;remove&#34;,
-</span></span><span class="line"><span class="cl">        path: &#34;/pickedDays&#34;,
-</span></span><span class="line"><span class="cl">        value: {
-</span></span><span class="line"><span class="cl">          id: day.id,
-</span></span><span class="line"><span class="cl">          date: day.date,
-</span></span><span class="line"><span class="cl">        },
-</span></span><span class="line"><span class="cl">      };
-</span></span><span class="line"><span class="cl">      apiPickedDayRemove(
-</span></span><span class="line"><span class="cl">        self.$store.state.userId,
-</span></span><span class="line"><span class="cl">        self.pickedHabit.habitId,
-</span></span><span class="line"><span class="cl">        self.pageYear,
-</span></span><span class="line"><span class="cl">        data
-</span></span><span class="line"><span class="cl">      ).then((res) =&gt; {
-</span></span><span class="line"><span class="cl">        this.pickedDays = res.data.pickedDays;
-</span></span><span class="line"><span class="cl">      });
-</span></span><span class="line"><span class="cl">      // self.pickedDays.splice(idx, 1);
+</span></span><span class="line"><span class="cl">      apiPickedDayRemove(self.$store.state.userId, self.pickedHabit.habitId, self.pageYear, day).then(
+</span></span><span class="line"><span class="cl">        (res) =&gt; {
+</span></span><span class="line"><span class="cl">          this.pickedDays = res.data.pickedDays;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      )
 </span></span><span class="line"><span class="cl">    } else {
-</span></span><span class="line"><span class="cl">      let data = {
-</span></span><span class="line"><span class="cl">        op: &#34;add&#34;,
-</span></span><span class="line"><span class="cl">        path: &#34;/pickedDays&#34;,
-</span></span><span class="line"><span class="cl">        value: {
-</span></span><span class="line"><span class="cl">          id: day.id,
-</span></span><span class="line"><span class="cl">          date: day.date,
-</span></span><span class="line"><span class="cl">        },
-</span></span><span class="line"><span class="cl">      };
-</span></span><span class="line"><span class="cl">      apiPickedDayAdd(
-</span></span><span class="line"><span class="cl">        self.$store.state.userId,
-</span></span><span class="line"><span class="cl">        self.pickedHabit.habitId,
-</span></span><span class="line"><span class="cl">        self.pageYear,
-</span></span><span class="line"><span class="cl">        data
-</span></span><span class="line"><span class="cl">      ).then((res) =&gt; {
-</span></span><span class="line"><span class="cl">        this.pickedDays = res.data.pickedDays;
-</span></span><span class="line"><span class="cl">      });
-</span></span><span class="line"><span class="cl">      // self.pickedDays.push({
-</span></span><span class="line"><span class="cl">      //   id: day.id,
-</span></span><span class="line"><span class="cl">      //   date: day.date,
-</span></span><span class="line"><span class="cl">      // });
+</span></span><span class="line"><span class="cl">      apiPickedDayAdd(self.$store.state.userId, self.pickedHabit.habitId, self.pageYear, day).then(
+</span></span><span class="line"><span class="cl">        (res) =&gt; {
+</span></span><span class="line"><span class="cl">          this.pickedDays = res.data.pickedDays;
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">      )
 </span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  }
 </span></span></code></pre></div></li>
 </ul>
 <br>
@@ -778,7 +770,9 @@ if (!doNotTrack) {
 </ul>
 <h4 id="參考資料">參考資料</h4>
 <ul>
-<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a></li>
+<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a>
+<br>
+<br></li>
 </ul></div>
   <div class="post__footer">
     

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      
+        To-do Calendar - Day19 實作原子習慣新增、修改、刪除功能 |
+
+      
+      Fiber&#39;s blog
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.96.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Fiber&#39;s blog" />
+  <meta
+    name="description"
+    content="
+      Hi! I&#39;m Fiber, 一名貓奴工程師
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.02d94a71503cb758e2ae7d6030f4bada9d3babfd125372c3759e2455304f6630.css"
+      integrity="sha256-AtlKcVA8t1jirn1gMPS62p07q/0SU3LDdZ4kVTBPZjA="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-25/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="To-do Calendar - Day19 實作原子習慣新增、修改、刪除功能"/>
+<meta name="twitter:description" content="接著來實作原子習慣的新增、修改、刪除功能，因為寫法大同小異，就集中一篇來說明。
+
+            其實我沒看過天龍八部
+        
+
+
+"/>
+
+
+
+  
+  <meta property="og:title" content="To-do Calendar - Day19 實作原子習慣新增、修改、刪除功能" />
+<meta property="og:description" content="接著來實作原子習慣的新增、修改、刪除功能，因為寫法大同小異，就集中一篇來說明。
+
+            其實我沒看過天龍八部
+        
+
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-25/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-05T00:00:00+00:00" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "To-do Calendar - Day19 實作原子習慣新增、修改、刪除功能",
+        "headline": "To-do Calendar - Day19 實作原子習慣新增、修改、刪除功能",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003cp\u003e接著來實作原子習慣的新增、修改、刪除功能，因為寫法大同小異，就集中一篇來說明。\n\u003cfigure class=\u0022medium\u0022\u003e\u003cimg src=\u0022https:\/\/i.imgur.com\/MXhWoYT.jpg\u0022\n         alt=\u0022image\u0022\/\u003e\u003cfigcaption\u003e\n            \u003cp\u003e\u003cdel\u003e其實我沒看過天龍八部\u003c\/del\u003e\u003c\/p\u003e\n        \u003c\/figcaption\u003e\n\u003c\/figure\u003e\n\n\u003cbr\u003e\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-25\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-06-05T00:00:00.00Z",
+        "datePublished": "2022-06-05T00:00:00.00Z",
+        "dateModified": "2022-06-05T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Fiber Lin",
+            "url": "https://fiberlin1121.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/fiberlin1121.github.io\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://fiberlin1121.github.io/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-25\/",
+        "wordCount" : "539",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "SideProject"
+
+    ]
+    }
+  </script>
+
+
+
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction" style="margin-bottom: 0;">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/wowo.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/"></a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Hi! I'm Fiber, 一名貓奴工程師</p>
+      </div>
+    </div>
+    
+    <ul class="sidebar__list" style="margin-top: 0;">
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/FiberLin1121/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.behance.net/fiber410139" rel="me" aria-label="Behance" title="Behance">
+            <i class="fab fa-behance-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.facebook.com/%E5%B0%8F%E8%B3%B4%E7%9A%AE-277134752317535" rel="me" aria-label="Facebook" title="Facebook">
+            <i class="fab fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:fiber410139@gmail.com" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+
+    <ul class="sidebar__list">
+      <li style="margin-bottom:.5em; font-size: 15px;"><a href="/tags/程式筆記/" style="font-size: 15px;">程式筆記</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/sideproject/" style="font-size: 15px;">Side Project</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/阿宅日常/" style="font-size: 15px;">阿宅日常</a></li>
+    </ul>
+    
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav d-flex justify-content-between">
+    <ul class="nav__list col" id="navMenu">
+      
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/"
+            
+            title=""
+            >Home</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/post/"
+            
+            title=""
+            >Posts</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/portfolio/"
+            
+            title=""
+            >Portfolio</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/about/"
+            
+            title=""
+            >About</a
+          >
+        </li>
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end col">
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+<div class="post 
+      .
+
+    ">
+  
+  <div class="post__content">
+    <h1>To-Do Calendar - Day19 實作原子習慣新增、修改、刪除功能</h1>
+    
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <em class="fas fa-calendar-day post__meta-icon"></em>
+        <span class="post__meta-text">
+          2022/06/05
+
+
+          
+        </span>
+      </li>
+      <li class="post__meta-item">
+        <em class="fas fa-stopwatch post__meta-icon"></em>
+        <span class="post__meta-text">3-minute read</span>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__meta-text">
+        
+        <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
+
+
+        
+        </span>
+      </li>
+    </ul>
+
+    <p>接著來實作原子習慣的新增、修改、刪除功能，因為寫法大同小異，就集中一篇來說明。
+<figure class="medium"><img src="https://i.imgur.com/MXhWoYT.jpg"
+         alt="image"/><figcaption>
+            <p><del>其實我沒看過天龍八部</del></p>
+        </figcaption>
+</figure>
+
+<br></p>
+<h2 id="原子習慣新增修改刪除功能">原子習慣新增、修改、刪除功能</h2>
+<ul>
+<li>開發流程：
+<ul>
+<li>根據前端傳來的參數 op 判斷要執行新增、修改或刪除原子習慣，並將結果並返回前端</li>
+<li>最後實作前端呼叫對應的 API，然後顯示更新後返回的結果
+<br></li>
+</ul>
+</li>
+</ul>
+<h2 id="設計-restful-api">設計 RESTful API</h2>
+<p><figure class="medium"><img src="https://i.imgur.com/kNniLnZ.jpg"
+         alt="image"/><figcaption>
+            <p>實作原子習慣新增、刪除、修改功能</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/rw86qGB.jpg"
+         alt="image"/><figcaption>
+            <p>點「+」新增原子習慣</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/uw88JGV.jpg"
+         alt="image"/><figcaption>
+            <p>點「筆」編輯原子習慣</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/ayrEq7b.jpg"
+         alt="image"/><figcaption>
+            <p>點「垃圾桶」刪除原子習慣</p>
+        </figcaption>
+</figure>
+</p>
+<h3 id="addhabit-api">addHabit API</h3>
+<p>Request Body 的 value 帶的是要新增的原子習慣參數。</p>
+<ul>
+<li>Request URL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PATCH http://localhost:8080/users/{userId}/habits
+</span></span></code></pre></div></li>
+<li>Request Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;op&#34;:&#34;add&#34;,
+</span></span><span class="line"><span class="cl">  &#34;path&#34;:&#34;/habitList&#34;,
+</span></span><span class="line"><span class="cl">  &#34;value&#34;:{&#34;name&#34;: &#34;12點前就寢&#34;, &#34;checkColor&#34;: &#34;pink&#34;}
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+<li>Response Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;id&#34;: &#34;628fd7820f99c13e6d6d95fe&#34;,
+</span></span><span class="line"><span class="cl">  &#34;userId&#34;: &#34;user01&#34;,
+</span></span><span class="line"><span class="cl">  &#34;habitList&#34;:[
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit01&#34;, &#34;name&#34;: &#34;吃早餐&#34;, &#34;checkColor&#34;: &#34;red&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit02&#34;, &#34;name&#34;: &#34;喝水2000cc&#34;, &#34;checkColor&#34;: &#34;yellow&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit03&#34;, &#34;name&#34;: &#34;寫技術部落格&#34;, &#34;checkColor&#34;: &#34;green&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;36ced75352e74206a9a3b55eeda6b240&#34;, &#34;name&#34;: &#34;12點前就寢&#34;, &#34;checkColor&#34;: &#34;pink&#34;, &#34;lastModifiedTime&#34;:1653405213436}
+</span></span><span class="line"><span class="cl">  ],
+</span></span><span class="line"><span class="cl">  &#34;createdTime&#34;: 1653405213436,
+</span></span><span class="line"><span class="cl">  &#34;lastModifiedTime&#34;: 1654445557493
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h3 id="updatehabit-api">updateHabit API</h3>
+<p>Request Body 的 value 帶的是要修改的 habitId 與原子習慣參數。</p>
+<ul>
+<li>Request URL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PATCH http://localhost:8080/users/{userId}/habits
+</span></span></code></pre></div></li>
+<li>Request Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;op&#34;:&#34;replace&#34;,
+</span></span><span class="line"><span class="cl">  &#34;path&#34;:&#34;/habitList&#34;,
+</span></span><span class="line"><span class="cl">  &#34;value&#34;:{&#34;habitId&#34;: &#34;36ced75352e74206a9a3b55eeda6b240&#34;, &#34;name&#34;: &#34;12點前就寢&#34;, &#34;checkColor&#34;: &#34;purple&#34;}
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+<li>Response Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;id&#34;: &#34;628fd7820f99c13e6d6d95fe&#34;,
+</span></span><span class="line"><span class="cl">  &#34;userId&#34;: &#34;user01&#34;,
+</span></span><span class="line"><span class="cl">  &#34;habitList&#34;:[
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit01&#34;, &#34;name&#34;: &#34;吃早餐&#34;, &#34;checkColor&#34;: &#34;red&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit02&#34;, &#34;name&#34;: &#34;喝水2000cc&#34;, &#34;checkColor&#34;: &#34;yellow&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit03&#34;, &#34;name&#34;: &#34;寫技術部落格&#34;, &#34;checkColor&#34;: &#34;green&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;36ced75352e74206a9a3b55eeda6b240&#34;, &#34;name&#34;: &#34;12點前就寢&#34;, &#34;checkColor&#34;: &#34;purple&#34;, &#34;lastModifiedTime&#34;:1653405213436}
+</span></span><span class="line"><span class="cl">  ],
+</span></span><span class="line"><span class="cl">  &#34;createdTime&#34;: 1653405213436,
+</span></span><span class="line"><span class="cl">  &#34;lastModifiedTime&#34;: 1654445557493
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h3 id="deletehabit-api">deleteHabit API</h3>
+<p>Request Body 的 value 帶的是要刪除的 habitId 參數。</p>
+<ul>
+<li>Request URL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PATCH http://localhost:8080/users/{userId}/habits
+</span></span></code></pre></div></li>
+<li>Request Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;op&#34;:&#34;remove&#34;,
+</span></span><span class="line"><span class="cl">  &#34;path&#34;:&#34;/habitList&#34;,
+</span></span><span class="line"><span class="cl">  &#34;value&#34;:{&#34;habitId&#34;: &#34;36ced75352e74206a9a3b55eeda6b240&#34;}
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+<li>Response Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;id&#34;: &#34;628fd7820f99c13e6d6d95fe&#34;,
+</span></span><span class="line"><span class="cl">  &#34;userId&#34;: &#34;user01&#34;,
+</span></span><span class="line"><span class="cl">  &#34;habitList&#34;:[
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit01&#34;, &#34;name&#34;: &#34;吃早餐&#34;, &#34;checkColor&#34;: &#34;red&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit02&#34;, &#34;name&#34;: &#34;喝水2000cc&#34;, &#34;checkColor&#34;: &#34;yellow&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit03&#34;, &#34;name&#34;: &#34;寫技術部落格&#34;, &#34;checkColor&#34;: &#34;green&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436}
+</span></span><span class="line"><span class="cl">  ],
+</span></span><span class="line"><span class="cl">  &#34;createdTime&#34;: 1653405213436,
+</span></span><span class="line"><span class="cl">  &#34;lastModifiedTime&#34;: 1654497890163
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h2 id="實作-controller-層">實作 Controller 層</h2>
+<ul>
+<li>在 HabitsController class 新增 patchHabit 方法，返回類型為 <code>ResponseEntity&lt;Habits&gt;</code></li>
+<li>在方法上加上 <code>@PatchMapping</code> 註解，表示前端要使用 PATCH 方法來請求 API</li>
+<li>在 <code>@PatchMapping</code> 註解括號中指定 url 路徑，並使用 <code>@PathVariable</code> 註解去取得 url 路徑的值</li>
+<li>使用 <code>@RequestBody</code> 去接住前端傳來的參數，並使用 <code>@Valid</code> 註解讓寫在 PatchRequest class 的驗證請求參數的註解生效</li>
+<li>接著實作 patchHabit 方法（call habitsService 的 patchHabit 方法）</li>
+</ul>
+<figure class="medium"><img src="https://i.imgur.com/zQ7Edoy.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsController class</p>
+        </figcaption>
+</figure>
+
+<p><div
+  class="notice"
+>
+  <span
+    class="notice__title"
+  >Info</span><div class="notice__content">
+    <strong>更嚴謹的寫法</strong><br>
+如果是 update 操作，可以在前面先檢查指定修改的原子習慣是否存在，存在才轉發 service 層去執行，不存在則回傳 404 Not Found 的資訊給前端。
+  </div>
+</div>
+
+<br></p>
+<h2 id="實作-service-層">實作 Service 層</h2>
+<ul>
+<li>在 HabitsService interface 宣告 patchHabit 方法</li>
+<li>接著再到 HabitsServiceImpl class，實作 patchHabit 方法
+<ul>
+<li>依 patchRequest 的 op 參數的值決定要 call habitsDao 的哪個方法</li>
+</ul>
+</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/v5ZoSx5.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsService interface</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/LfcH0tc.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsServiceImpl class</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<h2 id="實作-dao-層">實作 Dao 層</h2>
+<ul>
+<li>在 HabitsDao interface 宣告 addHabit 方法、replaceHabit 方法和 removeHabit 方法</li>
+<li>實作之前可先在 Query Console 測試 MongoDB 原生語法</li>
+<li>接著再回到 HabitsDaoImpl class，實作 addHabit 方法、replaceHabit 方法和 removeHabit 方法
+<ul>
+<li>addHabit 方法中會先檢查指定的 habits Document 是否存在，如果尚未存在則以查詢條件建立一個，然後才去執行更新語法（使用前才會去建立使用者的 habits Document）</li>
+</ul>
+</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/9xYCFVM.jpg"
+         alt="image"/><figcaption>
+            <p>Query Console（新增原子習慣）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/is1Pyhe.jpg"
+         alt="image"/><figcaption>
+            <p>Query Console（修改原子習慣）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/KbVEx7t.jpg"
+         alt="image"/><figcaption>
+            <p>Query Console（刪除原子習慣）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/t7CjV8j.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsDao interface</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/RFlBqb3.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsDaoImpl class（addHabit）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/1msX7UM.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsDaoImpl class（replaceHabit）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/yu7Bwa2.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsDaoImpl class（removeHabit）</p>
+        </figcaption>
+</figure>
+</p>
+<ul>
+<li>接著運行 Spring Boot 程式，使用 API Tester 測試一下效果
+<figure class="medium"><img src="https://i.imgur.com/pfmD36T.jpg"
+         alt="image"/><figcaption>
+            <p>addHabit API</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/UI4srxa.jpg"
+         alt="image"/><figcaption>
+            <p>updateHabit API</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/OxvEhr4.jpg"
+         alt="image"/><figcaption>
+            <p>deleteHabit API</p>
+        </figcaption>
+</figure>
+
+<br></li>
+</ul>
+<h2 id="實作前端串接-api">實作前端串接 API</h2>
+<ul>
+<li>在 src/axios/index.js 新增 apiHabitAdd 方法、apiHabitUpdate 方法和 apiHabitDelete 方法，然後再 export 出去給外面的組件 import
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">export const apiHabitAdd = (userId, name, checkColor) =&gt;
+</span></span><span class="line"><span class="cl">  instance.patch(`/users/${userId}/habits`, {
+</span></span><span class="line"><span class="cl">    op: &#34;add&#34;,
+</span></span><span class="line"><span class="cl">    path: &#34;/habitList&#34;,
+</span></span><span class="line"><span class="cl">    value: {
+</span></span><span class="line"><span class="cl">      name: name,
+</span></span><span class="line"><span class="cl">      checkColor: checkColor,
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">  });
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">export const apiHabitUpdate = (userId, habitId, name, checkColor) =&gt;
+</span></span><span class="line"><span class="cl">  instance.patch(`/users/${userId}/habits`, {
+</span></span><span class="line"><span class="cl">    op: &#34;replace&#34;,
+</span></span><span class="line"><span class="cl">    path: &#34;/habitList&#34;,
+</span></span><span class="line"><span class="cl">    value: {
+</span></span><span class="line"><span class="cl">      habitId:habitId,
+</span></span><span class="line"><span class="cl">      name: name,
+</span></span><span class="line"><span class="cl">      checkColor: checkColor,
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">  });
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">export const apiHabitDelete = (userId, habitId) =&gt;
+</span></span><span class="line"><span class="cl">  instance.patch(`/users/${userId}/habits`, {
+</span></span><span class="line"><span class="cl">    op: &#34;remove&#34;,
+</span></span><span class="line"><span class="cl">    path: &#34;/habitList&#34;,
+</span></span><span class="line"><span class="cl">    value: {
+</span></span><span class="line"><span class="cl">      habitId:habitId,
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">  });
+</span></span></code></pre></div></li>
+<li>在 habitTracker.vue 中為各個事件去呼叫對應的 API，最後顯示更新後的結果
+<ul>
+<li>pickedHabit 為目前顯示的是哪個原子習慣追蹤的位置標示（淺綠背景色），如果使用者點選其他原子習慣就會選顯示其原子習慣追蹤，預設為原子習慣列表的第一筆，若原子習慣列表尚未有資料則不顯示</li>
+<li>建立的新原子習慣會長在原子習慣列表最下方，pickedHabit 也會指到新原子習慣的位置</li>
+<li>刪除原子習慣後，pickedHabit 會改指回預設的第一筆</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  sendCreateHabit(createItem) {
+</span></span><span class="line"><span class="cl">    let self = this;
+</span></span><span class="line"><span class="cl">    apiHabitAdd(self.$store.state.userId, createItem.name, createItem.checkColor).then((res) =&gt; {
+</span></span><span class="line"><span class="cl">      self.habitList = res.data.habitList;
+</span></span><span class="line"><span class="cl">      if (this.habitList.length &gt; 0) {
+</span></span><span class="line"><span class="cl">        this.pickedHabit = this.habitList[this.habitList.length-1];
+</span></span><span class="line"><span class="cl">        self.pickedDays = [];
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">      $(&#34;#habitCreateModal&#34;).modal(&#34;hide&#34;);
+</span></span><span class="line"><span class="cl">    });
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  sendEditHabit(editItem) {
+</span></span><span class="line"><span class="cl">    let self = this;
+</span></span><span class="line"><span class="cl">    apiHabitUpdate(self.$store.state.userId, editItem.habitId, editItem.name, editItem.checkColor).then((res) =&gt; {
+</span></span><span class="line"><span class="cl">      self.habitList = res.data.habitList;
+</span></span><span class="line"><span class="cl">      self.pickedHabit = editItem;
+</span></span><span class="line"><span class="cl">      $(&#34;#habitEditModal&#34;).modal(&#34;hide&#34;);
+</span></span><span class="line"><span class="cl">    });
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  sendDeleteHabit(deleteItem) {
+</span></span><span class="line"><span class="cl">     let self = this;
+</span></span><span class="line"><span class="cl">    apiHabitDelete(self.$store.state.userId, deleteItem.habitId).then((res) =&gt; {
+</span></span><span class="line"><span class="cl">      self.habitList = res.data.habitList;
+</span></span><span class="line"><span class="cl">      $(&#34;#deleteModal&#34;).modal(&#34;hide&#34;);
+</span></span><span class="line"><span class="cl">      setTimeout(() =&gt; {
+</span></span><span class="line"><span class="cl">        if (self.habitList.length &gt; 0) {
+</span></span><span class="line"><span class="cl">        self.pickedHabit = self.habitList[0];
+</span></span><span class="line"><span class="cl">        self.sendQueryHabitTracker(self.pickedHabit);
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">    }, 1000);
+</span></span><span class="line"><span class="cl">    });
+</span></span><span class="line"><span class="cl">  },
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h3 id="運行結果">運行結果</h3>
+<p><figure class="medium"><img src="https://upload.cc/i1/2022/06/07/qCtim0.gif"
+         alt="image"/><figcaption>
+            <p>新增原子習慣</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://upload.cc/i1/2022/06/07/DF8xE4.gif"
+         alt="image"/><figcaption>
+            <p>修改原子習慣</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://upload.cc/i1/2022/06/07/smJeqg.gif"
+         alt="image"/><figcaption>
+            <p>刪除原子習慣</p>
+        </figcaption>
+</figure>
+
+<br>
+<br></p>
+<h4 id="延伸閱讀">延伸閱讀</h4>
+<ul>
+<li><a href="https://chikuwa-tech-study.blogspot.com/2022/03/mongodb-array-query-operators.html">【MongoDB】如何對陣列欄位進行查詢</a></li>
+</ul>
+<h4 id="參考資料">參考資料</h4>
+<ul>
+<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a></li>
+<li><a href="https://blog.csdn.net/HuHao_CSDN/article/details/80526999">mongodbTemplate 更新或刪除子元素為數組的數據</a>
+<br>
+<br></li>
+</ul></div>
+  <div class="post__footer">
+    
+
+    
+  </div>
+
+  <div id="comment">
+    <h2>comments</h2>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fiberlin1121" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>

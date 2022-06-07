@@ -6,7 +6,25 @@
     <description>Recent content in SideProject on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/tags/sideproject/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/tags/sideproject/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>To-do Calendar - Day19 實作原子習慣新增、修改、刪除功能</title>
+      <link>https://fiberlin1121.github.io/post/post-25/</link>
+      <pubDate>Sun, 05 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiberlin1121.github.io/post/post-25/</guid>
+      
+        <description>&lt;p&gt;接著來實作原子習慣的新增、修改、刪除功能，因為寫法大同小異，就集中一篇來說明。
+&lt;figure class=&#34;medium&#34;&gt;&lt;img src=&#34;https://i.imgur.com/MXhWoYT.jpg&#34;
+         alt=&#34;image&#34;/&gt;&lt;figcaption&gt;
+            &lt;p&gt;&lt;del&gt;其實我沒看過天龍八部&lt;/del&gt;&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;br&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
     <item>
       <title>To-do Calendar - Day18 實作年曆日期圈選功能</title>
       <link>https://fiberlin1121.github.io/post/post-24/</link>
