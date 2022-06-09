@@ -8,7 +8,7 @@
   <title>
     
       
-        To-do Calendar - Day9 Vue Router &amp; Vuex 問題解決紀錄 |
+        To-do Calendar - Day20 實作使用者自訂排序功能 |
 
       
       Fiber&#39;s blog
@@ -81,7 +81,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
 
-  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-14/" />
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-26/" />
 
   
   
@@ -113,18 +113,20 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="To-do Calendar - Day9 Vue Router &amp; Vuex 問題解決紀錄"/>
-<meta name="twitter:description" content="寫一下在實作前端登入驗證的過程中所遇到的問題及解決方法。"/>
+<meta name="twitter:title" content="To-do Calendar - Day20 實作使用者自訂排序功能"/>
+<meta name="twitter:description" content="這篇來實作原子習慣列表的自訂排序功能，根據使用者手動的排序結果來更新資料庫。
+"/>
 
 
 
   
-  <meta property="og:title" content="To-do Calendar - Day9 Vue Router &amp; Vuex 問題解決紀錄" />
-<meta property="og:description" content="寫一下在實作前端登入驗證的過程中所遇到的問題及解決方法。" />
+  <meta property="og:title" content="To-do Calendar - Day20 實作使用者自訂排序功能" />
+<meta property="og:description" content="這篇來實作原子習慣列表的自訂排序功能，根據使用者手動的排序結果來更新資料庫。
+" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://fiberlin1121.github.io/post/post-14/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-05-05T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-05T00:00:00+00:00" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-26/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-09T00:00:00+00:00" />
 
 
 
@@ -138,12 +140,12 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "To-do Calendar - Day9 Vue Router \u0026 Vuex 問題解決紀錄",
-        "headline": "To-do Calendar - Day9 Vue Router \u0026 Vuex 問題解決紀錄",
+        "name": "To-do Calendar - Day20 實作使用者自訂排序功能",
+        "headline": "To-do Calendar - Day20 實作使用者自訂排序功能",
         "alternativeHeadline": "",
         "description": "
       
-        \u003cp\u003e寫一下在實作前端登入驗證的過程中所遇到的問題及解決方法。\u003c\/p\u003e
+        \u003cp\u003e這篇來實作原子習慣列表的自訂排序功能，根據使用者手動的排序結果來更新資料庫。\n\u003cbr\u003e\u003c\/p\u003e
 
 
       
@@ -154,7 +156,7 @@
         "isFamilyFriendly": "true",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-14\/"
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-26\/"
         },
         "author" : {
             "@type": "Person",
@@ -173,9 +175,9 @@
             "name": "Fiber Lin"
         },
         "copyrightYear" : "2022",
-        "dateCreated": "2022-05-05T00:00:00.00Z",
-        "datePublished": "2022-05-05T00:00:00.00Z",
-        "dateModified": "2022-05-05T00:00:00.00Z",
+        "dateCreated": "2022-06-09T00:00:00.00Z",
+        "datePublished": "2022-06-09T00:00:00.00Z",
+        "dateModified": "2022-06-09T00:00:00.00Z",
         "publisher":{
             "@type":"Organization",
             "name": "Fiber Lin",
@@ -197,8 +199,8 @@
       ]
 
     ,
-        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-14\/",
-        "wordCount" : "304",
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-26\/",
+        "wordCount" : "287",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -418,13 +420,13 @@ if (!doNotTrack) {
     ">
   
   <div class="post__content">
-    <h1>To-Do Calendar - Day9 Vue Router &amp; Vuex 問題解決紀錄</h1>
+    <h1>To-Do Calendar - Day20 實作使用者自訂排序功能</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
         <em class="fas fa-calendar-day post__meta-icon"></em>
         <span class="post__meta-text">
-          2022/05/05
+          2022/06/09
 
 
           
@@ -445,178 +447,203 @@ if (!doNotTrack) {
       </li>
     </ul>
 
-    <p>寫一下在實作前端登入驗證的過程中所遇到的問題及解決方法。</p>
-<h2 id="問題1重新整理頁面後state-資料狀態丟失">問題1：重新整理頁面後，state 資料狀態丟失</h2>
-<p>store 中的資料是儲存在執行記憶體中的，所以當頁面重新整理時，store 中的資料就會重新變為初始狀態。導致雖然已經登入了，但一重新整理頁面，Vuex 狀態被清除而網頁又回到登出狀態。
-<figure class="medium"><img src="https://i.imgur.com/a33ZYhZ.gif"
+    <p>這篇來實作原子習慣列表的自訂排序功能，根據使用者手動的排序結果來更新資料庫。
+<br></p>
+<h2 id="原子習慣列表自訂排序功能">原子習慣列表自訂排序功能</h2>
+<ul>
+<li>開發流程：
+<ul>
+<li>將前端傳來的 habitList 參數已覆蓋的方式存進資料庫中該使用者的 habits document 的 habitList，並將結果並返回前端</li>
+<li>最後實作前端呼叫對應的 API，然後顯示更新後返回的結果
+<br></li>
+</ul>
+</li>
+</ul>
+<h2 id="設計-restful-api">設計 RESTful API</h2>
+<p><figure class="medium"><img src="https://i.imgur.com/lO27Qat.jpg"
          alt="image"/><figcaption>
-            <p>一刷新頁面，又出現請重新登入</p>
+            <p>實作原子習慣自訂排序功能</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/uOT902p.jpg"
+         alt="image"/><figcaption>
+            <p>拖曳原子習慣列表更新排序</p>
         </figcaption>
 </figure>
 
 <br></p>
-<h3 id="解決方法">解決方法</h3>
-<p>在登入成功後，將使用者登入資訊也保存一份在 sessionStorage，當頁面重整時再透過 sessionStorage 重新賦值給 Vuex</p>
+<h3 id="updatehabitsorder-api">updateHabitsOrder API</h3>
 <ul>
-<li>src/store/index.js
-<ul>
-<li>後來決定拿掉 isLogin，改是否拿到 token 來判斷登入狀態</li>
-<li>sessionStorage 資料的寫入和移除統一寫在 Vuex</li>
+<li>Request URL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PUT http://localhost:8080/users/{userId}/habits
+</span></span></code></pre></div></li>
+<li>Request Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;habitsId&#34;:&#34;628fd7820f99c13e6d6d95fe&#34;,
+</span></span><span class="line"><span class="cl">  &#34;habitList&#34;:[
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit01&#34;, &#34;name&#34;: &#34;吃早餐&#34;, &#34;checkColor&#34;: &#34;red&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit02&#34;, &#34;name&#34;: &#34;喝水2000cc&#34;, &#34;checkColor&#34;: &#34;yellow&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit03&#34;, &#34;name&#34;: &#34;寫技術部落格&#34;, &#34;checkColor&#34;: &#34;green&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;36ced75352e74206a9a3b55eeda6b240&#34;, &#34;name&#34;: &#34;12點前就寢&#34;, &#34;checkColor&#34;: &#34;pink&#34;, &#34;lastModifiedTime&#34;:1653405213436}
+</span></span><span class="line"><span class="cl">  ],
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+<li>Response Body
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;id&#34;: &#34;628fd7820f99c13e6d6d95fe&#34;,
+</span></span><span class="line"><span class="cl">  &#34;userId&#34;: &#34;user01&#34;,
+</span></span><span class="line"><span class="cl">  &#34;habitList&#34;:[
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit01&#34;, &#34;name&#34;: &#34;吃早餐&#34;, &#34;checkColor&#34;: &#34;red&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit02&#34;, &#34;name&#34;: &#34;喝水2000cc&#34;, &#34;checkColor&#34;: &#34;yellow&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;habit03&#34;, &#34;name&#34;: &#34;寫技術部落格&#34;, &#34;checkColor&#34;: &#34;green&#34;, &#34;createdTime&#34;: 1653405213436, &#34;lastModifiedTime&#34;:1653405213436},
+</span></span><span class="line"><span class="cl">      {&#34;habitId&#34;: &#34;36ced75352e74206a9a3b55eeda6b240&#34;, &#34;name&#34;: &#34;12點前就寢&#34;, &#34;checkColor&#34;: &#34;pink&#34;, &#34;lastModifiedTime&#34;:1653405213436}
+</span></span><span class="line"><span class="cl">  ],
+</span></span><span class="line"><span class="cl">  &#34;createdTime&#34;: 1653405213436,
+</span></span><span class="line"><span class="cl">  &#34;lastModifiedTime&#34;: 1654445557493
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">state: {
-</span></span><span class="line"><span class="cl">  isLoginModalOpen: false,
-</span></span><span class="line"><span class="cl">  userId: sessionStorage.getItem(&#34;userId&#34;) || &#34;&#34;, //设置初始化的值(若在 sessionStorage 中不存在則為空字串)
-</span></span><span class="line"><span class="cl">  userName: sessionStorage.getItem(&#34;userName&#34;) || &#34;&#34;,
-</span></span><span class="line"><span class="cl">  token: sessionStorage.getItem(&#34;token&#34;) || &#34;&#34;,
-</span></span><span class="line"><span class="cl">},
-</span></span><span class="line"><span class="cl">mutations: {
-</span></span><span class="line"><span class="cl">  isLoginModalOpen(state, status) {
-</span></span><span class="line"><span class="cl">    state.isLoginModalOpen = status;
-</span></span><span class="line"><span class="cl">  },
-</span></span><span class="line"><span class="cl">  setUserId(state, userId) {
-</span></span><span class="line"><span class="cl">    state.userId = userId;
-</span></span><span class="line"><span class="cl">  },
-</span></span><span class="line"><span class="cl">  setUserName(state, userName) {
-</span></span><span class="line"><span class="cl">    state.userName = userName;
-</span></span><span class="line"><span class="cl">  },
-</span></span><span class="line"><span class="cl">  setToken(state, token) {
-</span></span><span class="line"><span class="cl">    state.token = token;
-</span></span><span class="line"><span class="cl">  },
-</span></span><span class="line"><span class="cl">  setStoreToSession(state) {
-</span></span><span class="line"><span class="cl">    sessionStorage.setItem(&#34;userId&#34;, state.userId);
-</span></span><span class="line"><span class="cl">    sessionStorage.setItem(&#34;userName&#34;, state.userName);
-</span></span><span class="line"><span class="cl">    sessionStorage.setItem(&#34;token&#34;, state.token);
-</span></span><span class="line"><span class="cl">  },
-</span></span><span class="line"><span class="cl">  removeSession(state) {
-</span></span><span class="line"><span class="cl">    sessionStorage.getItem(&#34;userId&#34;, state.userId);
-</span></span><span class="line"><span class="cl">    sessionStorage.getItem(&#34;userName&#34;, state.userName);
-</span></span><span class="line"><span class="cl">    sessionStorage.getItem(&#34;token&#34;, state.token);
-</span></span><span class="line"><span class="cl">  },
-</span></span><span class="line"><span class="cl">},
-</span></span></code></pre></div></li>
-<li>src/pages/index.vue
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  sendUserLogin() {
-</span></span><span class="line"><span class="cl">    let self = this;
-</span></span><span class="line"><span class="cl">    let result = true;
-</span></span><span class="line"><span class="cl">    if (self.checkLoginInput()) {
-</span></span><span class="line"><span class="cl">      //send login API to server
-</span></span><span class="line"><span class="cl">      if (result) {
-</span></span><span class="line"><span class="cl">        self.$store.commit(&#34;isLoginModalOpen&#34;, false);
-</span></span><span class="line"><span class="cl">        self.$store.commit(&#34;setUserId&#34;, &#34;user01&#34;);
-</span></span><span class="line"><span class="cl">        self.$store.commit(&#34;setUserName&#34;, &#34;test&#34;);
-</span></span><span class="line"><span class="cl">        self.$store.commit(&#34;setToken&#34;, &#34;123&#34;);
-</span></span><span class="line"><span class="cl">        self.$store.commit(&#34;setStoreToSession&#34;); //提交將使用者登入資訊寫入 sessionStorage
-</span></span><span class="line"><span class="cl">        setTimeout(() =&gt; {
-</span></span><span class="line"><span class="cl">          self.$router.push(&#34;innerPage/todoLists&#34;);
-</span></span><span class="line"><span class="cl">        }, 1000);
-</span></span><span class="line"><span class="cl">      } else {
-</span></span><span class="line"><span class="cl">        self.serverErrorMsg = &#34;帳號或密碼錯誤&#34;;
-</span></span><span class="line"><span class="cl">      }
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">  },
-</span></span></code></pre></div></li>
-<li>src/router/index.js
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">router.beforeEach((to, from, next) =&gt; {
-</span></span><span class="line"><span class="cl">  if (to.meta.requireAuth) {
-</span></span><span class="line"><span class="cl">    if (sessionStorage.getItem(&#34;token&#34;)) { //登入狀態改從 sessionStorage 讀取 token 判斷
-</span></span><span class="line"><span class="cl">      next();
-</span></span><span class="line"><span class="cl">    } else {
-</span></span><span class="line"><span class="cl">      alert(&#34;請重新登入&#34;);
-</span></span><span class="line"><span class="cl">      store.commit(&#34;isLoginModalOpen&#34;, true);
-</span></span><span class="line"><span class="cl">      next(&#34;/&#34;);
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">  } else {
-</span></span><span class="line"><span class="cl">    next();
-</span></span><span class="line"><span class="cl">  }
+<br>
+<h2 id="實作-controller-層">實作 Controller 層</h2>
+<ul>
+<li>在 HabitsController class 新增 putHabitsOrder 方法，返回類型為 <code>ResponseEntity&lt;Habits&gt;</code></li>
+<li>在方法上加上 <code>@PutMapping</code> 註解，表示前端要使用 PUT 方法來請求 API</li>
+<li>在 <code>@PutMapping</code> 註解括號中指定 url 路徑，並使用 <code>@PathVariable</code> 註解去取得 url 路徑的值</li>
+<li>使用 <code>@RequestBody</code> 去接住前端傳來的參數，並使用 <code>@Valid</code> 註解讓寫在 HabitsRequest class 的驗證請求參數的註解生效</li>
+<li>接著實作 patchHabit 方法（call habitsService 的 putHabitsOrder 方法）</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/8ybam0t.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsRequest class</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/1BLJRLM.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsController class</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<h2 id="實作-service-層">實作 Service 層</h2>
+<ul>
+<li>在 HabitsService interface 宣告 putHabitsOrder 方法</li>
+<li>接著再到 putHabitsOrder class，實作 putHabitsOrder 方法</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/WLWa9jq.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsService interface</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/6l4OQRl.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsServiceImpl class</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<h2 id="實作-dao-層">實作 Dao 層</h2>
+<ul>
+<li>在 HabitsDao interface 宣告 replaceHabits 方法</li>
+<li>實作之前可先在 Query Console 測試 MongoDB 原生語法</li>
+<li>接著再回到 HabitsDaoImpl class，實作 replaceHabits 方法</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/c4FuVML.jpg"
+         alt="image"/><figcaption>
+            <p>Query Console</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/uTGEmJA.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsDao interface</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/ZoIOaJN.jpg"
+         alt="image"/><figcaption>
+            <p>HabitsDaoImpl class</p>
+        </figcaption>
+</figure>
+</p>
+<ul>
+<li>接著運行 Spring Boot 程式，使用 API Tester 測試一下效果</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/1qRDcP0.jpg"
+         alt="image"/>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/PDOfKxt.jpg"
+         alt="image"/><figcaption>
+            <p>updateHabitsOrder API</p>
+        </figcaption>
+</figure>
+</p>
+<ul>
+<li>測試是否有去驗證前端參數</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/TO6A2pe.jpg"
+         alt="image"/><figcaption>
+            <p>當 habitList 參數為空則回傳400（Bad Request）</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<h2 id="實作前端串接-api">實作前端串接 API</h2>
+<ul>
+<li>在 src/axios/index.js 新增 apiHabitsOrderUpdate 方法，然後再 export 出去給外面的組件 import
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">export const apiHabitsOrderUpdate = (userId, habitsId, habitList) =&gt;
+</span></span><span class="line"><span class="cl">instance.put(`/users/${userId}/habits`, {
+</span></span><span class="line"><span class="cl">  habitsId: habitsId,
+</span></span><span class="line"><span class="cl">  habitList: habitList,
 </span></span><span class="line"><span class="cl">});
 </span></span></code></pre></div></li>
+<li>當排序變更時，觸發 datadragEnd 事件呼叫 updateHabitsOrder API
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">import { apiHabitsQuery, apiHabitsOrderUpdate, apiHabitTrackerQuery, apiHabitAdd, apiHabitUpdate, apiHabitDelete, apiPickedDayAdd, apiPickedDayRemove } from &#34;../../api/index.js&#34;;
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  datadragEnd(evt) {
+</span></span><span class="line"><span class="cl">    let self = this;
+</span></span><span class="line"><span class="cl">    apiHabitsOrderUpdate(
+</span></span><span class="line"><span class="cl">      self.$store.state.userId,
+</span></span><span class="line"><span class="cl">      self.pickedHabit.habitId,
+</span></span><span class="line"><span class="cl">      self.habitList
+</span></span><span class="line"><span class="cl">      ).then((res=&gt;{
+</span></span><span class="line"><span class="cl">        self.habitList = res.data.habitList;
+</span></span><span class="line"><span class="cl">      }));
+</span></span><span class="line"><span class="cl">  },
+</span></span></code></pre></div></li>
 </ul>
+<br>
 <h3 id="運行結果">運行結果</h3>
-<p><figure class="medium"><img src="https://i.imgur.com/tjBq83S.gif"
-         alt="image"/>
-</figure>
-
-<br> 
-<br>
-<br></p>
-<h2 id="問題2在瀏覽器輸入內頁網址導回首頁後沒有開啟登入-modal">問題2：在瀏覽器輸入內頁網址，導回首頁後沒有開啟登入 Modal</h2>
-<p>在未登入狀態，從首頁輸入內頁網址，能正常運行攔導回首頁並自動開啟登入 Modal，但在瀏覽器輸入內頁網址，被導回首頁後卻沒有自動開啟登入 Modal，點 Start 按鈕也無法開啟登入 Modal。
-<figure class="medium"><img src="https://i.imgur.com/okoI2ix.gif"
+<p><figure class="medium"><img src="https://i.imgur.com/FlVgOFR.gif"
          alt="image"/><figcaption>
-            <p>從首頁輸入內頁網址（自動開啟登入 Modal：成功）</p>
+            <p>修改原子習慣列表排序</p>
         </figcaption>
 </figure>
 
-<figure class="medium"><img src="https://i.imgur.com/ajv5JD3.gif"
-         alt="image"/><figcaption>
-            <p>在瀏覽器輸入內頁網址（自動開啟登入 Modal：失敗）</p>
-        </figcaption>
-</figure>
-
-<br></p>
-<p>我在 index.vue 的 created hook、mounted hook 和 router 都加了 log，來比較一下兩邊的 console 內容：</p>
-<h3 id="從首頁輸入內頁網址">從首頁輸入內頁網址</h3>
-<figure class="medium"><img src="https://i.imgur.com/SXKGRVM.jpg"
-         alt="image"/>
-</figure>
-
-<p>一進首頁先執行 created function 和 mounted function，直到輸入內頁網址，被導航守衛攔截後提交 isLoginModalOpen 為 true，觸發 watch 開啟登入 Modal。
-<br>
-<br></p>
-<h3 id="在瀏覽器輸入內頁網址">在瀏覽器輸入內頁網址</h3>
-<figure class="medium"><img src="https://i.imgur.com/UFt3cis.jpg"
-         alt="image"/>
-</figure>
-
-<p>在進到內頁網址之前，先被導航守衛攔截後提交 isLoginModalOpen 為 true，導回首頁才執行 created function 和 mounted function。<br>
-而 computed 屬性是在 created 階段建立，DOM 節點、事件都綁定至 Vue 的實體是在 mounted 階段。因為此次操作的 Vue 實體是在導航守衛導回首頁之後才建立，所以無法監聽到在建立之前的 isLoginModalOpen 狀態改變，來打開登入 Modal（就算監聽到應該也打不開，因為 Vue 實體與掛載還沒完成）。<br>
-<br>
-而按 Start 按鈕也無法開啟登入 Modal，是因為 isLoginModalOpen 在被導航守衛提交為 true 後，再點 Start 按鈕經過導航守衛攔截後還是提交 isLoginModalOpen 為 true，watch 沒有監聽到 isLoginModalOpen 狀態改變，所以並不會開啟登入 Modal。</p>
-<p><figure class="medium"><img src="https://i.imgur.com/XSgpaK4.png"
-         alt="image"/><figcaption>
-            <p>Vue 的生命週期與 Hooks function</p>
-        </figcaption>
-</figure>
-
-<br> 
-<br></p>
-<h3 id="解決方法-1">解決方法</h3>
-<p>在 mounted function 補上一個判斷，如果 isLoginModalOpen 為 true，就開啟登入 Modal，代表這是直接在瀏覽器輸入內頁網址過來的，因為可以在 Vue 實體建立前就提交 isLoginModalOpen 為 true 的就只有 router 了，補上之後後續登入 Modal 又能正常運作。
 <div
-  class="notice
-    notice--warning
-
-  "
+  class="notice"
 >
   <span
-    class="notice__title
-      notice__title--warning
-
-    "
-  >Warning</span><div class="notice__content">
-    如果要對 DOM 做動作，記得要在 mounted 掛鉤中，它如同 onload 事件，或是 jQuery 中的 ready()。
+    class="notice__title"
+  >Info</span><div class="notice__content">
+    這裡有修改了 v-calendar 套件的週開始日顯示，改成從星期一開始。<br>
+作法：在年曆組件屬性上加 :first-day-of-week=&ldquo;2&rdquo;。
   </div>
 </div>
-
-<br></p>
-<figure class="medium"><img src="https://i.imgur.com/OUNHnBb.gif"
-         alt="image"/>
-</figure>
-
-<br> 
-<br> 
-<h4 id="延伸閱讀">延伸閱讀</h4>
-<ul>
-<li><a href="https://functional.style/axios/token/">如何管理 JWT Token ?</a></li>
-<li><a href="https://book.vue.tw/CH1/1-7-lifecycle.html">重新認識 Vue.js | 元件的生命週期與更新機制</a></li>
-</ul>
+</p>
+<br>
+<br>
 <h4 id="參考資料">參考資料</h4>
 <ul>
-<li><a href="https://www.jianshu.com/p/b33e69b326e9">頁面刷新 Vuex 數據消失</a></li>
-<li><a href="http://blog.tonycube.com/2017/04/vuejs-8-lifecycle.html">Vue.js (8) - Vue 實體與生命週期</a></li>
-</ul>
+<li><a href="https://hahow.in/courses/5fe22e7fe810e10fc483dd78/discussions">Java 工程師必備！Spring Boot 零基礎入門</a>
 <br>
-<br></div>
+<br></li>
+</ul></div>
   <div class="post__footer">
     
 

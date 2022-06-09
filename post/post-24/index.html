@@ -468,7 +468,8 @@ if (!doNotTrack) {
             <p>原子習慣追蹤（圈選或取消年曆上的日期）</p>
         </figcaption>
 </figure>
-</p>
+
+<br></p>
 <h3 id="addpickedday-api">addPickedDay API</h3>
 <p>關於要使用哪個 HTTP 方法糾結了許久，考慮用 POST 是因為這功能有「新增」<strong>日期</strong>，考慮用 PUT 是因為這功能實際是「修改」<strong>原子習慣追蹤</strong>，考慮用 PATCH 是因為這功能實際是「部分修改」<strong>原子習慣追蹤</strong>，最後還是決定以對應到資料庫操作去設計，因為從 URI 來看，<strong>原子習慣追蹤</strong>才是主體資源，而這個新增的日期只是原子習慣追蹤的 pickedDays 陣列中的一個元素，為了更新一個屬性上傳整個 habitTracker Document 或上傳整個新的 pickedDays 陣列都不太好（資料傳輸量浪費 server 頻寬），所以最後採用的是 PATCH，只上傳要新增的日期，而 PATCH 請求的格式參考的是 <a href="https://jsonpatch.com/">JSON Patch</a>。</p>
 <ul>

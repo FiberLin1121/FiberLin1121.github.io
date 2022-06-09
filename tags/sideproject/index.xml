@@ -6,9 +6,21 @@
     <description>Recent content in SideProject on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/tags/sideproject/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/tags/sideproject/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>To-do Calendar - Day19 實作原子習慣新增、修改、刪除功能</title>
+      <title>To-do Calendar - Day20 實作使用者自訂排序功能</title>
+      <link>https://fiberlin1121.github.io/post/post-26/</link>
+      <pubDate>Thu, 09 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiberlin1121.github.io/post/post-26/</guid>
+      
+        <description>&lt;p&gt;這篇來實作原子習慣列表的自訂排序功能，根據使用者手動的排序結果來更新資料庫。
+&lt;br&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>To-do Calendar - Day19 實作新增、修改、刪除功能</title>
       <link>https://fiberlin1121.github.io/post/post-25/</link>
       <pubDate>Sun, 05 Jun 2022 00:00:00 +0000</pubDate>
       
