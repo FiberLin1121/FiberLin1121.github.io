@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-18\/",
-        "wordCount" : "141",
+        "wordCount" : "162",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -489,10 +489,31 @@ if (!doNotTrack) {
 <li>_id作為保留欄位，用作主鍵，其值必須唯一、不可變，可以是除了陣列之外的任何型別。</li>
 <li>不可以$字元作為開頭。</li>
 <li>不可包含點號字元。</li>
-<li>不可以是 null 字串。</li>
+<li>不可以是 null 字串。
+<br>
+<br></li>
 </ul>
 </li>
 </ol>
+<h3 id="mongodb的資料型態">MongoDB的資料型態</h3>
+<p>在 MongoDB 裡所儲存的資料有以下幾種資料型態：</p>
+<ul>
+<li>int</li>
+<li>long</li>
+<li>string</li>
+<li>double</li>
+<li>decimal</li>
+<li>boolean</li>
+<li>date</li>
+<li>timestamp</li>
+<li>array</li>
+<li>null</li>
+<li>binData：此欄位儲存二進制的資料(binary data)</li>
+<li>objectId：MongoDB 文件主鍵</li>
+<li>object：相當於 embedded document，就是文件內的子文件
+<br>
+<br></li>
+</ul>
 <p>因為 MongoDB 之前已經下載過，下載教學可參考<a href="https://dotblogs.com.tw/explooosion/2018/01/21/040728">這篇</a>，可以不裝 MongoDB 的圖形化管理工具，因為這篇開始會使用 IntelliJ 介面來管理資料庫的數據。
 <br>
 <br></p>

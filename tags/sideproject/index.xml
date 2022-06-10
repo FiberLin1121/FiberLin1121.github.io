@@ -8,9 +8,21 @@
     <language>en</language>
     <lastBuildDate>Thu, 09 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/tags/sideproject/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>To-do Calendar - Day21 格式化返回的時間</title>
+      <link>https://fiberlin1121.github.io/post/post-27/</link>
+      <pubDate>Thu, 09 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiberlin1121.github.io/post/post-27/</guid>
+      
+        <description>&lt;p&gt;原子習慣功能實作已告一段落，來補充一下開發上常見的知識 — 格式化時間的字串。
+&lt;br&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
       <title>To-do Calendar - Day20 實作使用者自訂排序功能</title>
       <link>https://fiberlin1121.github.io/post/post-26/</link>
-      <pubDate>Thu, 09 Jun 2022 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 08 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fiberlin1121.github.io/post/post-26/</guid>
       
