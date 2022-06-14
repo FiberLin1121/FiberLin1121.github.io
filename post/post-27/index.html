@@ -114,19 +114,19 @@
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
 <meta name="twitter:title" content="To-do Calendar - Day21 格式化返回的時間"/>
-<meta name="twitter:description" content="原子習慣功能實作已告一段落，來補充一下開發上常見的知識 — 格式化時間的字串。
+<meta name="twitter:description" content="原子習慣功能實作已告一段落，來補充一下關於格式化時間的字串。
 "/>
 
 
 
   
   <meta property="og:title" content="To-do Calendar - Day21 格式化返回的時間" />
-<meta property="og:description" content="原子習慣功能實作已告一段落，來補充一下開發上常見的知識 — 格式化時間的字串。
+<meta property="og:description" content="原子習慣功能實作已告一段落，來補充一下關於格式化時間的字串。
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://fiberlin1121.github.io/post/post-27/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-06-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-06-09T00:00:00+00:00" />
+<meta property="article:published_time" content="2022-06-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-10T00:00:00+00:00" />
 
 
 
@@ -145,7 +145,7 @@
         "alternativeHeadline": "",
         "description": "
       
-        \u003cp\u003e原子習慣功能實作已告一段落，來補充一下開發上常見的知識 — 格式化時間的字串。\n\u003cbr\u003e\u003c\/p\u003e
+        \u003cp\u003e原子習慣功能實作已告一段落，來補充一下關於格式化時間的字串。\n\u003cbr\u003e\u003c\/p\u003e
 
 
       
@@ -175,9 +175,9 @@
             "name": "Fiber Lin"
         },
         "copyrightYear" : "2022",
-        "dateCreated": "2022-06-09T00:00:00.00Z",
-        "datePublished": "2022-06-09T00:00:00.00Z",
-        "dateModified": "2022-06-09T00:00:00.00Z",
+        "dateCreated": "2022-06-10T00:00:00.00Z",
+        "datePublished": "2022-06-10T00:00:00.00Z",
+        "dateModified": "2022-06-10T00:00:00.00Z",
         "publisher":{
             "@type":"Organization",
             "name": "Fiber Lin",
@@ -200,7 +200,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-27\/",
-        "wordCount" : "111",
+        "wordCount" : "109",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -426,7 +426,7 @@ if (!doNotTrack) {
       <li class="post__meta-item">
         <em class="fas fa-calendar-day post__meta-icon"></em>
         <span class="post__meta-text">
-          2022/06/09
+          2022/06/10
 
 
           
@@ -447,7 +447,7 @@ if (!doNotTrack) {
       </li>
     </ul>
 
-    <p>原子習慣功能實作已告一段落，來補充一下開發上常見的知識 — 格式化時間的字串。
+    <p>原子習慣功能實作已告一段落，來補充一下關於格式化時間的字串。
 <br></p>
 <h3 id="時間欄位型態改用-date-的緣由">時間欄位型態改用 Date 的緣由</h3>
 <p>開發到一半突然想到，在設計<strong>時間欄位</strong>時，好像沒仔細想過 MongoDB 資料型態的差異，就直接用 Long，因為之前做報表常有時間區間查詢、時間大小比較等需求，效能考量都用 Long，不過這次的專案並沒有這樣的需求，createdTime 欄位、lastModifiedTime 欄位也是給開發者自己看而已，而之前存 Long 的缺點就是無法直接閱讀，還必須透過工具轉換，於是決定將這兩個欄位（createdTime、lastModifiedTime）從 Long 改成 Date 型別試試！
@@ -489,7 +489,7 @@ if (!doNotTrack) {
 </figure>
 </p>
 <p>這時顯示的時間出現了點問題，user02 的原子習慣是在 2022/6/10 下午1點多修改的，但 lastModifiedTime 顯示的時間卻是 2022/6/10 早上5點，整整早了8小時，這是因為 MongoDB 中的 Date 型態以 UTC（Coordinated Universal Time，世界標準時間）儲存，就等於 GMT（Greenwich Mean Time，格林威治標準時間，在不需要精確到秒的情況下，二者可以視為等同）。</p>
-<p>Spring Boot 的 Date 型別預設是使用英國格林威治的時區來返回前端，而我所在的台灣的時區，比 GMT 快8小時，如果想要將返回的時間調整成所在的時區，作法如下：</p>
+<p>Spring Boot 的 Date 型別預設是使用英國格林威治的時區來返回前端，而我所在的台灣時區，比 GMT 快8小時，如果想要將返回的時間調整成所在的時區，作法如下：</p>
 <ul>
 <li>在 applocation.properties 加上時區設定（表示返回前端時要使用的時區）
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">spring.jackson.time-zone=GMT+8

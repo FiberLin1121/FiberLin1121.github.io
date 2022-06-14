@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      
+        To-do Calendar - Day22 用 Swagger 產生 API 文件 |
+
+      
+      Fiber&#39;s blog
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.96.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Fiber&#39;s blog" />
+  <meta
+    name="description"
+    content="
+      Hi! I&#39;m Fiber, 一名貓奴工程師
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.02d94a71503cb758e2ae7d6030f4bada9d3babfd125372c3759e2455304f6630.css"
+      integrity="sha256-AtlKcVA8t1jirn1gMPS62p07q/0SU3LDdZ4kVTBPZjA="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-28/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="To-do Calendar - Day22 用 Swagger 產生 API 文件"/>
+<meta name="twitter:description" content="這篇要來介紹自動產生 API 文件的好工具—Swagger！
+
+
+
+"/>
+
+
+
+  
+  <meta property="og:title" content="To-do Calendar - Day22 用 Swagger 產生 API 文件" />
+<meta property="og:description" content="這篇要來介紹自動產生 API 文件的好工具—Swagger！
+
+
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-28/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-13T00:00:00+00:00" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "To-do Calendar - Day22 用 Swagger 產生 API 文件",
+        "headline": "To-do Calendar - Day22 用 Swagger 產生 API 文件",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003cp\u003e這篇要來介紹自動產生 API 文件的好工具—Swagger！\n\u003cfigure class=\u0022medium\u0022\u003e\u003cimg src=\u0022https:\/\/i.imgur.com\/A2nu5sM.png\u0022\n         alt=\u0022image\u0022\/\u003e\n\u003c\/figure\u003e\n\n\u003cbr\u003e\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-28\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-06-13T00:00:00.00Z",
+        "datePublished": "2022-06-13T00:00:00.00Z",
+        "dateModified": "2022-06-13T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Fiber Lin",
+            "url": "https://fiberlin1121.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/fiberlin1121.github.io\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://fiberlin1121.github.io/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-28\/",
+        "wordCount" : "314",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "SideProject"
+
+    ]
+    }
+  </script>
+
+
+
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction" style="margin-bottom: 0;">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/wowo.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/"></a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Hi! I'm Fiber, 一名貓奴工程師</p>
+      </div>
+    </div>
+    
+    <ul class="sidebar__list" style="margin-top: 0;">
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/FiberLin1121/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.behance.net/fiber410139" rel="me" aria-label="Behance" title="Behance">
+            <i class="fab fa-behance-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.facebook.com/%E5%B0%8F%E8%B3%B4%E7%9A%AE-277134752317535" rel="me" aria-label="Facebook" title="Facebook">
+            <i class="fab fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:fiber410139@gmail.com" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+
+    <ul class="sidebar__list">
+      <li style="margin-bottom:.5em; font-size: 15px;"><a href="/tags/程式筆記/" style="font-size: 15px;">程式筆記</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/sideproject/" style="font-size: 15px;">Side Project</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/阿宅日常/" style="font-size: 15px;">阿宅日常</a></li>
+    </ul>
+    
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav d-flex justify-content-between">
+    <ul class="nav__list col" id="navMenu">
+      
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/"
+            
+            title=""
+            >Home</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/post/"
+            
+            title=""
+            >Posts</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/portfolio/"
+            
+            title=""
+            >Portfolio</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/about/"
+            
+            title=""
+            >About</a
+          >
+        </li>
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end col">
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+<div class="post 
+      .
+
+    ">
+  
+  <div class="post__content">
+    <h1>To-Do Calendar - Day22 用 Swagger 產生 API 文件</h1>
+    
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <em class="fas fa-calendar-day post__meta-icon"></em>
+        <span class="post__meta-text">
+          2022/06/13
+
+
+          
+        </span>
+      </li>
+      <li class="post__meta-item">
+        <em class="fas fa-stopwatch post__meta-icon"></em>
+        <span class="post__meta-text">2-minute read</span>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__meta-text">
+        
+        <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
+
+
+        
+        </span>
+      </li>
+    </ul>
+
+    <p>這篇要來介紹自動產生 API 文件的好工具—Swagger！
+<figure class="medium"><img src="https://i.imgur.com/A2nu5sM.png"
+         alt="image"/>
+</figure>
+
+<br></p>
+<h2 id="什麼是-swagger">什麼是 Swagger？</h2>
+<p><a href="https://swagger.io/">Swagger</a> 本質上是一種接口描述語言，用於描述使用 JSON 表示的 RESTful API 。Swagger 與一組開源軟件工具一起使用，以設計，構建，記錄和使用 RESTful Web 服務。簡單來說在開發 API 時，可以使用 Swagger 工具偵測程式碼自動生成 Open API 線上文件。</p>
+<p><figure class="medium"><img src="https://i.imgur.com/jlkq5tt.jpg"
+         alt="image"/><figcaption>
+            <p>Swagger UI</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<p>通常工程師都對寫文件退避三舍，因為維護費時，尤其專案需求隔三岔五改來改去，讓工程師覺得不如把時間拿去趕專案進度(´,_ゝ`)。關於專案的文件，根據經驗運氣好的可能會有線上文件，像是 Google Sheets、Notion，或離線文件 Word、PDF，比較慘的是沒有文件，API 如天女散花散落在 Jira 的各處Issue 留言中，或是 PM 直接丟整包程式碼叫你自己去找吧&hellip;<del>(ONE PIECE 來著？)</del></p>
+<p>拉回正題，我覺得 Swagger 最棒的一點就是 API 的程式碼與 API 文件會同步更新！不需要額外再修改文件，而且 API 是視覺化的方式列表呈現、排版美觀，也可以直接給前端當做測試 API 的介面，大幅減少溝通及維護文件的成本！實在是後端開發、前端串接的必備工具～～</p>
+<p><figure class="medium"><img src="https://i.imgur.com/QUkYTsu.png"
+         alt="image"/>
+</figure>
+
+<br>
+<br></p>
+<p>Swagger 目前有 2.x 和 3.x 兩個主流版本，配置略有不同，以下是以 Swagger 3.x 為例：</p>
+<h2 id="匯入-swagger">匯入 Swagger</h2>
+<ul>
+<li>在 pom.xml 中添加 Swagger3 的配置
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;dependency&gt;
+</span></span><span class="line"><span class="cl">  &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">  &lt;artifactId&gt;springfox-boot-starter&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">  &lt;version&gt;3.0.0&lt;/version&gt;
+</span></span><span class="line"><span class="cl">&lt;/dependency&gt;
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h2 id="添加設定">添加設定</h2>
+<ul>
+<li>在application.properties 添加 Swagger 功能開關的設定，通常 Swagger 只會在開發環境或測試環境下開啟
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 生產環境需設定為false
+</span></span><span class="line"><span class="cl">springfox.documentation.swagger-ui.enabled=true
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h2 id="建立-swaggerconfig-檔案">建立 SwaggerConfig 檔案</h2>
+<ul>
+<li>使用 <code>@Configuration</code> 註解讓 Spring 載入此設定檔，透過 <code>@EnableOpenApi</code> 註解來啟動 Swagger</li>
+<li>可以在 apiInfo 方法加入 API 的基本資訊，包括標題、聯絡人
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  @Configuration
+</span></span><span class="line"><span class="cl">  @EnableOpenApi
+</span></span><span class="line"><span class="cl">  public class SwaggerConfig {
+</span></span><span class="line"><span class="cl">      @Bean
+</span></span><span class="line"><span class="cl">      public Docket createRestApi() {
+</span></span><span class="line"><span class="cl">          return new Docket(DocumentationType.OAS_30)
+</span></span><span class="line"><span class="cl">                  .select()
+</span></span><span class="line"><span class="cl">                  .apis(RequestHandlerSelectors.basePackage(&#34;com.fiber.todocalendar.controller&#34;)) //設定掃描目標
+</span></span><span class="line"><span class="cl">                  .paths(PathSelectors.any()) //設定過濾路徑
+</span></span><span class="line"><span class="cl">                  .build()
+</span></span><span class="line"><span class="cl">                  .apiInfo(apiInfo());
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      private ApiInfo apiInfo() {
+</span></span><span class="line"><span class="cl">          return new ApiInfoBuilder()
+</span></span><span class="line"><span class="cl">                  .title(&#34;To-Do Calendar&#34;)
+</span></span><span class="line"><span class="cl">                  .description(&#34;Side project - To-Do Calendar API&#34;)
+</span></span><span class="line"><span class="cl">                  .version(&#34;1.0.0&#34;)
+</span></span><span class="line"><span class="cl">                  .contact(new Contact(&#34;Fiber Lin&#34;, &#34;https://fiberlin1121.github.io/&#34;,
+</span></span><span class="line"><span class="cl">                          &#34;fiber410139@gmail.com&#34;))
+</span></span><span class="line"><span class="cl">                  .build();
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">  }
+</span></span></code></pre></div>在完成了上述配置後，其實已經可以生產文檔內容</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/DnMpMzD.png"
+         alt="image"/><figcaption>
+            <p>ApiInfo 對應介面資訊</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<h2 id="添加-api-描述">添加 API 描述</h2>
+<h3 id="在-controller-層加入-swagger">在 Controller 層加入 Swagger</h3>
+<p><figure class="medium"><img src="https://i.imgur.com/roQEvdY.png"
+         alt="image"/><figcaption>
+            <p>取得使用者的原子習慣列表（程式碼）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/JtboXpN.png"
+         alt="image"/><figcaption>
+            <p>取得使用者的原子習慣列表（Swagger UI）</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<p>Swagger 使用的註解及說明：</p>
+<ul>
+<li><code>@Api</code>：將一個 class 標記為 Swagger 資源，一般放在 Controller 上面
+<ul>
+<li>tags：說明 class 的內容</li>
+</ul>
+</li>
+<li><code>@ApiOperation</code>：用在請求的方法上，說明方法的用途
+<ul>
+<li>value：說明方法的用途</li>
+<li>notes：方法的備註說明</li>
+</ul>
+</li>
+<li><code>@ApiImplicitParams</code>：用在請求的方法上，表示參數說明
+<ul>
+<li><code>@ApiImplicitParam</code>：用在 <code>@ApiImplicitParams</code> 註解中，指定一個請求參數的各個方面
+<ul>
+<li>name：參數名稱</li>
+<li>value：參數的說明</li>
+<li>required：參數是否必須傳</li>
+<li>paramType：參數放在哪個地方
+<ul>
+<li>header &ndash;&gt; 請求引數的獲取：@RequestHeader</li>
+<li>query &ndash;&gt; 請求引數的獲取：@RequestParam</li>
+<li>path &ndash;&gt; 請求引數的獲取：@PathVariable</li>
+<li>body（不常用）</li>
+<li>form（不常用）</li>
+</ul>
+</li>
+<li>dataType：參數型別，預設 String</li>
+<li>defaultValue：參數的預設值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>@ApiResponses</code>：用在請求的方法上，表示一個 Response
+<ul>
+<li><code>@ApiResponse</code>：用在 <code>@ApiResponses</code> 中，一般用於表達一個錯誤的 Response 資訊
+code：數字，例如400
+message：資訊，例如請求參數有誤
+<br></li>
+</ul>
+</li>
+</ul>
+<h3 id="實體類相關註解">實體類相關註解</h3>
+<p><figure class="medium"><img src="https://i.imgur.com/pN0AtEJ.png"
+         alt="image"/><figcaption>
+            <p>HabitsPatchRequest（程式碼）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/9XGPinO.png"
+         alt="image"/><figcaption>
+            <p>HabitsPatchRequest（Swagger UI）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/OWXVJXQ.png"
+         alt="image"/><figcaption>
+            <p>在 Request body 會自動帶入 Example Value</p>
+        </figcaption>
+</figure>
+</p>
+<ul>
+<li><code>@ApiModel</code>：一般放在實體類上面
+<ul>
+<li>value：指定別名，不指定時默認為類名</li>
+<li>description：詳細說明</li>
+</ul>
+</li>
+<li><code>@ApiModelProperty</code>：一般放在實體類的屬性上
+<ul>
+<li>value 描述說明</li>
+<li>example：示範資料</li>
+<li>required：參數是否必須傳</li>
+<li>hidden：是否隱藏該字段，使其不會在 API 文檔中顯示
+<br>
+<br></li>
+</ul>
+</li>
+</ul>
+<h2 id="訪問-swagger-頁面">訪問 Swagger 頁面</h2>
+<ul>
+<li>運行 SpringBoot，接著在瀏覽器輸入：http://localhost:8080/swagger-ui/</li>
+<li>點 Try it out 按鈕，填入參數後進行 API 測試</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/qqVQDba.gif"
+         alt="image"/>
+</figure>
+
+<br>
+<br></p>
+<h2 id="匯出離線文件">匯出離線文件</h2>
+<p>某些情境我們可能要把 API 文件匯出備份或交給其他廠商，此時我們就需要 knife4j 來實現離線文件的匯出</p>
+<h3 id="匯入-knife4j">匯入 knife4j</h3>
+<ul>
+<li>在 pom.xml 中添加 knife4j 的配置
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;dependency&gt;
+</span></span><span class="line"><span class="cl">  &lt;groupId&gt;com.github.xiaoymin&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">  &lt;artifactId&gt;knife4j-spring-boot-starter&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">  &lt;version&gt;3.0.2&lt;/version&gt;
+</span></span><span class="line"><span class="cl">&lt;/dependency&gt;
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="啟動-knife4j">啟動 knife4j</h3>
+<ul>
+<li>在 SwaggerConfig 檔案上面添加 <code>@EnableKnife4j</code> 註解，即可開啟 knife4j 的功能
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@Configuration
+</span></span><span class="line"><span class="cl">@EnableKnife4j
+</span></span><span class="line"><span class="cl">@EnableOpenApi
+</span></span><span class="line"><span class="cl">public class SwaggerConfig {
+</span></span><span class="line"><span class="cl">    @Bean
+</span></span><span class="line"><span class="cl">    public Docket createRestApi() {
+</span></span><span class="line"><span class="cl">        return new Docket(DocumentationType.OAS_30)
+</span></span><span class="line"><span class="cl">                .select()
+</span></span><span class="line"><span class="cl">                ...
+</span></span><span class="line"><span class="cl">    }
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h2 id="訪問-swagger-頁面-1">訪問 Swagger 頁面</h2>
+<ul>
+<li>運行 SpringBoot，接著在瀏覽器輸入：http://localhost:8080/doc.html</li>
+</ul>
+<figure class="medium"><img src="https://i.imgur.com/D3JdPDg.png"
+         alt="image"/>
+</figure>
+
+<ul>
+<li>點文檔管理 &gt; 離線文檔，選擇匯出格式</li>
+</ul>
+<figure class="medium"><img src="https://i.imgur.com/2hTJl0J.png"
+         alt="image"/>
+</figure>
+
+<ul>
+<li>接著 Do Re Mi So～(∩^o^)⊃━☆ﾟ.*･｡ 這樣就可以得到一份好看的 API 文件啦！
+<br>
+<br></li>
+</ul>
+<p>最後給各位看倌看看 Knife4j 提供匯出的4種格式的離線文檔：</p>
+<p><figure class="medium"><img src="https://i.imgur.com/mGvcjch.png"
+         alt="image"/><figcaption>
+            <p>Markdown（.md）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/sGQGoCa.png"
+         alt="image"/><figcaption>
+            <p>Html（.html）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/s5kg22n.png"
+         alt="image"/><figcaption>
+            <p>Word（.word）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/ViG2VKH.png"
+         alt="image"/><figcaption>
+            <p>OpenAPI（.json）</p>
+        </figcaption>
+</figure>
+
+<br>
+<br></p>
+<h4 id="參考資料">參考資料</h4>
+<ul>
+<li><a href="https://chikuwa-tech-study.blogspot.com/2021/07/spring-boot-swagger-openapi-documentation.html">【Spring Boot】第23課－利用 Swagger 產生 API 文件</a></li>
+<li><a href="https://juejin.cn/post/6992515756504121380">在Spring Boot 中使用Swagger</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/59147622">Spring boot集成Swagger，並配置多個掃描路徑</a></li>
+<li><a href="https://www.gushiciku.cn/pl/gUbz/zh-tw">SpringBoot整合Swagger3，還想來份離線文件？真酷炫</a></li>
+</ul></div>
+  <div class="post__footer">
+    
+
+    
+  </div>
+
+  <div id="comment">
+    <h2>comments</h2>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fiberlin1121" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>

@@ -6,15 +6,31 @@
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 09 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>To-do Calendar - Day22 用 Swagger 產生 API 文件</title>
+      <link>https://fiberlin1121.github.io/post/post-28/</link>
+      <pubDate>Mon, 13 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiberlin1121.github.io/post/post-28/</guid>
+      
+        <description>&lt;p&gt;這篇要來介紹自動產生 API 文件的好工具—Swagger！
+&lt;figure class=&#34;medium&#34;&gt;&lt;img src=&#34;https://i.imgur.com/A2nu5sM.png&#34;
+         alt=&#34;image&#34;/&gt;
+&lt;/figure&gt;
+
+&lt;br&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
     <item>
       <title>To-do Calendar - Day21 格式化返回的時間</title>
       <link>https://fiberlin1121.github.io/post/post-27/</link>
-      <pubDate>Thu, 09 Jun 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 10 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fiberlin1121.github.io/post/post-27/</guid>
       
-        <description>&lt;p&gt;原子習慣功能實作已告一段落，來補充一下開發上常見的知識 — 格式化時間的字串。
+        <description>&lt;p&gt;原子習慣功能實作已告一段落，來補充一下關於格式化時間的字串。
 &lt;br&gt;&lt;/p&gt;</description>
       
     </item>
