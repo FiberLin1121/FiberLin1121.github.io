@@ -6,7 +6,20 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 13 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>To-do Calendar - Day23 為 MongoDB 加上驗證機制</title>
+      <link>https://fiberlin1121.github.io/post/post-29/</link>
+      <pubDate>Fri, 17 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiberlin1121.github.io/post/post-29/</guid>
+      
+        <description>&lt;p&gt;MongoDB 預設並沒有啟用認證功能（Authentication），相當於&lt;del&gt;資料庫的機敏資料們在網路中裸奔&lt;/del&gt;任何人都可以連線到資料庫，進行讀取和寫入，
+因此這篇就來為 MongoDB 加上身分驗證，提升資料庫的安全性！
+&lt;br&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
     <item>
       <title>To-do Calendar - Day22 用 Swagger 產生 API 文件</title>
       <link>https://fiberlin1121.github.io/post/post-28/</link>
