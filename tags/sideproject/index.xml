@@ -6,7 +6,18 @@
     <description>Recent content in SideProject on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 17 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/tags/sideproject/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/tags/sideproject/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>To-do Calendar - Day24 讀取自定義的 properties 檔案</title>
+      <link>https://fiberlin1121.github.io/post/post-30/</link>
+      <pubDate>Mon, 20 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiberlin1121.github.io/post/post-30/</guid>
+      
+        <description>&lt;p&gt;在工作中，常常會有「預設值」或「功能開關」的要求，因有經常異動的可能性，通常會避免直接寫在程式中，改寫在外部設定檔中統一管理，這篇將以取得預設標籤顏色為例，演示如何讀取自定義的 properties，以及打包後啟動 JAR 檔時，引入外部設定檔。&lt;/p&gt;</description>
+      
+    </item>
+    
     <item>
       <title>To-do Calendar - Day23 為 MongoDB 加上驗證機制</title>
       <link>https://fiberlin1121.github.io/post/post-29/</link>

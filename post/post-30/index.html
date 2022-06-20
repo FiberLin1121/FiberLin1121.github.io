@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      
+        To-do Calendar - Day24 讀取自定義的 properties 檔案 |
+
+      
+      Fiber&#39;s blog
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.96.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Fiber&#39;s blog" />
+  <meta
+    name="description"
+    content="
+      Hi! I&#39;m Fiber, 一名貓奴工程師
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.02d94a71503cb758e2ae7d6030f4bada9d3babfd125372c3759e2455304f6630.css"
+      integrity="sha256-AtlKcVA8t1jirn1gMPS62p07q/0SU3LDdZ4kVTBPZjA="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-30/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="To-do Calendar - Day24 讀取自定義的 properties 檔案"/>
+<meta name="twitter:description" content="在工作中，常常會有「預設值」或「功能開關」的要求，因有經常異動的可能性，通常會避免直接寫在程式中，改寫在外部設定檔中統一管理，這篇將以取得預設標籤顏色為例，演示如何讀取自定義的 properties，以及打包後啟動 JAR 檔時，引入外部設定檔。"/>
+
+
+
+  
+  <meta property="og:title" content="To-do Calendar - Day24 讀取自定義的 properties 檔案" />
+<meta property="og:description" content="在工作中，常常會有「預設值」或「功能開關」的要求，因有經常異動的可能性，通常會避免直接寫在程式中，改寫在外部設定檔中統一管理，這篇將以取得預設標籤顏色為例，演示如何讀取自定義的 properties，以及打包後啟動 JAR 檔時，引入外部設定檔。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-30/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-06-20T00:00:00+00:00" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "To-do Calendar - Day24 讀取自定義的 properties 檔案",
+        "headline": "To-do Calendar - Day24 讀取自定義的 properties 檔案",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003cp\u003e在工作中，常常會有「預設值」或「功能開關」的要求，因有經常異動的可能性，通常會避免直接寫在程式中，改寫在外部設定檔中統一管理，這篇將以取得預設標籤顏色為例，演示如何讀取自定義的 properties，以及打包後啟動 JAR 檔時，引入外部設定檔。\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-30\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-06-20T00:00:00.00Z",
+        "datePublished": "2022-06-20T00:00:00.00Z",
+        "dateModified": "2022-06-20T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Fiber Lin",
+            "url": "https://fiberlin1121.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/fiberlin1121.github.io\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://fiberlin1121.github.io/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-30\/",
+        "wordCount" : "145",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "SideProject"
+
+    ]
+    }
+  </script>
+
+
+
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction" style="margin-bottom: 0;">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/wowo.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/"></a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Hi! I'm Fiber, 一名貓奴工程師</p>
+      </div>
+    </div>
+    
+    <ul class="sidebar__list" style="margin-top: 0;">
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/FiberLin1121/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.behance.net/fiber410139" rel="me" aria-label="Behance" title="Behance">
+            <i class="fab fa-behance-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.facebook.com/%E5%B0%8F%E8%B3%B4%E7%9A%AE-277134752317535" rel="me" aria-label="Facebook" title="Facebook">
+            <i class="fab fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:fiber410139@gmail.com" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+
+    <ul class="sidebar__list">
+      <li style="margin-bottom:.5em; font-size: 15px;"><a href="/tags/程式筆記/" style="font-size: 15px;">程式筆記</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/sideproject/" style="font-size: 15px;">Side Project</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/阿宅日常/" style="font-size: 15px;">阿宅日常</a></li>
+    </ul>
+    
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav d-flex justify-content-between">
+    <ul class="nav__list col" id="navMenu">
+      
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/"
+            
+            title=""
+            >Home</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/post/"
+            
+            title=""
+            >Posts</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/portfolio/"
+            
+            title=""
+            >Portfolio</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/about/"
+            
+            title=""
+            >About</a
+          >
+        </li>
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end col">
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+<div class="post 
+      .
+
+    ">
+  
+  <div class="post__content">
+    <h1>To-Do Calendar - Day24 讀取自定義的 Properties 檔案</h1>
+    
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <em class="fas fa-calendar-day post__meta-icon"></em>
+        <span class="post__meta-text">
+          2022/06/20
+
+
+          
+        </span>
+      </li>
+      <li class="post__meta-item">
+        <em class="fas fa-stopwatch post__meta-icon"></em>
+        <span class="post__meta-text">1-minute read</span>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__meta-text">
+        
+        <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
+
+
+        
+        </span>
+      </li>
+    </ul>
+
+    <p>在工作中，常常會有「預設值」或「功能開關」的要求，因有經常異動的可能性，通常會避免直接寫在程式中，改寫在外部設定檔中統一管理，這篇將以取得預設標籤顏色為例，演示如何讀取自定義的 properties，以及打包後啟動 JAR 檔時，引入外部設定檔。</p>
+<h2 id="建立自定義的-properties-設定檔">建立自定義的 properties 設定檔</h2>
+<ul>
+<li>在 resourses 目錄下建立 config 目錄，並配置 defaultValue.properties 檔案
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">lable.firstColor=#ff9ebb
+</span></span><span class="line"><span class="cl">lable.secondColor=#f5b8de
+</span></span><span class="line"><span class="cl">lable.thirdColor=#f0d9a8
+</span></span><span class="line"><span class="cl">lable.fourthColor=#68dddf
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h2 id="建立一個設定類的-class">建立一個設定類的 class</h2>
+<ul>
+<li>建立 defaultValueProperties class，並定義對應的屬性
+<ul>
+<li><code>@Configuration</code>：表示這個 class 是用來設定的</li>
+<li><code>@ConfigurationProperties</code>：該註解用於綁定屬性
+<ul>
+<li>prefix：用來匹配屬性的前綴，也就是 defaultValue.properties 中的 「lable」</li>
+<li>ignoreUnknownFields：用來告訴 Spring Boot 當有屬性不能匹配時是否要拋出異常</li>
+</ul>
+</li>
+<li><code>@PropertySource</code>：設定文件的路徑</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  @Configuration
+</span></span><span class="line"><span class="cl">  @ConfigurationProperties(prefix = &#34;lable&#34;, ignoreUnknownFields = false)
+</span></span><span class="line"><span class="cl">  @PropertySource(&#34;classpath:config/defaultValue.properties&#34;)
+</span></span><span class="line"><span class="cl">  @Data
+</span></span><span class="line"><span class="cl">  public class DefaultValueProperties {
+</span></span><span class="line"><span class="cl">      private String firstColor;
+</span></span><span class="line"><span class="cl">      private String secondColor;
+</span></span><span class="line"><span class="cl">      private String thirdColor;
+</span></span><span class="line"><span class="cl">      private String fourthColor;
+</span></span><span class="line"><span class="cl">  }
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h2 id="注入設定檔的-bean">注入設定檔的 Bean</h2>
+<ul>
+<li>在要使用 defaultValue.properties 的地方（TodoListController class）注入 defaultValueProperties 的 Bean，就能直接在方法拿到設定檔的值了！</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/O0mrZP8.png"
+         alt="image"/>
+</figure>
+
+<br></p>
+<ul>
+<li>運行結果</li>
+</ul>
+<figure class="medium"><img src="https://i.imgur.com/sFPo4Mc.png"
+         alt="image"/>
+</figure>
+
+<br>
+<h3 id="補充">補充</h3>
+<p>實際照著 <a href="https://blog.51cto.com/u_15060511/3619243">參考資料</a> 做時，有發生下圖的錯誤，所以此篇的做法有些調整（拿掉 ＠EnableConfigurationProperties 註解），原因可能是在 spring 容器中有兩個 defaultValueProperties Bean，詳細可以看這篇<a href="https://juejin.cn/post/7030759493210243086">《為什麼你的SpringBoot 自動配置失效了》</a>：@EnableConfigurationProperties 的類，會默認註冊一個bean&hellip;
+<figure class="medium"><img src="https://i.imgur.com/8GtGcrq.png"
+         alt="image"/>
+</figure>
+
+<br></p>
+<h2 id="專案打包">專案打包</h2>
+<ul>
+<li>Spring Boot 有內嵌 Tomcat，所以打包成 JAR 檔後可以直接啟動</li>
+<li>點開 IntelliJ 右側的 Maven 頁籤</li>
+<li>點 M 符號（Execute Maven Goal）按鈕</li>
+</ul>
+<figure class="medium"><img src="https://i.imgur.com/RRzrcHS.png"
+         alt="image"/>
+</figure>
+
+<ul>
+<li>執行 mvn clean package 指令</li>
+<li>完成後，會在專案的資料夾長出「target」資料夾，裡面有打包好的 JAR 檔
+<br>
+<br></li>
+</ul>
+<h2 id="啟動時引入設定檔">啟動時引入設定檔</h2>
+<ul>
+<li>將 打包好的 JAR 檔、application.properties、defaultValue.properties 複製到作為運行的 build 資料夾</li>
+<li>在 build 資料夾打開命令提示字元，輸入啟動 JAR 檔的指令，並在後面添加選項，指定要引入的設定檔名稱與位置
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">java -jar todoCalendar-0.0.1-SNAPSHOT.jar --spring.config.name=application,defaultValue --spring.config.location=./
+</span></span></code></pre></div></li>
+</ul>
+<figure class="medium"><img src="https://i.imgur.com/8XG1AAe.png"
+         alt="image"/>
+</figure>
+
+<ul>
+<li>運行結果
+<figure class="medium"><img src="https://i.imgur.com/pErXtMz.png"
+         alt="image"/><figcaption>
+            <p>取得使用者原子習慣列表</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/hSYKCsx.png"
+         alt="image"/><figcaption>
+            <p>取得預設標籤顏色</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/E8eLTt9.gif"
+         alt="image"/><figcaption>
+            <p>實作 getLabelDefaultValue API 串接結果</p>
+        </figcaption>
+</figure>
+
+<br>
+<br></li>
+</ul>
+<h4 id="延伸閱讀">延伸閱讀</h4>
+<ul>
+<li><a href="https://blog.csdn.net/qq_41665121/article/details/105674208">Springboot加載外部配置文件的方法</a></li>
+</ul>
+<h4 id="參考資料">參考資料</h4>
+<ul>
+<li><a href="https://blog.51cto.com/u_15060511/3619243">SpringBoot下讀取自定義properties配置文件</a></li>
+<li><a href="https://www.jianshu.com/p/05069c601059">SpringBoot四種讀取properties文件的方式</a></li>
+<li><a href="https://chikuwa-tech-study.blogspot.com/2021/05/spring-boot-application-properties-configuration.html">【Spring Boot】第13課－在 application.properties 配置檔提供參數</a></li>
+<li><a href="https://blog.51cto.com/u_15060511/3619243">【Spring Boot】第1課－從建立專案到啟動程式</a></li>
+</ul></div>
+  <div class="post__footer">
+    
+
+    
+  </div>
+
+  <div id="comment">
+    <h2>comments</h2>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fiberlin1121" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>
