@@ -393,6 +393,46 @@ Remember that you can also specify a section header for the posts below by confi
     >
       
       <div class="post__content">
+        <h3><a href="/post/post-31/">TO-DO CALENDAR - DAY25 CONTROLLER 層統一的例外處理</a></h3>
+        
+          <p>程式碼中存在很多通過 throw 拋出的 Exception，如果在 Controller 層每個方法都加上 try、catch，難保證散落在各方法的處理方式的一致性，所以這篇將使用 @ControllerAdvice 和 @ExceptionHandler 註解，去對 Controller 中的所有方法，進行統一的 Exception 處理。
+<br>
+<br></p>
+
+        
+        </div>
+
+      
+      <div class="post__footer">
+        <em class="fas fa-calendar-day"></em>
+        <span class="post__footer-date"
+          >
+            2022/06/27
+
+
+          </span
+        >
+        
+
+        
+          <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
+
+
+
+
+        
+      </div>
+    </div>
+
+  
+    <div
+      class="post 
+        .
+
+      "
+    >
+      
+      <div class="post__content">
         <h3><a href="/post/post-30/">TO-DO CALENDAR - DAY24 讀取自定義的 PROPERTIES 檔案</a></h3>
         
           <p>在工作中，常常會有「預設值」或「功能開關」的要求，因有經常異動的可能性，通常會避免直接寫在程式中，改寫在外部設定檔中統一管理，這篇將以取得預設標籤顏色為例，演示如何讀取自定義的 properties，以及打包後啟動 JAR 檔時，引入外部設定檔。</p>
@@ -743,44 +783,6 @@ Remember that you can also specify a section header for the posts below by confi
     </div>
 
   
-    <div
-      class="post 
-        .
-
-      "
-    >
-      
-      <div class="post__content">
-        <h3><a href="/post/post-21/">TO-DO CALENDAR - DAY15 實作查詢列表功能（下）- 用 AXIOS INSTANCE 管理 API</a></h3>
-        
-          <p>上篇的 API 串接還不算完成，因為直接將 URL 寫死在程式中的做法不太好，如果今天 API 的路徑有異動，就必須把散落在各組件的 API 找出來修改，不易於後續維護。接下來將會透過 Axios Instance 來統一管理 API。</p>
-
-        
-        </div>
-
-      
-      <div class="post__footer">
-        <em class="fas fa-calendar-day"></em>
-        <span class="post__footer-date"
-          >
-            2022/05/29
-
-
-          </span
-        >
-        
-
-        
-          <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
-
-
-
-
-        
-      </div>
-    </div>
-
-  
   <div class="pagination">
     
   <ul class="pagination__list d-flex">
@@ -807,8 +809,20 @@ Remember that you can also specify a section header for the posts below by confi
 
     
       
+        
+          
+          <span class="page-link dots">&hellip;</span>
+
+        
+
+
+      
+
+
+    
+      
         <li class="pagination__list-item">
-          <a class="page-link" href="/page/3/">3</a>
+          <a class="page-link" href="/page/4/">4</a>
         </li>
 
       
