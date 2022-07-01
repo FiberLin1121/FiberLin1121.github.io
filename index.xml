@@ -6,7 +6,19 @@
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 27 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fiberlin1121.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>To-do Calendar - Day26 Spring Security 的認證與授權（上）</title>
+      <link>https://fiberlin1121.github.io/post/post-32/</link>
+      <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fiberlin1121.github.io/post/post-32/</guid>
+      
+        <description>&lt;p&gt;在前後端分離的架構中，前端和後端是通過 API 來傳遞資料，當使用者進行一些受到存取權限保護的操作，一般都會需要進行認證與授權，來保護 Web 的資源。本篇紀錄了如何在專案中使用 Spring Security 來實作安全認證與授權。
+&lt;br&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
     <item>
       <title>To-do Calendar - Day25 Controller 層統一的例外處理</title>
       <link>https://fiberlin1121.github.io/post/post-31/</link>
