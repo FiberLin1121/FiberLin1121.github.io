@@ -114,14 +114,14 @@
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
 <meta name="twitter:title" content="To-do Calendar - Day26 Spring Security 的認證與授權（上）"/>
-<meta name="twitter:description" content="在前後端分離的架構中，前端和後端是通過 API 來傳遞資料，當使用者進行一些受到存取權限保護的操作，一般都會需要進行認證與授權，來保護 Web 的資源。本篇紀錄了如何在專案中使用 Spring Security 來實作安全認證與授權。
+<meta name="twitter:description" content="在前後端分離的架構中，前端和後端是通過 API 來傳遞資料，當使用者進行一些受到存取控制機制保護的操作，一般都會需要進行認證與授權，來保護 Web 的資源。本篇紀錄了如何在專案中使用 Spring Security 來實作安全認證與授權。
 "/>
 
 
 
   
   <meta property="og:title" content="To-do Calendar - Day26 Spring Security 的認證與授權（上）" />
-<meta property="og:description" content="在前後端分離的架構中，前端和後端是通過 API 來傳遞資料，當使用者進行一些受到存取權限保護的操作，一般都會需要進行認證與授權，來保護 Web 的資源。本篇紀錄了如何在專案中使用 Spring Security 來實作安全認證與授權。
+<meta property="og:description" content="在前後端分離的架構中，前端和後端是通過 API 來傳遞資料，當使用者進行一些受到存取控制機制保護的操作，一般都會需要進行認證與授權，來保護 Web 的資源。本篇紀錄了如何在專案中使用 Spring Security 來實作安全認證與授權。
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://fiberlin1121.github.io/post/post-32/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
@@ -145,7 +145,7 @@
         "alternativeHeadline": "",
         "description": "
       
-        \u003cp\u003e在前後端分離的架構中，前端和後端是通過 API 來傳遞資料，當使用者進行一些受到存取權限保護的操作，一般都會需要進行認證與授權，來保護 Web 的資源。本篇紀錄了如何在專案中使用 Spring Security 來實作安全認證與授權。\n\u003cbr\u003e\u003c\/p\u003e
+        \u003cp\u003e在前後端分離的架構中，前端和後端是通過 API 來傳遞資料，當使用者進行一些受到存取控制機制保護的操作，一般都會需要進行認證與授權，來保護 Web 的資源。本篇紀錄了如何在專案中使用 Spring Security 來實作安全認證與授權。\n\u003cbr\u003e\u003c\/p\u003e
 
 
       
@@ -200,7 +200,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-32\/",
-        "wordCount" : "450",
+        "wordCount" : "474",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -447,7 +447,7 @@ if (!doNotTrack) {
       </li>
     </ul>
 
-    <p>在前後端分離的架構中，前端和後端是通過 API 來傳遞資料，當使用者進行一些受到存取權限保護的操作，一般都會需要進行認證與授權，來保護 Web 的資源。本篇紀錄了如何在專案中使用 Spring Security 來實作安全認證與授權。
+    <p>在前後端分離的架構中，前端和後端是通過 API 來傳遞資料，當使用者進行一些受到存取控制機制保護的操作，一般都會需要進行認證與授權，來保護 Web 的資源。本篇紀錄了如何在專案中使用 Spring Security 來實作安全認證與授權。
 <br></p>
 <h2 id="什麼是-spring-security">什麼是 Spring Security？</h2>
 <p><a href="https://spring.io/guides/topicals/spring-security-architecture">Spring Security</a> 是 Spring 的一個安全管理框架，它基於 Spring AOP 和 Servlet 過濾器，為系統提供了身份驗證與訪問控制的功能，減少了為系統安全而編寫大量重複代碼的工作。</p>
@@ -489,14 +489,24 @@ if (!doNotTrack) {
 </ul>
 <h2 id="預設的認證流程圖">預設的認證流程圖</h2>
 <ul>
-<li>先了解 Spring Security 的認證流程，才知道如何修改它，去實現我們自己的登入流程。
-<figure class="medium"><img src="https://i.imgur.com/V82mLgu.png"
+<li>先了解 Spring Security 的認證流程，才知道如何修改它，去實現我們自己的登入流程。</li>
+</ul>
+<p><figure class="medium"><img src="https://i.imgur.com/V82mLgu.png"
          alt="image"/>
 </figure>
-</li>
-<li>從圖可以分析出，我們可以自定義一個 UserDetailsService 來替換預設的 InMemoryUserDetailsManager（在記憶體中查找使用者資料），讓 Spring Security 使用我們的 UserDetailsService（在資料庫中查找使用者資料）。
-<br></li>
-</ul>
+
+<br></p>
+<h3 id="spring-security-進行認證的步驟">Spring Security 進行認證的步驟</h3>
+<ol>
+<li>使用者使用用戶名和密碼登入。</li>
+<li>UsernamePasswordAuthenticationFilter 取得用戶名、密碼，然後封裝成 Authentication。</li>
+<li>AuthenticationManager 認證 token（Authentication 的實現類別傳遞）。</li>
+<li>AuthenticationManager 認證成功，傳回一個封裝了使用者許可權資訊的 Authentication 物件。</li>
+<li>Authentication 物件設定值給目前的 SecurityContext，建立這個使用者的安全上下文（透過 SecurityContextHolder.getContext().setAuthentication()）。</li>
+<li>使用者進行一些受到存取控制機制保護的操作，存取控制機制會依據目前安全上下文資訊檢查這個操作所需的許可權。</li>
+</ol>
+<p>從以上可以分析出，我們可以自定義一個 UserDetailsService 來替換預設的 InMemoryUserDetailsManager（在記憶體中查找使用者資料），讓 Spring Security 使用我們的 UserDetailsService（在資料庫中查找使用者資料）。
+<br></p>
 <h2 id="前後端分離的登入認證流程">前後端分離的登入認證流程</h2>
 <ul>
 <li>前後端分離的情況下要進行認證，核心其實是依賴於 token。
@@ -509,7 +519,7 @@ if (!doNotTrack) {
 <h2 id="思路分析">思路分析</h2>
 <h3 id="登入">登入</h3>
 <ul>
-<li>自定義登入接口
+<li>自定義登入API
 <ul>
 <li>調用 ProviderManager 的方法進行認證，如果認證通過生成 jwt</li>
 <li>​把用戶信息存入 Redis 中</li>
@@ -640,7 +650,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    @Override
 </span></span><span class="line"><span class="cl">    public String getUsername() {
-</span></span><span class="line"><span class="cl">        return user.getId();
+</span></span><span class="line"><span class="cl">        return user.getEmail();
 </span></span><span class="line"><span class="cl">    }
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    @Override
@@ -688,7 +698,7 @@ if (!doNotTrack) {
 <h2 id="設定-spring-security">設定 Spring Security</h2>
 <ul>
 <li>建立 Spring Security 的配置類，並繼承 WebSecurityConfigurerAdapter</li>
-<li>把 BCryptPasswordEncoder 物件注入到 Spring 容器中，Spring Security 就會使用該 PasswordEncoder 來進行密碼校驗
+<li>建立 BCryptPasswordEncoder 物件並使用 <code>@Bean</code> 註解將它注入到 Spring 容器中，Spring Security 就會使用該 PasswordEncoder 來進行密碼校驗
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  @Configuration
 </span></span><span class="line"><span class="cl">  public class SecurityConfig extends WebSecurityConfigurerAdapter {
 </span></span><span class="line"><span class="cl">
@@ -696,7 +706,6 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">    public PasswordEncoder passwordEncoder() {
 </span></span><span class="line"><span class="cl">      return new BCryptPasswordEncoder();
 </span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  }
 </span></span></code></pre></div></li>
 <li>將資料庫中測試帳號的密碼改為用 BCryptPasswordEncoder 加密後的密文</li>
@@ -738,7 +747,7 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">  }
 </span></span></code></pre></div></li>
 </ul>
-<p>下一篇從自定義登入接口接著寫～</p>
+<p>下一篇從自定義登入 API 接著寫～</p>
 <br>
 <br>
 <h4 id="延伸閱讀">延伸閱讀</h4>
