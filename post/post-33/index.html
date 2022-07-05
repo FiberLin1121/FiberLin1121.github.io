@@ -8,7 +8,7 @@
   <title>
     
       
-        To-do Calendar - Day27 Spring Security 的認證與授權（中） |
+        To-do Calendar - Day27 Spring Security 的認證與授權（二） |
 
       
       Fiber&#39;s blog
@@ -113,14 +113,14 @@
   <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
 
-<meta name="twitter:title" content="To-do Calendar - Day27 Spring Security 的認證與授權（中）"/>
+<meta name="twitter:title" content="To-do Calendar - Day27 Spring Security 的認證與授權（二）"/>
 <meta name="twitter:description" content="前面已經自定義 UserDetailsService，在類中實作了去數據庫查詢使用者資料，接下來要實作自定義登入 API。
 "/>
 
 
 
   
-  <meta property="og:title" content="To-do Calendar - Day27 Spring Security 的認證與授權（中）" />
+  <meta property="og:title" content="To-do Calendar - Day27 Spring Security 的認證與授權（二）" />
 <meta property="og:description" content="前面已經自定義 UserDetailsService，在類中實作了去數據庫查詢使用者資料，接下來要實作自定義登入 API。
 " />
 <meta property="og:type" content="article" />
@@ -140,8 +140,8 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "articleSection": "post",
-        "name": "To-do Calendar - Day27 Spring Security 的認證與授權（中）",
-        "headline": "To-do Calendar - Day27 Spring Security 的認證與授權（中）",
+        "name": "To-do Calendar - Day27 Spring Security 的認證與授權（二）",
+        "headline": "To-do Calendar - Day27 Spring Security 的認證與授權（二）",
         "alternativeHeadline": "",
         "description": "
       
@@ -200,7 +200,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-33\/",
-        "wordCount" : "481",
+        "wordCount" : "476",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -420,7 +420,7 @@ if (!doNotTrack) {
     ">
   
   <div class="post__content">
-    <h1>To-Do Calendar - Day27 Spring Security 的認證與授權（中）</h1>
+    <h1>To-Do Calendar - Day27 Spring Security 的認證與授權（二）</h1>
     
     <ul class="post__meta">
       <li class="post__meta-item">
@@ -456,7 +456,7 @@ if (!doNotTrack) {
 <li>認證成功的話要生成一個 jwt，放入響應中返回。為了讓使用者下次請求時能通過 jwt 識別身分，我們需要把使用者資料存入 Redis。
 <br></li>
 </ul>
-<h2 id="login-api">login API</h2>
+<h2 id="實作-login-api">實作 login API</h2>
 <p>修改之前寫的簡易版的 login API。</p>
 <ul>
 <li>Request URL
@@ -506,6 +506,7 @@ if (!doNotTrack) {
 </ul>
 <br>
 <h2 id="設定-security-config">設定 Security Config</h2>
+<h3 id="配置-authenticationmanager">配置 AuthenticationManager</h3>
 <ul>
 <li>覆寫 authenticationManagerBean 方法，並使用 <code>@Bean</code> 註解將 AuthenticationManager 注入到 Spring 容器中
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  @Configuration
@@ -523,6 +524,9 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">    }
 </span></span><span class="line"><span class="cl">  }
 </span></span></code></pre></div></li>
+</ul>
+<h3 id="配置許可權控制規則">配置許可權控制規則</h3>
+<ul>
 <li>覆寫 configure(HttpSecurity http)方法，進行許可權控制規則的相關設定（對登入與註冊接口放行）
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  @Configuration
 </span></span><span class="line"><span class="cl">  public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -580,7 +584,7 @@ if (!doNotTrack) {
 <li>使用 authenticationManager 的 authenticate 方法進行使用者認證</li>
 <li>認證通過，使用 userId 生成一個 JWT 並返回</li>
 <li>把完整的使用者資料存入 Redis<br>
-（此處省略了引入 jwt、Redis 與建立工具類的過程）
+（此處先略過引入 jwt、Redis 與建立工具類的過程）
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@Component
 </span></span><span class="line"><span class="cl">public class UserServiceImpl implements UserService {
 </span></span><span class="line"><span class="cl">
@@ -598,11 +602,6 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">      // authenticationManager authenticate 進行使用者認證
 </span></span><span class="line"><span class="cl">      UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userLoginRequest.getEmail(), userLoginRequest.getPassword());
 </span></span><span class="line"><span class="cl">      Authentication authenticate = authenticationManager.authenticate(authenticationToken);
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">      // 認證失敗
-</span></span><span class="line"><span class="cl">      if (Objects.isNull(authenticate)) {
-</span></span><span class="line"><span class="cl">          throw new PasswordNotMatchException(&#34;帳號或密碼錯誤&#34;);
-</span></span><span class="line"><span class="cl">      }
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">      // 認證通過 -&gt; 使用 userId 生成一個 JWT 並返回
 </span></span><span class="line"><span class="cl">      LoginUser loginUser = (LoginUser) authenticate.getPrincipal();

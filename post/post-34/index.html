@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      
+        To-do Calendar - Day28 Spring Security 的認證與授權（三） |
+
+      
+      Fiber&#39;s blog
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.96.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Fiber&#39;s blog" />
+  <meta
+    name="description"
+    content="
+      Hi! I&#39;m Fiber, 一名貓奴工程師
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.02d94a71503cb758e2ae7d6030f4bada9d3babfd125372c3759e2455304f6630.css"
+      integrity="sha256-AtlKcVA8t1jirn1gMPS62p07q/0SU3LDdZ4kVTBPZjA="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-34/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="To-do Calendar - Day28 Spring Security 的認證與授權（三）"/>
+<meta name="twitter:description" content="接著來實作最後一個部分—定義 token 校驗過濾器。"/>
+
+
+
+  
+  <meta property="og:title" content="To-do Calendar - Day28 Spring Security 的認證與授權（三）" />
+<meta property="og:description" content="接著來實作最後一個部分—定義 token 校驗過濾器。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-34/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-02T00:00:00+00:00" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "To-do Calendar - Day28 Spring Security 的認證與授權（三）",
+        "headline": "To-do Calendar - Day28 Spring Security 的認證與授權（三）",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003cp\u003e接著來實作最後一個部分—定義 token 校驗過濾器。\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-34\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-07-02T00:00:00.00Z",
+        "datePublished": "2022-07-02T00:00:00.00Z",
+        "dateModified": "2022-07-02T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Fiber Lin",
+            "url": "https://fiberlin1121.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/fiberlin1121.github.io\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://fiberlin1121.github.io/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-34\/",
+        "wordCount" : "699",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "SideProject"
+
+    ]
+    }
+  </script>
+
+
+
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction" style="margin-bottom: 0;">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/wowo.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/"></a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Hi! I'm Fiber, 一名貓奴工程師</p>
+      </div>
+    </div>
+    
+    <ul class="sidebar__list" style="margin-top: 0;">
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/FiberLin1121/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.behance.net/fiber410139" rel="me" aria-label="Behance" title="Behance">
+            <i class="fab fa-behance-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.facebook.com/%E5%B0%8F%E8%B3%B4%E7%9A%AE-277134752317535" rel="me" aria-label="Facebook" title="Facebook">
+            <i class="fab fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:fiber410139@gmail.com" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+
+    <ul class="sidebar__list">
+      <li style="margin-bottom:.5em; font-size: 15px;"><a href="/tags/程式筆記/" style="font-size: 15px;">程式筆記</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/sideproject/" style="font-size: 15px;">Side Project</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/阿宅日常/" style="font-size: 15px;">阿宅日常</a></li>
+    </ul>
+    
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav d-flex justify-content-between">
+    <ul class="nav__list col" id="navMenu">
+      
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/"
+            
+            title=""
+            >Home</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/post/"
+            
+            title=""
+            >Posts</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/portfolio/"
+            
+            title=""
+            >Portfolio</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/about/"
+            
+            title=""
+            >About</a
+          >
+        </li>
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end col">
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+<div class="post 
+      .
+
+    ">
+  
+  <div class="post__content">
+    <h1>To-Do Calendar - Day28 Spring Security 的認證與授權（三）</h1>
+    
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <em class="fas fa-calendar-day post__meta-icon"></em>
+        <span class="post__meta-text">
+          2022/07/02
+
+
+          
+        </span>
+      </li>
+      <li class="post__meta-item">
+        <em class="fas fa-stopwatch post__meta-icon"></em>
+        <span class="post__meta-text">4-minute read</span>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__meta-text">
+        
+        <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
+
+
+        
+        </span>
+      </li>
+    </ul>
+
+    <p>接著來實作最後一個部分—定義 token 校驗過濾器。</p>
+<h2 id="什麼是-jwt">什麼是 JWT？</h2>
+<p>JWT（JSON Web Token）是一個開放的標準，用在各方之間以 JSON 物件安全地傳輸資訊。這些資訊透過數位簽章進行授權與驗證。可以使用 RSA 的公開金鑰/私密金鑰對 JWT 進行簽名。
+<br></p>
+<h2 id="jwt-請求流程">JWT 請求流程</h2>
+<ol>
+<li>使用者使用瀏覽器發送帳號和密碼</li>
+<li>伺服器使用金鑰建立一個 JWT</li>
+<li>伺服器傳回該 JWT 給瀏覽器</li>
+<li>瀏覽器將該 JWT 串在請求標頭中向伺服器發送請求</li>
+<li>伺服器驗證該 JWT</li>
+<li>根據授權規則傳回資源給瀏覽器</li>
+</ol>
+<figure class="medium"><img src="https://i.imgur.com/gsbufnO.png"
+         alt="image"/>
+</figure>
+
+<p>透過前3個步驟獲得 JWT 之後，在 JWT 有效期內，以後都不需要再進行前3個步驟的操作，直接進行步驟 4~6 的請求資源即可。
+<br></p>
+<h2 id="jwt-的組成">JWT 的組成</h2>
+<p>由表頭（Header）、內容（Payload）與簽名（Signature）三個部份組成。</p>
+<ul>
+<li>Header：含 Token 的種類及產生簽章（signature）要使用的雜湊演算法</li>
+<li>Payload：帶有欲存放的資訊（例如用戶資訊）</li>
+<li>Signature：編譯後的 Header、Payload 與密鑰透過雜湊演算法所產生</li>
+</ul>
+<h3 id="header">Header</h3>
+<ul>
+<li>Header 是一個包含定義 Token 種類（type）及雜湊演算法（alg）資訊的 JSON。在此設定 Token 種類為 JWT、產生簽章（signature）要使用的雜湊演算法為 HS256。此 JSON 將被轉換成 Base64 編碼：
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;alg&#34;: &#34;HS256&#34;, 
+</span></span><span class="line"><span class="cl">  &#34;typ&#34;: &#34;JWT&#34;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="payload">Payload</h3>
+<ul>
+<li>Payload 主要包含 claim，claim 是一些實體（通常指使用者）的狀態和額外的中繼資料，有三種類型：Reserved、Public、Private。最後再被轉換成 Base64 編碼：
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;userId&#34;: &#34;62b1361d521d677941408237&#34;,
+</span></span><span class="line"><span class="cl">  &#34;name&#34;: &#34;wowo&#34;,
+</span></span><span class="line"><span class="cl">  &#34;role&#34;: &#34;user&#34;,
+</span></span><span class="line"><span class="cl">  &#34;iss&#34;: &#34;todoCalendar&#34;,
+</span></span><span class="line"><span class="cl">  &#34;nbf&#34;: 1596240000000,
+</span></span><span class="line"><span class="cl">  &#34;exp&#34;: 1596241800000
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="signature">Signature</h3>
+<ul>
+<li>簽名的產生方式是將標頭與內容分別用 Base64 編碼，再用「.」符號串接。接著再把這個值經由加密演算法搭配「密鑰」（secret key）的處理後而得之。這三者組合起來便是一個 JWT：
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">encodedHeader = base64UrlEncode(header)
+</span></span><span class="line"><span class="cl">encodedPayload = base64UrlEncode(payload)
+</span></span><span class="line"><span class="cl">signature = HMACSHA256(encodedHeader + &#34;.&#34; + encodedPayload, secretKey)
+</span></span><span class="line"><span class="cl">jwt = encodedHeader + &#34;.&#34; + encodedPayload + &#34;.&#34; + signature
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h2 id="引入依賴">引入依賴</h2>
+<ul>
+<li>pom.xml 添加 jsonwebtoken 配置
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> &lt;dependency&gt;
+</span></span><span class="line"><span class="cl">      &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">      &lt;artifactId&gt;jjwt&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">      &lt;version&gt;0.9.0&lt;/version&gt;
+</span></span><span class="line"><span class="cl"> &lt;/dependency&gt;
+</span></span></code></pre></div></li>
+</ul>
+<h2 id="建立-jwt-工具類">建立 jwt 工具類</h2>
+<ul>
+<li>在 utils 目錄下建立 JwtUtil class
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  public class JwtUtil {
+</span></span><span class="line"><span class="cl">      public static final Long JWT_TTL = 60 * 60 * 1000L;
+</span></span><span class="line"><span class="cl">      public static final String JWT_KEY = &#34;sangeng&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      public static final String getUUID() {
+</span></span><span class="line"><span class="cl">          String token = UUID.randomUUID().toString().replaceAll(&#34;-&#34;, &#34;&#34;);
+</span></span><span class="line"><span class="cl">          return token;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      public static final String createJWT(String subject) {
+</span></span><span class="line"><span class="cl">          JwtBuilder builder = getJwtBuilder(subject, null, getUUID());
+</span></span><span class="line"><span class="cl">          return builder.compact();
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      public static final String createJWT(String subject, Long ttlMills) {
+</span></span><span class="line"><span class="cl">          JwtBuilder builder = getJwtBuilder(subject, ttlMills, getUUID());
+</span></span><span class="line"><span class="cl">          return builder.compact();
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      public static JwtBuilder getJwtBuilder(String subject, Long ttlMills, String uuid) {
+</span></span><span class="line"><span class="cl">          SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+</span></span><span class="line"><span class="cl">          SecretKey secretKey = generalKey();
+</span></span><span class="line"><span class="cl">          long nowMills = System.currentTimeMillis();
+</span></span><span class="line"><span class="cl">          Date now = new Date(nowMills);
+</span></span><span class="line"><span class="cl">          if (ttlMills == null) {
+</span></span><span class="line"><span class="cl">              ttlMills = JwtUtil.JWT_TTL;
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">          long expMills = nowMills + ttlMills;
+</span></span><span class="line"><span class="cl">          Date expDate = new Date(expMills);
+</span></span><span class="line"><span class="cl">          return Jwts.builder()
+</span></span><span class="line"><span class="cl">                  .setId(uuid)
+</span></span><span class="line"><span class="cl">                  .setSubject(subject)
+</span></span><span class="line"><span class="cl">                  .setIssuer(&#34;todoCalendar&#34;)
+</span></span><span class="line"><span class="cl">                  .setIssuedAt(now)
+</span></span><span class="line"><span class="cl">                  .signWith(signatureAlgorithm, secretKey)
+</span></span><span class="line"><span class="cl">                  .setExpiration(expDate);
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      public static String createJWT(String id, String subject, Long ttlMills) {
+</span></span><span class="line"><span class="cl">          JwtBuilder builder = getJwtBuilder(subject, ttlMills, id);
+</span></span><span class="line"><span class="cl">          return builder.compact();
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      public static SecretKey generalKey() {
+</span></span><span class="line"><span class="cl">          byte[] encodedKey = Base64.getDecoder().decode(JwtUtil.JWT_KEY);
+</span></span><span class="line"><span class="cl">          SecretKey key = new SecretKeySpec(encodedKey, 0, encodedKey.length, &#34;AES&#34;);
+</span></span><span class="line"><span class="cl">          return key;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      public static Claims parseJWT(String jwt) throws Exception {
+</span></span><span class="line"><span class="cl">          SecretKey secretKey = generalKey();
+</span></span><span class="line"><span class="cl">          return Jwts.parser()
+</span></span><span class="line"><span class="cl">                  .setSigningKey(secretKey)
+</span></span><span class="line"><span class="cl">                  .parseClaimsJws(jwt)
+</span></span><span class="line"><span class="cl">                  .getBody();
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">  }
+</span></span></code></pre></div></li>
+</ul>
+<br>
+<h2 id="實作-token-校驗過濾器">實作 token 校驗過濾器</h2>
+<h3 id="建立一個過濾器">建立一個過濾器</h3>
+<ul>
+<li>在 filter 目錄下建立 JwtAuthenticationTokenFilter class，並繼承 OncePerRequestFilter
+<ul>
+<li><code>OncePerRequestFilter</code>：因為直接繼承 filter interface 可能會存在一些問題，在不同的 servlet 版本當中，为了兼容不同的 web container，導致 filter 可能會被調用多次，所以這裡選擇繼承 OncePerRequestFilter，它是由 Spring 提供的，能確保後端接收到一個請求，該 Filter 只會執行一次</li>
+</ul>
+</li>
+<li>覆寫 doFilterInternal 方法
+<ul>
+<li><code>UsernamePasswordAuthenticationToken</code>：提供了兩種建構子
+<ul>
+<li>UsernamePasswordAuthenticationToken(Object principal, Object credentials)</li>
+<li>UsernamePasswordAuthenticationToken(Object principal, Object credentials, Collection&lt;? extends GrantedAuthority&gt; authorities)<br>
+這裡要使用後者，因為在3個參數的建構子裡，才會去調用 setAuthenticated(true)，表示已認證狀態，給後面的過濾器判斷用的</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  @Component
+</span></span><span class="line"><span class="cl">  public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      @Autowired
+</span></span><span class="line"><span class="cl">      RedisCache redisCache;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      @Override
+</span></span><span class="line"><span class="cl">      protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+</span></span><span class="line"><span class="cl">          // 取得 request header 中的 token
+</span></span><span class="line"><span class="cl">          String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+</span></span><span class="line"><span class="cl">          if (StringUtils.isEmpty(authHeader)) {
+</span></span><span class="line"><span class="cl">              // 放行
+</span></span><span class="line"><span class="cl">              filterChain.doFilter(request, response);
+</span></span><span class="line"><span class="cl">              return;
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          // 解析 token 取得 userId
+</span></span><span class="line"><span class="cl">          String token = authHeader.replace(&#34;Bearer &#34;, &#34;&#34;);
+</span></span><span class="line"><span class="cl">          String userId;
+</span></span><span class="line"><span class="cl">          try {
+</span></span><span class="line"><span class="cl">              Claims claims = JwtUtil.parseJWT(token);
+</span></span><span class="line"><span class="cl">              userId = claims.getSubject();
+</span></span><span class="line"><span class="cl">          } catch (Exception e) {
+</span></span><span class="line"><span class="cl">              e.printStackTrace();
+</span></span><span class="line"><span class="cl">              throw new RuntimeException();
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          // 通過 userId 從 redis 中取得 LoginUser
+</span></span><span class="line"><span class="cl">          String redisKey = &#34;login:&#34; + userId;
+</span></span><span class="line"><span class="cl">          LoginUser loginUser = redisCache.getCacheObject(redisKey);
+</span></span><span class="line"><span class="cl">          if (Objects.isNull(loginUser)) {
+</span></span><span class="line"><span class="cl">              throw new RuntimeException();
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">          //TODO: 還須把權限信息也封裝進去
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          // 如果能從 redis 中取得 loginUser -&gt; 存入 SecurityContextHolder
+</span></span><span class="line"><span class="cl">          if (Objects.nonNull(loginUser)) {
+</span></span><span class="line"><span class="cl">              UsernamePasswordAuthenticationToken authenticationToken =
+</span></span><span class="line"><span class="cl">                      new UsernamePasswordAuthenticationToken(loginUser, null, null);
+</span></span><span class="line"><span class="cl">              SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">          filterChain.doFilter(request, response);
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">  }
+</span></span></code></pre></div><div
+  class="notice"
+>
+  <span
+    class="notice__title"
+  >Info</span><div class="notice__content">
+    Redis 是一個基於記憶體、資料型態為 key-value 的可選持久化的資料庫，他的讀寫速度非常快，因此常常被用在需要 Cache 一些資料的場合，可以減輕許多後端資料庫的壓力。因為不是本次的重點，所以此處省略了引入 Redis 與建立工具類的過程。
+  </div>
+</div>
+</li>
+</ul>
+<h3 id="配置-token-校驗過濾器">配置 token 校驗過濾器</h3>
+<p>token 校驗過濾器寫好之後還只是放在 Spring 容器中，還需要配置和指定的順序。</p>
+<ul>
+<li>注入 jwtAuthenticationTokenFilter</li>
+<li>將 token 校驗過濾器位置指定在 UsernamePasswordAuthenticationFilter 之前
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@Configuration
+</span></span><span class="line"><span class="cl">public class SecurityConfig extends WebSecurityConfigurerAdapter {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Autowired
+</span></span><span class="line"><span class="cl">    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    protected void configure(HttpSecurity http) throws Exception {
+</span></span><span class="line"><span class="cl">        http
+</span></span><span class="line"><span class="cl">                // 關閉CSRF
+</span></span><span class="line"><span class="cl">                .csrf().disable()
+</span></span><span class="line"><span class="cl">                // 不通過 Session 取得 SecurityContext
+</span></span><span class="line"><span class="cl">                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+</span></span><span class="line"><span class="cl">                .and()
+</span></span><span class="line"><span class="cl">                .authorizeRequests()
+</span></span><span class="line"><span class="cl">                // 對登入接口允許匿名訪問
+</span></span><span class="line"><span class="cl">                .antMatchers(&#34;/users/login&#34;).anonymous()
+</span></span><span class="line"><span class="cl">                // 對註冊接口允許匿名訪問
+</span></span><span class="line"><span class="cl">                .antMatchers(&#34;/users/register&#34;).anonymous()
+</span></span><span class="line"><span class="cl">                // 剩下的所有請求
+</span></span><span class="line"><span class="cl">                .anyRequest().authenticated();
+</span></span><span class="line"><span class="cl">        // 將token校驗過濾器加到過濾器鏈中
+</span></span><span class="line"><span class="cl">        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Bean
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public AuthenticationManager authenticationManagerBean() throws Exception {
+</span></span><span class="line"><span class="cl">        return super.authenticationManagerBean();
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Bean
+</span></span><span class="line"><span class="cl">    public PasswordEncoder passwordEncoder() {
+</span></span><span class="line"><span class="cl">        return new BCryptPasswordEncoder();
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="運行結果">運行結果</h3>
+<p><figure class="medium"><img src="https://i.imgur.com/gtBNmjE.png"
+         alt="image"/>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/flFeTnI.png"
+         alt="image"/><figcaption>
+            <p>登入（伺服器傳回 token）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/iIzoUy7.png"
+         alt="image"/><figcaption>
+            <p>當瀏覽器發出需要驗證的請求時需在 Header 帶上 Authorization 欄位（格式是「Bearer」加一個空格，再加上 token）</p>
+        </figcaption>
+</figure>
+
+<figure class="medium"><img src="https://i.imgur.com/HttT0qo.png"
+         alt="image"/><figcaption>
+            <p>當 token 逾期或無效伺服器會回傳403</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<h2 id="實作前端串接">實作前端串接</h2>
+<h3 id="srcapiindexjs">src/api/index.js</h3>
+<ul>
+<li>修改 request 攔截器
+<ul>
+<li>添加 Authorization 欄位與 token 格式</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">instance.interceptors.request.use(
+</span></span><span class="line"><span class="cl">  function (config) {
+</span></span><span class="line"><span class="cl">    if (store.state.token) {
+</span></span><span class="line"><span class="cl">      config.headers.Authorization = &#34;Bearer &#34; + store.state.token;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    return config;
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  function (error) {
+</span></span><span class="line"><span class="cl">    // Do something with request error
+</span></span><span class="line"><span class="cl">    return Promise.reject(error);
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">);
+</span></span></code></pre></div></li>
+<li>修改 response 攔截器
+<ul>
+<li>添加 403 統一的錯誤處理（導回首頁）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">instance.interceptors.response.use(
+</span></span><span class="line"><span class="cl">  function (response) {
+</span></span><span class="line"><span class="cl">    // Do something with response data
+</span></span><span class="line"><span class="cl">    return response;
+</span></span><span class="line"><span class="cl">  },
+</span></span><span class="line"><span class="cl">  function (error) {
+</span></span><span class="line"><span class="cl">    if (error.response) {
+</span></span><span class="line"><span class="cl">      switch (error.response.status) {
+</span></span><span class="line"><span class="cl">        case 403:
+</span></span><span class="line"><span class="cl">          alert(&#34;請重新登入&#34;);
+</span></span><span class="line"><span class="cl">          router.push(&#34;/&#34;);
+</span></span><span class="line"><span class="cl">          store.commit(&#34;clearStore&#34;);
+</span></span><span class="line"><span class="cl">          store.commit(&#34;removeSession&#34;);
+</span></span><span class="line"><span class="cl">          store.commit(&#34;isLoginModalOpen&#34;, true);
+</span></span><span class="line"><span class="cl">          break;
+</span></span><span class="line"><span class="cl">        case 500:
+</span></span><span class="line"><span class="cl">          alert(&#34;程式發生問題&#34;);
+</span></span><span class="line"><span class="cl">          break;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    if (!window.navigator.onLine) {
+</span></span><span class="line"><span class="cl">      alert(&#34;網路出了點問題，請重新連線後重整網頁&#34;);
+</span></span><span class="line"><span class="cl">      return;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    return Promise.reject(error);
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">);
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="運行結果-1">運行結果</h3>
+<p><figure class="medium"><img src="https://i.imgur.com/Bu6GCkM.gif"
+         alt="image"/><figcaption>
+            <p>當收到403，前端會導回首頁開啟登入頁，並清空 store 和 sessionStorage</p>
+        </figcaption>
+</figure>
+
+<br>
+<br></p>
+<h4 id="參考資料">參考資料</h4>
+<ul>
+<li>《極速開發 Java大型系統：Spring Boot 又輕又快又好學》</li>
+<li><a href="https://blog.csdn.net/weixin_43847283/article/details/124075302">三更草堂 Spring Security 框架教程</a></li>
+<li><a href="https://chikuwa-tech-study.blogspot.com/2021/06/spring-boot-obtain-user-identity-from-token.html">【Spring Boot】第19課－從 Access Token 獲取使用者身份</a></li>
+</ul></div>
+  <div class="post__footer">
+    
+
+    
+  </div>
+
+  <div id="comment">
+    <h2>comments</h2>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fiberlin1121" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>
