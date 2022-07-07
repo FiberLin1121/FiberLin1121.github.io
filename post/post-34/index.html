@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-34\/",
-        "wordCount" : "699",
+        "wordCount" : "785",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -627,13 +627,13 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">          if (Objects.isNull(loginUser)) {
 </span></span><span class="line"><span class="cl">              throw new RuntimeException();
 </span></span><span class="line"><span class="cl">          }
-</span></span><span class="line"><span class="cl">          //TODO: 還須把權限信息也封裝進去
+</span></span><span class="line"><span class="cl">          //TODO: 獲取權限信息封裝到 authentication 中
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">          // 如果能從 redis 中取得 loginUser -&gt; 存入 SecurityContextHolder
 </span></span><span class="line"><span class="cl">          if (Objects.nonNull(loginUser)) {
-</span></span><span class="line"><span class="cl">              UsernamePasswordAuthenticationToken authenticationToken =
+</span></span><span class="line"><span class="cl">              UsernamePasswordAuthenticationToken authentication =
 </span></span><span class="line"><span class="cl">                      new UsernamePasswordAuthenticationToken(loginUser, null, null);
-</span></span><span class="line"><span class="cl">              SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+</span></span><span class="line"><span class="cl">              SecurityContextHolder.getContext().setAuthentication(authentication);
 </span></span><span class="line"><span class="cl">          }
 </span></span><span class="line"><span class="cl">          filterChain.doFilter(request, response);
 </span></span><span class="line"><span class="cl">      }
@@ -650,7 +650,7 @@ if (!doNotTrack) {
 </li>
 </ul>
 <h3 id="配置-token-校驗過濾器">配置 token 校驗過濾器</h3>
-<p>token 校驗過濾器寫好之後還只是放在 Spring 容器中，還需要配置和指定的順序。</p>
+<p>token 校驗過濾器寫好之後還只是放在 Spring 容器中，還需要在 SecurityConfig 設定檔配置和指定的順序。</p>
 <ul>
 <li>注入 jwtAuthenticationTokenFilter</li>
 <li>將 token 校驗過濾器位置指定在 UsernamePasswordAuthenticationFilter 之前
@@ -717,12 +717,9 @@ if (!doNotTrack) {
 
 <br></p>
 <h2 id="實作前端串接">實作前端串接</h2>
-<h3 id="srcapiindexjs">src/api/index.js</h3>
+<h3 id="修改-request-攔截器">修改 request 攔截器</h3>
 <ul>
-<li>修改 request 攔截器
-<ul>
-<li>添加 Authorization 欄位與 token 格式</li>
-</ul>
+<li>添加 Authorization 欄位與 token 格式
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">instance.interceptors.request.use(
 </span></span><span class="line"><span class="cl">  function (config) {
 </span></span><span class="line"><span class="cl">    if (store.state.token) {
@@ -736,10 +733,10 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">  }
 </span></span><span class="line"><span class="cl">);
 </span></span></code></pre></div></li>
-<li>修改 response 攔截器
-<ul>
-<li>添加 403 統一的錯誤處理（導回首頁）</li>
 </ul>
+<h3 id="修改-response-攔截器">修改 response 攔截器</h3>
+<ul>
+<li>添加 403 統一的錯誤處理（導回首頁）
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">instance.interceptors.response.use(
 </span></span><span class="line"><span class="cl">  function (response) {
 </span></span><span class="line"><span class="cl">    // Do something with response data
@@ -773,6 +770,56 @@ if (!doNotTrack) {
 <p><figure class="medium"><img src="https://i.imgur.com/Bu6GCkM.gif"
          alt="image"/><figcaption>
             <p>當收到403，前端會導回首頁開啟登入頁，並清空 store 和 sessionStorage</p>
+        </figcaption>
+</figure>
+
+<br></p>
+<h2 id="登出-api-細節分析">登出 API 細節分析</h2>
+<ul>
+<li>前面在 token 校驗過濾器已經把認證通過的 loginUser 存入 SecurityContextHolder，所以在登出接口可以從 SecurityContextHolder 獲取 userId。</li>
+<li>刪除 redis 中的值。</li>
+</ul>
+<h2 id="實作-logout-api">實作 logout API</h2>
+<ul>
+<li>Request URL
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">POST http://localhost:8080/users/logout
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="實作-controller-層">實作 Controller 層</h3>
+<ul>
+<li>修改 logout 方法
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  @RestController
+</span></span><span class="line"><span class="cl">  public class UserController {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  @Autowired
+</span></span><span class="line"><span class="cl">  private UserService userService;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  @PostMapping(&#34;/users/logout&#34;)
+</span></span><span class="line"><span class="cl">  public ResponseEntity logout() {
+</span></span><span class="line"><span class="cl">      userService.logout();
+</span></span><span class="line"><span class="cl">      return ResponseEntity.status(HttpStatus.OK).build();
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">  ...
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="實作-service-層">實作 Service 層</h3>
+<ul>
+<li>取得 SecurityContextHolder 中的 userId</li>
+<li>刪除 redis 中的值
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  @Override
+</span></span><span class="line"><span class="cl">  public void logout() {
+</span></span><span class="line"><span class="cl">      UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+</span></span><span class="line"><span class="cl">      LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+</span></span><span class="line"><span class="cl">      String redisKey = &#34;login:&#34; + loginUser.getUser().getId();
+</span></span><span class="line"><span class="cl">      redisCache.deleteObject(redisKey);
+</span></span><span class="line"><span class="cl">  }
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="運行結果-2">運行結果</h3>
+<p><figure class="medium"><img src="https://i.imgur.com/VkPf40h.gif"
+         alt="image"/><figcaption>
+            <p>登出後再重新訪問會要求重新登入</p>
         </figcaption>
 </figure>
 

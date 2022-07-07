@@ -200,7 +200,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-33\/",
-        "wordCount" : "476",
+        "wordCount" : "480",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -643,7 +643,18 @@ if (!doNotTrack) {
 <h3 id="securitycontextholder">SecurityContextHolder</h3>
 <ul>
 <li>SecurityContextHolder 用來儲存 SecurityContext。</li>
-<li>預設情況下，SecurityContextHolder 將使用 ThreadLocal 來保存 SecurityContext，這也就意味著在處於同一線程中的方法中我們可以從 ThreadLocal 中獲取到當前的 SecurityContext。</li>
+<li>預設情況下，SecurityContextHolder 將使用 ThreadLocal 來保存 SecurityContext，這也就意味著在處於同一線程中的方法中我們可以從 ThreadLocal 中獲取到當前的 SecurityContext。
+<div
+  class="notice"
+>
+  <span
+    class="notice__title"
+  >Info</span><div class="notice__content">
+    <strong>ThreadLocal</strong><br>
+ThreadLocal 是線程的局部變量， 是每一個線程所單獨持有的，其他線程不能對其進行訪問。
+  </div>
+</div>
+</li>
 </ul>
 <h3 id="authentication">Authentication</h3>
 <ul>

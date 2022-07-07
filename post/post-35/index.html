@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  class="html"
+><head>
+  <title>
+    
+      
+        To-do Calendar - Day29 Spring Security 的認證與授權（四） |
+
+      
+      Fiber&#39;s blog
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.96.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Fiber&#39;s blog" />
+  <meta
+    name="description"
+    content="
+      Hi! I&#39;m Fiber, 一名貓奴工程師
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.02d94a71503cb758e2ae7d6030f4bada9d3babfd125372c3759e2455304f6630.css"
+      integrity="sha256-AtlKcVA8t1jirn1gMPS62p07q/0SU3LDdZ4kVTBPZjA="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.69685904d5c2a0c6258d03c207b778c10466edf6cea928cc0164c376b0ad0930.css"
+    integrity="sha256-aWhZBNXCoMYljQPCB7d4wQRm7fbOqSjMAWTDdrCtCTA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.6d585e78d28cce1200d39fb133c92ed83df01738da721d0f48fb6eac62d24e04.css"
+    integrity="sha256-bVheeNKMzhIA05&#43;xM8ku2D3wFzjach0PSPturGLSTgQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.6b00d96498d59caa0dbcf9b49d30d821915291f2ceb0e19248523c8607ff43fa.css"
+    integrity="sha256-awDZZJjVnKoNvPm0nTDYIZFSkfLOsOGSSFI8hgf/Q/o="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://fiberlin1121.github.io/post/post-35/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.560a26330d27ff44a44e83b53cd07a95d4230a65930d31c5c76a8d481e5b35bf.js"
+      integrity="sha256-VgomMw0n/0SkToO1PNB6ldQjCmWTDTHFx2qNSB5bNb8="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/>
+
+<meta name="twitter:title" content="To-do Calendar - Day29 Spring Security 的認證與授權（四）"/>
+<meta name="twitter:description" content="前面已經實作出了 token 校驗過濾器和登入、登出的功能，最後補充一下授權的部分。"/>
+
+
+
+  
+  <meta property="og:title" content="To-do Calendar - Day29 Spring Security 的認證與授權（四）" />
+<meta property="og:description" content="前面已經實作出了 token 校驗過濾器和登入、登出的功能，最後補充一下授權的部分。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fiberlin1121.github.io/post/post-35/" /><meta property="og:image" content="https://fiberlin1121.github.io/images/site-feature-image.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-06T00:00:00+00:00" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "To-do Calendar - Day29 Spring Security 的認證與授權（四）",
+        "headline": "To-do Calendar - Day29 Spring Security 的認證與授權（四）",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003cp\u003e前面已經實作出了 token 校驗過濾器和登入、登出的功能，最後補充一下授權的部分。\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/fiberlin1121.github.io\/post\/post-35\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Fiber Lin"
+        },
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-07-06T00:00:00.00Z",
+        "datePublished": "2022-07-06T00:00:00.00Z",
+        "dateModified": "2022-07-06T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Fiber Lin",
+            "url": "https://fiberlin1121.github.io",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/fiberlin1121.github.io\/favicons\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "https://fiberlin1121.github.io/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "https:\/\/fiberlin1121.github.io\/post\/post-35\/",
+        "wordCount" : "470",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "SideProject"
+
+    ]
+    }
+  </script>
+
+
+
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+</head>
+<body
+    
+      class="body theme--light"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction" style="margin-bottom: 0;">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/wowo.jpg"
+        alt="profile picture"
+      />
+      <h1 class="sidebar__introduction-title">
+        <a href="/"></a>
+      </h1>
+      <div class="sidebar__introduction-description">
+        <p>Hi! I'm Fiber, 一名貓奴工程師</p>
+      </div>
+    </div>
+    
+    <ul class="sidebar__list" style="margin-top: 0;">
+      
+        <li class="sidebar__list-item">
+          <a href="https://github.com/FiberLin1121/" rel="me" aria-label="GitHub" title="GitHub">
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.behance.net/fiber410139" rel="me" aria-label="Behance" title="Behance">
+            <i class="fab fa-behance-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="https://www.facebook.com/%E5%B0%8F%E8%B3%B4%E7%9A%AE-277134752317535" rel="me" aria-label="Facebook" title="Facebook">
+            <i class="fab fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a href="mailto:fiber410139@gmail.com" rel="me" aria-label="e-mail" title="e-mail">
+            <i class="fas fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+
+    <ul class="sidebar__list">
+      <li style="margin-bottom:.5em; font-size: 15px;"><a href="/tags/程式筆記/" style="font-size: 15px;">程式筆記</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/sideproject/" style="font-size: 15px;">Side Project</a></li>
+      <li style="margin-bottom:.5em;"><a href="/tags/阿宅日常/" style="font-size: 15px;">阿宅日常</a></li>
+    </ul>
+    
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
+
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav d-flex justify-content-between">
+    <ul class="nav__list col" id="navMenu">
+      
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/"
+            
+            title=""
+            >Home</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/post/"
+            
+            title=""
+            >Posts</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/portfolio/"
+            
+            title=""
+            >Portfolio</a
+          >
+        </li>
+
+      
+        
+        <li class="nav__list-item">
+          <a
+            
+            href="/about/"
+            
+            title=""
+            >About</a
+          >
+        </li>
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end col">
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+<div class="post 
+      .
+
+    ">
+  
+  <div class="post__content">
+    <h1>To-Do Calendar - Day29 Spring Security 的認證與授權（四）</h1>
+    
+    <ul class="post__meta">
+      <li class="post__meta-item">
+        <em class="fas fa-calendar-day post__meta-icon"></em>
+        <span class="post__meta-text">
+          2022/07/06
+
+
+          
+        </span>
+      </li>
+      <li class="post__meta-item">
+        <em class="fas fa-stopwatch post__meta-icon"></em>
+        <span class="post__meta-text">3-minute read</span>
+      </li>
+      <li class="post__meta-item">
+        <span class="post__meta-text">
+        
+        <span><a class="tag" href="/tags/sideproject/">SideProject</a></span>
+
+
+        
+        </span>
+      </li>
+    </ul>
+
+    <p>前面已經實作出了 token 校驗過濾器和登入、登出的功能，最後補充一下授權的部分。</p>
+<h2 id="授權">授權</h2>
+<p>不同的用戶可以使用不同的功能，這就是權限系統要去實現的效果。<br>
+只依賴前端去判斷用戶的權限來選擇顯示哪些菜單哪些按鈕是不夠的。因為如果有人知道了對應功能的接口地址就可以不通過前端，直接去發送請求來實現相關功能操作。所以我們還需要進行用戶權限的判斷，判斷當前用戶是否有相應的權限，必須具有所需權限才能進行相應的操作。</p>
+<h2 id="授權基本流程">授權基本流程</h2>
+<figure class="medium"><img src="https://i.imgur.com/4wqzWDn.png"
+         alt="image"/>
+</figure>
+
+<ul>
+<li>在Spring Security中，會使用默認的 FilterSecurityInterceptor 來進行權限校驗。在 FilterSecurityInterceptor 中會從 SecurityContextHolder 獲取其中的 Authentication，然後獲取其中的權限信息，判斷當前用戶是否擁有訪問當前資源所需的權限。</li>
+<li>所以我們只需要把當前登入使用者的權限信息也存入 Authentication，​然後設置我們的資源所需要的權限即可。
+<br>
+<br></li>
+</ul>
+<h2 id="授權實現">授權實現</h2>
+<h3 id="限制訪問資源所需權限">限制訪問資源所需權限</h3>
+<ul>
+<li>Spring Security 提供了基於註解的權限控制方案，我們可以使用註解去指定訪問對應的資源所需的權限。</li>
+<li>另外一種是基於配置的方案，主要是用來配置靜態的資源，用的相對比較少。</li>
+</ul>
+<h3 id="開啟相關配置">開啟相關配置</h3>
+<ul>
+<li>在 SecurityConfig 設定檔加上開啟配置的註解
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  @EnableGlobalMethodSecurity(prePostEnabled = true)
+</span></span><span class="line"><span class="cl">  @Configuration
+</span></span><span class="line"><span class="cl">  public class SecurityConfig extends WebSecurityConfigurerAdapter {
+</span></span><span class="line"><span class="cl">    ...
+</span></span><span class="line"><span class="cl">  }
+</span></span></code></pre></div></li>
+<li>接著就可以在接口的方法上加上角色訪問限制的註解（這裡以便利貼牆查詢功能為例）
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@RestController
+</span></span><span class="line"><span class="cl">  public class NotesController {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      @Autowired
+</span></span><span class="line"><span class="cl">      private NotesService notesService;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      @PreAuthorize(&#34;hasAuthority(&#39;test&#39;)&#34;)
+</span></span><span class="line"><span class="cl">      @GetMapping(&#34;/users/{userId}/notes&#34;)
+</span></span><span class="line"><span class="cl">      public ResponseEntity&lt;Notes&gt; getNotes(@PathVariable String userId) {
+</span></span><span class="line"><span class="cl">          Notes notes = notesService.getNotesByUserId(userId);
+</span></span><span class="line"><span class="cl">          if (notes != null) {
+</span></span><span class="line"><span class="cl">              return ResponseEntity.status(HttpStatus.OK).body(notes);
+</span></span><span class="line"><span class="cl">          } else {
+</span></span><span class="line"><span class="cl">              return ResponseEntity.status(HttpStatus.OK).build();
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">  }
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="封裝權限信息">封裝權限信息</h3>
+<ul>
+<li>前面在實作 UserDetailsServiceImpl 時，留了一個 TODO，在查詢出使用者後還要獲取對應的權限信息，封裝到 UserDetails 中返回。<br>
+（因授權非本次需求，並未規劃對應的資料結構與畫面設計，所以這裡直接把權限信息寫死封裝到 UserDetails，正確做法是從資料庫查詢權限訊息）
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@Component
+</span></span><span class="line"><span class="cl">public class UserDetailsServiceImpl implements UserDetailsService {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  @Autowired
+</span></span><span class="line"><span class="cl">  private UserDao userDao;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  @Override
+</span></span><span class="line"><span class="cl">  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+</span></span><span class="line"><span class="cl">      // 查詢使用者資料
+</span></span><span class="line"><span class="cl">      User user = userDao.getUserByEmail(username);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      // 如果使用者不存在就拋出異常
+</span></span><span class="line"><span class="cl">      if (Objects.isNull(user)) {
+</span></span><span class="line"><span class="cl">          throw new AccountNotFoundException(&#34;帳號或密碼錯誤&#34;);
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      // 查詢對應的權限訊息
+</span></span><span class="line"><span class="cl">      List&lt;String&gt; list = new ArrayList&lt;&gt;(Arrays.asList(&#34;admin&#34;));
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      // 把資料封裝成 UserDetails 返回
+</span></span><span class="line"><span class="cl">      return new LoginUser(user, list);
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+<li>修改 LoginUser class
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  @Data
+</span></span><span class="line"><span class="cl">  @NoArgsConstructor
+</span></span><span class="line"><span class="cl">  public class LoginUser implements UserDetails {
+</span></span><span class="line"><span class="cl">      private User user;
+</span></span><span class="line"><span class="cl">      private List&lt;String&gt; permissions;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      @JSONField(serialize = false)
+</span></span><span class="line"><span class="cl">      private List&lt;GrantedAuthority&gt; authorities;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      public LoginUser(User user, List&lt;String&gt; permissions) {
+</span></span><span class="line"><span class="cl">          this.user = user;
+</span></span><span class="line"><span class="cl">          this.permissions = permissions;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      @Override
+</span></span><span class="line"><span class="cl">      public Collection&lt;? extends GrantedAuthority&gt; getAuthorities() {
+</span></span><span class="line"><span class="cl">          if (authorities != null) {
+</span></span><span class="line"><span class="cl">              return authorities;
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">          // 把 permissions 中字串類型的權限信息轉型成 SimpleGrantedAuthority 物件存入 authorities 中
+</span></span><span class="line"><span class="cl">          authorities = permissions.stream()
+</span></span><span class="line"><span class="cl">                  .map(SimpleGrantedAuthority::new)
+</span></span><span class="line"><span class="cl">                  .collect(Collectors.toList());
+</span></span><span class="line"><span class="cl">          return authorities;
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">      ...
+</span></span><span class="line"><span class="cl">  }
+</span></span></code></pre></div></li>
+<li>在 token 校驗過濾器中，也留了一個 TODO，當時只是把 loginUser 封裝到 authentication，我們還須把權限信息也封裝進去。
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  @Component
+</span></span><span class="line"><span class="cl">  public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      @Autowired
+</span></span><span class="line"><span class="cl">      RedisCache redisCache;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      @Override
+</span></span><span class="line"><span class="cl">      protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+</span></span><span class="line"><span class="cl">          // 取得 request header 中的 token
+</span></span><span class="line"><span class="cl">          String authHeader  = request.getHeader(HttpHeaders.AUTHORIZATION);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          if (StringUtils.isEmpty(authHeader)) {
+</span></span><span class="line"><span class="cl">              // 放行
+</span></span><span class="line"><span class="cl">              filterChain.doFilter(request, response);
+</span></span><span class="line"><span class="cl">              return;
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          // 解析 token 取得 userId
+</span></span><span class="line"><span class="cl">          String token = authHeader.replace(&#34;Bearer &#34;, &#34;&#34;);
+</span></span><span class="line"><span class="cl">          String userId;
+</span></span><span class="line"><span class="cl">          try {
+</span></span><span class="line"><span class="cl">              Claims claims = JwtUtil.parseJWT(token);
+</span></span><span class="line"><span class="cl">              userId = claims.getSubject();
+</span></span><span class="line"><span class="cl">          } catch (Exception e) {
+</span></span><span class="line"><span class="cl">              e.printStackTrace();
+</span></span><span class="line"><span class="cl">              throw new RuntimeException(&#34;token解析失敗&#34;);
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          // 通過 userId 從 redis 中取得 LoginUser
+</span></span><span class="line"><span class="cl">          String redisKey = &#34;login:&#34; + userId;
+</span></span><span class="line"><span class="cl">          LoginUser loginUser = redisCache.getCacheObject(redisKey);
+</span></span><span class="line"><span class="cl">          if (Objects.isNull(loginUser)) {
+</span></span><span class="line"><span class="cl">              throw new RuntimeException(&#34;使用者未登入&#34;);
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">          //TODO: 獲取權限信息封裝到 authentication 中
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          // 如果能從 redis 中取得 loginUser -&gt; 存入 SecurityContextHolder
+</span></span><span class="line"><span class="cl">          if (Objects.nonNull(loginUser)) {
+</span></span><span class="line"><span class="cl">              UsernamePasswordAuthenticationToken authentication =
+</span></span><span class="line"><span class="cl">                      new UsernamePasswordAuthenticationToken(loginUser, null, loginUser.getAuthorities());
+</span></span><span class="line"><span class="cl">              SecurityContextHolder.getContext().setAuthentication(authentication);
+</span></span><span class="line"><span class="cl">          }
+</span></span><span class="line"><span class="cl">          filterChain.doFilter(request, response);
+</span></span><span class="line"><span class="cl">      }
+</span></span><span class="line"><span class="cl">  }
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="運行結果">運行結果</h3>
+<figure class="medium"><img src="https://i.imgur.com/fjvLneM.gif"
+         alt="image"/>
+</figure>
+
+<p>目前訪問查詢便利貼牆會因為權限不足而被擋下，但測試後發現有個問題，就是目前認證失敗與權限驗證失敗都是回傳403，這兩者應該要有不同的錯誤處理與提示。</p>
+<h2 id="解決方法">解決方法</h2>
+<h3 id="自定義失敗處理器">自定義失敗處理器</h3>
+<p>在 Spring Security 中，如果在認證或者授權的過程中出現了例外會被 ExceptionTranslationFilter 捕獲。在 ExceptionTranslationFilter 中會去判斷是認證失敗還是授權失敗出現的例外。</p>
+<ul>
+<li>如果是認證過程中出現的例外，會被封裝成 AuthenticationException，然後調用 AuthenticationEntryPoint 物件的方法去進行例外處理。</li>
+<li>​如果是授權過程中出現的例外，會被封裝成 AccessDeniedException，然後調用 AccessDeniedHandler 物件的方法去進行例外處理。</li>
+</ul>
+<h3 id="配置給-spring-security">配置給 Spring Security</h3>
+<ul>
+<li>注入對應的處理器</li>
+<li>使用 HttpSecurity 物件的方法去配置
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@EnableGlobalMethodSecurity(prePostEnabled = true)
+</span></span><span class="line"><span class="cl">@Configuration
+</span></span><span class="line"><span class="cl">public class SecurityConfig extends WebSecurityConfigurerAdapter {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Autowired
+</span></span><span class="line"><span class="cl">    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Autowired
+</span></span><span class="line"><span class="cl">    private AccessDeniedHandler accessDeniedHandler;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Autowired
+</span></span><span class="line"><span class="cl">    private AuthenticationEntryPoint authenticationEntryPoint;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    protected void configure(HttpSecurity http) throws Exception {
+</span></span><span class="line"><span class="cl">        http
+</span></span><span class="line"><span class="cl">                // 關閉CSRF
+</span></span><span class="line"><span class="cl">                .csrf().disable()
+</span></span><span class="line"><span class="cl">                // 不通過 Session 取得 SecurityContext
+</span></span><span class="line"><span class="cl">                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+</span></span><span class="line"><span class="cl">                .and()
+</span></span><span class="line"><span class="cl">                .authorizeRequests()
+</span></span><span class="line"><span class="cl">                // 對登入接口允許匿名訪問
+</span></span><span class="line"><span class="cl">                .antMatchers(&#34;/users/login&#34;).anonymous()
+</span></span><span class="line"><span class="cl">                // 對註冊接口允許匿名訪問
+</span></span><span class="line"><span class="cl">                .antMatchers(&#34;/users/register&#34;).anonymous()
+</span></span><span class="line"><span class="cl">                // 剩下的所有請求
+</span></span><span class="line"><span class="cl">                .anyRequest().authenticated();
+</span></span><span class="line"><span class="cl">        // 將token校驗過濾器加到過濾器鏈中
+</span></span><span class="line"><span class="cl">        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+</span></span><span class="line"><span class="cl">        //  配置錯誤處理器
+</span></span><span class="line"><span class="cl">        http.exceptionHandling()
+</span></span><span class="line"><span class="cl">                .accessDeniedHandler(accessDeniedHandler)
+</span></span><span class="line"><span class="cl">                .authenticationEntryPoint(authenticationEntryPoint);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Bean
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public AuthenticationManager authenticationManagerBean() throws Exception {
+</span></span><span class="line"><span class="cl">        return super.authenticationManagerBean();
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Bean
+</span></span><span class="line"><span class="cl">    public PasswordEncoder passwordEncoder() {
+</span></span><span class="line"><span class="cl">        return new BCryptPasswordEncoder();
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="運行結果-1">運行結果</h3>
+<figure class="medium"><img src="https://i.imgur.com/jAj09j7.gif"
+         alt="image"/><figcaption>
+            <p>認證與授權有不同的錯誤處理</p>
+        </figcaption>
+</figure>
+
+<br>
+<br>
+到此所有功能與安全認證都完成啦！！！:;(∩´﹏`∩);:  
+可喜可賀～～
+<br>
+<br>
+<h4 id="延伸閱讀">延伸閱讀</h4>
+<ul>
+<li><a href="https://www.facebook.com/permalink.php?story_fbid=179244517460882&amp;id=105127931539208">HTTP status code 你說得出401 與403的差異嗎?</a></li>
+<li><a href="https://www.cnblogs.com/qiqi715/p/12982102.html">http狀態碼——401和403差異</a></li>
+<li><a href="https://blog.csdn.net/u014779536/article/details/112977779">HttpServletResponse的使用：響應數據、下載文件</a></li>
+</ul>
+<h4 id="參考資料">參考資料</h4>
+<ul>
+<li>《極速開發 Java大型系統：Spring Boot 又輕又快又好學》</li>
+<li><a href="https://blog.csdn.net/weixin_43847283/article/details/124075302">三更草堂 Spring Security 框架教程</a></li>
+</ul></div>
+  <div class="post__footer">
+    
+
+    
+  </div>
+
+  <div id="comment">
+    <h2>comments</h2>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fiberlin1121" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Fiber&#39;s blog
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.a3fd0638ada4e3cec287e49a604b4a828cfef33a669afe60b96575761fff5cf3.js"
+    integrity="sha256-o/0GOK2k487Ch&#43;SaYEtKgoz&#43;8zpmmv5guWV1dh//XPM="
+    crossorigin="anonymous"
+  ></script>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-225238520-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+</html>
