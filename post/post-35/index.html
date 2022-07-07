@@ -198,7 +198,7 @@
 
     ,
         "url" : "https:\/\/fiberlin1121.github.io\/post\/post-35\/",
-        "wordCount" : "470",
+        "wordCount" : "524",
         "genre" : [ ],
         "keywords" : [ 
       
@@ -611,8 +611,30 @@ if (!doNotTrack) {
 <h3 id="自定義失敗處理器">自定義失敗處理器</h3>
 <p>在 Spring Security 中，如果在認證或者授權的過程中出現了例外會被 ExceptionTranslationFilter 捕獲。在 ExceptionTranslationFilter 中會去判斷是認證失敗還是授權失敗出現的例外。</p>
 <ul>
-<li>如果是認證過程中出現的例外，會被封裝成 AuthenticationException，然後調用 AuthenticationEntryPoint 物件的方法去進行例外處理。</li>
-<li>​如果是授權過程中出現的例外，會被封裝成 AccessDeniedException，然後調用 AccessDeniedHandler 物件的方法去進行例外處理。</li>
+<li>如果是認證過程中出現的例外，會被封裝成 AuthenticationException，然後調用 AuthenticationEntryPoint 物件的方法去進行例外處理。
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@Component
+</span></span><span class="line"><span class="cl">public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
+</span></span><span class="line"><span class="cl">        response.setStatus(HttpStatus.UNAUTHORIZED.value());
+</span></span><span class="line"><span class="cl">        response.setCharacterEncoding(&#34;UTF-8&#34;);
+</span></span><span class="line"><span class="cl">        response.setHeader(&#34;Content-type&#34;, &#34;text/html;charset=UTF-8&#34;);
+</span></span><span class="line"><span class="cl">        response.getWriter().write(&#34;認證失敗&#34;);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
+<li>​如果是授權過程中出現的例外，會被封裝成 AccessDeniedException，然後調用 AccessDeniedHandler 物件的方法去進行例外處理。
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@Component
+</span></span><span class="line"><span class="cl">public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
+</span></span><span class="line"><span class="cl">    @Override
+</span></span><span class="line"><span class="cl">    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
+</span></span><span class="line"><span class="cl">        response.setStatus(HttpStatus.FORBIDDEN.value());
+</span></span><span class="line"><span class="cl">        response.setCharacterEncoding(&#34;UTF-8&#34;);
+</span></span><span class="line"><span class="cl">        response.setHeader(&#34;Content-type&#34;, &#34;text/html;charset=UTF-8&#34;);
+</span></span><span class="line"><span class="cl">        response.getWriter().write(&#34;權限不足&#34;);
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div></li>
 </ul>
 <h3 id="配置給-spring-security">配置給 Spring Security</h3>
 <ul>
